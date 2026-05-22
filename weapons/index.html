@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weapons Database & Tiers - WuWa AIO</title>
+  <meta name="description" content="Complete Wuthering Waves weapons scaling database. Base stats, sub-stats, and passive comparisons for 5-star and 4-star weapons.">
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../output.css">
+  
+  <!-- i18n Localization -->
+  <script src="../js/i18n.js"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a080f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #312e3f;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #504a6b;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-yellow-500/30 selection:text-yellow-200">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo (Home Button) -->
+      <a href="../index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent"><span data-i18n="landing_title_prefix">WUWA</span><span class="text-purple-500" data-i18n="landing_title_suffix">.AIO</span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo">All-in-One Database</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-1">
+        <a href="../characters/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_characters">Characters</a>
+        <a href="../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_echoes">Echoes</a>
+        <a href="../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-purple-400 bg-white/5 border-b-2 border-purple-500/50 transition-all" data-i18n="nav_weapons">Weapons</a>
+        <a href="../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_quickswap">Quick-Swap</a>
+        <a href="../calculation/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_calculation">Calculation</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center space-x-4">
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
+    <div class="flex flex-col space-y-4">
+      <a href="../characters/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters">Characters</a>
+      <a href="../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_echoes">Echoes</a>
+      <a href="../weapons/index.html" class="text-xl font-semibold text-purple-400 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons">Weapons</a>
+      <a href="../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap">Quick-Swap</a>
+      <a href="../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation">Calculation</a>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Header Section -->
+    <section class="py-12 bg-[#1a181f]/20 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+          <span class="w-2.5 h-8 bg-yellow-500 rounded-full inline-block"></span>
+          <span data-i18n="weapons_header_title">Weapons Scaling Database</span>
+        </h1>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="weapons_header_subtitle">Filter and inspect standard weapon scaling stats, secondary values, and skill modifiers.</p>
+      </div>
+    </section>
+
+    <!-- Weapons Grid Section -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Weapon Types Selector -->
+      <div class="flex flex-wrap gap-2 mb-10">
+        <button class="weapon-filter active px-4 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-semibold tracking-wide uppercase transition-all" data-type="all" data-i18n="weapons_filter_all">All Weapons</button>
+        <button class="weapon-filter px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-type="Broadblade" data-i18n="weapons_filter_broadblade">Broadblades</button>
+        <button class="weapon-filter px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-type="Sword" data-i18n="weapons_filter_sword">Swords</button>
+        <button class="weapon-filter px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-type="Rectifier" data-i18n="weapons_filter_rectifier">Rectifiers</button>
+        <button class="weapon-filter px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-type="Pistols" data-i18n="weapons_filter_pistols">Pistols</button>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="weapons-container">
+        <!-- Ages of Harvest -->
+        <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/20 transition-all duration-300 flex gap-4" data-type="Broadblade">
+          <div class="w-16 h-16 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-2xl shrink-0">5★</div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-display font-semibold text-lg text-white" data-i18n="weapon_ages_of_harvest_name">Ages of Harvest</h3>
+                <span class="text-[10px] text-purple-400 uppercase font-semibold">Broadblade • Main DPS</span>
+              </div>
+              <span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 px-2 py-0.5 rounded font-bold">587 ATK</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 my-4 p-3 bg-[#0a080f]/50 rounded-xl border border-white/5 text-xs">
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_secondary">Secondary Stat:</span>
+                <span class="text-white font-medium">24.3% Crit Rate</span>
+              </div>
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_signature">Signature For:</span>
+                <span class="text-purple-400 font-medium">Jinhsi</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-gray-400 leading-relaxed" data-i18n="weapon_ages_of_harvest_desc">
+              Increases Attribute DMG by 12%. When using Intro Skill or Resonance Skill, gain a stacking Resonance Skill DMG boost of up to 48%.
+            </p>
+          </div>
+        </div>
+
+        <!-- Stringmaster -->
+        <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/20 transition-all duration-300 flex gap-4" data-type="Rectifier">
+          <div class="w-16 h-16 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-2xl shrink-0">5★</div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-display font-semibold text-lg text-white" data-i18n="weapon_stringmaster_name">Stringmaster</h3>
+                <span class="text-[10px] text-purple-400 uppercase font-semibold">Rectifier • Sub DPS / Amp</span>
+              </div>
+              <span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 px-2 py-0.5 rounded font-bold">500 ATK</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 my-4 p-3 bg-[#0a080f]/50 rounded-xl border border-white/5 text-xs">
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_secondary">Secondary Stat:</span>
+                <span class="text-white font-medium">36.0% Crit Rate</span>
+              </div>
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_signature">Signature For:</span>
+                <span class="text-purple-400 font-medium">Yinlin</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-gray-400 leading-relaxed" data-i18n="weapon_stringmaster_desc">
+              Increases Crit Rate and boosts Resonance Attribute DMG by 12%. Off-field Resonance Skill hits increase ATK by 12%.
+            </p>
+          </div>
+        </div>
+
+        <!-- Blazing Brilliance -->
+        <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/20 transition-all duration-300 flex gap-4" data-type="Sword">
+          <div class="w-16 h-16 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-2xl shrink-0">5★</div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-display font-semibold text-lg text-white" data-i18n="weapon_blazing_brilliance_name">Blazing Brilliance</h3>
+                <span class="text-[10px] text-purple-400 uppercase font-semibold">Sword • Main DPS</span>
+              </div>
+              <span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 px-2 py-0.5 rounded font-bold">587 ATK</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 my-4 p-3 bg-[#0a080f]/50 rounded-xl border border-white/5 text-xs">
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_secondary">Secondary Stat:</span>
+                <span class="text-white font-medium">48.6% Crit DMG</span>
+              </div>
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_signature">Signature For:</span>
+                <span class="text-purple-400 font-medium">Changli</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-gray-400 leading-relaxed" data-i18n="weapon_blazing_brilliance_desc">
+              Provides massive Crit DMG. Increases ATK by 12%. Casting Resonance Skill grants standard attacks and skill damage stacks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Static Mist -->
+        <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/20 transition-all duration-300 flex gap-4" data-type="Pistols">
+          <div class="w-16 h-16 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-yellow-400 font-bold text-2xl shrink-0">5★</div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-display font-semibold text-lg text-white" data-i18n="weapon_static_mist_name">Static Mist</h3>
+                <span class="text-[10px] text-purple-400 uppercase font-semibold">Pistols • Sub DPS / Amp</span>
+              </div>
+              <span class="text-xs bg-yellow-500/10 text-yellow-400 border border-yellow-500/30 px-2 py-0.5 rounded font-bold">500 ATK</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 my-4 p-3 bg-[#0a080f]/50 rounded-xl border border-white/5 text-xs">
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_secondary">Secondary Stat:</span>
+                <span class="text-white font-medium">24.3% Crit Rate</span>
+              </div>
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_signature">Signature For:</span>
+                <span class="text-purple-400 font-medium">Chixia (High Tier)</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-gray-400 leading-relaxed" data-i18n="weapon_static_mist_desc">
+              Grants Crit Rate and increases Energy Regen by 12%. Upon switching out, the incoming Resonator gains 10% ATK.
+            </p>
+          </div>
+        </div>
+
+        <!-- Variation -->
+        <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/20 transition-all duration-300 flex gap-4" data-type="Rectifier">
+          <div class="w-16 h-16 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-2xl shrink-0">4★</div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-display font-semibold text-lg text-white" data-i18n="weapon_variation_name">Variation</h3>
+                <span class="text-[10px] text-gray-500 uppercase font-semibold">Rectifier • Support</span>
+              </div>
+              <span class="text-xs bg-purple-500/10 text-purple-400 border border-purple-500/30 px-2 py-0.5 rounded font-bold">337 ATK</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 my-4 p-3 bg-[#0a080f]/50 rounded-xl border border-white/5 text-xs">
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_secondary">Secondary Stat:</span>
+                <span class="text-white font-medium">51.8% Energy Regen</span>
+              </div>
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_recommended">Recommended For:</span>
+                <span class="text-purple-400 font-medium">Shorekeeper, Verina</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-gray-400 leading-relaxed" data-i18n="weapon_variation_desc">
+              Grants high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, boosting rotation speeds.
+            </p>
+          </div>
+        </div>
+
+        <!-- Undying Flame -->
+        <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/20 transition-all duration-300 flex gap-4" data-type="Pistols">
+          <div class="w-16 h-16 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 font-bold text-2xl shrink-0">4★</div>
+          <div class="flex-grow">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="font-display font-semibold text-lg text-white" data-i18n="weapon_undying_flame_name">Undying Flame</h3>
+                <span class="text-[10px] text-gray-500 uppercase font-semibold">Pistols • Main DPS</span>
+              </div>
+              <span class="text-xs bg-purple-500/10 text-purple-400 border border-purple-500/30 px-2 py-0.5 rounded font-bold">412 ATK</span>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4 my-4 p-3 bg-[#0a080f]/50 rounded-xl border border-white/5 text-xs">
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_secondary">Secondary Stat:</span>
+                <span class="text-white font-medium">20.2% ATK%</span>
+              </div>
+              <div>
+                <span class="block text-gray-500" data-i18n="weapon_stat_recommended">Recommended For:</span>
+                <span class="text-purple-400 font-medium">Chixia</span>
+              </div>
+            </div>
+
+            <p class="text-xs text-gray-400 leading-relaxed" data-i18n="weapon_undying_flame_desc">
+              Increases Resonance Skill DMG by 20% for 15s upon casting Intro Skill. Fully utilizes Chixia's rapid-fire skill ticks.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#0a080f] border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          </div>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-purple-500">.AIO</span></span>
+        </div>
+        <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer">
+          © 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Filter Script -->
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-xl';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-xl';
+      }
+    }
+    
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Filtering Weapons
+    const filterButtons = document.querySelectorAll('.weapon-filter');
+    const weaponCards = document.querySelectorAll('.weapon-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-purple-600', 'text-white', 'active');
+          b.classList.add('bg-[#1a181f]', 'border', 'border-white/5', 'text-gray-400');
+        });
+        btn.classList.remove('bg-[#1a181f]', 'border', 'border-white/5', 'text-gray-400');
+        btn.classList.add('bg-purple-600', 'text-white', 'active');
+
+        const filterType = btn.dataset.type;
+        weaponCards.forEach(card => {
+          if (filterType === 'all' || card.dataset.type === filterType) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

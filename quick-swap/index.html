@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick-Swap Rotation Guides - WuWa AIO</title>
+  <meta name="description" content="Master Wuthering Waves quick-swap rotations. Learn animation cancels, concerto energy management, and optimal team rotation flowcharts.">
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../output.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- i18n Translation Engine -->
+  <script src="../js/i18n.js"></script>
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a080f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #312e3f;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #504a6b;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-purple-500/30 selection:text-purple-200">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo (Home Button) -->
+      <a href="../index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent">WUWA<span class="text-purple-500">.AIO</span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo">All-in-One Database</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-1">
+        <a href="../characters/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_characters">Characters</a>
+        <a href="../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_echoes">Echoes</a>
+        <a href="../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_weapons">Weapons</a>
+        <a href="../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-purple-400 bg-white/5 border-b-2 border-purple-500/50 transition-all" data-i18n="nav_quickswap">Quick-Swap</a>
+        <a href="../calculation/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_calculation">Calculation</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center space-x-4">
+        
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
+    <div class="flex flex-col space-y-4">
+      <a href="../characters/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters">Characters</a>
+      <a href="../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_echoes">Echoes</a>
+      <a href="../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons">Weapons</a>
+      <a href="../quick-swap/index.html" class="text-xl font-semibold text-purple-400 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap">Quick-Swap</a>
+      <a href="../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation">Calculation</a>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Header Section -->
+    <section class="py-12 bg-[#1a181f]/20 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+          <span class="w-2.5 h-8 bg-purple-500 rounded-full inline-block"></span>
+          <span data-i18n="qs_header_title">Quick-Swap Rotation Guides</span>
+        </h1>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="qs_header_subtitle">Optimize concerto energy transitions, coordinate Outro buffs, and master frame-perfect animation cancels.</p>
+      </div>
+    </section>
+
+    <!-- Content Sections -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <!-- Core Concept 1: Swap Cancel -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
+        <div>
+          <span class="text-[10px] text-purple-400 font-bold uppercase tracking-wider mb-2 block" data-i18n="qs_adv_mechanic">Advanced Mechanic</span>
+          <h2 class="font-display font-bold text-2xl text-white mb-4" data-i18n="qs_mechanic_title">What is Animation Swap-Canceling?</h2>
+          <p class="text-xs text-gray-400 leading-relaxed mb-4" data-i18n="qs_mechanic_desc1">
+            In Wuthering Waves, certain skills, heavy attacks, or Resonance Liberations have long cast animations. During these animations, you can <span class="text-white font-semibold">swap to another resonator immediately</span>.
+          </p>
+          <p class="text-xs text-gray-400 leading-relaxed" data-i18n="qs_mechanic_desc2">
+            The previous resonator will stay on-field to complete their animation, allowing your new resonator to start attacking simultaneously. This effectively doubles your DPS during burst windows.
+          </p>
+        </div>
+        <div class="bg-[#0a080f] p-5 rounded-xl border border-white/5">
+          <h3 class="font-display font-semibold text-sm text-white mb-4"><i class="fa-solid fa-list-check text-purple-500 mr-2"></i><span data-i18n="qs_prime_title">Prime Swap-Cancel Windows</span></h3>
+          <ul class="space-y-3 text-xs">
+            <li class="flex items-start gap-2">
+              <span class="bg-purple-500/10 text-purple-400 font-mono text-[9px] px-1.5 py-0.5 rounded shrink-0">Yinlin</span>
+              <span class="text-gray-300" data-i18n="qs_prime_yinlin">Resonance Skill (Chameleon Bite) & Forte Heavy Attack (Chameleon Freak).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="bg-yellow-500/10 text-yellow-400 font-mono text-[9px] px-1.5 py-0.5 rounded shrink-0">Jinhsi</span>
+              <span class="text-gray-300" data-i18n="qs_prime_jinhsi">Resonance Skill (Illuminous Epiphany dragon laser) cast.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="bg-red-500/10 text-red-400 font-mono text-[9px] px-1.5 py-0.5 rounded shrink-0">Changli</span>
+              <span class="text-gray-300" data-i18n="qs_prime_changli">Forte Heavy Attack (Flaming Sacrifice) rising sweep.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Rotation Timeline Example -->
+      <div>
+        <h3 class="font-display font-bold text-xl text-white mb-6 text-center" data-i18n="qs_std_timeline_title">Standard Premium Team Rotation Timeline</h3>
+        
+        <div class="relative bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 overflow-hidden">
+          <!-- Timeline Track Line on the Left -->
+          <div class="absolute left-[40px] sm:left-[48px] top-0 bottom-0 w-px bg-white/5"></div>
+          
+          <div class="space-y-8 relative">
+            <!-- Node 1 -->
+            <div class="flex gap-4 md:gap-6 items-start">
+              <div class="w-8 h-8 rounded-full bg-green-500/10 border border-green-500/30 flex items-center justify-center text-green-400 shrink-0 relative z-10 font-bold text-xs">1</div>
+              <div class="flex-grow">
+                <span class="text-[10px] text-green-400 uppercase font-bold tracking-wider" data-i18n="qs_node1_time">0.0s - 4.0s</span>
+                <h4 class="text-sm font-semibold text-white mt-1" data-i18n="qs_node1_title">Verina setup</h4>
+                <p class="text-xs text-gray-500 mt-2" data-i18n="qs_node1_desc">
+                  Basic Attacks, Mid-air Attacks to build Concerto energy. Casts Bell-Borne Geochelone Echo skill for shield, then casts Outro to buff the next unit.
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 2 -->
+            <div class="flex gap-4 md:gap-6 items-start">
+              <div class="w-8 h-8 rounded-full bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 shrink-0 relative z-10 font-bold text-xs">2</div>
+              <div class="flex-grow">
+                <span class="text-[10px] text-purple-400 uppercase font-bold tracking-wider" data-i18n="qs_node2_time">4.0s - 10.0s</span>
+                <h4 class="text-sm font-semibold text-white mt-1" data-i18n="qs_node2_title">Yinlin Coordination</h4>
+                <p class="text-xs text-gray-500 mt-2" data-i18n="qs_node2_desc">
+                  Enters via Intro. Casts Skill 1, basic attack string to fill Forte Gauge. Casts Resonance Liberation and Forte Heavy. Swaps out immediately during heavy attack animation.
+                </p>
+              </div>
+            </div>
+
+            <!-- Node 3 -->
+            <div class="flex gap-4 md:gap-6 items-start">
+              <div class="w-8 h-8 rounded-full bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 shrink-0 relative z-10 font-bold text-xs">3</div>
+              <div class="flex-grow">
+                <span class="text-[10px] text-yellow-400 uppercase font-bold tracking-wider" data-i18n="qs_node3_time">10.0s - 18.0s</span>
+                <h4 class="text-sm font-semibold text-white mt-1" data-i18n="qs_node3_title">Jinhsi Nuke Window</h4>
+                <p class="text-xs text-gray-500 mt-2" data-i18n="qs_node3_desc">
+                  Enters with full buffs. Basic attack sequence to enter Incarnation state. Yinlin's off-field coordinates stack Jinhsi's Forte. Nukes with dragon laser and swap-cancels out.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- User Submitted Quick-Swap Builds Grid -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-white/5">
+      <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-[10px] text-purple-400 font-bold uppercase tracking-wider mb-2 block" data-i18n="nav_quickswap">Quick-Swap Database</span>
+          <h2 class="font-display font-bold text-3xl text-white" data-i18n="qs_db_title">Rotation Guides Archive</h2>
+          <p class="text-xs text-gray-400 mt-1" data-i18n="qs_db_subtitle">Select a team rotation below to view the detailed frame-by-frame swap timeline.</p>
+        </div>
+        
+        <!-- Search & Filter Controls -->
+        <div class="flex items-center gap-4">
+          <div class="relative max-w-xs w-full">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
+            <input type="text" id="rotation-search" placeholder="Search team or resonator..." data-i18n-placeholder="qs_search_placeholder" class="w-full pl-9 pr-4 py-2.5 bg-[#1a181f] border border-white/5 focus:border-purple-500/50 rounded-xl text-xs text-white placeholder-gray-500 outline-none transition-all">
+          </div>
+        </div>
+      </div>
+
+      <!-- Rotation Cards Grid -->
+      <div id="user-builds-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamic cards will be appended here -->
+      </div>
+      
+      <!-- Template for Dynamic Cards (Hidden) -->
+      <template id="dynamic-rotation-template">
+        <a href="" class="rotation-card group bg-[#1a181f] border border-white/5 hover:border-purple-500/30 rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between block">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="team-name text-sm font-semibold text-white truncate max-w-[70%]">Spectro Havoc Fusion</span>
+              <span class="build-badge text-[10px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded font-bold uppercase tracking-wider">Premium Guide</span>
+            </div>
+            
+            <!-- Resonator Team Icons/Names -->
+            <div class="flex items-center gap-2 mb-4 bg-[#0a080f] p-2.5 rounded-xl border border-white/5">
+              <div class="flex -space-x-2">
+                <div class="w-7 h-7 rounded-full bg-purple-600 flex items-center justify-center text-[10px] text-white font-bold border-2 border-[#1a181f] res-1-icon">R1</div>
+                <div class="w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center text-[10px] text-white font-bold border-2 border-[#1a181f] res-2-icon">R2</div>
+                <div class="w-7 h-7 rounded-full bg-yellow-600 flex items-center justify-center text-[10px] text-white font-bold border-2 border-[#1a181f] res-3-icon">R3</div>
+              </div>
+              <span class="team-composition text-xs text-gray-300 font-medium truncate">Jinhsi + Yinlin + Verina</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between border-t border-white/5 pt-4 mt-4 text-[10px]">
+            <span class="text-gray-500"><span data-i18n="qs_contributor_by">Contributed by</span> <strong class="contributor font-semibold text-gray-300">Rover</strong></span>
+            <span class="text-purple-400 font-bold group-hover:text-purple-300 flex items-center gap-1 transition-colors">
+              <span data-i18n="qs_view_guide">View Guide</span> <i class="fa-solid fa-chevron-right text-[8px]"></i>
+            </span>
+          </div>
+        </a>
+      </template>
+    </section>
+
+    <!-- Update Your Own Quick-Swap Build & Spreadsheet Sync -->
+    <section id="spreadsheet-sync" class="py-20 bg-[#1a181f]/10 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Left Column: Sync Monitor -->
+          <div class="lg:col-span-5 space-y-6">
+            <div>
+              <span class="text-[10px] text-purple-400 font-bold uppercase tracking-wider mb-2 block">Real-Time Data Gateway</span>
+              <h2 class="font-display font-bold text-3xl text-white" data-i18n="qs_register_title">Register Rotation</h2>
+              <p class="text-xs text-gray-400 mt-2 leading-relaxed" data-i18n="qs_register_desc">
+                Add your own Google Sheet URL to register your custom rotation guide to the local database. The sheet must follow our row-by-row step format.
+              </p>
+            </div>
+
+            <!-- Sync Control Box -->
+            <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs text-gray-400 font-bold uppercase tracking-wide" data-i18n="qs_sync_status">Sync Status</span>
+                <span id="client-sync-status" class="px-2.5 py-0.5 rounded text-[10px] font-bold tracking-widest bg-green-500/10 text-green-400 border border-green-500/20">CONNECTED</span>
+              </div>
+
+              <!-- Input for Sheet ID -->
+              <div class="space-y-2">
+                <label for="spreadsheet-id-input" class="block text-xs text-gray-400" data-i18n="qs_sheet_label">Spreadsheet Link / ID</label>
+                <div class="relative">
+                  <input type="text" id="spreadsheet-id-input" placeholder="Paste sharing URL, web publish URL, or ID..." data-i18n-placeholder="qs_sheet_placeholder" value="" class="w-full bg-[#0a080f] border border-white/5 focus:border-purple-500/30 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-600 outline-none transition-all">
+                  <button id="sim-sync-btn" class="absolute right-2 top-1.5 bottom-1.5 px-3 bg-purple-600 hover:bg-purple-500 text-white rounded-lg text-xs font-semibold transition-all flex items-center gap-1.5">
+                    <i id="sync-icon" class="fa-solid fa-plus"></i> <span data-i18n="qs_register_btn">Register</span>
+                  </button>
+                </div>
+                <p class="text-[10px] text-gray-500" data-i18n="qs_register_note">Note: Ensure your sheet is shared with "Anyone with link can view" or published as CSV.</p>
+              </div>
+
+              <!-- Console Logger -->
+              <div class="bg-[#0a080f] rounded-xl border border-white/5 p-4 font-mono text-[10px] space-y-1.5 text-gray-400 max-h-36 overflow-y-auto">
+                <div class="flex justify-between">
+                  <span class="text-purple-400">[SYSTEM] Initialization Success.</span>
+                  <span class="text-gray-600">Now</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-green-400">[DATABASE] Loaded community rotations.</span>
+                  <span class="text-gray-600">Now</span>
+                </div>
+                <div id="sync-log-output"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Spreadsheet Guidelines -->
+          <div class="lg:col-span-7">
+            <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+              <div class="absolute top-0 right-0 w-32 h-32 bg-purple-600/5 rounded-full blur-2xl pointer-events-none"></div>
+              
+              <h3 class="font-display font-bold text-lg text-white mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-purple-400"></i>
+                <span data-i18n="qs_format_guide_title">Spreadsheet Formatting Guide</span>
+              </h3>
+
+              <div class="space-y-4 text-xs text-gray-400 leading-relaxed">
+                <p data-i18n="qs_format_guide_desc">To register your own quick-swap rotation timeline, format your Google Sheet exactly like this template. The page will dynamically parse the rows and draw a parallel timeline showing animation swap-cancels.</p>
+                
+                <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 overflow-x-auto font-mono text-[10px] space-y-3">
+                  <div class="text-purple-400 border-b border-white/5 pb-2 font-bold uppercase tracking-wider" data-i18n="qs_row1_title">Row 1 (Metadata & Specs)</div>
+                  <div class="grid grid-cols-12 gap-2 text-gray-400">
+                    <span class="col-span-3 text-white font-semibold">A1: Team Name</span>
+                    <span class="col-span-3 text-white font-semibold">B1: Resonator 1</span>
+                    <span class="col-span-3 text-white font-semibold">C1: Resonator 2</span>
+                    <span class="col-span-3 text-white font-semibold">D1: Resonator 3</span>
+                    <span class="col-span-3 text-white font-semibold">E1: Contributor</span>
+                    <span class="col-span-4 text-gray-500">F1: Resonator 1 Specs</span>
+                    <span class="col-span-4 text-gray-500">G1: Resonator 2 Specs</span>
+                    <span class="col-span-4 text-gray-500">H1: Resonator 3 Specs</span>
+                  </div>
+                  <div class="text-purple-400 border-b border-white/5 pb-2 pt-2 font-bold uppercase tracking-wider" data-i18n="qs_row2_title">Row 2+ (Rotation Steps)</div>
+                  <div class="space-y-1 text-gray-500">
+                    <div>A2: [blank], <strong class="text-white">B2: Skill (R1)</strong>, C2: [blank], D2: [blank]</div>
+                    <div>A3: [blank], B3: [blank], <strong class="text-white">C3: Skill (R2)</strong>, D3: [blank]</div>
+                    <div>A4: [blank], B4: [blank], <strong class="text-white">C4: Echo Skill (R2)</strong>, <strong class="text-white">D4: Intro (R3) (Swap-Cancel)</strong></div>
+                  </div>
+                </div>
+
+                <div class="bg-purple-950/15 border border-purple-500/20 rounded-xl p-4 text-[11px] text-purple-200 font-medium" data-i18n="qs_row_warning">
+                  <i class="fa-solid fa-circle-exclamation mr-1.5 text-purple-400"></i>
+                  If two actions are in the same row (e.g. Row 4 above, both Resonator 2 and 3 have actions), they will render side-by-side on the timeline, representing an active swap-cancel window!
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#0a080f] border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          </div>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-purple-500">.AIO</span></span>
+        </div>
+        <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer">
+          © 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu & Rotation Sync Scripts -->
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-xl';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-xl';
+      }
+    }
+    
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Default Rotations Data (Thumbnails only)
+    const defaultRotations = [
+      {
+        id: "havoc-shadow-dance",
+        teamName: { en: "Havoc Shadow-Dance", ko: "인멸 그림자 무도" },
+        res1: { en: "Rover (Havoc)", ko: "방랑자 (인멸)" },
+        res2: { en: "Danjin", ko: "단근" },
+        res3: { en: "Shorekeeper", ko: "파수인" },
+        contributor: "HavocFanatic",
+        isMock: true
+      },
+      {
+        id: "fusion-burst",
+        teamName: { en: "Fusion Burst", ko: "용융 버스트" },
+        res1: { en: "Changli", ko: "장리" },
+        res2: { en: "Chixia", ko: "치샤" },
+        res3: { en: "Verina", ko: "벨리나" },
+        contributor: "Melter99",
+        isMock: true
+      },
+      {
+        id: "spectro-lightning",
+        teamName: { en: "Spectro Lightning", ko: "회절 번개" },
+        res1: { en: "Jinhsi", ko: "금희" },
+        res2: { en: "Yinlin", ko: "음림" },
+        res3: { en: "Verina", ko: "벨리나" },
+        contributor: "WaveMaster",
+        isMock: true
+      }
+    ];
+
+    let syncedSheets = [];
+
+    // Load custom sheets from localStorage
+    try {
+      const storedSheets = localStorage.getItem('wuwa_synced_sheets');
+      if (storedSheets) {
+        syncedSheets = JSON.parse(storedSheets);
+      }
+    } catch(e) {
+      console.warn("Failed to load stored sheets from localStorage", e);
+    }
+
+    const grid = document.getElementById('user-builds-grid');
+    const template = document.getElementById('dynamic-rotation-template');
+
+    function renderRotations(customSheets) {
+      grid.innerHTML = '';
+      
+      const allRotations = [...defaultRotations, ...customSheets];
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+      
+      allRotations.forEach(rot => {
+        const clone = template.content.cloneNode(true);
+        const teamName = typeof rot.teamName === 'object' ? (rot.teamName[lang] || rot.teamName['en']) : rot.teamName;
+        clone.querySelector('.team-name').textContent = teamName;
+        
+        const r1 = typeof rot.res1 === 'object' ? (rot.res1[lang] || rot.res1['en']) : (rot.res1 || '');
+        const r2 = typeof rot.res2 === 'object' ? (rot.res2[lang] || rot.res2['en']) : (rot.res2 || '');
+        const r3 = typeof rot.res3 === 'object' ? (rot.res3[lang] || rot.res3['en']) : (rot.res3 || '');
+        
+        // Icons text
+        clone.querySelector('.res-1-icon').textContent = r1.substring(0, 2).toUpperCase();
+        clone.querySelector('.res-2-icon').textContent = r2.substring(0, 2).toUpperCase();
+        clone.querySelector('.res-3-icon').textContent = r3.substring(0, 2).toUpperCase();
+        
+        clone.querySelector('.team-composition').textContent = `${r1} + ${r2} + ${r3}`;
+        clone.querySelector('.contributor').textContent = rot.contributor;
+        
+        const buildBadge = clone.querySelector('.build-badge');
+        if (rot.isMock) {
+          buildBadge.setAttribute("data-i18n", "qsd_premium_badge");
+          buildBadge.textContent = lang === 'ko' ? "프리미엄 가이드" : "Premium Guide";
+          buildBadge.className = "build-badge text-[10px] text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded font-bold uppercase tracking-wider";
+        } else {
+          buildBadge.setAttribute("data-i18n", "qsd_custom_badge");
+          buildBadge.textContent = lang === 'ko' ? "커스텀 시트" : "Custom Sheet";
+          buildBadge.className = "build-badge text-[10px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded font-bold uppercase tracking-wider";
+        }
+
+        // Link redirection
+        const cardAnchor = clone.querySelector('.rotation-card');
+        if (rot.isMock) {
+          cardAnchor.href = `./detail.html?id=${rot.id}`;
+        } else {
+          cardAnchor.href = `./detail.html?url=${encodeURIComponent(rot.url)}`;
+        }
+        
+        grid.appendChild(clone);
+      });
+      if (window.wuwaI18n) {
+        window.wuwaI18n.translate();
+      }
+    }
+
+    // Console Logging for Sync
+    function logToConsole(message, status = 'system') {
+      const syncLogOutput = document.getElementById('sync-log-output');
+      const div = document.createElement('div');
+      div.className = 'flex justify-between';
+      
+      let statusColor = 'text-purple-400';
+      if (status === 'success') statusColor = 'text-green-400';
+      if (status === 'error') statusColor = 'text-red-400';
+      if (status === 'info') statusColor = 'text-blue-400';
+      
+      div.innerHTML = `<span class="${statusColor}">${message}</span><span class="text-gray-600">Just now</span>`;
+      syncLogOutput.prepend(div);
+    }
+
+    // Simple single-line CSV Cell Parser to avoid breaking on quotes/commas
+    function parseCSVLine(line) {
+      const cells = [];
+      let currentCell = '';
+      let inQuotes = false;
+      for (let j = 0; j < line.length; j++) {
+        const char = line[j];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          cells.push(currentCell.trim());
+          currentCell = '';
+        } else {
+          currentCell += char;
+        }
+      }
+      cells.push(currentCell.trim());
+      
+      return cells.map(cell => {
+        let val = cell;
+        if (val.startsWith('"') && val.endsWith('"')) {
+          val = val.substring(1, val.length - 1);
+        }
+        return val.replace(/""/g, '"');
+      });
+    }
+
+    // Fetch and parse only row 1 to register sheet metadata
+    async function fetchSpreadsheetMetadata(inputVal) {
+      const trimmedInput = inputVal.trim();
+      let url = '';
+      
+      if (trimmedInput.startsWith('http://') || trimmedInput.startsWith('https://')) {
+        // Case A: Publish-to-web link (containing /spreadsheets/d/e/)
+        if (trimmedInput.includes('/spreadsheets/d/e/')) {
+          url = trimmedInput;
+          // Ensure it exports as CSV
+          if (!url.includes('output=csv') && !url.includes('format=csv')) {
+            const separator = url.includes('?') ? '&' : '?';
+            url = url.replace(/pub\?output=[a-z]+/i, 'pub'); // clean up output format if any other exists
+            url = url + separator + 'output=csv';
+          }
+        } 
+        // Case B: Standard spreadsheet sharing/edit URL
+        else {
+          const match = trimmedInput.match(/\/spreadsheets\/d\/([a-zA-Z0-9-_]+)/);
+          if (match && match[1]) {
+            url = `https://docs.google.com/spreadsheets/d/${match[1]}/export?format=csv`;
+          } else {
+            throw new Error("Could not extract Spreadsheet ID from URL. Ensure it follows the correct format.");
+          }
+        }
+      } else {
+        // Case C: Raw Spreadsheet ID
+        url = `https://docs.google.com/spreadsheets/d/${trimmedInput}/export?format=csv`;
+      }
+
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Fetch failed: ${response.status} ${response.statusText}`);
+      }
+      const csvText = await response.text();
+      if (csvText.trim().startsWith("<!DOCTYPE") || csvText.trim().startsWith("<html")) {
+        throw new Error("Invalid spreadsheet URL/ID or sheet is not published/public as CSV.");
+      }
+
+      const lines = csvText.split('\n');
+      if (lines.length < 2) {
+        throw new Error("Spreadsheet seems empty or missing the required Row 1 configuration.");
+      }
+
+      // Parse Row 1 (header contains metadata)
+      // A1: Team Name, B1: Resonator 1, C1: Resonator 2, D1: Resonator 3, E1: Contributor
+      const headerCells = parseCSVLine(lines[0]);
+      if (headerCells.length < 5 || !headerCells[0] || !headerCells[1]) {
+        throw new Error("Row 1 must follow format: Team Name, Resonator 1, Resonator 2, Resonator 3, Contributor, Specs1, Specs2, Specs3.");
+      }
+
+      return {
+        teamName: headerCells[0],
+        res1: headerCells[1],
+        res2: headerCells[2],
+        res3: headerCells[3],
+        contributor: headerCells[4] || 'Anonymous',
+        url: url
+      };
+    }
+
+    async function syncRotationDatabase() {
+      const sheetIdInput = document.getElementById('spreadsheet-id-input');
+      const syncIcon = document.getElementById('sync-icon');
+      const clientSyncStatus = document.getElementById('client-sync-status');
+      
+      const sheetInput = sheetIdInput.value.trim();
+      if (!sheetInput) {
+        logToConsole("[ERROR] Spreadsheet Link/ID cannot be empty.", 'error');
+        return;
+      }
+      
+      syncIcon.className = 'fa-solid fa-arrows-rotate animate-spin';
+      clientSyncStatus.textContent = "SYNCING";
+      clientSyncStatus.className = "px-2.5 py-0.5 rounded text-[10px] font-bold tracking-widest bg-yellow-500/10 text-yellow-400 border border-yellow-500/20";
+      
+      logToConsole(`[SYNC] Connecting to Google Sheets and parsing metadata...`, 'info');
+      
+      try {
+        const metadata = await fetchSpreadsheetMetadata(sheetInput);
+        
+        // Check if already registered
+        const existingIndex = syncedSheets.findIndex(s => s.url === metadata.url);
+        
+        const newSheet = {
+          id: 'sheet-' + Date.now(),
+          teamName: metadata.teamName,
+          res1: metadata.res1,
+          res2: metadata.res2,
+          res3: metadata.res3,
+          contributor: metadata.contributor,
+          url: metadata.url,
+          isMock: false
+        };
+
+        if (existingIndex > -1) {
+          syncedSheets[existingIndex] = newSheet;
+          logToConsole(`[SUCCESS] Updated registered rotation: ${metadata.teamName}`, 'success');
+        } else {
+          syncedSheets.push(newSheet);
+          logToConsole(`[SUCCESS] Registered new rotation: ${metadata.teamName}`, 'success');
+        }
+        
+        try {
+          localStorage.setItem('wuwa_synced_sheets', JSON.stringify(syncedSheets));
+        } catch (e) {
+          console.warn("Failed to save sheets to localStorage", e);
+        }
+        renderRotations(syncedSheets);
+        
+        clientSyncStatus.textContent = "CONNECTED";
+        clientSyncStatus.className = "px-2.5 py-0.5 rounded text-[10px] font-bold tracking-widest bg-green-500/10 text-green-400 border border-green-500/20";
+        sheetIdInput.value = '';
+      } catch (error) {
+        console.error(error);
+        clientSyncStatus.textContent = "DISCONNECTED";
+        clientSyncStatus.className = "px-2.5 py-0.5 rounded text-[10px] font-bold tracking-widest bg-red-500/10 text-red-400 border border-red-500/20";
+        logToConsole(`[ERROR] Sync failed: ${error.message}`, 'error');
+      } finally {
+        syncIcon.className = 'fa-solid fa-plus';
+      }
+    }
+
+    // Search input filtering
+    const searchInput = document.getElementById('rotation-search');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      const allRotations = [...defaultRotations, ...syncedSheets];
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+      const filtered = allRotations.filter(rot => {
+        const teamName = typeof rot.teamName === 'object' ? (rot.teamName[lang] || rot.teamName['en']) : rot.teamName;
+        const r1 = typeof rot.res1 === 'object' ? (rot.res1[lang] || rot.res1['en']) : (rot.res1 || '');
+        const r2 = typeof rot.res2 === 'object' ? (rot.res2[lang] || rot.res2['en']) : (rot.res2 || '');
+        const r3 = typeof rot.res3 === 'object' ? (rot.res3[lang] || rot.res3['en']) : (rot.res3 || '');
+        return teamName.toLowerCase().includes(query) ||
+               r1.toLowerCase().includes(query) ||
+               r2.toLowerCase().includes(query) ||
+               r3.toLowerCase().includes(query) ||
+               rot.contributor.toLowerCase().includes(query);
+      });
+      
+      // Temporary override for rendering filtered list
+      grid.innerHTML = '';
+      filtered.forEach(rot => {
+        const clone = template.content.cloneNode(true);
+        const teamName = typeof rot.teamName === 'object' ? (rot.teamName[lang] || rot.teamName['en']) : rot.teamName;
+        clone.querySelector('.team-name').textContent = teamName;
+        const r1 = typeof rot.res1 === 'object' ? (rot.res1[lang] || rot.res1['en']) : (rot.res1 || '');
+        const r2 = typeof rot.res2 === 'object' ? (rot.res2[lang] || rot.res2['en']) : (rot.res2 || '');
+        const r3 = typeof rot.res3 === 'object' ? (rot.res3[lang] || rot.res3['en']) : (rot.res3 || '');
+        clone.querySelector('.res-1-icon').textContent = r1.substring(0, 2).toUpperCase();
+        clone.querySelector('.res-2-icon').textContent = r2.substring(0, 2).toUpperCase();
+        clone.querySelector('.res-3-icon').textContent = r3.substring(0, 2).toUpperCase();
+        clone.querySelector('.team-composition').textContent = `${r1} + ${r2} + ${r3}`;
+        clone.querySelector('.contributor').textContent = rot.contributor;
+        const buildBadge = clone.querySelector('.build-badge');
+        if (rot.isMock) {
+          buildBadge.setAttribute("data-i18n", "qsd_premium_badge");
+          buildBadge.textContent = lang === 'ko' ? "프리미엄 가이드" : "Premium Guide";
+          buildBadge.className = "build-badge text-[10px] text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded font-bold uppercase tracking-wider";
+        } else {
+          buildBadge.setAttribute("data-i18n", "qsd_custom_badge");
+          buildBadge.textContent = lang === 'ko' ? "커스텀 시트" : "Custom Sheet";
+          buildBadge.className = "build-badge text-[10px] text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded font-bold uppercase tracking-wider";
+        }
+        const cardAnchor = clone.querySelector('.rotation-card');
+        if (rot.isMock) {
+          cardAnchor.href = `./detail.html?id=${rot.id}`;
+        } else {
+          cardAnchor.href = `./detail.html?url=${encodeURIComponent(rot.url)}`;
+        }
+        grid.appendChild(clone);
+      });
+      if (window.wuwaI18n) {
+        window.wuwaI18n.translate();
+      }
+    });
+
+    // Listen for language toggles
+    window.addEventListener("wuwalangchange", () => {
+      renderRotations(syncedSheets);
+    });
+
+    // Initial render
+    renderRotations(syncedSheets);
+    document.getElementById('sim-sync-btn').addEventListener('click', syncRotationDatabase);
+  </script>
+</body>
+</html>

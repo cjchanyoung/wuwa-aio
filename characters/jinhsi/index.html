@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jinhsi Build Guide - WuWa AIO</title>
+  <meta name="description" content="Ultimate Jinhsi build guide. Best weapons, echo sets, skill priorities, and team comps for Jinhsi in Wuthering Waves.">
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../../output.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- i18n Localization -->
+  <script src="../../js/i18n.js"></script>
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a080f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #312e3f;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #504a6b;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-yellow-500/30 selection:text-yellow-200">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-yellow-500/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-amber-500/5 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-yellow-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo (Home Button) -->
+      <a href="../../index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-500 to-amber-500 flex items-center justify-center shadow-lg shadow-yellow-500/20 group-hover:scale-105 transition-transform duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-yellow-400 bg-clip-text text-transparent">WUWA<span class="text-yellow-500">.AIO</span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo">All-in-One Database</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-1">
+        <a href="../index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-yellow-400 bg-white/5 border-b-2 border-yellow-500/50 transition-all" data-i18n="nav_characters">Characters</a>
+        <a href="../../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_echoes">Echoes</a>
+        <a href="../../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_weapons">Weapons</a>
+        <a href="../../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_quickswap">Quick-Swap</a>
+        <a href="../../calculation/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_calculation">Calculation</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center space-x-4">
+        <a href="../index.html" class="relative group hidden sm:inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-semibold text-gray-900 rounded-xl group bg-gradient-to-br from-yellow-600 to-amber-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-yellow-800">
+          <span class="relative px-4 py-2.5 transition-all ease-in duration-75 bg-[#0a080f] rounded-[10px] group-hover:bg-opacity-0">
+            <i class="fa-solid fa-arrow-left mr-2 text-yellow-500 group-hover:text-white transition-colors"></i><span data-i18n="detail_btn_back">Back to Database</span>
+          </span>
+        </a>
+        
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
+    <div class="flex flex-col space-y-4">
+      <a href="../index.html" class="text-xl font-semibold text-yellow-500 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters">Characters</a>
+      <a href="../../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_echoes">Echoes</a>
+      <a href="../../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons">Weapons</a>
+      <a href="../../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap">Quick-Swap</a>
+      <a href="../../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation">Calculation</a>
+      <a href="../index.html" class="inline-block text-center py-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-xl font-semibold shadow-lg shadow-yellow-500/25" onclick="toggleMobileMenu()" data-i18n="detail_btn_back">
+        Back to Database
+      </a>
+    </div>
+  </div>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    
+    <!-- Hero Details Section -->
+    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-yellow-950/20 to-[#1a181f]/40 border border-yellow-500/20 p-8 sm:p-12 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div class="space-y-4 text-center md:text-left">
+        <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
+          <span id="hero-element" class="bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">Spectro</span>
+          <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium">Broadblade</span>
+          <span id="hero-role" class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Main DPS</span>
+        </div>
+        <h1 id="hero-name" class="font-display font-bold text-5xl sm:text-6xl text-white tracking-wide">
+          Jinhsi
+        </h1>
+        <p id="hero-description" class="text-gray-400 text-sm max-w-xl leading-relaxed">
+          The magistrate of Jinzhou, carrying the weight of prophecy and the blessing of the Sentinel Jué. She acts as a premier Spectro Carry, dealing monumental burst damage through her specialized Forte Circuit state and Resonance Skill multiplier stacks.
+        </p>
+        <div class="flex justify-center md:justify-start gap-1 text-yellow-400 text-sm">
+          <span id="hero-stars" class="flex gap-1"><i class="fa-solid fa-star animate-pulse" ></i>
+<i class="fa-solid fa-star animate-pulse" style="animation-delay: 0.2s"></i>
+<i class="fa-solid fa-star animate-pulse" style="animation-delay: 0.4s"></i>
+<i class="fa-solid fa-star animate-pulse" style="animation-delay: 0.6000000000000001s"></i>
+<i class="fa-solid fa-star animate-pulse" style="animation-delay: 0.8s"></i></span>
+          <span id="hero-rarity-label" class="text-gray-400 ml-2 text-xs font-semibold">(5★ Resonator)</span>
+        </div>
+      </div>
+
+      <!-- Hero Visual Accent -->
+      <div class="w-40 h-40 rounded-full bg-gradient-to-tr from-yellow-500 via-amber-400 to-yellow-600 p-1.5 shadow-2xl shadow-yellow-500/20 shrink-0 relative flex items-center justify-center">
+        <div class="w-full h-full rounded-full bg-[#1a181f] flex items-center justify-center">
+          <i class="fa-solid fa-dragon text-yellow-500 text-6xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guide Grid Details -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+      
+      <!-- Left Column: Weapons & Echos -->
+      <div class="lg:col-span-8 space-y-8">
+        
+        <!-- Weapons Recommendation Card -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
+          <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-sword text-yellow-500"></i>
+            <span data-i18n="detail_weapon_title">Weapon Recommendations</span>
+          </h3>
+
+          <div id="weapons-list" class="space-y-6">
+                        <!-- Signature Weapon -->
+            <div class="bg-[#0a080f] p-5 rounded-xl border border-yellow-500/10 hover:border-yellow-500/30 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 shrink-0 border border-yellow-500/20">
+                  <i class="fa-solid fa-sparkles text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-base font-bold text-white flex items-center gap-2">
+                    Ages of Harvest
+                    <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">5★ Signature</span>
+                  </h4>
+                  <p class="text-xs text-gray-500 mt-1">Base ATK: 587 • Crit Rate: 24.3% (Lvl 90)</p>
+                  <p class="text-xs text-gray-300 mt-2">
+                    Increases Attribute DMG by 12%. When using Intro Skill or Resonance Skill, gain a stacking Resonance Skill DMG boost of up to 48%. Jinhsi's absolute best-in-class option.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Alternative Weapon -->
+            <div class="bg-[#0a080f] p-5 rounded-xl border border-white/5 hover:border-yellow-500/20 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-gray-500/10 rounded-lg flex items-center justify-center text-gray-400 shrink-0 border border-white/10">
+                  <i class="fa-solid fa-shield-halved text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="text-base font-bold text-white flex items-center gap-2">
+                    Helios Cleaver
+                    <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded uppercase font-bold">4★ Best Alternative</span>
+                  </h4>
+                  <p class="text-xs text-gray-500 mt-1">Base ATK: 412 • ATK%: 30.3% (Lvl 90)</p>
+                  <p class="text-xs text-gray-300 mt-2">
+                    Increases ATK by 3% every 2s upon entering the field, stacking up to 5 times. High base attack and high ATK scaling make it a solid free-to-play weapon.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Echos Recommendation Card -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
+          <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+            <i class="fa-solid fa-atom text-yellow-500"></i>
+            <span data-i18n="detail_echo_title">Echo Setup & Substats</span>
+          </h3>
+
+          <div class="space-y-6">
+            <!-- Best Set Summary -->
+            <div class="flex items-center gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
+              <div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 shrink-0 border border-white/5">
+                <i class="fa-solid fa-dna"></i>
+              </div>
+              <div>
+                <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set">Best Set Bonus</span>
+                <span id="echo-best-set" class="block text-sm text-yellow-500 font-semibold">Celestial Light (5-Piece Set)</span>
+              </div>
+            </div>
+
+            <!-- Cost breakdown -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
+                <span class="block text-xs text-gray-500 font-bold uppercase mb-1"><span data-i18n="detail_cost_4">4-Cost Echo</span> (<span id="echo-cost-4-name">Jué</span>)</span>
+                <span id="echo-cost-4" class="text-sm font-semibold text-white">Crit Rate / Crit DMG</span>
+              </div>
+              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
+                <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3">3-Cost Echos</span>
+                <span id="echo-cost-3" class="text-sm font-semibold text-white">Spectro DMG% / Spectro DMG%</span>
+              </div>
+              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
+                <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_1">1-Cost Echos</span>
+                <span id="echo-cost-1" class="text-sm font-semibold text-white">ATK% / ATK%</span>
+              </div>
+            </div>
+
+            <!-- Substats priority -->
+            <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 space-y-2">
+              <span class="block text-xs text-gray-500 font-bold uppercase" data-i18n="detail_substat_priority">Substat Leveling Priority</span>
+              <p id="echo-substats-priority" class="text-sm text-gray-300 leading-relaxed font-mono">
+                Crit Rate% / Crit DMG% > Resonance Skill DMG% > ATK% > Energy Regen%
+              </p>
+              <span id="echo-note" class="block text-[10px] text-yellow-500/70 font-semibold italic">Note: Target around 115% - 120% Energy Regen for smooth combat rotations.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Stats, Skills, Teams -->
+      <div class="lg:col-span-4 space-y-8">
+        
+        <!-- Stat Priorities Card -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-list-check text-yellow-500"></i>
+            <span data-i18n="detail_stat_priority">Stat priorities</span>
+          </h3>
+          <div id="stat-priorities-list" class="space-y-3 text-xs">
+                        <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
+              <span class="w-5 h-5 rounded-md bg-yellow-500/20 text-yellow-400 font-bold font-mono flex items-center justify-center">1</span>
+              <span class="font-semibold text-white">Crit Rate / Crit DMG</span>
+            </div>
+            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
+              <span class="w-5 h-5 rounded-md bg-yellow-500/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
+              <span class="font-semibold text-white">ATK% / Flat ATK</span>
+            </div>
+            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
+              <span class="w-5 h-5 rounded-md bg-yellow-500/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
+              <span class="font-semibold text-white">Resonance Skill DMG%</span>
+            </div>
+            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
+              <span class="w-5 h-5 rounded-md bg-yellow-500/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
+              <span class="font-semibold text-white">Energy Regen (115%+)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skill Levelling Priority -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-chart-line text-yellow-500"></i>
+            <span data-i18n="detail_skill_priority">Skill Priority</span>
+          </h3>
+          <div class="space-y-4">
+            <!-- Priority List -->
+            <div id="skill-priorities-list" class="flex flex-col gap-2">
+                            <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">1. Forte Circuit</span>
+                <span class="text-yellow-400 font-bold">Highest Priority</span>
+              </div>
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">2. Resonance Liberation</span>
+                <span class="text-yellow-300 font-semibold">High Priority</span>
+              </div>
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">3. Resonance Skill</span>
+                <span class="text-gray-300 font-medium">Medium</span>
+              </div>
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">4. Intro Skill</span>
+                <span class="text-gray-500">Low</span>
+              </div>
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">5. Basic Attack</span>
+                <span class="text-gray-500">Low</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommended Teams Card -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-users text-yellow-500"></i>
+            <span data-i18n="detail_teams_title">Recommended Teams</span>
+          </h3>
+
+          <div id="recommended-teams-list" class="space-y-4 text-xs">
+                        <!-- Team Card -->
+            <div class="bg-[#0a080f]/50 border border-yellow-500/10 rounded-xl p-3.5 space-y-2">
+              <span class="block text-yellow-400 font-bold tracking-wide uppercase">Optimal Premium Team</span>
+              <ul class="space-y-1.5 text-gray-300 font-medium">
+                <li>• Jinhsi <span class="text-gray-500 text-[10px]">(Main Carry)</span></li>
+                <li>• Yinlin <span class="text-gray-500 text-[10px]">(Coordinated Sub-DPS)</span></li>
+                <li>• Verina <span class="text-gray-500 text-[10px]">(Healer/ATK Buffer)</span></li>
+              </ul>
+            </div>
+            <!-- Team Card -->
+            <div class="bg-[#0a080f]/50 border border-white/5 rounded-xl p-3.5 space-y-2">
+              <span class="block text-gray-400 font-bold tracking-wide uppercase">F2P Friendly Team</span>
+              <ul class="space-y-1.5 text-gray-300 font-medium">
+                <li>• Jinhsi <span class="text-gray-500 text-[10px]">(Main Carry)</span></li>
+                <li>• Rover (Spectro) <span class="text-gray-500 text-[10px]">(Sub-DPS/Coord)</span></li>
+                <li>• Baizhi <span class="text-gray-500 text-[10px]">(Healer/ATK Buffer)</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#0a080f] border-t border-white/5 py-12 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-yellow-500 flex items-center justify-center text-white">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          </div>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-yellow-500">.AIO</span></span>
+        </div>
+        <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer">
+          © 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script for Mobile Menu Toggle and Dynamic Hydration -->
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-xl';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-xl';
+      }
+    }
+    
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Dynamic Character Guide Hydration (Bilingual)
+    window.characterData = {"id":"jinhsi","name":{"en":"Jinhsi","ko":"금희"},"element":{"en":"Spectro","ko":"회절"},"weaponType":{"en":"Broadblade","ko":"대검"},"role":{"en":"Main DPS","ko":"메인 딜러"},"rarity":5,"description":{"en":"The magistrate of Jinzhou, carrying the weight of prophecy and the blessing of the Sentinel Jué. She acts as a premier Spectro Carry, dealing monumental burst damage through her specialized Forte Circuit state and Resonance Skill multiplier stacks.","ko":"금주의 영주이자 세월의 예언과 세행의 축복을 짊어진 자. 그녀는 특수한 공명 회로 상태와 축적되는 공명 스킬 피해량 배율을 통해 상상을 초월하는 순간 폭발 피해를 입히는 최고의 회절 메인 딜러입니다."},"icon_class":"fa-solid fa-dragon","bestEcho":{"en":"Jué (4-3-3-1-1)","ko":"각 (4-3-3-1-1)"},"difficulty":{"en":"Medium","ko":"보통"},"weapons":[{"name":{"en":"Ages of Harvest","ko":"태평성대"},"rarityLabel":{"en":"5★ Signature","ko":"5★ 전용 무기"},"specs":{"en":"Base ATK: 587 • Crit Rate: 24.3% (Lvl 90)","ko":"기초 공격력: 587 • 크리티컬 확률: 24.3% (90레벨)"},"desc":{"en":"Increases Attribute DMG by 12%. When using Intro Skill or Resonance Skill, gain a stacking Resonance Skill DMG boost of up to 48%. Jinhsi's absolute best-in-class option.","ko":"속성 피해가 12% 증가합니다. 변주 스킬 또는 공명 스킬 사용 시 공명 스킬 피해량이 중첩되어 최대 48%까지 증가합니다. 금희의 압도적인 종결 무기입니다."},"isSignature":true},{"name":{"en":"Helios Cleaver","ko":"헬리오스 클리버"},"rarityLabel":{"en":"4★ Best Alternative","ko":"4★ 최고의 대체 무기"},"specs":{"en":"Base ATK: 412 • ATK%: 30.3% (Lvl 90)","ko":"기초 공격력: 412 • 공격력%: 30.3% (90레벨)"},"desc":{"en":"Increases ATK by 3% every 2s upon entering the field, stacking up to 5 times. High base attack and high ATK scaling make it a solid free-to-play weapon.","ko":"필드 진입 후 2초마다 공격력이 3%씩 증가하며, 최대 5회 중첩됩니다. 높은 기초 공격력과 공격력 스탯 덕분에 아주 훌륭한 가성비 무기입니다."},"isSignature":false}],"echoSetup":{"bestSetBonus":{"en":"Celestial Light (5-Piece Set)","ko":"거여울의 화음 (5세트)"},"cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 확률 / 크리티컬 피해"},"cost4Name":{"en":"Jué","ko":"각"},"cost3":{"en":"Spectro DMG% / Spectro DMG%","ko":"회절 피해% / 회절 피해%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > ATK% > Energy Regen%","ko":"크리티컬 확률% / 크리티컬 피해% > 공명 스킬 피해% > 공격력% > 공명 효율%"},"note":{"en":"Note: Target around 115% - 120% Energy Regen for smooth combat rotations.","ko":"참고: 매끄러운 스킬 사이클을 위해 공명 효율을 115% - 120% 정도로 세팅하는 것을 권장합니다."}},"statPriorities":{"en":["Crit Rate / Crit DMG","ATK% / Flat ATK","Resonance Skill DMG%","Energy Regen (115%+)"],"ko":["크리티컬 확률 / 크리티컬 피해","공격력% / 일반 공격력","공명 스킬 피해%","공명 효율 (115%+)"]},"skillPriorities":[{"skill":{"en":"1. Forte Circuit","ko":"1. 공명 회로"},"priority":{"en":"Highest Priority","ko":"최우선 순위"}},{"skill":{"en":"2. Resonance Liberation","ko":"2. 공명 해방"},"priority":{"en":"High Priority","ko":"높은 우선순위"}},{"skill":{"en":"3. Resonance Skill","ko":"3. 공명 스킬"},"priority":{"en":"Medium","ko":"보통"}},{"skill":{"en":"4. Intro Skill","ko":"4. 변주 스킬"},"priority":{"en":"Low","ko":"낮음"}},{"skill":{"en":"5. Basic Attack","ko":"5. 일반 공격"},"priority":{"en":"Low","ko":"낮음"}}],"recommendedTeams":[{"name":{"en":"Optimal Premium Team","ko":"최적 프리미엄 파티 조합"},"isPremium":true,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"],"ko":["금희 <span class=\"text-gray-500 text-[10px]\">(메인 딜러)</span>","음림 <span class=\"text-gray-500 text-[10px]\">(협동 서브 딜러)</span>","벨리나 <span class=\"text-gray-500 text-[10px]\">(힐러/공격력 버퍼)</span>"]}},{"name":{"en":"F2P Friendly Team","ko":"무과금 추천 가성비 조합"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Rover (Spectro) <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coord)</span>","Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"],"ko":["금희 <span class=\"text-gray-500 text-[10px]\">(메인 딜러)</span>","방랑자 (회절) <span class=\"text-gray-500 text-[10px]\">(서브 딜러)</span>","설지 <span class=\"text-gray-500 text-[10px]\">(힐러/공격력 버퍼)</span>"]}}]};
+
+    function renderCharacterGuide(lang) {
+      const data = window.characterData;
+      if (!data) return;
+
+      // Render hero texts
+      document.getElementById("hero-element").textContent = data.element[lang] || data.element.en;
+      document.getElementById("hero-weaponType").textContent = data.weaponType[lang] || data.weaponType.en;
+      document.getElementById("hero-role").textContent = data.role[lang] || data.role.en;
+      document.getElementById("hero-name").textContent = data.name[lang] || data.name.en;
+      document.getElementById("hero-description").textContent = data.description[lang] || data.description.en;
+      
+      // Render stars label
+      document.getElementById("hero-rarity-label").textContent = `(${data.rarity}★ ${lang === 'ko' ? '공명자' : 'Resonator'})`;
+
+      // Render weapons
+      const weaponsContainer = document.getElementById("weapons-list");
+      if (weaponsContainer) {
+        weaponsContainer.innerHTML = data.weapons.map(weapon => {
+          const isSig = weapon.isSignature;
+          const borderClass = isSig ? `border-yellow-500/10 hover:border-yellow-500/30` : `border-white/5 hover:border-yellow-500/20`;
+          const badgeClass = isSig ? `bg-yellow-500/20 text-yellow-300 border border-yellow-500/30` : `bg-purple-500/20 text-purple-300 border border-purple-500/30`;
+          const iconClass = isSig ? "fa-solid fa-sparkles text-xl" : "fa-solid fa-shield-halved text-xl";
+          const iconColor = isSig ? `text-yellow-500` : "text-gray-400";
+          const iconBg = isSig ? `bg-yellow-500/10` : "bg-gray-500/10";
+          const borderIcon = isSig ? `border-yellow-500/20` : "border-white/10";
+          
+          const weaponName = weapon.name[lang] || weapon.name.en;
+          const rarityLabel = weapon.rarityLabel[lang] || weapon.rarityLabel.en;
+          const specs = weapon.specs[lang] || weapon.specs.en;
+          const desc = weapon.desc[lang] || weapon.desc.en;
+
+          return `
+            <div class="bg-[#0a080f] p-5 rounded-xl border ${borderClass} transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 ${iconBg} rounded-lg flex items-center justify-center ${iconColor} shrink-0 border ${borderIcon}">
+                  <i class="${iconClass}"></i>
+                </div>
+                <div>
+                  <h4 class="text-base font-bold text-white flex items-center gap-2">
+                    ${weaponName}
+                    <span class="text-[10px] ${badgeClass} px-1.5 py-0.5 rounded uppercase font-bold">${rarityLabel}</span>
+                  </h4>
+                  <p class="text-xs text-gray-500 mt-1">${specs}</p>
+                  <p class="text-xs text-gray-300 mt-2">
+                    ${desc}
+                  </p>
+                </div>
+              </div>
+            </div>`;
+        }).join('\n');
+      }
+
+      // Echo Setup
+      const echo = data.echoSetup;
+      document.getElementById("echo-best-set").textContent = echo.bestSetBonus[lang] || echo.bestSetBonus.en;
+      document.getElementById("echo-cost-4-name").textContent = echo.cost4Name[lang] || echo.cost4Name.en;
+      document.getElementById("echo-cost-4").textContent = echo.cost4[lang] || echo.cost4.en;
+      document.getElementById("echo-cost-3").textContent = echo.cost3[lang] || echo.cost3.en;
+      document.getElementById("echo-cost-1").textContent = echo.cost1[lang] || echo.cost1.en;
+      document.getElementById("echo-substats-priority").textContent = echo.substatsPriority[lang] || echo.substatsPriority.en;
+      document.getElementById("echo-note").textContent = echo.note[lang] || echo.note.en;
+
+      // Stat Priorities
+      const statsContainer = document.getElementById("stat-priorities-list");
+      if (statsContainer) {
+        const priorities = data.statPriorities[lang] || data.statPriorities.en;
+        statsContainer.innerHTML = priorities.map((stat, index) => {
+          const isFirst = index === 0;
+          const numBg = isFirst ? `bg-yellow-500/20 text-yellow-400` : `bg-yellow-500/10 text-gray-400`;
+          return `
+            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
+              <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
+              <span class="font-semibold text-white">${stat}</span>
+            </div>`;
+        }).join('\n');
+      }
+
+      // Skill priorities
+      const skillsContainer = document.getElementById("skill-priorities-list");
+      if (skillsContainer) {
+        skillsContainer.innerHTML = data.skillPriorities.map((item, index) => {
+          let prioClass = 'text-gray-500';
+          if (index === 0) prioClass = `text-yellow-400 font-bold`;
+          else if (index === 1) prioClass = `text-yellow-300 font-semibold`;
+          else if (index === 2) prioClass = 'text-gray-300 font-medium';
+
+          const skillName = item.skill[lang] || item.skill.en;
+          const priorityVal = item.priority[lang] || item.priority.en;
+
+          return `
+            <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+              <span class="text-gray-400">${skillName}</span>
+              <span class="${prioClass}">${priorityVal}</span>
+            </div>`;
+        }).join('\n');
+      }
+
+      // Recommended Teams
+      const teamsContainer = document.getElementById("recommended-teams-list");
+      if (teamsContainer) {
+        teamsContainer.innerHTML = data.recommendedTeams.map(team => {
+          const borderClass = team.isPremium ? `border-yellow-500/10` : 'border-white/5';
+          const titleColor = team.isPremium ? `text-yellow-400` : 'text-gray-400';
+          
+          const teamName = team.name[lang] || team.name.en;
+          const members = team.members[lang] || team.members.en;
+          const membersList = members.map(member => `<li>• ${member}</li>`).join('\n');
+
+          return `
+            <div class="bg-[#0a080f]/50 border ${borderClass} rounded-xl p-3.5 space-y-2">
+              <span class="block ${titleColor} font-bold tracking-wide uppercase">${teamName}</span>
+              <ul class="space-y-1.5 text-gray-300 font-medium">
+                ${membersList}
+              </ul>
+            </div>`;
+        }).join('\n');
+      }
+
+      // Update dynamic page titles
+      document.title = `${data.name[lang] || data.name.en} ${lang === 'ko' ? '육성 가이드' : 'Build Guide'} - WuWa AIO`;
+    }
+
+    // Run translation on load and listen to language switch events
+    document.addEventListener("DOMContentLoaded", () => {
+      let activeLang = "en";
+      try {
+        activeLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : (localStorage.getItem("wuwa_lang") || "en");
+      } catch (e) {
+        console.warn("Storage access denied. Defaulting to English.");
+      }
+      renderCharacterGuide(activeLang);
+    });
+
+    window.addEventListener("wuwalangchange", (e) => {
+      renderCharacterGuide(e.detail.lang);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echo Builds Database - WuWa AIO</title>
+  <meta name="description" content="Complete Wuthering Waves Echoes database. Check Sonata set bonuses, main stat suggestions, and substat tuning priorities for resonators.">
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../output.css">
+  
+  <!-- i18n Localization -->
+  <script src="../js/i18n.js"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a080f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #312e3f;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #504a6b;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo (Home Button) -->
+      <a href="../index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent"><span data-i18n="landing_title_prefix">WUWA</span><span class="text-purple-500" data-i18n="landing_title_suffix">.AIO</span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo">All-in-One Database</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-1">
+        <a href="../characters/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_characters">Characters</a>
+        <a href="../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-purple-400 bg-white/5 border-b-2 border-purple-500/50 transition-all" data-i18n="nav_weapons">Echoes</a>
+        <a href="../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_weapons">Weapons</a>
+        <a href="../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_quickswap">Quick-Swap</a>
+        <a href="../calculation/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_calculation">Calculation</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center space-x-4">
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
+    <div class="flex flex-col space-y-4">
+      <a href="../characters/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters">Characters</a>
+      <a href="../echoes/index.html" class="text-xl font-semibold text-purple-400 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons">Echoes</a>
+      <a href="../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons">Weapons</a>
+      <a href="../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap">Quick-Swap</a>
+      <a href="../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation">Calculation</a>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Echo Database Header Section -->
+    <section class="py-12 bg-[#1a181f]/20 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+          <span class="w-2.5 h-8 bg-indigo-500 rounded-full inline-block"></span>
+          <span data-i18n="echoes_header_title">Sonata Echo Sets Database</span>
+        </h1>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="echoes_header_subtitle">Filter and inspect standard set compositions, substat ranges, and recommended farming nodes.</p>
+      </div>
+    </section>
+
+    <!-- Sonata Effects Section -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        
+        <!-- Celestial Light -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-yellow-500/30 transition-all duration-300 shadow-lg shadow-purple-500/2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 font-bold">
+              <i class="fa-solid fa-sun"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-lg text-white" data-i18n="echo_celestial_light_name">Celestial Light</h3>
+              <span class="text-[10px] text-yellow-400 font-bold uppercase tracking-wider">Spectro Set</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_2pc">2-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_celestial_light_2pc">Spectro DMG +10%</span>
+            </div>
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_5pc">5-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_celestial_light_5pc">Upon using Intro Skill, increases Spectro DMG by 30% for 15s.</span>
+            </div>
+            <div class="pt-2 border-t border-white/5 flex justify-between items-center text-gray-500">
+              <span data-i18n="echoes_best_resonators">Best Resonators:</span>
+              <span class="text-gray-300 font-semibold">Jinhsi, Rover (Spectro)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Void Thunder -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-all duration-300 shadow-lg shadow-purple-500/2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400 font-bold">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-lg text-white" data-i18n="echo_void_thunder_name">Void Thunder</h3>
+              <span class="text-[10px] text-purple-400 font-bold uppercase tracking-wider">Electro Set</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_2pc">2-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_void_thunder_2pc">Electro DMG +10%</span>
+            </div>
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_5pc">5-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_void_thunder_5pc">Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s).</span>
+            </div>
+            <div class="pt-2 border-t border-white/5 flex justify-between items-center text-gray-500">
+              <span data-i18n="echoes_best_resonators">Best Resonators:</span>
+              <span class="text-gray-300 font-semibold">Yinlin, Calcharo, Xiangli Yao</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Molten Rift -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-red-500/30 transition-all duration-300 shadow-lg shadow-purple-500/2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 font-bold">
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-lg text-white" data-i18n="echo_molten_rift_name">Molten Rift</h3>
+              <span class="text-[10px] text-red-400 font-bold uppercase tracking-wider">Fusion Set</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_2pc">2-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_molten_rift_2pc">Fusion DMG +10%</span>
+            </div>
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_5pc">5-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_molten_rift_5pc">Upon using Resonance Skill, increases Fusion DMG by 30% for 15s.</span>
+            </div>
+            <div class="pt-2 border-t border-white/5 flex justify-between items-center text-gray-500">
+              <span data-i18n="echoes_best_resonators">Best Resonators:</span>
+              <span class="text-gray-300 font-semibold">Changli, Chixia, Encore</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sierra Gale -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 shadow-lg shadow-purple-500/2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 font-bold">
+              <i class="fa-solid fa-wind"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-lg text-white" data-i18n="echo_sierra_gale_name">Sierra Gale</h3>
+              <span class="text-[10px] text-emerald-400 font-bold uppercase tracking-wider">Aero Set</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_2pc">2-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_sierra_gale_2pc">Aero DMG +10%</span>
+            </div>
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_5pc">5-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_sierra_gale_5pc">Upon using Intro Skill, increases Aero DMG by 30% for 15s.</span>
+            </div>
+            <div class="pt-2 border-t border-white/5 flex justify-between items-center text-gray-500">
+              <span data-i18n="echoes_best_resonators">Best Resonators:</span>
+              <span class="text-gray-300 font-semibold">Jiyan, Aahl, Yangyang</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sun-sinking Havoc -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-indigo-500/30 transition-all duration-300 shadow-lg shadow-purple-500/2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-400 font-bold">
+              <i class="fa-solid fa-moon"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-lg text-white" data-i18n="echo_sun_sinking_havoc_name">Sun-sinking Havoc</h3>
+              <span class="text-[10px] text-indigo-400 font-bold uppercase tracking-wider">Havoc Set</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_2pc">2-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_sun_sinking_havoc_2pc">Havoc DMG +10%</span>
+            </div>
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_5pc">5-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_sun_sinking_havoc_5pc">Increases Havoc DMG by 7.5% upon using Basic or Heavy attacks. Stacks up to 4 times, lasts 15s.</span>
+            </div>
+            <div class="pt-2 border-t border-white/5 flex justify-between items-center text-gray-500">
+              <span data-i18n="echoes_best_resonators">Best Resonators:</span>
+              <span class="text-gray-300 font-semibold">Rover (Havoc), Danjin, Camellya</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rejuvenating Glow -->
+        <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-green-500/30 transition-all duration-300 shadow-lg shadow-purple-500/2">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 font-bold">
+              <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <div>
+              <h3 class="font-display font-bold text-lg text-white" data-i18n="echo_rejuvenating_glow_name">Rejuvenating Glow</h3>
+              <span class="text-[10px] text-green-400 font-bold uppercase tracking-wider">Support Set</span>
+            </div>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_2pc">2-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_rejuvenating_glow_2pc">Healing Bonus +10%</span>
+            </div>
+            <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
+              <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold" data-i18n="echoes_set_5pc">5-Piece Effect</span>
+              <span class="text-gray-300 font-medium" data-i18n="echo_rejuvenating_glow_5pc">Upon healing allies, increases ATK of all team members by 15% for 30s.</span>
+            </div>
+            <div class="pt-2 border-t border-white/5 flex justify-between items-center text-gray-500">
+              <span data-i18n="echoes_best_resonators">Best Resonators:</span>
+              <span class="text-gray-300 font-semibold">Verina, Baizhi, Shorekeeper</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Substat Tuning Priorities -->
+      <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
+        <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+          <i class="fa-solid fa-sliders text-indigo-500"></i>
+          <span data-i18n="echo_tuning_guide_title">Substat Tuning Priority Guide</span>
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-xs leading-relaxed text-gray-400">
+          <div>
+            <h4 class="text-sm font-semibold text-white mb-3" data-i18n="echo_tuning_rules_title">Tuning Guidelines</h4>
+            <p class="mb-4" data-i18n="echo_tuning_rules_desc1">
+              Echos must be leveled to multiples of 5 (5, 10, 15, 20, 25) to unlock Substat slots. Tuning requires <span class="text-purple-400">Premium Tuners</span> relative to the Echo rarity.
+            </p>
+            <p data-i18n="echo_tuning_rules_desc2">
+              Once a substat is tuned, it cannot be rerolled. If you roll low-value stats (e.g. DEF, HP on a main carry), it is usually optimal to feed the Echo into another raw base Echo for 80% exp return.
+            </p>
+          </div>
+          <div>
+            <h4 class="text-sm font-semibold text-white mb-3" data-i18n="echo_tuning_values_title">Substat Values (5★ Echos)</h4>
+            <ul class="space-y-2">
+              <li class="flex justify-between border-b border-white/5 pb-1">
+                <span data-i18n="echo_tuning_crit_rate">Crit Rate:</span>
+                <span class="text-white font-semibold">6.3% ~ 10.5%</span>
+              </li>
+              <li class="flex justify-between border-b border-white/5 pb-1">
+                <span data-i18n="echo_tuning_crit_dmg">Crit DMG:</span>
+                <span class="text-white font-semibold">12.6% ~ 21.0%</span>
+              </li>
+              <li class="flex justify-between border-b border-white/5 pb-1">
+                <span data-i18n="echo_tuning_skill_dmg">Resonance Skill/Lib DMG:</span>
+                <span class="text-white font-semibold">6.4% ~ 12.4%</span>
+              </li>
+              <li class="flex justify-between border-b border-white/5 pb-1">
+                <span data-i18n="echo_tuning_energy_regen">Energy Regeneration:</span>
+                <span class="text-white font-semibold">7.4% ~ 12.4%</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#0a080f] border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          </div>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-purple-500">.AIO</span></span>
+        </div>
+        <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer">
+          © 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-xl';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-xl';
+      }
+    }
+    
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+  </script>
+</body>
+</html>

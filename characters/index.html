@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resonator Guides - WuWa AIO</title>
+  <meta name="description" content="Explore Wuthering Waves characters database. Real-time builds, weapons, echo sets, and skills synced directly from our serverless Google Sheet database.">
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../output.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- i18n Localization -->
+  <script src="../js/i18n.js"></script>
+  <script src="data.js"></script>
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a080f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #312e3f;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #504a6b;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-yellow-500/30 selection:text-yellow-200">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo (Home Button) -->
+      <a href="../index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent">WUWA<span class="text-purple-500">.AIO</span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo">All-in-One Database</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-1">
+        <a href="../characters/index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-purple-400 bg-white/5 border-b-2 border-purple-500/50 transition-all" data-i18n="nav_characters">Characters</a>
+        <a href="../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_echoes">Echoes</a>
+        <a href="../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_weapons">Weapons</a>
+        <a href="../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_quickswap">Quick-Swap</a>
+        <a href="../calculation/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_calculation">Calculation</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="flex items-center space-x-4">
+        <!-- Mobile Menu Trigger -->
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
+    <div class="flex flex-col space-y-4">
+      <a href="../characters/index.html" class="text-xl font-semibold text-purple-400 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters">Characters</a>
+      <a href="../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_echoes">Echoes</a>
+      <a href="../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons">Weapons</a>
+      <a href="../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap">Quick-Swap</a>
+      <a href="../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation">Calculation</a>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Character Guide Grid Section -->
+    <section id="characters-list" class="py-12 bg-[#1a181f]/20 border-b border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header & Search Tools -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+          <div>
+            <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+              <span class="w-2.5 h-8 bg-purple-500 rounded-full inline-block"></span>
+              <span data-i18n="char_list_title">Resonator Guides Database</span>
+            </h1>
+            <p class="text-gray-400 text-sm mt-2" data-i18n="char_list_subtitle">Filter and inspect detailed character builds synced in real-time from community spreadsheets.</p>
+          </div>
+          
+          <!-- Search & Filter Controls -->
+          <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
+            <div class="relative flex-grow md:flex-grow-0">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+              <input type="text" id="resonator-search" placeholder="Search Resonator..." data-i18n-placeholder="char_search_placeholder" class="w-full md:w-64 pl-10 pr-4 py-2.5 bg-[#1a181f] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors">
+            </div>
+            
+            <div class="flex gap-2">
+              <button class="filter-btn active px-4 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-semibold tracking-wide uppercase transition-all" data-filter="all" data-i18n="char_filter_all">All</button>
+              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-filter="5-star" data-i18n="char_filter_5">5★</button>
+              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-filter="4-star" data-i18n="char_filter_4">4★</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Container for Resonators -->
+        <div id="resonators-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <!-- Dynamically populated from data.json -->
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#0a080f] border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          </div>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-purple-500">.AIO</span></span>
+        </div>
+        <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer">
+          © 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Web App Client Logic (Vanilla JS) -->
+  <script>
+    // Mobile navigation toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-xl';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-xl';
+      }
+    }
+    
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Style configuration mapping for resonators by element type
+    const elementCardsStyles = {
+      Spectro: {
+        bg_to: 'to-yellow-950/20',
+        badge: 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30',
+        icon_ring: 'from-yellow-500 to-amber-300',
+        icon_text: 'text-yellow-400',
+        echo_text: 'text-yellow-400'
+      },
+      Fusion: {
+        bg_to: 'to-red-950/20',
+        badge: 'bg-red-500/20 text-red-300 border border-red-500/30',
+        icon_ring: 'from-red-600 to-orange-400',
+        icon_text: 'text-red-400',
+        echo_text: 'text-red-400'
+      },
+      Electro: {
+        bg_to: 'to-purple-950/20',
+        badge: 'bg-purple-500/20 text-purple-300 border border-purple-500/30',
+        icon_ring: 'from-purple-600 to-indigo-400',
+        icon_text: 'text-purple-400',
+        echo_text: 'text-purple-400'
+      }
+    };
+
+    const defaultStyles = {
+      bg_to: 'to-purple-950/20',
+      badge: 'bg-purple-500/20 text-purple-300 border border-purple-500/30',
+      icon_ring: 'from-purple-600 to-indigo-400',
+      icon_text: 'text-purple-400',
+      echo_text: 'text-purple-400'
+    };
+
+    // Load character data dynamically
+    let cachedCharacters = null;
+    async function loadCharacters() {
+      const grid = document.getElementById('resonators-grid');
+      try {
+        if (!cachedCharacters) {
+          if (window.charactersData) {
+            cachedCharacters = window.charactersData;
+          } else {
+            const response = await fetch('data.json');
+            if (!response.ok) {
+              throw new Error('Failed to fetch character database');
+            }
+            cachedCharacters = await response.json();
+          }
+        }
+        const characters = cachedCharacters;
+        let lang = "en";
+        try {
+          lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : (localStorage.getItem("wuwa_lang") || "en");
+        } catch (e) {
+          console.warn("Storage access denied. Defaulting to English.");
+        }
+        if (lang !== "en" && lang !== "ko") {
+          lang = "en";
+        }
+        
+        // Generate and append cards
+        grid.innerHTML = characters.map(char => {
+          const styles = elementCardsStyles[char.element.en] || defaultStyles;
+          const stars = '<i class="fa-solid fa-star"></i>'.repeat(char.rarity);
+          
+          const charName = char.name[lang] || char.name.en;
+          const charElement = char.element[lang] || char.element.en;
+          const charWeaponType = char.weaponType[lang] || char.weaponType.en;
+          const charRole = char.role[lang] || char.role.en;
+          const charBestEcho = char.bestEcho[lang] || char.bestEcho.en;
+          const charDifficulty = char.difficulty[lang] || char.difficulty.en;
+          
+          const bestEchoLabel = lang === 'ko' ? '추천 에코:' : 'Best Echo:';
+          const difficultyLabel = lang === 'ko' ? '육성 난이도:' : 'Build Difficulty:';
+          const viewGuideLabel = lang === 'ko' ? '상세 가이드 보기' : 'View Guide Details';
+          
+          const searchTags = `${char.name.en} ${char.name.ko} ${char.element.en} ${char.element.ko} ${char.weaponType.en} ${char.weaponType.ko} ${char.role.en} ${char.role.ko}`.toLowerCase();
+          
+          return `
+          <div class="resonator-card group bg-[#1a181f] border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1" data-rarity="${char.rarity}-star" data-id="${char.id}" data-search-tags="${searchTags}">
+            <div class="relative h-48 bg-gradient-to-t from-[#1a181f] ${styles.bg_to} overflow-hidden flex items-center justify-center">
+              <span class="element-badge absolute top-3 left-3 ${styles.badge} px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">${charElement}</span>
+              <span class="star-rating absolute top-3 right-3 text-yellow-400 text-xs flex gap-0.5">
+                ${stars}
+              </span>
+              <div class="w-20 h-20 rounded-full bg-gradient-to-tr ${styles.icon_ring} p-0.5 shadow-xl">
+                <div class="w-full h-full rounded-full bg-[#1a181f] flex items-center justify-center">
+                  <i class="${char.icon_class} ${styles.icon_text} text-3xl"></i>
+                </div>
+              </div>
+            </div>
+            <div class="p-5">
+              <h3 class="font-display font-bold text-xl text-white group-hover:text-purple-400 transition-colors">${charName}</h3>
+              <p class="text-xs text-gray-500 mt-1 uppercase font-semibold">${charWeaponType} • ${charRole}</p>
+              
+              <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
+                <div class="flex justify-between">
+                  <span class="text-gray-500">${bestEchoLabel}</span>
+                  <span class="${styles.echo_text} font-semibold">${charBestEcho}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-gray-500">${difficultyLabel}</span>
+                  <span class="text-gray-300">${charDifficulty}</span>
+                </div>
+              </div>
+              <button class="w-full mt-5 py-2.5 bg-white/5 group-hover:bg-purple-600 text-gray-300 group-hover:text-white text-xs font-semibold rounded-xl transition-all duration-300">${viewGuideLabel}</button>
+            </div>
+          </div>`;
+        }).join('');
+
+        // Apply filters once loaded
+        filterResonators();
+      } catch (err) {
+        console.error('Error loading characters list:', err);
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center">
+            <i class="fa-solid fa-circle-exclamation text-red-500 text-3xl mb-3"></i>
+            <p class="text-gray-400 text-sm">Failed to load resonator guides. Please try again later.</p>
+            <p class="text-red-400 text-xs mt-2">${err.name}: ${err.message}</p>
+            <pre class="text-left text-gray-500 text-[10px] mt-4 p-4 bg-[#0a080f] rounded-lg overflow-x-auto max-w-full">${err.stack || ''}</pre>
+          </div>`;
+      }
+    }
+
+    // Search and Rarity Filtering Logic
+    const searchInput = document.getElementById('resonator-search');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const resonatorCards = () => document.querySelectorAll('.resonator-card');
+
+    function filterResonators() {
+      const query = searchInput.value.toLowerCase().trim();
+      const activeFilterBtn = document.querySelector('.filter-btn.active');
+      const filterValue = activeFilterBtn ? activeFilterBtn.dataset.filter : 'all';
+
+      resonatorCards().forEach(card => {
+        const searchTags = card.dataset.searchTags || '';
+        const rarity = card.dataset.rarity;
+
+        const matchesSearch = !query || searchTags.includes(query);
+        const matchesFilter = filterValue === 'all' || rarity === filterValue;
+
+        if (matchesSearch && matchesFilter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    searchInput.addEventListener('input', filterResonators);
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-purple-600', 'text-white', 'active');
+          b.classList.add('bg-[#1a181f]', 'border', 'border-white/5', 'text-gray-400');
+        });
+        btn.classList.remove('bg-[#1a181f]', 'border', 'border-white/5', 'text-gray-400');
+        btn.classList.add('bg-purple-600', 'text-white', 'active');
+        filterResonators();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      const card = e.target.closest('.resonator-card');
+      if (card) {
+        const charId = card.dataset.id;
+        const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+        window.location.href = charId + '/index.html?lang=' + lang;
+      }
+    });
+
+    // Initialize character list loading
+    document.addEventListener('DOMContentLoaded', loadCharacters);
+    
+    // Listen to global language change event to reload list
+    window.addEventListener("wuwalangchange", () => {
+      loadCharacters();
+    });
+  </script>
+</body>
+</html>

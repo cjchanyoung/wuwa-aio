@@ -1,0 +1,16 @@
+{
+  "name": "wuwa-aio",
+  "version": "1.0.0",
+  "description": "Wuthering Waves All-in-One Guide Site using Tailwind CSS v4 and Serverless Architecture",
+  "main": "index.html",
+  "scripts": {
+    "watch": "npx @tailwindcss/cli -i ./wuwa-aio.css -o ./output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}
