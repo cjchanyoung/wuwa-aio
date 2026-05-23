@@ -126,6 +126,14 @@
           </h3>
 
           <div class="space-y-4">
+            <!-- Preset Selector -->
+            <div>
+              <label class="block text-xs text-gray-500 uppercase font-semibold mb-1.5" data-i18n="calc_label_preset">Character Presets (CSV)</label>
+              <select id="calc-preset" class="w-full px-4 py-2.5 bg-[#0a080f] border border-white/10 rounded-xl text-sm text-gray-300 focus:outline-none focus:border-purple-500 mb-4">
+                <option value="" data-i18n="calc_option_custom">-- Select Preset (Custom) --</option>
+              </select>
+            </div>
+
             <!-- Row 1: Attack & Skill Multiplier -->
             <div class="grid grid-cols-2 gap-4">
               <div>
@@ -324,12 +332,122 @@
       averageEl.textContent = averageDamage.toLocaleString();
     }
 
-    const inputs = [atkInput, multInput, rateInput, dmgInput, bonusInput, skillBonusInput, shredInput, resInput];
-    inputs.forEach(input => {
-      input.addEventListener('input', calculateDamage);
+    // Presets Loading and Change Logic
+    const presetSelect = document.getElementById('calc-preset');
+    let loadedPresets = [];
+
+    function parseCSVLine(line) {
+      const cells = [];
+      let currentCell = '';
+      let inQuotes = false;
+      for (let j = 0; j < line.length; j++) {
+        const char = line[j];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          cells.push(currentCell.trim());
+          currentCell = '';
+        } else {
+          currentCell += char;
+        }
+      }
+      cells.push(currentCell.trim());
+      return cells.map(cell => {
+        let val = cell;
+        if (val.startsWith('"') && val.endsWith('"')) {
+          val = val.substring(1, val.length - 1);
+        }
+        return val.replace(/""/g, '"');
+      });
+    }
+
+    function parseCSV(text) {
+      const lines = text.split('\n').map(line => line.trim()).filter(Boolean);
+      if (lines.length < 2) return [];
+      const headers = parseCSVLine(lines[0]);
+      const data = [];
+      for (let i = 1; i < lines.length; i++) {
+        const cells = parseCSVLine(lines[i]);
+        if (cells.length < headers.length) continue;
+        const rawObj = {};
+        headers.forEach((header, index) => {
+          rawObj[header] = cells[index];
+        });
+        data.push(rawObj);
+      }
+      return data;
+    }
+
+    async function loadPresets() {
+      try {
+        const response = await fetch('presets.csv');
+        if (!response.ok) {
+          throw new Error('Failed to fetch presets CSV');
+        }
+        const csvText = await response.text();
+        loadedPresets = parseCSV(csvText);
+        
+        let lang = "en";
+        try {
+          lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : (localStorage.getItem("wuwa_lang") || "en");
+        } catch (e) {
+          console.warn("Storage access denied. Defaulting to English.");
+        }
+        if (lang !== "en" && lang !== "ko") {
+          lang = "en";
+        }
+
+        // Keep custom option
+        presetSelect.innerHTML = `<option value="" data-i18n="calc_option_custom">${lang === 'ko' ? '-- 프리셋 선택 (사용자 지정) --' : '-- Select Preset (Custom) --'}</option>`;
+        
+        loadedPresets.forEach((preset, idx) => {
+          const charName = lang === 'ko' ? preset.character_name_ko : preset.character_name_en;
+          const opt = document.createElement('option');
+          opt.value = idx;
+          opt.textContent = charName;
+          presetSelect.appendChild(opt);
+        });
+      } catch (err) {
+        console.error('Failed to load character presets:', err);
+      }
+    }
+
+    presetSelect.addEventListener('change', () => {
+      const val = presetSelect.value;
+      if (val === "") return; // Custom mode
+
+      const preset = loadedPresets[parseInt(val, 10)];
+      if (!preset) return;
+
+      atkInput.value = preset.atk;
+      multInput.value = preset.multiplier;
+      rateInput.value = preset.crit_rate;
+      dmgInput.value = preset.crit_dmg;
+      bonusInput.value = preset.dmg_bonus;
+      skillBonusInput.value = preset.skill_bonus;
+      shredInput.value = preset.def_shred;
+      resInput.value = preset.res;
+
+      calculateDamage();
     });
 
+    const inputs = [atkInput, multInput, rateInput, dmgInput, bonusInput, skillBonusInput, shredInput, resInput];
+    inputs.forEach(input => {
+      input.addEventListener('input', () => {
+        // Switch to custom preset option when user manually changes values
+        presetSelect.value = "";
+        calculateDamage();
+      });
+    });
+
+    // Load presets and run initial calculation
+    loadPresets();
     calculateDamage();
+
+    // Listen to global language change event to reload selector labels
+    window.addEventListener("wuwalangchange", () => {
+      loadPresets();
+    });
   </script>
 </body>
 </html>

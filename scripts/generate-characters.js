@@ -106,7 +106,7 @@ const elementStyles = {
 
 const charactersFilePath = path.join(__dirname, '../characters/data.json');
 const templateFilePath = path.join(__dirname, '../characters/template.html');
-const dataJsFilePath = path.join(__dirname, '../characters/data.js');
+const dataCsvFilePath = path.join(__dirname, '../characters/data.csv');
 
 console.log('Loading character configurations and layout template...');
 
@@ -122,9 +122,32 @@ if (!fs.existsSync(templateFilePath)) {
 const characters = JSON.parse(fs.readFileSync(charactersFilePath, 'utf8'));
 const template = fs.readFileSync(templateFilePath, 'utf8');
 
-// Write out static data.js containing the characters array under window.charactersData
-console.log('Writing characters/data.js to support CORS-less filesystem execution...');
-fs.writeFileSync(dataJsFilePath, `window.charactersData = ${JSON.stringify(characters, null, 2)};\n`, 'utf8');
+// Write out static data.csv containing character summary fields
+console.log('Writing characters/data.csv...');
+const csvHeaders = ['id', 'rarity', 'icon_class', 'name_en', 'name_ko', 'element_en', 'element_ko', 'weaponType_en', 'weaponType_ko', 'role_en', 'role_ko', 'bestEcho_en', 'bestEcho_ko', 'difficulty_en', 'difficulty_ko'];
+const csvRows = [csvHeaders.join(',')];
+
+characters.forEach(char => {
+  const row = [
+    char.id,
+    char.rarity,
+    char.icon_class,
+    `"${char.name.en.replace(/"/g, '""')}"`,
+    `"${char.name.ko.replace(/"/g, '""')}"`,
+    `"${char.element.en.replace(/"/g, '""')}"`,
+    `"${char.element.ko.replace(/"/g, '""')}"`,
+    `"${char.weaponType.en.replace(/"/g, '""')}"`,
+    `"${char.weaponType.ko.replace(/"/g, '""')}"`,
+    `"${char.role.en.replace(/"/g, '""')}"`,
+    `"${char.role.ko.replace(/"/g, '""')}"`,
+    `"${char.bestEcho.en.replace(/"/g, '""')}"`,
+    `"${char.bestEcho.ko.replace(/"/g, '""')}"`,
+    `"${char.difficulty.en.replace(/"/g, '""')}"`,
+    `"${char.difficulty.ko.replace(/"/g, '""')}"`
+  ];
+  csvRows.push(row.join(','));
+});
+fs.writeFileSync(dataCsvFilePath, csvRows.join('\n'), 'utf8');
 
 characters.forEach(char => {
   console.log(`Compiling guide details for ${char.name.en}...`);

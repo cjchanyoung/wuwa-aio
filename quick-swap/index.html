@@ -380,37 +380,8 @@
     
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
-    // Default Rotations Data (Thumbnails only)
-    const defaultRotations = [
-      {
-        id: "havoc-shadow-dance",
-        teamName: { en: "Havoc Shadow-Dance", ko: "인멸 그림자 무도" },
-        res1: { en: "Rover (Havoc)", ko: "방랑자 (인멸)" },
-        res2: { en: "Danjin", ko: "단근" },
-        res3: { en: "Shorekeeper", ko: "파수인" },
-        contributor: "HavocFanatic",
-        isMock: true
-      },
-      {
-        id: "fusion-burst",
-        teamName: { en: "Fusion Burst", ko: "용융 버스트" },
-        res1: { en: "Changli", ko: "장리" },
-        res2: { en: "Chixia", ko: "치샤" },
-        res3: { en: "Verina", ko: "벨리나" },
-        contributor: "Melter99",
-        isMock: true
-      },
-      {
-        id: "spectro-lightning",
-        teamName: { en: "Spectro Lightning", ko: "회절 번개" },
-        res1: { en: "Jinhsi", ko: "금희" },
-        res2: { en: "Yinlin", ko: "음림" },
-        res3: { en: "Verina", ko: "벨리나" },
-        contributor: "WaveMaster",
-        isMock: true
-      }
-    ];
-
+    // Default Rotations loaded dynamically from CSV
+    let defaultRotations = [];
     let syncedSheets = [];
 
     // Load custom sheets from localStorage
@@ -421,6 +392,50 @@
       }
     } catch(e) {
       console.warn("Failed to load stored sheets from localStorage", e);
+    }
+
+    async function loadDefaultRotations() {
+      try {
+        const response = await fetch('data.csv');
+        if (!response.ok) {
+          throw new Error('Failed to fetch default rotations CSV database');
+        }
+        const csvText = await response.text();
+        defaultRotations = parseCSV(csvText);
+      } catch(err) {
+        console.error('Failed to load default rotations:', err);
+      }
+      renderRotations(syncedSheets);
+    }
+
+    function parseCSV(text) {
+      const lines = text.split('\n').map(line => line.trim()).filter(Boolean);
+      if (lines.length < 2) return [];
+      
+      const headers = parseCSVLine(lines[0]);
+      const data = [];
+      
+      for (let i = 1; i < lines.length; i++) {
+        const cells = parseCSVLine(lines[i]);
+        if (cells.length < headers.length) continue;
+        
+        const rawObj = {};
+        headers.forEach((header, index) => {
+          rawObj[header] = cells[index];
+        });
+        
+        const rotationObj = {
+          id: rawObj.id,
+          teamName: { en: rawObj.teamName_en, ko: rawObj.teamName_ko },
+          res1: { en: rawObj.res1_en, ko: rawObj.res1_ko },
+          res2: { en: rawObj.res2_en, ko: rawObj.res2_ko },
+          res3: { en: rawObj.res3_en, ko: rawObj.res3_ko },
+          contributor: rawObj.contributor,
+          isMock: true
+        };
+        data.push(rotationObj);
+      }
+      return data;
     }
 
     const grid = document.getElementById('user-builds-grid');
@@ -701,7 +716,7 @@
     });
 
     // Initial render
-    renderRotations(syncedSheets);
+    loadDefaultRotations();
     document.getElementById('sim-sync-btn').addEventListener('click', syncRotationDatabase);
   </script>
 </body>

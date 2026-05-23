@@ -136,6 +136,10 @@ const sandbox = {
       json() {
         const jsonPath = path.join(baseDir, 'characters', url);
         return Promise.resolve(JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
+      },
+      text() {
+        const csvPath = path.join(baseDir, 'characters', url);
+        return Promise.resolve(fs.readFileSync(csvPath, 'utf8'));
       }
     });
   },
@@ -157,11 +161,6 @@ vm.createContext(sandbox);
 const i18nPath = path.join(baseDir, 'js/i18n.js');
 const i18nContent = fs.readFileSync(i18nPath, 'utf8');
 vm.runInContext(i18nContent, sandbox, { filename: 'i18n.js' });
-
-// 2. Load data.js
-const dataJsPath = path.join(baseDir, 'characters/data.js');
-const dataJsContent = fs.readFileSync(dataJsPath, 'utf8');
-vm.runInContext(dataJsContent, sandbox, { filename: 'data.js' });
 
 // 3. Parse index.html to extract the inline script at the bottom
 const indexPath = path.join(baseDir, 'characters/index.html');

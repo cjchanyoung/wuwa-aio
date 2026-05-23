@@ -19,7 +19,6 @@
 
   <!-- i18n Localization -->
   <script src="../js/i18n.js"></script>
-  <script src="data.js"></script>
 
   <style>
     body {
@@ -211,21 +210,79 @@
       echo_text: 'text-purple-400'
     };
 
-    // Load character data dynamically
+    // Helper to parse a single line of CSV
+    function parseCSVLine(line) {
+      const cells = [];
+      let currentCell = '';
+      let inQuotes = false;
+      for (let j = 0; j < line.length; j++) {
+        const char = line[j];
+        if (char === '"') {
+          inQuotes = !inQuotes;
+        } else if (char === ',' && !inQuotes) {
+          cells.push(currentCell.trim());
+          currentCell = '';
+        } else {
+          currentCell += char;
+        }
+      }
+      cells.push(currentCell.trim());
+      
+      return cells.map(cell => {
+        let val = cell;
+        if (val.startsWith('"') && val.endsWith('"')) {
+          val = val.substring(1, val.length - 1);
+        }
+        return val.replace(/""/g, '"');
+      });
+    }
+
+    // Helper to parse CSV text into structured objects
+    function parseCSV(text) {
+      const lines = text.split('\n').map(line => line.trim()).filter(Boolean);
+      if (lines.length < 2) return [];
+      
+      const headers = parseCSVLine(lines[0]);
+      const data = [];
+      
+      for (let i = 1; i < lines.length; i++) {
+        const cells = parseCSVLine(lines[i]);
+        if (cells.length < headers.length) continue;
+        
+        const rawObj = {};
+        headers.forEach((header, index) => {
+          rawObj[header] = cells[index];
+        });
+        
+        // Reconstruct structured bilingual object from CSV cells
+        const charObj = {
+          id: rawObj.id,
+          rarity: parseInt(rawObj.rarity, 10) || 4,
+          icon_class: rawObj.icon_class,
+          name: { en: rawObj.name_en, ko: rawObj.name_ko },
+          element: { en: rawObj.element_en, ko: rawObj.element_ko },
+          weaponType: { en: rawObj.weaponType_en, ko: rawObj.weaponType_ko },
+          role: { en: rawObj.role_en, ko: rawObj.role_ko },
+          bestEcho: { en: rawObj.bestEcho_en, ko: rawObj.bestEcho_ko },
+          difficulty: { en: rawObj.difficulty_en, ko: rawObj.difficulty_ko }
+        };
+        data.push(charObj);
+      }
+      return data;
+    }
+
+    // Load character data dynamically from CSV
     let cachedCharacters = null;
     async function loadCharacters() {
       const grid = document.getElementById('resonators-grid');
       try {
         if (!cachedCharacters) {
-          if (window.charactersData) {
-            cachedCharacters = window.charactersData;
-          } else {
-            const response = await fetch('data.json');
-            if (!response.ok) {
-              throw new Error('Failed to fetch character database');
-            }
-            cachedCharacters = await response.json();
+          const response = await fetch('data.csv');
+          if (!response.ok) {
+            throw new Error('Failed to fetch character CSV database');
           }
+          const csvText = await response.text();
+          cachedCharacters = parseCSV(csvText);
         }
         const characters = cachedCharacters;
         let lang = "en";

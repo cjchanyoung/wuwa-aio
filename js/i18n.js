@@ -68,6 +68,7 @@
       char_difficulty: "Build Difficulty:",
 
       // Weapons Page
+      weapons_tab_title: "Weapons Database & Tiers - WuWa AIO",
       weapons_title: "Weapon Archive",
       weapons_subtitle: "Detailed weapon stats, active effects, and character compatibility charts.",
       weapons_search_placeholder: "Search Weapon...",
@@ -93,6 +94,32 @@
       weapon_variation_desc: "Grants high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, boosting rotation speeds.",
       weapon_undying_flame_name: "Undying Flame",
       weapon_undying_flame_desc: "Increases Resonance Skill DMG by 20% for 15s upon casting Intro Skill. Fully utilizes Chixia's rapid-fire skill ticks.",
+      
+      // Weapon details translations
+      weapon_type_broadblade_main: "Broadblade • Main DPS",
+      weapon_type_rectifier_sub: "Rectifier • Sub DPS / Amp",
+      weapon_type_sword_main: "Sword • Main DPS",
+      weapon_type_pistols_sub: "Pistols • Sub DPS / Amp",
+      weapon_type_rectifier_support: "Rectifier • Support",
+      weapon_type_pistols_main: "Pistols • Main DPS",
+      
+      weapon_val_crit_rate_24_3: "24.3% Crit Rate",
+      weapon_val_crit_rate_36_0: "36.0% Crit Rate",
+      weapon_val_crit_dmg_48_6: "48.6% Crit DMG",
+      weapon_val_er_51_8: "51.8% Energy Regen",
+      weapon_val_atk_20_2: "20.2% ATK%",
+      
+      weapon_rec_jinhsi: "Jinhsi",
+      weapon_rec_yinlin: "Yinlin",
+      weapon_rec_changli: "Changli",
+      weapon_rec_chixia_high: "Chixia (High Tier)",
+      weapon_rec_shorekeeper_verina: "Shorekeeper, Verina",
+      weapon_rec_chixia: "Chixia",
+      
+      weapon_val_atk_587: "587 ATK",
+      weapon_val_atk_500: "500 ATK",
+      weapon_val_atk_337: "337 ATK",
+      weapon_val_atk_412: "412 ATK",
       
       // Echoes Page
       echoes_title: "Echo Database",
@@ -143,6 +170,8 @@
       calc_header_title: "Tactical Damage Calculator",
       calc_header_subtitle: "Simulate real-time combat stats, average crit distributions, and target defense values.",
       calc_section_inputs: "Combat Parameters",
+      calc_label_preset: "Character Presets (CSV)",
+      calc_option_custom: "-- Select Preset (Custom) --",
       calc_label_atk: "Total ATK",
       calc_label_multiplier: "Skill Multiplier (%)",
       calc_label_crit_rate: "Crit Rate (%)",
@@ -300,6 +329,7 @@
       char_difficulty: "육성 난이도:",
 
       // Weapons Page
+      weapons_tab_title: "무기 데이터베이스 및 티어 - WuWa AIO",
       weapons_title: "무기 아카이브",
       weapons_subtitle: "상세 무기 스탯, 무기 효과 및 캐릭터 호환성 정보를 확인하세요.",
       weapons_search_placeholder: "무기 검색...",
@@ -325,6 +355,32 @@
       weapon_variation_desc: "높은 공명 효율을 제공합니다. 공명 스킬 사용 시 협주 에너지를 8포인트 획득하여 스킬 로테이션 속도를 단축시킵니다.",
       weapon_undying_flame_name: "불멸의 성화",
       weapon_undying_flame_desc: "변주 스킬 발동 시 15초 동안 공명 스킬 피해가 20% 증가합니다. 치샤의 속사 공명 스킬 타수와 매우 잘 맞습니다.",
+      
+      // Weapon details translations
+      weapon_type_broadblade_main: "대검 • 메인 딜러",
+      weapon_type_rectifier_sub: "증폭기 • 서브 딜러 / 서포터",
+      weapon_type_sword_main: "직검 • 메인 딜러",
+      weapon_type_pistols_sub: "권총 • 서브 딜러 / 서포터",
+      weapon_type_rectifier_support: "증폭기 • 서포터",
+      weapon_type_pistols_main: "권총 • 메인 딜러",
+      
+      weapon_val_crit_rate_24_3: "크리티컬 확률 24.3%",
+      weapon_val_crit_rate_36_0: "크리티컬 확률 36.0%",
+      weapon_val_crit_dmg_48_6: "크리티컬 피해 48.6%",
+      weapon_val_er_51_8: "공명 효율 51.8%",
+      weapon_val_atk_20_2: "공격력 20.2%",
+      
+      weapon_rec_jinhsi: "금희",
+      weapon_rec_yinlin: "음림",
+      weapon_rec_changli: "장리",
+      weapon_rec_chixia_high: "치샤 (상위 티어)",
+      weapon_rec_shorekeeper_verina: "파수인, 벨리나",
+      weapon_rec_chixia: "치샤",
+      
+      weapon_val_atk_587: "공격력 587",
+      weapon_val_atk_500: "공격력 500",
+      weapon_val_atk_337: "공격력 337",
+      weapon_val_atk_412: "공격력 412",
 
       // Echoes Page
       echoes_title: "에코 데이터베이스",
@@ -375,6 +431,8 @@
       calc_header_title: "전술 데미지 계산기",
       calc_header_subtitle: "실시간 전투 능력치, 크리티컬 분포 평균 및 대상 방어력 배율을 시뮬레이션합니다.",
       calc_section_inputs: "전투 매개변수",
+      calc_label_preset: "캐릭터 프리셋 (CSV)",
+      calc_option_custom: "-- 프리셋 선택 (사용자 지정) --",
       calc_label_atk: "총 공격력",
       calc_label_multiplier: "스킬 피해 배율 (%)",
       calc_label_crit_rate: "크리티컬 확률 (%)",

@@ -1,0 +1,6 @@
+id,rarity,icon_class,name_en,name_ko,element_en,element_ko,weaponType_en,weaponType_ko,role_en,role_ko,bestEcho_en,bestEcho_ko,difficulty_en,difficulty_ko
+jinhsi,5,fa-solid fa-dragon,"Jinhsi","금희","Spectro","회절","Broadblade","대검","Main DPS","메인 딜러","Jué (4-3-3-1-1)","각 (4-3-3-1-1)","Medium","보통"
+yinlin,5,fa-solid fa-bolt,"Yinlin","음림","Electro","전도","Rectifier","증폭기","Sub DPS / Amp","서브 딜러 / 서포터","Tempest Mephis","뇌정의 메피스","Hard","어려움"
+chixia,4,fa-solid fa-crosshairs,"Chixia","치샤","Fusion","용융","Pistols","권총","Main DPS","메인 딜러","Inferno Rider","지옥불 기사","Easy","쉬움"
+changli,5,fa-solid fa-fire,"Changli","장리","Fusion","용융","Sword","직검","Main / Sub DPS","메인 & 서브 딜러","Inferno Rider","지옥불 기사","Medium","보통"
+shorekeeper,5,fa-solid fa-sun,"Shorekeeper","파수인","Spectro","회절","Rectifier","증폭기","Healer / Buffer","힐러 & 버퍼","Fallacy of No Return","돌아갈 곳이 없는 오류","Easy","쉬움"
