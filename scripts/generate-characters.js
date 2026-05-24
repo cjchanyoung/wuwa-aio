@@ -128,22 +128,27 @@ const csvHeaders = ['id', 'rarity', 'icon_class', 'name_en', 'name_ko', 'element
 const csvRows = [csvHeaders.join(',')];
 
 characters.forEach(char => {
+  const getField = (field, lang) => {
+    const val = char[field];
+    if (!val) return "";
+    return val[lang] || val.en || "";
+  };
   const row = [
     char.id,
     char.rarity,
     char.icon_class,
-    `"${char.name.en.replace(/"/g, '""')}"`,
-    `"${char.name.ko.replace(/"/g, '""')}"`,
-    `"${char.element.en.replace(/"/g, '""')}"`,
-    `"${char.element.ko.replace(/"/g, '""')}"`,
-    `"${char.weaponType.en.replace(/"/g, '""')}"`,
-    `"${char.weaponType.ko.replace(/"/g, '""')}"`,
-    `"${char.role.en.replace(/"/g, '""')}"`,
-    `"${char.role.ko.replace(/"/g, '""')}"`,
-    `"${char.bestEcho.en.replace(/"/g, '""')}"`,
-    `"${char.bestEcho.ko.replace(/"/g, '""')}"`,
-    `"${char.difficulty.en.replace(/"/g, '""')}"`,
-    `"${char.difficulty.ko.replace(/"/g, '""')}"`
+    `"${getField('name', 'en').replace(/"/g, '""')}"`,
+    `"${getField('name', 'ko').replace(/"/g, '""')}"`,
+    `"${getField('element', 'en').replace(/"/g, '""')}"`,
+    `"${getField('element', 'ko').replace(/"/g, '""')}"`,
+    `"${getField('weaponType', 'en').replace(/"/g, '""')}"`,
+    `"${getField('weaponType', 'ko').replace(/"/g, '""')}"`,
+    `"${getField('role', 'en').replace(/"/g, '""')}"`,
+    `"${getField('role', 'ko').replace(/"/g, '""')}"`,
+    `"${getField('bestEcho', 'en').replace(/"/g, '""')}"`,
+    `"${getField('bestEcho', 'ko').replace(/"/g, '""')}"`,
+    `"${getField('difficulty', 'en').replace(/"/g, '""')}"`,
+    `"${getField('difficulty', 'ko').replace(/"/g, '""')}"`
   ];
   csvRows.push(row.join(','));
 });

@@ -1,0 +1,22 @@
+{
+  "calc_title": "Resonator Damage Multiplier Calculator",
+  "calc_subtitle": "Simulate and optimize your damage output based on active builds.",
+  "calc_header_title": "Tactical Damage Calculator",
+  "calc_header_subtitle": "Simulate real-time combat stats, average crit distributions, and target defense values.",
+  "calc_section_inputs": "Combat Parameters",
+  "calc_label_preset": "Character Presets (CSV)",
+  "calc_option_custom": "-- Select Preset (Custom) --",
+  "calc_label_atk": "Total ATK",
+  "calc_label_multiplier": "Skill Multiplier (%)",
+  "calc_label_crit_rate": "Crit Rate (%)",
+  "calc_label_crit_dmg": "Crit DMG (%)",
+  "calc_label_dmg_bonus": "Element DMG Bonus (%)",
+  "calc_label_skill_bonus": "Skill/Ult DMG Bonus (%)",
+  "calc_label_def_shred": "Enemy DEF Shred (%)",
+  "calc_label_res": "Enemy Resistance (%)",
+  "calc_section_outputs": "Expected Outputs",
+  "calc_label_non_crit": "Non-Crit Hit",
+  "calc_label_crit": "Critical Hit",
+  "calc_label_average": "Average Expected Damage",
+  "calc_note": "Note: Calculations assume a standard Level 90 target (DEF multiplier &approx; 0.5 before shred) and 10% base elemental resistance."
+}

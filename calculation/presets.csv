@@ -1,6 +1,6 @@
 character_name_en,character_name_ko,atk,multiplier,crit_rate,crit_dmg,dmg_bonus,skill_bonus,def_shred,res
-Jinhsi,금희,2150,380,72,252,72,35,0,10
-Yinlin,음림,1980,240,78,245,68,20,0,10
-Changli,장리,2080,310,70,248,70,30,0,10
-Chixia,치샤,1850,180,65,220,55,15,0,10
-Shorekeeper,파수인,1720,120,50,180,45,10,0,10
+Jinhsi,Jinhsi,2150,380,72,252,72,35,0,10
+Yinlin,Yinlin,1980,240,78,245,68,20,0,10
+Changli,Changli,2080,310,70,248,70,30,0,10
+Chixia,Chixia,1850,180,65,220,55,15,0,10
+Shorekeeper,Shorekeeper,1720,120,50,180,45,10,0,10

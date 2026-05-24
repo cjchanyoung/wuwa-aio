@@ -1,0 +1,22 @@
+{
+  "char_list_title": "Resonator Guides Database",
+  "char_list_subtitle": "Filter and inspect detailed character builds synced in real-time.",
+  "char_search_placeholder": "Search Resonator...",
+  "char_filter_all": "All",
+  "char_filter_5": "5★",
+  "char_filter_4": "4★",
+  "char_card_view": "View Guide Details",
+  "char_difficulty": "Build Difficulty:",
+  "detail_btn_back": "Back to Database",
+  "detail_weapon_title": "Weapon Recommendations",
+  "detail_echo_title": "Echo Setup & Substats",
+  "detail_best_set": "Best Set Bonus",
+  "detail_cost_4": "4-Cost Echo",
+  "detail_cost_3": "3-Cost Echos",
+  "detail_cost_1": "1-Cost Echos",
+  "detail_substat_priority": "Substat Leveling Priority",
+  "detail_stat_priority": "Stat priorities",
+  "detail_skill_priority": "Skill Priority",
+  "detail_teams_title": "Recommended Teams",
+  "detail_resonator": "Resonator"
+}
