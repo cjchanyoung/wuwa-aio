@@ -39,5 +39,6 @@
   "echo_tuning_crit_rate": "Crit Rate:",
   "echo_tuning_crit_dmg": "Crit DMG:",
   "echo_tuning_skill_dmg": "Resonance Skill/Lib DMG:",
-  "echo_tuning_energy_regen": "Energy Regeneration:"
+  "echo_tuning_energy_regen": "Energy Regeneration:",
+  "best_resonators_label": "Best Resonators:"
 }

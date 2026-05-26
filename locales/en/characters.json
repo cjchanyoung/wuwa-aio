@@ -16,7 +16,9 @@
   "detail_cost_1": "1-Cost Echos",
   "detail_substat_priority": "Substat Leveling Priority",
   "detail_stat_priority": "Stat priorities",
-  "detail_skill_priority": "Skill Priority",
   "detail_teams_title": "Recommended Teams",
-  "detail_resonator": "Resonator"
+  "detail_resonator": "Resonator",
+  "best_echo_label": "Best Echo:",
+  "difficulty_label": "Build Difficulty:",
+  "view_guide_label": "View Guide Details"
 }

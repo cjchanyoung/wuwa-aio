@@ -1,6 +1,0 @@
-id,rarity,icon_class,name_en,name_ko,element_en,element_ko,weaponType_en,weaponType_ko,role_en,role_ko,bestEcho_en,bestEcho_ko,difficulty_en,difficulty_ko
-jinhsi,5,fa-solid fa-dragon,"Jinhsi","Jinhsi","Spectro","Spectro","Broadblade","Broadblade","Main DPS","Main DPS","Jué (4-3-3-1-1)","Jué (4-3-3-1-1)","Medium","Medium"
-yinlin,5,fa-solid fa-bolt,"Yinlin","Yinlin","Electro","Electro","Rectifier","Rectifier","Sub DPS / Amp","Sub DPS / Amp","Tempest Mephis","Tempest Mephis","Hard","Hard"
-chixia,4,fa-solid fa-crosshairs,"Chixia","Chixia","Fusion","Fusion","Pistols","Pistols","Main DPS","Main DPS","Inferno Rider","Inferno Rider","Easy","Easy"
-changli,5,fa-solid fa-fire,"Changli","Changli","Fusion","Fusion","Sword","Sword","Main / Sub DPS","Main / Sub DPS","Inferno Rider","Inferno Rider","Medium","Medium"
-shorekeeper,5,fa-solid fa-sun,"Shorekeeper","Shorekeeper","Spectro","Spectro","Rectifier","Rectifier","Healer / Buffer","Healer / Buffer","Fallacy of No Return","Fallacy of No Return","Easy","Easy"

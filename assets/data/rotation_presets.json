@@ -1,0 +1,26 @@
+[
+  {
+    "id": "havoc-shadow-dance",
+    "teamName": { "en": "Havoc Shadow-Dance" },
+    "res1": { "en": "Rover (Havoc)" },
+    "res2": { "en": "Danjin" },
+    "res3": { "en": "Shorekeeper" },
+    "contributor": "HavocFanatic"
+  },
+  {
+    "id": "fusion-burst",
+    "teamName": { "en": "Fusion Burst" },
+    "res1": { "en": "Changli" },
+    "res2": { "en": "Chixia" },
+    "res3": { "en": "Verina" },
+    "contributor": "Melter99"
+  },
+  {
+    "id": "spectro-lightning",
+    "teamName": { "en": "Spectro Lightning" },
+    "res1": { "en": "Jinhsi" },
+    "res2": { "en": "Yinlin" },
+    "res3": { "en": "Verina" },
+    "contributor": "WaveMaster"
+  }
+]

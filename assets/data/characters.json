@@ -17,7 +17,6 @@
     "description": {
       "en": "The magistrate of Jinzhou, carrying the weight of prophecy and the blessing of the Sentinel Jué. She acts as a premier Spectro Carry, dealing monumental burst damage through her specialized Forte Circuit state and Resonance Skill multiplier stacks."
     },
-    "icon_class": "fa-solid fa-dragon",
     "bestEcho": {
       "en": "Jué (4-3-3-1-1)"
     },
@@ -26,40 +25,22 @@
     },
     "weapons": [
       {
-        "name": {
-          "en": "Ages of Harvest"
-        },
+        "id": "ages_of_harvest",
         "rarityLabel": {
           "en": "5★ Signature"
-        },
-        "specs": {
-          "en": "Base ATK: 587 • Crit Rate: 24.3% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Increases Attribute DMG by 12%. When using Intro Skill or Resonance Skill, gain a stacking Resonance Skill DMG boost of up to 48%. Jinhsi's absolute best-in-class option."
         },
         "isSignature": true
       },
       {
-        "name": {
-          "en": "Helios Cleaver"
-        },
+        "id": "helios_cleaver",
         "rarityLabel": {
           "en": "4★ Best Alternative"
-        },
-        "specs": {
-          "en": "Base ATK: 412 • ATK%: 30.3% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Increases ATK by 3% every 2s upon entering the field, stacking up to 5 times. High base attack and high ATK scaling make it a solid free-to-play weapon."
         },
         "isSignature": false
       }
     ],
     "echoSetup": {
-      "bestSetBonus": {
-        "en": "Celestial Light (5-Piece Set)"
-      },
+      "bestSetBonusId": "celestial_light",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
       },
@@ -176,7 +157,6 @@
     "description": {
       "en": "A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."
     },
-    "icon_class": "fa-solid fa-bolt",
     "bestEcho": {
       "en": "Tempest Mephis"
     },
@@ -185,40 +165,22 @@
     },
     "weapons": [
       {
-        "name": {
-          "en": "Stringmaster"
-        },
+        "id": "stringmaster",
         "rarityLabel": {
           "en": "5★ Signature"
-        },
-        "specs": {
-          "en": "Base ATK: 500 • Crit Rate: 36.0% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."
         },
         "isSignature": true
       },
       {
-        "name": {
-          "en": "Rectifier #25"
-        },
+        "id": "rectifier_25",
         "rarityLabel": {
           "en": "4★ Best Alternative"
-        },
-        "specs": {
-          "en": "Base ATK: 412 • ATK%: 30.3% (Lvl 90)"
-        },
-        "desc": {
-          "en": "When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."
         },
         "isSignature": false
       }
     ],
     "echoSetup": {
-      "bestSetBonus": {
-        "en": "Void Thunder (5-Piece Set) or Moonlit Clouds (5-Piece Set)"
-      },
+      "bestSetBonusId": "void_thunder",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
       },
@@ -335,7 +297,6 @@
     "description": {
       "en": "A bright and energetic patroller of Jinzhou, who is always ready to lend a hand. Chixia functions as a powerful ranged Fusion DPS, dealing rapid fire damage through her specialized pistols and continuous Daka-Daka Resonance Skill firing mode."
     },
-    "icon_class": "fa-solid fa-crosshairs",
     "bestEcho": {
       "en": "Inferno Rider"
     },
@@ -344,40 +305,22 @@
     },
     "weapons": [
       {
-        "name": {
-          "en": "Static Mist"
-        },
+        "id": "static_mist",
         "rarityLabel": {
           "en": "5★ Recommended"
-        },
-        "specs": {
-          "en": "Base ATK: 587 • Crit Rate: 24.3% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Grants high Crit Rate and increases Energy Regen by 12%. Upon switching out, the incoming Resonator gains 10% ATK for 14 seconds. Provides great raw DPS stats and team utility."
         },
         "isSignature": true
       },
       {
-        "name": {
-          "en": "Undying Flame"
-        },
+        "id": "undying_flame",
         "rarityLabel": {
           "en": "4★ Best Alternative"
-        },
-        "specs": {
-          "en": "Base ATK: 412 • ATK%: 30.3% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Increases Resonance Skill DMG by 20% for 15s upon casting Intro Skill. Highly synergistic with Chixia's reliance on her rapid-fire skill hits."
         },
         "isSignature": false
       }
     ],
     "echoSetup": {
-      "bestSetBonus": {
-        "en": "Molten Rift (5-Piece Set)"
-      },
+      "bestSetBonusId": "molten_rift",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
       },
@@ -494,7 +437,6 @@
     "description": {
       "en": "Counselor to the Jinzhou Magistrate and mentor to Jinhsi. Possessing a clever mind and a graceful demeanor, Changli commands the battlefield as a powerful Fusion Carry, capable of acting as both a primary Main DPS or a high-multiplier Sub-DPS that buffs incoming Fusion Resonators."
     },
-    "icon_class": "fa-solid fa-fire",
     "bestEcho": {
       "en": "Inferno Rider"
     },
@@ -503,40 +445,22 @@
     },
     "weapons": [
       {
-        "name": {
-          "en": "Blazing Brilliance"
-        },
+        "id": "blazing_brilliance",
         "rarityLabel": {
           "en": "5★ Signature"
-        },
-        "specs": {
-          "en": "Base ATK: 587 • Crit DMG: 56.2% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Provides massive Crit DMG. Increases ATK by 12%. When dealing damage, grants stacks that increase Resonance Skill DMG by up to 56%. Specially designed to unleash Changli's skill-intensive combat rotation."
         },
         "isSignature": true
       },
       {
-        "name": {
-          "en": "Commando of Conviction"
-        },
+        "id": "commando_of_conviction",
         "rarityLabel": {
           "en": "4★ Best Alternative"
-        },
-        "specs": {
-          "en": "Base ATK: 412 • ATK%: 30.3% (Lvl 90)"
-        },
-        "desc": {
-          "en": "When Intro Skill is triggered, increases ATK by 15% for 15s. Excellent F2P weapon with a straightforward trigger condition for quickswap builds."
         },
         "isSignature": false
       }
     ],
     "echoSetup": {
-      "bestSetBonus": {
-        "en": "Molten Rift (5-Piece Set)"
-      },
+      "bestSetBonusId": "molten_rift",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
       },
@@ -653,7 +577,6 @@
     "description": {
       "en": "The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."
     },
-    "icon_class": "fa-solid fa-sun",
     "bestEcho": {
       "en": "Fallacy of No Return"
     },
@@ -662,40 +585,22 @@
     },
     "weapons": [
       {
-        "name": {
-          "en": "Stellar Symphony"
-        },
+        "id": "stellar_symphony",
         "rarityLabel": {
           "en": "5★ Signature"
-        },
-        "specs": {
-          "en": "Base ATK: 412 • HP%: 77.0% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."
         },
         "isSignature": true
       },
       {
-        "name": {
-          "en": "Variation"
-        },
+        "id": "variation",
         "rarityLabel": {
           "en": "4★ Best Alternative"
-        },
-        "specs": {
-          "en": "Base ATK: 337 • Energy Regen: 51.8% (Lvl 90)"
-        },
-        "desc": {
-          "en": "Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."
         },
         "isSignature": false
       }
     ],
     "echoSetup": {
-      "bestSetBonus": {
-        "en": "Rejuvenating Glow (5-Piece Set)"
-      },
+      "bestSetBonusId": "rejuvenating_glow",
       "cost4": {
         "en": "Healing Bonus% or HP%"
       },

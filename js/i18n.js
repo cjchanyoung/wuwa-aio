@@ -1,5 +1,27 @@
 // WuWa AIO i18n Localization Framework (EN/KO/JA/ZH - Pattern B Split-file Loader)
 (function () {
+  // Inject style immediately to prevent Flash of Untranslated Content (FOUTC)
+  (function injectLoadingStyle() {
+    const style = document.createElement('style');
+    style.id = 'wuwa-i18n-loading-style';
+    style.innerHTML = `
+      html {
+        background-color: #0a080f !important;
+      }
+      body {
+        opacity: 0 !important;
+      }
+      body.wuwa-ready {
+        opacity: 1 !important;
+        transition: opacity 0.12s ease-in-out !important;
+      }
+    `;
+    const target = document.head || document.documentElement;
+    if (target) {
+      target.appendChild(style);
+    }
+  })();
+
   // Embedded English dictionary (acts as the robust fallback if JSON fetching fails or language is not fully translated)
   const embeddedFallbackEN = {
     // Navigation
@@ -255,7 +277,19 @@
     detail_stat_priority: "Stat priorities",
     detail_skill_priority: "Skill Priority",
     detail_teams_title: "Recommended Teams",
-    detail_resonator: "Resonator"
+    detail_resonator: "Resonator",
+
+    // Dynamic UI labels (added for Pattern B cleanup)
+    resonator_label: "Resonator",
+    build_guide_label: "Build Guide",
+    best_echo_label: "Best Echo:",
+    difficulty_label: "Build Difficulty:",
+    view_guide_label: "View Guide Details",
+    best_resonators_label: "Best Resonators:",
+    swap_cancel_label: "Swap Cancel",
+    step_execution_label: "Step Execution",
+    qsd_premium_badge: "Premium Guide",
+    qsd_custom_badge: "Custom Sheet"
   };
 
   // Safe localStorage helper
@@ -294,6 +328,23 @@
       return src.replace('js/i18n.js', 'locales/');
     }
     return '../locales/';
+  }
+
+  let isPageShown = false;
+  function showPage() {
+    if (isPageShown) return;
+    isPageShown = true;
+    
+    const reveal = () => {
+      if (document.body) {
+        document.body.classList.add('wuwa-ready');
+      } else {
+        document.addEventListener('DOMContentLoaded', () => {
+          document.body.classList.add('wuwa-ready');
+        });
+      }
+    };
+    reveal();
   }
 
   let activeTranslations = {};
@@ -514,6 +565,24 @@
     injectLanguageSelector();
     await loadTranslations(currentLang);
     translatePage();
+    
+    // Check if the page has dynamic components that load data at runtime
+    const hasDynamicComponents = 
+      document.getElementById('resonators-grid') || 
+      document.getElementById('weapons-container') || 
+      document.getElementById('sonata-sets-grid') || 
+      document.getElementById('calc-preset') || 
+      document.getElementById('user-builds-grid') ||
+      window.characterData; // Details page has window.characterData
+      
+    if (hasDynamicComponents) {
+      // Wait for the page script to call showPage() once dynamic rendering is complete.
+      // We set a safety timeout of 300ms so it never remains blank if something errors.
+      setTimeout(showPage, 300);
+    } else {
+      // Show static pages immediately
+      showPage();
+    }
   }
 
   if (document.readyState === "loading") {
@@ -525,6 +594,8 @@
   // Export globally for custom rendering scripts
   window.wuwaI18n = {
     getLanguage: () => currentLang,
-    translate: translatePage
+    translate: translatePage,
+    t: translateKey,
+    showPage: showPage
   };
 })();

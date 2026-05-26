@@ -104,9 +104,10 @@ const elementStyles = {
   }
 };
 
-const charactersFilePath = path.join(__dirname, '../characters/data.json');
+const charactersFilePath = path.join(__dirname, '../assets/data/characters.json');
 const templateFilePath = path.join(__dirname, '../characters/template.html');
-const dataCsvFilePath = path.join(__dirname, '../characters/data.csv');
+const weaponsFilePath = path.join(__dirname, '../assets/data/weapons.json');
+const echoesFilePath = path.join(__dirname, '../assets/data/echoes.json');
 
 console.log('Loading character configurations and layout template...');
 
@@ -118,41 +119,56 @@ if (!fs.existsSync(templateFilePath)) {
   console.error(`Error: File not found at ${templateFilePath}`);
   process.exit(1);
 }
+if (!fs.existsSync(weaponsFilePath)) {
+  console.error(`Error: File not found at ${weaponsFilePath}`);
+  process.exit(1);
+}
+if (!fs.existsSync(echoesFilePath)) {
+  console.error(`Error: File not found at ${echoesFilePath}`);
+  process.exit(1);
+}
 
-const characters = JSON.parse(fs.readFileSync(charactersFilePath, 'utf8'));
+const rawCharacters = JSON.parse(fs.readFileSync(charactersFilePath, 'utf8'));
 const template = fs.readFileSync(templateFilePath, 'utf8');
+const weaponsMaster = JSON.parse(fs.readFileSync(weaponsFilePath, 'utf8'));
+const echoesMaster = JSON.parse(fs.readFileSync(echoesFilePath, 'utf8'));
 
-// Write out static data.csv containing character summary fields
-console.log('Writing characters/data.csv...');
-const csvHeaders = ['id', 'rarity', 'icon_class', 'name_en', 'name_ko', 'element_en', 'element_ko', 'weaponType_en', 'weaponType_ko', 'role_en', 'role_ko', 'bestEcho_en', 'bestEcho_ko', 'difficulty_en', 'difficulty_ko'];
-const csvRows = [csvHeaders.join(',')];
+// Resolve relationships on characters
+const characters = rawCharacters.map(char => {
+  const resolvedChar = JSON.parse(JSON.stringify(char));
+  
+  // Resolve weapons
+  resolvedChar.weapons = char.weapons.map(wRef => {
+    const master = weaponsMaster[wRef.id];
+    if (!master) {
+      console.warn(`Warning: Master weapon "${wRef.id}" not found for resonator "${char.id}".`);
+      return wRef;
+    }
+    return {
+      ...wRef,
+      name: master.name,
+      specs: {
+        en: `Base ATK: ${master.baseAtk} • ${master.secondaryStat.en} (Lvl 90)`
+      },
+      desc: master.desc
+    };
+  });
 
-characters.forEach(char => {
-  const getField = (field, lang) => {
-    const val = char[field];
-    if (!val) return "";
-    return val[lang] || val.en || "";
-  };
-  const row = [
-    char.id,
-    char.rarity,
-    char.icon_class,
-    `"${getField('name', 'en').replace(/"/g, '""')}"`,
-    `"${getField('name', 'ko').replace(/"/g, '""')}"`,
-    `"${getField('element', 'en').replace(/"/g, '""')}"`,
-    `"${getField('element', 'ko').replace(/"/g, '""')}"`,
-    `"${getField('weaponType', 'en').replace(/"/g, '""')}"`,
-    `"${getField('weaponType', 'ko').replace(/"/g, '""')}"`,
-    `"${getField('role', 'en').replace(/"/g, '""')}"`,
-    `"${getField('role', 'ko').replace(/"/g, '""')}"`,
-    `"${getField('bestEcho', 'en').replace(/"/g, '""')}"`,
-    `"${getField('bestEcho', 'ko').replace(/"/g, '""')}"`,
-    `"${getField('difficulty', 'en').replace(/"/g, '""')}"`,
-    `"${getField('difficulty', 'ko').replace(/"/g, '""')}"`
-  ];
-  csvRows.push(row.join(','));
+  // Resolve echoes set
+  const setBonusId = char.echoSetup.bestSetBonusId;
+  const masterEcho = echoesMaster[setBonusId];
+  if (masterEcho) {
+    resolvedChar.echoSetup.bestSetBonus = {
+      en: `${masterEcho.name.en} (5-Piece Set)`
+    };
+  } else {
+    resolvedChar.echoSetup.bestSetBonus = { en: "Custom Set" };
+  }
+
+  return resolvedChar;
 });
-fs.writeFileSync(dataCsvFilePath, csvRows.join('\n'), 'utf8');
+
+
 
 characters.forEach(char => {
   console.log(`Compiling guide details for ${char.name.en}...`);
@@ -169,6 +185,17 @@ characters.forEach(char => {
     starsHtml += `<i class="fa-solid fa-star animate-pulse" ${i > 0 ? `style="animation-delay: ${0.2 * i}s"` : ''}></i>\n`;
   }
 
+  // Generate character portrait HTML
+  const charImagesDir = path.join(__dirname, '../assets/images/characters', char.id);
+  let portraitHtml = `<div class="w-32 h-32 rounded-full bg-gradient-to-tr ${styles.accent_gradient} p-0.5 shadow-2xl ${styles.logo_shadow_theme} flex items-center justify-center overflow-hidden"><div class="w-full h-full rounded-full bg-[#1a181f] flex items-center justify-center"><i class="${char.icon_class} ${styles.accent_text} text-6xl"></i></div></div>`;
+  if (fs.existsSync(charImagesDir)) {
+    if (fs.existsSync(path.join(charImagesDir, 'portrait.png'))) {
+      portraitHtml = `<img src="../../assets/images/characters/${char.id}/portrait.png" alt="${char.name.en}" class="w-full h-full object-contain">`;
+    } else if (fs.existsSync(path.join(charImagesDir, 'potrait.png'))) {
+      portraitHtml = `<img src="../../assets/images/characters/${char.id}/potrait.png" alt="${char.name.en}" class="w-full h-full object-contain">`;
+    }
+  }
+
   // Generate weapons list HTML
   const weaponsListHtml = char.weapons.map(weapon => {
     const isSig = weapon.isSignature;
@@ -178,11 +205,21 @@ characters.forEach(char => {
     const iconColor = isSig ? styles.accent_text : "text-gray-400";
     const iconBg = isSig ? styles.echo_icon_bg : "bg-gray-500/10";
     const borderIcon = isSig ? styles.hero_border_class : "border-white/10";
+
+    // Check if weapon image exists
+    const weaponImgPath = path.join(__dirname, '../assets/images/weapons', `${weapon.id}.png`);
+    let weaponIconHtml = '';
+    if (fs.existsSync(weaponImgPath)) {
+      weaponIconHtml = `<img src="../../assets/images/weapons/${weapon.id}.png" alt="${weapon.name.en}" class="w-full h-full object-contain p-1">`;
+    } else {
+      weaponIconHtml = `<i class="${iconClass}"></i>`;
+    }
+
     return `            <!-- ${isSig ? 'Signature Weapon' : 'Alternative Weapon'} -->
             <div class="bg-[#0a080f] p-5 rounded-xl border ${borderClass} transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
               <div class="flex items-start gap-4">
-                <div class="w-12 h-12 ${iconBg} rounded-lg flex items-center justify-center ${iconColor} shrink-0 border ${borderIcon}">
-                  <i class="${iconClass}"></i>
+                <div class="w-12 h-12 ${iconBg} rounded-lg flex items-center justify-center ${iconColor} shrink-0 border ${borderIcon} overflow-hidden">
+                  ${weaponIconHtml}
                 </div>
                 <div>
                   <h4 class="text-base font-bold text-white flex items-center gap-2">
@@ -279,6 +316,7 @@ ${membersList}
     .replace(/{{priority_high_text}}/g, styles.priority_high_text)
 
     // Data-derived loop blocks
+    .replace(/{{portrait_html}}/g, portraitHtml)
     .replace(/{{stars_html}}/g, starsHtml.trim())
     .replace(/{{weapons_list_html}}/g, weaponsListHtml)
     .replace(/{{best_set_bonus}}/g, char.echoSetup.bestSetBonus.en)

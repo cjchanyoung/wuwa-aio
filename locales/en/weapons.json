@@ -10,6 +10,7 @@
   "weapons_filter_sword": "Swords",
   "weapons_filter_rectifier": "Rectifiers",
   "weapons_filter_pistols": "Pistols",
+  "weapons_filter_gauntlets": "Gauntlets",
   "weapon_stat_secondary": "Secondary Stat:",
   "weapon_stat_signature": "Signature For:",
   "weapon_stat_recommended": "Recommended For:",
@@ -45,5 +46,7 @@
   "weapon_val_atk_587": "587 ATK",
   "weapon_val_atk_500": "500 ATK",
   "weapon_val_atk_337": "337 ATK",
-  "weapon_val_atk_412": "412 ATK"
+  "weapon_val_atk_412": "412 ATK",
+  "weapons_filter_type_label": "Weapon Type",
+  "weapons_filter_rarity_label": "Rarity"
 }

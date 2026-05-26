@@ -1,0 +1,57 @@
+[
+  {
+    "character_name": { "en": "Jinhsi" },
+    "atk": 2150,
+    "multiplier": 380,
+    "crit_rate": 72,
+    "crit_dmg": 252,
+    "dmg_bonus": 72,
+    "skill_bonus": 35,
+    "def_shred": 0,
+    "res": 10
+  },
+  {
+    "character_name": { "en": "Yinlin" },
+    "atk": 1980,
+    "multiplier": 240,
+    "crit_rate": 78,
+    "crit_dmg": 245,
+    "dmg_bonus": 68,
+    "skill_bonus": 20,
+    "def_shred": 0,
+    "res": 10
+  },
+  {
+    "character_name": { "en": "Changli" },
+    "atk": 2080,
+    "multiplier": 310,
+    "crit_rate": 70,
+    "crit_dmg": 248,
+    "dmg_bonus": 70,
+    "skill_bonus": 30,
+    "def_shred": 0,
+    "res": 10
+  },
+  {
+    "character_name": { "en": "Chixia" },
+    "atk": 1850,
+    "multiplier": 180,
+    "crit_rate": 65,
+    "crit_dmg": 220,
+    "dmg_bonus": 55,
+    "skill_bonus": 15,
+    "def_shred": 0,
+    "res": 10
+  },
+  {
+    "character_name": { "en": "Shorekeeper" },
+    "atk": 1720,
+    "multiplier": 120,
+    "crit_rate": 50,
+    "crit_dmg": 180,
+    "dmg_bonus": 45,
+    "skill_bonus": 10,
+    "def_shred": 0,
+    "res": 10
+  }
+]

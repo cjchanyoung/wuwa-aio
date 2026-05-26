@@ -46,6 +46,7 @@
   "landing_how_step3_badge": "Step 3: Client",
   "landing_how_step3_title": "Frontend Hydration",
   "landing_how_step3_desc": "Our custom Javascript parser processes, sanitizes, and renders builds instantly on the characters grid.",
-  "landing_how_step3_footer": "Live CSV Hydrator",
-  "footer_disclaimer": "© 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games."
+  "footer_disclaimer": "© 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games.",
+  "resonator_label": "Resonator",
+  "build_guide_label": "Build Guide"
 }
