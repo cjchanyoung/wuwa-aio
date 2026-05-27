@@ -21,9 +21,6 @@
     "bestEcho": {
       "en": "Jué (4-3-3-1-1)"
     },
-    "difficulty": {
-      "en": "Medium"
-    },
     "weapons": [
       {
         "id": "ages_of_harvest",
@@ -162,9 +159,6 @@
     "bestEcho": {
       "en": "Tempest Mephis"
     },
-    "difficulty": {
-      "en": "Hard"
-    },
     "weapons": [
       {
         "id": "stringmaster",
@@ -301,9 +295,6 @@
     },
     "bestEcho": {
       "en": "Inferno Rider"
-    },
-    "difficulty": {
-      "en": "Easy"
     },
     "weapons": [
       {
@@ -443,9 +434,6 @@
     "bestEcho": {
       "en": "Inferno Rider"
     },
-    "difficulty": {
-      "en": "Medium"
-    },
     "weapons": [
       {
         "id": "blazing_brilliance",
@@ -584,9 +572,6 @@
     },
     "bestEcho": {
       "en": "Fallacy of No Return"
-    },
-    "difficulty": {
-      "en": "Easy"
     },
     "weapons": [
       {

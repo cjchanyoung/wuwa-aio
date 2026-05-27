@@ -6,7 +6,6 @@
   "char_filter_5": "5★",
   "char_filter_4": "4★",
   "char_card_view": "View Guide Details",
-  "char_difficulty": "Build Difficulty:",
   "detail_btn_back": "Back to Database",
   "detail_weapon_title": "Weapon Recommendations",
   "detail_echo_title": "Echo Setup & Substats",
@@ -18,7 +17,7 @@
   "detail_stat_priority": "Stat priorities",
   "detail_teams_title": "Recommended Teams",
   "detail_resonator": "Resonator",
-  "best_echo_label": "Best Echo:",
-  "difficulty_label": "Build Difficulty:",
+  "echo_label": "Echo:",
+  "weapon_label": "Weapon:",
   "view_guide_label": "View Guide Details"
 }

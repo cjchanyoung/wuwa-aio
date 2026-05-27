@@ -207,9 +207,10 @@
       icon_text: 'text-purple-400',
       echo_text: 'text-purple-400'
     };
-
-    // Load character data dynamically from JSON
+    // Load character, weapon and echo data dynamically from JSON
     let cachedCharacters = null;
+    let cachedWeapons = null;
+    let cachedEchoes = null;
     async function loadCharacters() {
       const grid = document.getElementById('resonators-grid');
       try {
@@ -220,7 +221,23 @@
           }
           cachedCharacters = await response.json();
         }
+        if (!cachedWeapons) {
+          const response = await fetch('../assets/data/weapons.json');
+          if (!response.ok) {
+            throw new Error('Failed to fetch weapon JSON database');
+          }
+          cachedWeapons = await response.json();
+        }
+        if (!cachedEchoes) {
+          const response = await fetch('../assets/data/echoes.json');
+          if (!response.ok) {
+            throw new Error('Failed to fetch echo JSON database');
+          }
+          cachedEchoes = await response.json();
+        }
         const characters = cachedCharacters;
+        const weapons = cachedWeapons;
+        const echoes = cachedEchoes;
         let lang = "en";
         try {
           lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : (localStorage.getItem("wuwa_lang") || "en");
@@ -236,13 +253,29 @@
           const charName = char.name[lang] || char.name.en;
           const charElement = char.element[lang] || char.element.en;
           const charWeaponType = char.weaponType[lang] || char.weaponType.en;
-          const charBestEcho = char.bestEcho[lang] || char.bestEcho.en;
-          const charDifficulty = char.difficulty[lang] || char.difficulty.en;
           
-          const bestEchoLabel = window.wuwaI18n ? window.wuwaI18n.t('best_echo_label') : 'Best Echo:';
-          const difficultyLabel = window.wuwaI18n ? window.wuwaI18n.t('difficulty_label') : 'Build Difficulty:';
+          // Get the echo set name for this character from echoes.json
+          let charBestEcho = 'None';
+          if (char.echoSetup && char.echoSetup.bestSetBonusId) {
+            const echoMaster = echoes[char.echoSetup.bestSetBonusId];
+            if (echoMaster) {
+              charBestEcho = echoMaster.name[lang] || echoMaster.name.en;
+            }
+          }
+          
+          // Get the weapon name for this character
+          let charWeapon = 'None';
+          if (char.weapons && char.weapons.length > 0) {
+            const firstWeaponId = char.weapons[0].id;
+            const weaponMaster = weapons[firstWeaponId];
+            if (weaponMaster) {
+              charWeapon = weaponMaster.name[lang] || weaponMaster.name.en;
+            }
+          }
+          
+          const echoLabel = window.wuwaI18n ? window.wuwaI18n.t('echo_label') : 'Echo:';
+          const weaponLabel = window.wuwaI18n ? window.wuwaI18n.t('weapon_label') : 'Weapon:';
           const viewGuideLabel = window.wuwaI18n ? window.wuwaI18n.t('view_guide_label') : 'View Guide Details';
-          
           const searchTagParts = [char.id];
           const langsList = ['en', 'ko', 'ja', 'zh'];
           langsList.forEach(l => {
@@ -276,12 +309,12 @@
               
               <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
                 <div class="flex justify-between">
-                  <span class="text-gray-500">${bestEchoLabel}</span>
+                  <span class="text-gray-500">${echoLabel}</span>
                   <span class="${styles.echo_text} font-semibold">${charBestEcho}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="text-gray-500">${difficultyLabel}</span>
-                  <span class="text-gray-300">${charDifficulty}</span>
+                  <span class="text-gray-500">${weaponLabel}</span>
+                  <span class="text-gray-300 font-semibold">${charWeapon}</span>
                 </div>
               </div>
               <button class="w-full mt-5 py-2.5 bg-white/5 group-hover:bg-purple-600 text-gray-300 group-hover:text-white text-xs font-semibold rounded-xl transition-all duration-300">${viewGuideLabel}</button>
