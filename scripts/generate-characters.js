@@ -272,13 +272,20 @@ ${membersList}
             </div>`;
   }).join('\n');
 
+  // Generate roles HTML
+  const rolesHtml = char.roles.map(r => {
+    return `<span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
+              <img src="../../assets/images/roles/${r.id}.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <span>${r.name.en}</span>
+            </span>`;
+  }).join('\n');
+
   // Apply substitutions to layout template
   let pageContent = template
     .replace(/{{name}}/g, char.name.en)
     .replace(/{{description}}/g, char.description.en)
     .replace(/{{element}}/g, char.element.en)
     .replace(/{{weaponType}}/g, char.weaponType.en)
-    .replace(/{{role}}/g, char.role.en)
     .replace(/{{rarity}}/g, char.rarity)
     .replace(/{{icon_class}}/g, char.icon_class)
     
@@ -299,7 +306,6 @@ ${membersList}
     .replace(/{{hero_bg_class}}/g, styles.hero_bg_class)
     .replace(/{{hero_border_class}}/g, styles.hero_border_class)
     .replace(/{{element_badge_theme}}/g, styles.element_badge_theme)
-    .replace(/{{role_badge_theme}}/g, styles.role_badge_theme)
     .replace(/{{accent_gradient}}/g, styles.accent_gradient)
     .replace(/{{echo_icon_bg}}/g, styles.echo_icon_bg)
     .replace(/{{note_text_color}}/g, styles.note_text_color)

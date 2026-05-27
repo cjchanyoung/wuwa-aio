@@ -236,7 +236,6 @@
           const charName = char.name[lang] || char.name.en;
           const charElement = char.element[lang] || char.element.en;
           const charWeaponType = char.weaponType[lang] || char.weaponType.en;
-          const charRole = char.role[lang] || char.role.en;
           const charBestEcho = char.bestEcho[lang] || char.bestEcho.en;
           const charDifficulty = char.difficulty[lang] || char.difficulty.en;
           
@@ -250,7 +249,6 @@
             if (char.name[l]) searchTagParts.push(char.name[l]);
             if (char.element[l]) searchTagParts.push(char.element[l]);
             if (char.weaponType[l]) searchTagParts.push(char.weaponType[l]);
-            if (char.role[l]) searchTagParts.push(char.role[l]);
           });
           const searchTags = searchTagParts.join(' ').toLowerCase();
           
@@ -275,7 +273,6 @@
             </div>
             <div class="p-5">
               <h3 class="font-display font-bold text-xl text-white group-hover:text-purple-400 transition-colors">${charName}</h3>
-              <p class="text-xs text-gray-500 mt-1 uppercase font-semibold">${charWeaponType} • ${charRole}</p>
               
               <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
                 <div class="flex justify-between">

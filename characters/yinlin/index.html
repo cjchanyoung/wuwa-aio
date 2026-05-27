@@ -117,7 +117,9 @@
         <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
           <span id="hero-element" class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">Electro</span>
           <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium">Rectifier</span>
-          <span id="hero-role" class="bg-purple-500/20 text-purple-300 border border-purple-500/30 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Sub DPS / Amp</span>
+          <div id="hero-roles" class="flex flex-wrap justify-center md:justify-start gap-2">
+            {{roles_html}}
+          </div>
         </div>
         <h1 id="hero-name" class="font-display font-bold text-5xl sm:text-6xl text-white tracking-wide">
           Yinlin
@@ -372,7 +374,7 @@
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Dynamic Character Guide Hydration (Bilingual)
-    window.characterData = {"id":"yinlin","name":{"en":"Yinlin"},"element":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"role":{"en":"Sub DPS / Amp"},"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"icon_class":"fa-solid fa-bolt","bestEcho":{"en":"Tempest Mephis"},"difficulty":{"en":"Hard"},"weapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"echoSetup":{"bestSetBonusId":"void_thunder","cost4":{"en":"Crit Rate / Crit DMG"},"cost4Name":{"en":"Tempest Mephis"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"bestSetBonus":{"en":"Void Thunder (5-Piece Set)"}},"statPriorities":{"en":["Crit Rate / Crit DMG","Electro DMG%","Energy Regen (125%+)","ATK% / Flat ATK"]},"skillPriorities":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommendedTeams":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}]};
+    window.characterData = {"id":"yinlin","name":{"en":"Yinlin"},"element":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"resonance_skill_dmg","name":{"en":"Resonance Skill DMG"}}],"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"bestEcho":{"en":"Tempest Mephis"},"difficulty":{"en":"Hard"},"weapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"echoSetup":{"bestSetBonusId":"void_thunder","cost4":{"en":"Crit Rate / Crit DMG"},"cost4Name":{"en":"Tempest Mephis"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"bestSetBonus":{"en":"Void Thunder (5-Piece Set)"}},"statPriorities":{"en":["Crit Rate / Crit DMG","Electro DMG%","Energy Regen (125%+)","ATK% / Flat ATK"]},"skillPriorities":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommendedTeams":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}]};
 
     function renderCharacterGuide(lang) {
       const data = window.characterData;
@@ -381,7 +383,20 @@
       // Render hero texts
       document.getElementById("hero-element").textContent = data.element[lang] || data.element.en;
       document.getElementById("hero-weaponType").textContent = data.weaponType[lang] || data.weaponType.en;
-      document.getElementById("hero-role").textContent = data.role[lang] || data.role.en;
+      
+      
+      // Render roles list
+      const rolesContainer = document.getElementById("hero-roles");
+      if (rolesContainer && data.roles) {
+        rolesContainer.innerHTML = data.roles.map(r => {
+          const roleName = r.name[lang] || r.name.en;
+          return `
+            <span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
+              <img src="../../assets/images/roles/${r.id}.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <span>${roleName}</span>
+            </span>`;
+        }).join('\n');
+      }
       document.getElementById("hero-name").textContent = data.name[lang] || data.name.en;
       document.getElementById("hero-description").textContent = data.description[lang] || data.description.en;
       

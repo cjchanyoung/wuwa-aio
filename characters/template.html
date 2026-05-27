@@ -117,7 +117,9 @@
         <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
           <span id="hero-element" class="{{element_badge_theme}} px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">{{element}}</span>
           <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium">{{weaponType}}</span>
-          <span id="hero-role" class="{{role_badge_theme}} px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">{{role}}</span>
+          <div id="hero-roles" class="flex flex-wrap justify-center md:justify-start gap-2">
+            {{roles_html}}
+          </div>
         </div>
         <h1 id="hero-name" class="font-display font-bold text-5xl sm:text-6xl text-white tracking-wide">
           {{name}}
@@ -291,7 +293,20 @@
       // Render hero texts
       document.getElementById("hero-element").textContent = data.element[lang] || data.element.en;
       document.getElementById("hero-weaponType").textContent = data.weaponType[lang] || data.weaponType.en;
-      document.getElementById("hero-role").textContent = data.role[lang] || data.role.en;
+      
+      
+      // Render roles list
+      const rolesContainer = document.getElementById("hero-roles");
+      if (rolesContainer && data.roles) {
+        rolesContainer.innerHTML = data.roles.map(r => {
+          const roleName = r.name[lang] || r.name.en;
+          return `
+            <span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
+              <img src="../../assets/images/roles/${r.id}.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <span>${roleName}</span>
+            </span>`;
+        }).join('\n');
+      }
       document.getElementById("hero-name").textContent = data.name[lang] || data.name.en;
       document.getElementById("hero-description").textContent = data.description[lang] || data.description.en;
       
