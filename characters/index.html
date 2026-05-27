@@ -214,11 +214,35 @@
       const grid = document.getElementById('resonators-grid');
       try {
         if (!cachedCharacters) {
-          const response = await fetch('../assets/data/characters.json');
-          if (!response.ok) {
+          const [charRes, rolesRes] = await Promise.all([
+            fetch('../assets/data/characters.json'),
+            fetch('../assets/data/roles.json')
+          ]);
+          if (!charRes.ok) {
             throw new Error('Failed to fetch character JSON database');
           }
-          cachedCharacters = await response.json();
+          if (!rolesRes.ok) {
+            throw new Error('Failed to fetch roles JSON database');
+          }
+          const rawChars = await charRes.json();
+          const rolesMaster = await rolesRes.json();
+
+          // Resolve ID array of roles into localized objects
+          cachedCharacters = rawChars.map(char => {
+            const resolved = { ...char };
+            if (char.roles) {
+              resolved.roles = char.roles.map(roleId => {
+                const master = rolesMaster[roleId];
+                return {
+                  id: roleId,
+                  name: master ? master.name : { en: roleId }
+                };
+              });
+            } else {
+              resolved.roles = [];
+            }
+            return resolved;
+          });
         }
         const characters = cachedCharacters;
         let lang = "en";

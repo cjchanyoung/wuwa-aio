@@ -108,6 +108,7 @@ const charactersFilePath = path.join(__dirname, '../assets/data/characters.json'
 const templateFilePath = path.join(__dirname, '../characters/template.html');
 const weaponsFilePath = path.join(__dirname, '../assets/data/weapons.json');
 const echoesFilePath = path.join(__dirname, '../assets/data/echoes.json');
+const rolesFilePath = path.join(__dirname, '../assets/data/roles.json');
 
 console.log('Loading character configurations and layout template...');
 
@@ -127,11 +128,16 @@ if (!fs.existsSync(echoesFilePath)) {
   console.error(`Error: File not found at ${echoesFilePath}`);
   process.exit(1);
 }
+if (!fs.existsSync(rolesFilePath)) {
+  console.error(`Error: File not found at ${rolesFilePath}`);
+  process.exit(1);
+}
 
 const rawCharacters = JSON.parse(fs.readFileSync(charactersFilePath, 'utf8'));
 const template = fs.readFileSync(templateFilePath, 'utf8');
 const weaponsMaster = JSON.parse(fs.readFileSync(weaponsFilePath, 'utf8'));
 const echoesMaster = JSON.parse(fs.readFileSync(echoesFilePath, 'utf8'));
+const rolesMaster = JSON.parse(fs.readFileSync(rolesFilePath, 'utf8'));
 
 // Resolve relationships on characters
 const characters = rawCharacters.map(char => {
@@ -163,6 +169,23 @@ const characters = rawCharacters.map(char => {
     };
   } else {
     resolvedChar.echoSetup.bestSetBonus = { en: "Custom Set" };
+  }
+
+  // Resolve roles
+  if (char.roles) {
+    resolvedChar.roles = char.roles.map(roleId => {
+      const master = rolesMaster[roleId];
+      if (!master) {
+        console.warn(`Warning: Master role "${roleId}" not found for resonator "${char.id}".`);
+        return { id: roleId, name: { en: roleId } };
+      }
+      return {
+        id: roleId,
+        name: master.name
+      };
+    });
+  } else {
+    resolvedChar.roles = [];
   }
 
   return resolvedChar;

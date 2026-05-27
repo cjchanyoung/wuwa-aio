@@ -1,0 +1,29 @@
+{
+  "main_damage_dealer": {
+    "name": { "en": "Main DPS" }
+  },
+  "resonance_skill_dmg": {
+    "name": { "en": "Resonance Skill DMG" }
+  },
+  "coordinated_attack": {
+    "name": { "en": "Coordinated Attack" }
+  },
+  "coordinated_attack_dmg_amplification": {
+    "name": { "en": "Coordinated DMG Amp" }
+  },
+  "electro_dmg_amplification": {
+    "name": { "en": "Electro DMG Amp" }
+  },
+  "fusion_dmg_amplification": {
+    "name": { "en": "Fusion DMG Amp" }
+  },
+  "support_and_healer": {
+    "name": { "en": "Support & Healer" }
+  },
+  "resonance_liberation_regeneration": {
+    "name": { "en": "Concerto/Energy Regen" }
+  },
+  "dmg_amplification": {
+    "name": { "en": "DMG Amplification" }
+  }
+}
