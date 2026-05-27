@@ -13,10 +13,21 @@
     "role": {
       "en": "Main DPS"
     },
+    "roles": [
+      {
+        "id": "main_damage_dealer",
+        "name": { "en": "Main DPS", "ko": "메인 딜러" }
+      },
+      {
+        "id": "resonance_skill_dmg",
+        "name": { "en": "Resonance Skill DMG", "ko": "공명 스킬 피해" }
+      }
+    ],
     "rarity": 5,
     "description": {
       "en": "The magistrate of Jinzhou, carrying the weight of prophecy and the blessing of the Sentinel Jué. She acts as a premier Spectro Carry, dealing monumental burst damage through her specialized Forte Circuit state and Resonance Skill multiplier stacks."
     },
+    "icon_class": "fa-solid fa-dragon",
     "bestEcho": {
       "en": "Jué (4-3-3-1-1)"
     },
@@ -153,10 +164,25 @@
     "role": {
       "en": "Sub DPS / Amp"
     },
+    "roles": [
+      {
+        "id": "coordinated_attack",
+        "name": { "en": "Coordinated Attack", "ko": "협동 공격" }
+      },
+      {
+        "id": "coordinated_attack_dmg_amplification",
+        "name": { "en": "Coordinated DMG Amp", "ko": "협동 공격 피해 증폭" }
+      },
+      {
+        "id": "electro_dmg_amplification",
+        "name": { "en": "Electro DMG Amp", "ko": "전도 피해 증폭" }
+      }
+    ],
     "rarity": 5,
     "description": {
       "en": "A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."
     },
+    "icon_class": "fa-solid fa-bolt",
     "bestEcho": {
       "en": "Tempest Mephis"
     },
@@ -293,10 +319,21 @@
     "role": {
       "en": "Main DPS"
     },
+    "roles": [
+      {
+        "id": "main_damage_dealer",
+        "name": { "en": "Main DPS", "ko": "메인 딜러" }
+      },
+      {
+        "id": "resonance_skill_dmg",
+        "name": { "en": "Resonance Skill DMG", "ko": "공명 스킬 피해" }
+      }
+    ],
     "rarity": 4,
     "description": {
       "en": "A bright and energetic patroller of Jinzhou, who is always ready to lend a hand. Chixia functions as a powerful ranged Fusion DPS, dealing rapid fire damage through her specialized pistols and continuous Daka-Daka Resonance Skill firing mode."
     },
+    "icon_class": "fa-solid fa-crosshairs",
     "bestEcho": {
       "en": "Inferno Rider"
     },
@@ -433,10 +470,21 @@
     "role": {
       "en": "Main / Sub DPS"
     },
+    "roles": [
+      {
+        "id": "main_damage_dealer",
+        "name": { "en": "Main/Sub DPS", "ko": "메인/서브 딜러" }
+      },
+      {
+        "id": "fusion_dmg_amplification",
+        "name": { "en": "Fusion DMG Amp", "ko": "융합 피해 증폭" }
+      }
+    ],
     "rarity": 5,
     "description": {
       "en": "Counselor to the Jinzhou Magistrate and mentor to Jinhsi. Possessing a clever mind and a graceful demeanor, Changli commands the battlefield as a powerful Fusion Carry, capable of acting as both a primary Main DPS or a high-multiplier Sub-DPS that buffs incoming Fusion Resonators."
     },
+    "icon_class": "fa-solid fa-fire",
     "bestEcho": {
       "en": "Inferno Rider"
     },
@@ -573,10 +621,25 @@
     "role": {
       "en": "Healer / Buffer"
     },
+    "roles": [
+      {
+        "id": "support_and_healer",
+        "name": { "en": "Support & Healer", "ko": "서포터 및 힐러" }
+      },
+      {
+        "id": "resonance_liberation_regeneration",
+        "name": { "en": "Concerto/Energy Regen", "ko": "에너지 회복" }
+      },
+      {
+        "id": "dmg_amplification",
+        "name": { "en": "DMG Amplification", "ko": "피해 증폭" }
+      }
+    ],
     "rarity": 5,
     "description": {
       "en": "The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."
     },
+    "icon_class": "fa-solid fa-sun",
     "bestEcho": {
       "en": "Fallacy of No Return"
     },
