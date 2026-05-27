@@ -11,14 +11,8 @@
       "en": "Broadblade"
     },
     "roles": [
-      {
-        "id": "main_damage_dealer",
-        "name": { "en": "Main Damage Dealer" }
-      },
-      {
-        "id": "resonance_skill_dmg",
-        "name": { "en": "Resonance Skill DMG" }
-      }
+      "main_damage_dealer",
+      "resonance_skill_dmg"
     ],
     "rarity": 5,
     "description": {
@@ -158,14 +152,8 @@
       "en": "Rectifier"
     },
     "roles": [
-      {
-        "id": "concerto_efficiency",
-        "name": { "en": "Concerto Efficiency" }
-      },
-      {
-        "id": "resonance_skill_dmg",
-        "name": { "en": "Resonance Skill DMG" }
-      }
+      "concerto_efficiency",
+      "resonance_skill_dmg"
     ],
     "rarity": 5,
     "description": {
@@ -305,10 +293,7 @@
       "en": "Pistols"
     },
     "roles": [
-      {
-        "id": "main_damage_dealer",
-        "name": { "en": "Main Damage Dealer" }
-      }
+      "main_damage_dealer"
     ],
     "rarity": 4,
     "description": {
@@ -448,14 +433,8 @@
       "en": "Sword"
     },
     "roles": [
-      {
-        "id": "main_damage_dealer",
-        "name": { "en": "Main Damage Dealer" }
-      },
-      {
-        "id": "resonance_skill_dmg",
-        "name": { "en": "Resonance Skill DMG" }
-      }
+      "main_damage_dealer",
+      "resonance_skill_dmg"
     ],
     "rarity": 5,
     "description": {
@@ -595,18 +574,9 @@
       "en": "Rectifier"
     },
     "roles": [
-      {
-        "id": "support_and_healer",
-        "name": { "en": "Support and Healer" }
-      },
-      {
-        "id": "traction",
-        "name": { "en": "Traction" }
-      },
-      {
-        "id": "dmg_amplification",
-        "name": { "en": "DMG Amplification" }
-      }
+      "support_and_healer",
+      "traction",
+      "dmg_amplification"
     ],
     "rarity": 5,
     "description": {
