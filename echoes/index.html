@@ -198,14 +198,14 @@
       const grid = document.getElementById('sonata-sets-grid');
       try {
         if (!cachedEchoes || !cachedCharacters) {
-          const [echoesRes, charactersRes] = await Promise.all([
-            fetch('../assets/data/echoes.json'),
+          const [sonatasRes, charactersRes] = await Promise.all([
+            fetch('../assets/data/sonatas.json'),
             fetch('../assets/data/characters.json')
           ]);
-          if (!echoesRes.ok || !charactersRes.ok) {
+          if (!sonatasRes.ok || !charactersRes.ok) {
             throw new Error('Failed to fetch master databases');
           }
-          cachedEchoes = Object.values(await echoesRes.json());
+          cachedEchoes = Object.values(await sonatasRes.json());
           cachedCharacters = await charactersRes.json();
         }
         
@@ -222,7 +222,7 @@
         
         grid.innerHTML = cachedEchoes.map(set => {
           const setName = set.name[lang] || set.name.en;
-          const setElement = set.element[lang] || set.element.en;
+          const setElement = set.attribute[lang] || set.attribute.en;
           const effect2pc = set.effect_2pc[lang] || set.effect_2pc.en;
           const effect5pc = set.effect_5pc[lang] || set.effect_5pc.en;
           
@@ -241,8 +241,9 @@
           return `
           <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 ${hoverClass} transition-all duration-300 shadow-lg shadow-purple-500/2">
             <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg ${set.bgColor} flex items-center justify-center ${set.textColor} font-bold">
-                <i class="${set.icon}"></i>
+              <div class="w-10 h-10 rounded-lg ${set.bgColor} flex items-center justify-center ${set.textColor} font-bold overflow-hidden">
+                <img src="../assets/images/sonatas/${set.id}.png" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <i class="${set.icon} hidden"></i>
               </div>
               <div>
                 <h3 class="font-display font-bold text-lg text-white">${setName}</h3>

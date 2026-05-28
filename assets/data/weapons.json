@@ -180,5 +180,44 @@
     "desc": {
       "en": "Increases ATK by (12%/15%/18%/21%/24%). Every time Basic Attack or Intro Skill is cast, Heavy Attack DMG Bonus increases by (48%/60%/72%/84%/96%) for 3s."
     }
+  },
+  "verdant_summit": {
+    "id": "verdant_summit",
+    "name": { "en": "Verdant Summit" },
+    "type": "Broadblade",
+    "rarity": 5,
+    "baseAtk": 587,
+    "secondaryStat": { "en": "48.6% Crit DMG" },
+    "signatureFor": "jiyan",
+    "recommendedFor": ["jiyan"],
+    "desc": {
+      "en": "Increases Heavy Attack DMG by 12% and when casting Intro Skill or Resonance Liberation, boosts Heavy Attack DMG by 38%."
+    }
+  },
+  "autumntrace": {
+    "id": "autumntrace",
+    "name": { "en": "Autumntrace" },
+    "type": "Broadblade",
+    "rarity": 4,
+    "baseAtk": 412,
+    "secondaryStat": { "en": "20.2% Crit Rate" },
+    "signatureFor": null,
+    "recommendedFor": ["jiyan"],
+    "desc": {
+      "en": "Increases ATK by 4% on dealing Basic or Heavy Attack DMG, stacking up to 5 times."
+    }
+  },
+  "emerald_of_genesis": {
+    "id": "emerald_of_genesis",
+    "name": { "en": "Emerald of Genesis" },
+    "type": "Sword",
+    "rarity": 5,
+    "baseAtk": 587,
+    "secondaryStat": { "en": "24.3% Crit Rate" },
+    "signatureFor": "sanhua",
+    "recommendedFor": ["sanhua"],
+    "desc": {
+      "en": "Increases Energy Regen by 12.8%. When Resonance Skill is cast, ATK is increased by 6%, stacking up to 2 times."
+    }
   }
 }

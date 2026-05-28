@@ -115,10 +115,10 @@
     <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b {{hero_bg_class}} border {{hero_border_class}} p-8 sm:p-12 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-4 text-center md:text-left">
         <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
-          <span id="hero-element" class="{{element_badge_theme}} px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">{{element}}</span>
+          <span id="hero-attribute" class="{{attribute_badge_theme}} px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">{{attribute}}</span>
           <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium">{{weaponType}}</span>
           <div id="hero-roles" class="flex flex-wrap justify-center md:justify-start gap-2">
-            {{roles_html}}
+            {{roles}}
           </div>
         </div>
         <h1 id="hero-name" class="font-display font-bold text-5xl sm:text-6xl text-white tracking-wide">
@@ -165,22 +165,31 @@
           </h3>
 
           <div class="space-y-6">
-            <!-- Best Set Summary -->
-            <div class="flex items-center gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
-              <div class="w-10 h-10 {{echo_icon_bg}} rounded-lg flex items-center justify-center {{accent_text}} shrink-0 border border-white/5">
-                <i class="fa-solid fa-dna"></i>
+            <!-- Best Set Summary (Sonata) -->
+            <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
+              <div id="sonata-set-illustration" class="w-10 h-10 {{echo_icon_bg}} rounded-lg flex items-center justify-center {{accent_text}} shrink-0 border border-white/5 overflow-hidden">
+                <i class="fa-solid fa-circle-nodes"></i>
               </div>
-              <div>
+              <div class="flex-grow">
                 <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
-                <span id="echo-best-set" class="block text-sm {{accent_text}} font-semibold">{{best_set_bonus}}</span>
+                <span id="echo-best-set" class="block text-sm {{accent_text}} font-semibold">{{sonata_name}}</span>
+                <p id="sonata-effects" class="text-xs text-gray-400 mt-2 space-y-1">
+                  <span class="block">• 2-Pc: <span id="sonata-effect-2pc" class="text-gray-300">{{sonata_effect_2pc}}</span></span>
+                  <span class="block">• 5-Pc: <span id="sonata-effect-5pc" class="text-gray-300">{{sonata_effect_5pc}}</span></span>
+                </p>
               </div>
             </div>
 
             <!-- Cost breakdown -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
-                <span class="block text-xs text-gray-500 font-bold uppercase mb-1"><span data-i18n="detail_cost_4"></span> (<span id="echo-cost-4-name">{{cost_4_name}}</span>)</span>
-                <span id="echo-cost-4" class="text-sm font-semibold text-white">{{cost_4}}</span>
+              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 flex gap-3 items-center">
+                <div class="w-12 h-12 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center shrink-0 overflow-hidden" id="echo-main-illustration">
+                  {{main_echo_html}}
+                </div>
+                <div>
+                  <span class="block text-xs text-gray-500 font-bold uppercase"><span data-i18n="detail_cost_4"></span> (<span id="echo-cost-4-name">{{main_echo_name}}</span>)</span>
+                  <span id="echo-cost-4" class="text-sm font-semibold text-white">{{cost_4}}</span>
+                </div>
               </div>
               <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3"></span>
@@ -246,7 +255,28 @@
         </div>
 
       </div>
+    </div>
 
+    <!-- Resonance Chain (Sequences) Section -->
+    <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
+      <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+        <i class="fa-solid fa-network-wired {{accent_text}}"></i>
+        <span data-i18n="detail_sequence_title">Resonance Chain (Sequences)</span>
+      </h3>
+      <div id="sequence-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {{sequence_list_html}}
+      </div>
+    </div>
+
+    <!-- Gameplay Guide Details Section -->
+    <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
+      <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-book-open {{accent_text}}"></i>
+        <span data-i18n="detail_guide_details_title">Gameplay Guidelines & Tips</span>
+      </h3>
+      <div id="guide-details" class="prose prose-invert max-w-none">
+        {{guide_details_html}}
+      </div>
     </div>
 
   </main>
@@ -291,7 +321,7 @@
       if (!data) return;
 
       // Render hero texts
-      document.getElementById("hero-element").textContent = data.element[lang] || data.element.en;
+      document.getElementById("hero-attribute").textContent = data.attribute[lang] || data.attribute.en;
       document.getElementById("hero-weaponType").textContent = data.weaponType[lang] || data.weaponType.en;
       
       
@@ -317,7 +347,7 @@
       // Render weapons
       const weaponsContainer = document.getElementById("weapons-list");
       if (weaponsContainer) {
-        weaponsContainer.innerHTML = data.weapons.map(weapon => {
+        weaponsContainer.innerHTML = data.recommWeapons.map(weapon => {
           const isSig = weapon.isSignature;
           const borderClass = isSig ? `{{weapon_sig_card_border}}` : `{{weapon_alt_card_border}}`;
           const badgeClass = isSig ? `{{weapon_sig_badge}}` : `{{weapon_alt_badge}}`;
@@ -354,19 +384,49 @@
       }
 
       // Echo Setup
-      const echo = data.echoSetup;
-      document.getElementById("echo-best-set").textContent = echo.bestSetBonus[lang] || echo.bestSetBonus.en;
-      document.getElementById("echo-cost-4-name").textContent = echo.cost4Name[lang] || echo.cost4Name.en;
+      const echo = data.recommEcho;
+      if (echo) {
+        const sonataObj = echo.sonataObject || { name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
+        const echoObj = echo.mainSlotEchoObject || { name: { en: "" }, costType: "4", id: "" };
+
+        document.getElementById("echo-best-set").textContent = sonataObj.name[lang] || sonataObj.name.en;
+
+        // Update sonata set illustration
+        const sonataIllustContainer = document.getElementById("sonata-set-illustration");
+        if (sonataIllustContainer && sonataObj.id) {
+          sonataIllustContainer.innerHTML = `
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <i class="fa-solid fa-circle-nodes hidden"></i>`;
+        }
+
+        // Update sonata effects
+        const effect2pc = sonataObj.effect_2pc[lang] || sonataObj.effect_2pc.en;
+        const effect5pc = sonataObj.effect_5pc[lang] || sonataObj.effect_5pc.en;
+        document.getElementById("sonata-effect-2pc").textContent = effect2pc;
+        document.getElementById("sonata-effect-5pc").textContent = effect5pc;
+
+        // Update main slot echo info
+        const echoName = echoObj.name[lang] || echoObj.name.en;
+        document.getElementById("echo-cost-4-name").textContent = echoName;
       document.getElementById("echo-cost-4").textContent = echo.cost4[lang] || echo.cost4.en;
       document.getElementById("echo-cost-3").textContent = echo.cost3[lang] || echo.cost3.en;
       document.getElementById("echo-cost-1").textContent = echo.cost1[lang] || echo.cost1.en;
       document.getElementById("echo-substats-priority").textContent = echo.substatsPriority[lang] || echo.substatsPriority.en;
       document.getElementById("echo-note").textContent = echo.note[lang] || echo.note.en;
 
+      // Update main echo illustration
+        const illustContainer = document.getElementById("echo-main-illustration");
+        if (illustContainer && echoObj.id) {
+          illustContainer.innerHTML = `
+            <img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoName}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <i class="fa-solid fa-dna text-xl hidden"></i>`;
+        }
+      }
+
       // Stat Priorities
       const statsContainer = document.getElementById("stat-priorities-list");
       if (statsContainer) {
-        const priorities = data.statPriorities[lang] || data.statPriorities.en;
+        const priorities = data.recommStats[lang] || data.recommStats.en;
         statsContainer.innerHTML = priorities.map((stat, index) => {
           const isFirst = index === 0;
           const numBg = isFirst ? `{{stat_idx1_bg_border_text}}` : `{{stat_idx2_bg_border_text}}`;
@@ -381,7 +441,7 @@
       // Skill priorities
       const skillsContainer = document.getElementById("skill-priorities-list");
       if (skillsContainer) {
-        skillsContainer.innerHTML = data.skillPriorities.map((item, index) => {
+        skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
           let prioClass = 'text-gray-500';
           if (index === 0) prioClass = `{{priority_highlight_text}}`;
           else if (index === 1) prioClass = `{{priority_high_text}}`;
@@ -401,7 +461,7 @@
       // Recommended Teams
       const teamsContainer = document.getElementById("recommended-teams-list");
       if (teamsContainer) {
-        teamsContainer.innerHTML = data.recommendedTeams.map(team => {
+        teamsContainer.innerHTML = data.recommTeammates.map(team => {
           const borderClass = team.isPremium ? `{{team_premium_border}}` : 'border-white/5';
           const titleColor = team.isPremium ? `{{team_premium_badge}}` : 'text-gray-400';
           
@@ -417,6 +477,43 @@
               </ul>
             </div>`;
         }).join('\n');
+      }
+
+      // Resonance Chain (Sequences)
+      const sequenceContainer = document.getElementById("sequence-list");
+      if (sequenceContainer && data.recommSequence) {
+        sequenceContainer.innerHTML = data.recommSequence.map((seq, index) => {
+          const isRec = seq.isRecommended;
+          const borderClass = isRec ? `{{weapon_sig_card_border}}` : 'border-white/5';
+          const badgeHtml = isRec ? `<span class="text-[10px] {{weapon_sig_badge}} px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
+          const stepIdx = index + 1;
+          const seqName = seq.name[lang] || seq.name.en;
+          const seqDesc = seq.description[lang] || seq.description.en;
+
+          return `
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr {{accent_gradient}} opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/${data.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: {{sequence_filter}};" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S${stepIdx}</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>${seqName}</span>
+                  ${badgeHtml}
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">${seqDesc}</p>
+              </div>
+            </div>`;
+        }).join('\n');
+      }
+
+      // Gameplay Guide Details
+      const detailsContainer = document.getElementById("guide-details");
+      if (detailsContainer && data.guideDetails) {
+        const detailsText = data.guideDetails[lang] || data.guideDetails.en;
+        detailsContainer.innerHTML = `<p class="text-sm text-gray-300 leading-relaxed">${detailsText}</p>`;
       }
 
       // Update dynamic page titles

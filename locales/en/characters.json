@@ -6,7 +6,6 @@
   "char_filter_5": "5★",
   "char_filter_4": "4★",
   "char_card_view": "View Guide Details",
-  "char_difficulty": "Build Difficulty:",
   "detail_btn_back": "Back to Database",
   "detail_weapon_title": "Weapon Recommendations",
   "detail_echo_title": "Echo Setup & Substats",
@@ -16,9 +15,12 @@
   "detail_cost_1": "1-Cost Echos",
   "detail_substat_priority": "Substat Leveling Priority",
   "detail_stat_priority": "Stat priorities",
+  "detail_skill_priority": "Skill Leveling Priority",
   "detail_teams_title": "Recommended Teams",
+  "detail_sequence_title": "Resonance Chain (Sequences)",
+  "detail_guide_details_title": "Gameplay Guidelines & Tips",
   "detail_resonator": "Resonator",
-  "best_echo_label": "Best Echo:",
-  "difficulty_label": "Build Difficulty:",
+  "echo_label": "Sonata:",
+  "weapon_label": "Weapon:",
   "view_guide_label": "View Guide Details"
 }

@@ -1,0 +1,182 @@
+{
+  "aero_dmg_amplification": {
+    "name": {
+      "en": "Aero DMG Amplification"
+    }
+  },
+  "aero_erosion": {
+    "name": {
+      "en": "Aero Erosion"
+    }
+  },
+  "basic_attack_dmg": {
+    "name": {
+      "en": "Basic Attack DMG"
+    }
+  },
+  "basic_attack_dmg_amplification": {
+    "name": {
+      "en": "Basic Attack DMG Amplification"
+    }
+  },
+  "concerto_efficiency": {
+    "name": {
+      "en": "Concerto Efficiency"
+    }
+  },
+  "coordinated_attack": {
+    "name": {
+      "en": "Coordinated Attack"
+    }
+  },
+  "coordinated_attack_dmg_amplification": {
+    "name": {
+      "en": "Coordinated Attack DMG Amplification"
+    }
+  },
+  "dmg_amplification": {
+    "name": {
+      "en": "DMG Amplification"
+    }
+  },
+  "echo_skill_dmg": {
+    "name": {
+      "en": "Echo Skill DMG"
+    }
+  },
+  "echo_skill_dmg_amplification": {
+    "name": {
+      "en": "Echo Skill DMG Amplification"
+    }
+  },
+  "electro_dmg_amplification": {
+    "name": {
+      "en": "Electro DMG Amplification"
+    }
+  },
+  "electro_flare": {
+    "name": {
+      "en": "Electro Flare"
+    }
+  },
+  "fusion_burst": {
+    "name": {
+      "en": "Fusion Burst"
+    }
+  },
+  "fusion_dmg_amplification": {
+    "name": {
+      "en": "Fusion DMG Amplification"
+    }
+  },
+  "glacio_chafe": {
+    "name": {
+      "en": "Glacio Chafe"
+    }
+  },
+  "glacio_dmg_amplification": {
+    "name": {
+      "en": "Glacio DMG Amplification"
+    }
+  },
+  "havoc_bane": {
+    "name": {
+      "en": "Havoc Bane"
+    }
+  },
+  "havoc_dmg_amplification": {
+    "name": {
+      "en": "Havoc DMG Amplification"
+    }
+  },
+  "heavy_attack_dmg": {
+    "name": {
+      "en": "Heavy Attack DMG"
+    }
+  },
+  "heavy_attack_dmg_amplification": {
+    "name": {
+      "en": "Heavy Attack DMG Amplification"
+    }
+  },
+  "interruption_resistance_boost": {
+    "name": {
+      "en": "Interruption Resistance Boost"
+    }
+  },
+  "main_damage_dealer": {
+    "name": {
+      "en": "Main Damage Dealer"
+    }
+  },
+  "off-tune_buildup_efficiency": {
+    "name": {
+      "en": "Off-Tune Buildup Efficiency"
+    }
+  },
+  "resonance_liberation_damage": {
+    "name": {
+      "en": "Resonance Liberation Damage"
+    }
+  },
+  "resonance_liberation_damage_amplification": {
+    "name": {
+      "en": "Resonance Liberation Damage Amplification"
+    }
+  },
+  "resonance_liberation_regeneration": {
+    "name": {
+      "en": "Resonance Liberation Regeneration"
+    }
+  },
+  "resonance_skill_dmg": {
+    "name": {
+      "en": "Resonance Skill DMG"
+    }
+  },
+  "resonance_skill_dmg_amplification": {
+    "name": {
+      "en": "Resonance Skill DMG Amplification"
+    }
+  },
+  "spectro_frazzle": {
+    "name": {
+      "en": "Spectro Frazzle"
+    }
+  },
+  "stagnation": {
+    "name": {
+      "en": "Stagnation"
+    }
+  },
+  "support_and_healer": {
+    "name": {
+      "en": "Support And Healer"
+    }
+  },
+  "traction": {
+    "name": {
+      "en": "Traction"
+    }
+  },
+  "tune_break_boost": {
+    "name": {
+      "en": "Tune Break Boost"
+    }
+  },
+  "tune_rupture_response": {
+    "name": {
+      "en": "Tune Rupture Response"
+    }
+  },
+  "tune_strain_response": {
+    "name": {
+      "en": "Tune Strain Response"
+    }
+  },
+  "vibration_strength_reduction": {
+    "name": {
+      "en": "Vibration Strength Reduction"
+    }
+  }
+}

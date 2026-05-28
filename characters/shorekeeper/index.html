@@ -52,29 +52,29 @@
     }
   </style>
 </head>
-<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-yellow-500/30 selection:text-yellow-200">
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-[#B9A81C]/30 selection:text-yellow-200">
 
   <!-- Ambient Glow Effects -->
-  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-yellow-500/10 blur-[120px] pointer-events-none glow-effect"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-amber-500/5 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#B9A81C]/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-yellow-950/5 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
 
   <!-- Header Section -->
-  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-yellow-500/10">
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-[#B9A81C]/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logo (Home Button) -->
       <a href="../../index.html" class="flex items-center space-x-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-yellow-500 to-amber-500 flex items-center justify-center shadow-lg shadow-yellow-500/20 group-hover:scale-105 transition-transform duration-300">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#B9A81C] to-yellow-600 flex items-center justify-center shadow-lg shadow-[#B9A81C]/20 group-hover:scale-105 transition-transform duration-300">
           <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
         </div>
         <div>
-          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-yellow-400 bg-clip-text text-transparent">WUWA<span class="text-yellow-500">.AIO</span></span>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-yellow-400 bg-clip-text text-transparent">WUWA<span class="text-[#B9A81C]">.AIO</span></span>
           <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo"></span>
         </div>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center space-x-1">
-        <a href="../index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-yellow-400 bg-white/5 border-b-2 border-yellow-500/50 transition-all" data-i18n="nav_characters"></a>
+        <a href="../index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-[#B9A81C] bg-white/5 border-b-2 border-[#B9A81C]/50 transition-all" data-i18n="nav_characters"></a>
         <a href="../../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_echoes"></a>
         <a href="../../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_weapons"></a>
         <a href="../../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_quickswap"></a>
@@ -83,9 +83,9 @@
 
       <!-- Action Button -->
       <div class="flex items-center space-x-4">
-        <a href="../index.html" class="relative group hidden sm:inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-semibold text-gray-900 rounded-xl group bg-gradient-to-br from-yellow-600 to-amber-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-yellow-800">
+        <a href="../index.html" class="relative group hidden sm:inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-semibold text-gray-900 rounded-xl group bg-gradient-to-br from-[#B9A81C] to-yellow-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-yellow-800">
           <span class="relative px-4 py-2.5 transition-all ease-in duration-75 bg-[#0a080f] rounded-[10px] group-hover:bg-opacity-0">
-            <i class="fa-solid fa-arrow-left mr-2 text-yellow-500 group-hover:text-white transition-colors"></i><span data-i18n="detail_btn_back"></span>
+            <i class="fa-solid fa-arrow-left mr-2 text-[#B9A81C] group-hover:text-white transition-colors"></i><span data-i18n="detail_btn_back"></span>
           </span>
         </a>
         
@@ -100,25 +100,36 @@
   <!-- Mobile Navigation Menu -->
   <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
     <div class="flex flex-col space-y-4">
-      <a href="../index.html" class="text-xl font-semibold text-yellow-500 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters"></a>
+      <a href="../index.html" class="text-xl font-semibold text-[#B9A81C] py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters"></a>
       <a href="../../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_echoes"></a>
       <a href="../../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons"></a>
       <a href="../../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap"></a>
       <a href="../../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation"></a>
-      <a href="../index.html" class="inline-block text-center py-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-xl font-semibold shadow-lg shadow-yellow-500/25" onclick="toggleMobileMenu()" data-i18n="detail_btn_back"></a>
+      <a href="../index.html" class="inline-block text-center py-3 bg-gradient-to-r from-[#B9A81C] to-yellow-700 text-white rounded-xl font-semibold shadow-lg shadow-[#B9A81C]/25" onclick="toggleMobileMenu()" data-i18n="detail_btn_back"></a>
     </div>
   </div>
 
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
     
     <!-- Hero Details Section -->
-    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-yellow-950/20 to-[#1a181f]/40 border border-yellow-500/20 p-8 sm:p-12 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
+    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#B9A81C]/20 to-[#1a181f]/40 border border-[#B9A81C]/20 p-8 sm:p-12 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-4 text-center md:text-left">
         <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
-          <span id="hero-element" class="bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">Spectro</span>
+          <span id="hero-attribute" class="bg-[#B9A81C]/20 text-[#B9A81C] border border-[#B9A81C]/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">Spectro</span>
           <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium">Rectifier</span>
           <div id="hero-roles" class="flex flex-wrap justify-center md:justify-start gap-2">
-            {{roles_html}}
+            <span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
+              <img src="../../assets/images/roles/support_and_healer.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <span>Support And Healer</span>
+            </span>
+<span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
+              <img src="../../assets/images/roles/traction.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <span>Traction</span>
+            </span>
+<span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
+              <img src="../../assets/images/roles/dmg_amplification.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <span>DMG Amplification</span>
+            </span>
           </div>
         </div>
         <h1 id="hero-name" class="font-display font-bold text-5xl sm:text-6xl text-white tracking-wide">
@@ -152,15 +163,15 @@
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
           <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-            <i class="fa-solid fa-khanda text-yellow-500"></i>
+            <i class="fa-solid fa-khanda text-[#B9A81C]"></i>
             <span data-i18n="detail_weapon_title"></span>
           </h3>
 
           <div id="weapons-list" class="space-y-6">
                         <!-- Signature Weapon -->
-            <div class="bg-[#0a080f] p-5 rounded-xl border border-yellow-500/10 hover:border-yellow-500/30 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
+            <div class="bg-[#0a080f] p-5 rounded-xl border border-[#B9A81C]/10 hover:border-[#B9A81C]/30 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
               <div class="flex items-start gap-4">
-                <div class="w-12 h-12 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 shrink-0 border border-yellow-500/20 overflow-hidden">
+                <div class="w-12 h-12 bg-[#B9A81C]/10 rounded-lg flex items-center justify-center text-[#B9A81C] shrink-0 border border-[#B9A81C]/20 overflow-hidden">
                   <img src="../../assets/images/weapons/stellar_symphony.png" alt="Stellar Symphony" class="w-full h-full object-contain p-1">
                 </div>
                 <div>
@@ -176,7 +187,7 @@
               </div>
             </div>
             <!-- Alternative Weapon -->
-            <div class="bg-[#0a080f] p-5 rounded-xl border border-white/5 hover:border-yellow-500/20 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
+            <div class="bg-[#0a080f] p-5 rounded-xl border border-white/5 hover:border-[#B9A81C]/20 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 bg-gray-500/10 rounded-lg flex items-center justify-center text-gray-400 shrink-0 border border-white/10 overflow-hidden">
                   <i class="fa-solid fa-shield-halved text-xl"></i>
@@ -199,27 +210,36 @@
         <!-- Echos Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
           <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-            <i class="fa-solid fa-atom text-yellow-500"></i>
+            <i class="fa-solid fa-atom text-[#B9A81C]"></i>
             <span data-i18n="detail_echo_title"></span>
           </h3>
 
           <div class="space-y-6">
-            <!-- Best Set Summary -->
-            <div class="flex items-center gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
-              <div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 shrink-0 border border-white/5">
-                <i class="fa-solid fa-dna"></i>
+            <!-- Best Set Summary (Sonata) -->
+            <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
+              <div id="sonata-set-illustration" class="w-10 h-10 bg-[#B9A81C]/10 rounded-lg flex items-center justify-center text-[#B9A81C] shrink-0 border border-white/5 overflow-hidden">
+                <i class="fa-solid fa-circle-nodes"></i>
               </div>
-              <div>
+              <div class="flex-grow">
                 <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
-                <span id="echo-best-set" class="block text-sm text-yellow-500 font-semibold">Rejuvenating Glow (5-Piece Set)</span>
+                <span id="echo-best-set" class="block text-sm text-[#B9A81C] font-semibold">Rejuvenating Glow (5-Piece Set)</span>
+                <p id="sonata-effects" class="text-xs text-gray-400 mt-2 space-y-1">
+                  <span class="block">• 2-Pc: <span id="sonata-effect-2pc" class="text-gray-300">Healing Bonus +10%</span></span>
+                  <span class="block">• 5-Pc: <span id="sonata-effect-5pc" class="text-gray-300">Upon healing allies, increases ATK of all team members by 15% for 30s.</span></span>
+                </p>
               </div>
             </div>
 
             <!-- Cost breakdown -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
-                <span class="block text-xs text-gray-500 font-bold uppercase mb-1"><span data-i18n="detail_cost_4"></span> (<span id="echo-cost-4-name">Fallacy of No Return</span>)</span>
-                <span id="echo-cost-4" class="text-sm font-semibold text-white">Healing Bonus% or HP%</span>
+              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 flex gap-3 items-center">
+                <div class="w-12 h-12 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center shrink-0 overflow-hidden" id="echo-main-illustration">
+                  <i class="fa-solid fa-dna text-xl"></i>
+                </div>
+                <div>
+                  <span class="block text-xs text-gray-500 font-bold uppercase"><span data-i18n="detail_cost_4"></span> (<span id="echo-cost-4-name">fallacy_of_no_return</span>)</span>
+                  <span id="echo-cost-4" class="text-sm font-semibold text-white">Healing Bonus% or HP%</span>
+                </div>
               </div>
               <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3"></span>
@@ -237,7 +257,7 @@
               <p id="echo-substats-priority" class="text-sm text-gray-300 leading-relaxed font-mono">
                 Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP
               </p>
-              <span id="echo-note" class="block text-[10px] text-yellow-500/70 font-semibold italic">Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers.</span>
+              <span id="echo-note" class="block text-[10px] text-[#B9A81C]/70 font-semibold italic">Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers.</span>
             </div>
           </div>
         </div>
@@ -250,24 +270,24 @@
         <!-- Stat Priorities Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
           <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-list-check text-yellow-500"></i>
+            <i class="fa-solid fa-list-check text-[#B9A81C]"></i>
             <span data-i18n="detail_stat_priority"></span>
           </h3>
           <div id="stat-priorities-list" class="space-y-3 text-xs">
                         <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-yellow-500/20 text-yellow-400 font-bold font-mono flex items-center justify-center">1</span>
+              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/20 text-yellow-400 font-bold font-mono flex items-center justify-center">1</span>
               <span class="font-semibold text-white">Energy Regen (250%+)</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-yellow-500/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
+              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
               <span class="font-semibold text-white">HP% / Flat HP</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-yellow-500/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
+              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
               <span class="font-semibold text-white">Crit Rate (Target 20%+)</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-yellow-500/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
+              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
               <span class="font-semibold text-white">Healing Bonus%</span>
             </div>
           </div>
@@ -276,7 +296,7 @@
         <!-- Skill Levelling Priority -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
           <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-chart-line text-yellow-500"></i>
+            <i class="fa-solid fa-chart-line text-[#B9A81C]"></i>
             <span data-i18n="detail_skill_priority"></span>
           </h3>
           <div class="space-y-4">
@@ -309,13 +329,13 @@
         <!-- Recommended Teams Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
           <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-users text-yellow-500"></i>
+            <i class="fa-solid fa-users text-[#B9A81C]"></i>
             <span data-i18n="detail_teams_title"></span>
           </h3>
 
           <div id="recommended-teams-list" class="space-y-4 text-xs">
                         <!-- Team Card -->
-            <div class="bg-[#0a080f]/50 border border-yellow-500/10 rounded-xl p-3.5 space-y-2">
+            <div class="bg-[#0a080f]/50 border border-[#B9A81C]/10 rounded-xl p-3.5 space-y-2">
               <span class="block text-yellow-400 font-bold tracking-wide uppercase">Universal Top Tier Carry Comp</span>
               <ul class="space-y-1.5 text-gray-300 font-medium">
                 <li>• Jinhsi or Jiyan <span class="text-gray-500 text-[10px]">(Main Carry)</span></li>
@@ -336,7 +356,117 @@
         </div>
 
       </div>
+    </div>
 
+    <!-- Resonance Chain (Sequences) Section -->
+    <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
+      <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+        <i class="fa-solid fa-network-wired text-[#B9A81C]"></i>
+        <span data-i18n="detail_sequence_title">Resonance Chain (Sequences)</span>
+      </h3>
+      <div id="sequence-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-[#B9A81C]/10 hover:border-[#B9A81C]/30 flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#B9A81C] via-yellow-400 to-[#B9A81C] opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/shorekeeper/sequence/1.png" alt="S1: Unspoken Conjecture" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(185, 168, 28, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S1</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S1: Unspoken Conjecture</span>
+                  <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Increases the radius of Stellarealms by 150% and their duration by 10 seconds. Intro Skill no longer ends Stellarealm prematurely.</p>
+              </div>
+            </div>
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-[#B9A81C]/10 hover:border-[#B9A81C]/30 flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#B9A81C] via-yellow-400 to-[#B9A81C] opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/shorekeeper/sequence/2.png" alt="S2: Night's Gift and Refusal" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(185, 168, 28, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S2</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S2: Night's Gift and Refusal</span>
+                  <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">The Outer Stellarealm now grants a 40% ATK Bonus to team members inside it.</p>
+              </div>
+            </div>
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#B9A81C] via-yellow-400 to-[#B9A81C] opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/shorekeeper/sequence/3.png" alt="S3: Infinity Awaits Me" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(185, 168, 28, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S3</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S3: Infinity Awaits Me</span>
+                  
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Casting Resonance Liberation grants an additional 20 Concerto Energy (once every 25 seconds).</p>
+              </div>
+            </div>
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#B9A81C] via-yellow-400 to-[#B9A81C] opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/shorekeeper/sequence/4.png" alt="S4: Overflowing Quietude" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(185, 168, 28, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S4</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S4: Overflowing Quietude</span>
+                  
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Increases the Healing Bonus of her Resonance Skill by 70%.</p>
+              </div>
+            </div>
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#B9A81C] via-yellow-400 to-[#B9A81C] opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/shorekeeper/sequence/5.png" alt="S5: Echoes in Silence" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(185, 168, 28, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S5</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S5: Echoes in Silence</span>
+                  
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Increases the pulling effect range of her Basic Attack 3 by 50% and her Forte Heavy Attack (Illation) by 30%.</p>
+              </div>
+            </div>
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#B9A81C] via-yellow-400 to-[#B9A81C] opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/shorekeeper/sequence/6.png" alt="S6: To The New World" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(185, 168, 28, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S6</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S6: To The New World</span>
+                  
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Multiplicatively increases base damage multiplier of Intro Skill by 42% and increases Crit DMG by 500%.</p>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <!-- Gameplay Guide Details Section -->
+    <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
+      <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-book-open text-[#B9A81C]"></i>
+        <span data-i18n="detail_guide_details_title">Gameplay Guidelines & Tips</span>
+      </h3>
+      <div id="guide-details" class="prose prose-invert max-w-none">
+        <p class="text-sm text-gray-300 leading-relaxed">Shorekeeper is a premier support unit providing team-wide healing and massive Crit Rate/Crit DMG scaling buffs. Always cast her Resonance Liberation to establish the Stellarealm domain and keep her Energy Regen above 250%.</p>
+      </div>
     </div>
 
   </main>
@@ -346,10 +476,10 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="flex items-center space-x-3">
-          <div class="w-8 h-8 rounded-lg bg-yellow-500 flex items-center justify-center text-white">
+          <div class="w-8 h-8 rounded-lg bg-[#B9A81C] flex items-center justify-center text-white">
             <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
           </div>
-          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-yellow-500">.AIO</span></span>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-[#B9A81C]">.AIO</span></span>
         </div>
         <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer"></p>
       </div>
@@ -374,14 +504,14 @@
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Dynamic Character Guide Hydration (Bilingual)
-    window.characterData = {"id":"shorekeeper","name":{"en":"Shorekeeper"},"element":{"en":"Spectro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"support_and_healer","name":{"en":"Support and Healer"}},{"id":"traction","name":{"en":"Traction"}},{"id":"dmg_amplification","name":{"en":"DMG Amplification"}}],"rarity":5,"description":{"en":"The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."},"bestEcho":{"en":"Fallacy of No Return"},"difficulty":{"en":"Easy"},"weapons":[{"id":"stellar_symphony","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stellar Symphony"},"specs":{"en":"Base ATK: 412 • 77.0% HP% (Lvl 90)"},"desc":{"en":"Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."}},{"id":"variation","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Variation"},"specs":{"en":"Base ATK: 337 • 51.8% Energy Regen (Lvl 90)"},"desc":{"en":"Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."}}],"echoSetup":{"bestSetBonusId":"rejuvenating_glow","cost4":{"en":"Healing Bonus% or HP%"},"cost4Name":{"en":"Fallacy of No Return"},"cost3":{"en":"Energy Regen% / Energy Regen%"},"cost1":{"en":"HP% / HP%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"bestSetBonus":{"en":"Rejuvenating Glow (5-Piece Set)"}},"statPriorities":{"en":["Energy Regen (250%+)","HP% / Flat HP","Crit Rate (Target 20%+)","Healing Bonus%"]},"skillPriorities":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Forte Circuit"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommendedTeams":[{"name":{"en":"Universal Top Tier Carry Comp"},"isPremium":true,"members":{"en":["Jinhsi or Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin or Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Buffer)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Solo Support)</span>"]}},{"name":{"en":"Havoc Burst Comp"},"isPremium":false,"members":{"en":["Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Danjin <span class=\"text-gray-500 text-[10px]\">(Havoc Amp Sub-DPS)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Support Healer)</span>"]}}]};
+    window.characterData = {"id":"shorekeeper","name":{"en":"Shorekeeper"},"attribute":{"en":"Spectro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"support_and_healer","name":{"en":"Support And Healer"}},{"id":"traction","name":{"en":"Traction"}},{"id":"dmg_amplification","name":{"en":"DMG Amplification"}}],"rarity":5,"description":{"en":"The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."},"mainSlotEcho":"fallacy_of_no_return","recommWeapons":[{"id":"stellar_symphony","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stellar Symphony"},"specs":{"en":"Base ATK: 412 • 77.0% HP% (Lvl 90)"},"desc":{"en":"Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."}},{"id":"variation","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Variation"},"specs":{"en":"Base ATK: 337 • 51.8% Energy Regen (Lvl 90)"},"desc":{"en":"Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."}}],"recommEcho":{"sonata":"rejuvenating_glow","mainSlotEcho":"fallacy_of_no_return","cost4":{"en":"Healing Bonus% or HP%"},"cost3":{"en":"Energy Regen% / Energy Regen%"},"cost1":{"en":"HP% / HP%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"sonataObject":{"id":"rejuvenating_glow","name":{"en":"Rejuvenating Glow"},"effect_2pc":{"en":"Healing Bonus +10%"},"effect_5pc":{"en":"Upon healing allies, increases ATK of all team members by 15% for 30s."}},"mainSlotEchoObject":{"id":"fallacy_of_no_return","name":{"en":"fallacy_of_no_return"},"costType":"4"}},"recommStats":{"en":["Energy Regen (250%+)","HP% / Flat HP","Crit Rate (Target 20%+)","Healing Bonus%"]},"recommSkill":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Forte Circuit"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Universal Top Tier Carry Comp"},"isPremium":true,"members":{"en":["Jinhsi or Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin or Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Buffer)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Solo Support)</span>"]}},{"name":{"en":"Havoc Burst Comp"},"isPremium":false,"members":{"en":["Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Danjin <span class=\"text-gray-500 text-[10px]\">(Havoc Amp Sub-DPS)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Support Healer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Unspoken Conjecture"},"description":{"en":"Increases the radius of Stellarealms by 150% and their duration by 10 seconds. Intro Skill no longer ends Stellarealm prematurely."},"isRecommended":true},{"name":{"en":"S2: Night's Gift and Refusal"},"description":{"en":"The Outer Stellarealm now grants a 40% ATK Bonus to team members inside it."},"isRecommended":true},{"name":{"en":"S3: Infinity Awaits Me"},"description":{"en":"Casting Resonance Liberation grants an additional 20 Concerto Energy (once every 25 seconds)."},"isRecommended":false},{"name":{"en":"S4: Overflowing Quietude"},"description":{"en":"Increases the Healing Bonus of her Resonance Skill by 70%."},"isRecommended":false},{"name":{"en":"S5: Echoes in Silence"},"description":{"en":"Increases the pulling effect range of her Basic Attack 3 by 50% and her Forte Heavy Attack (Illation) by 30%."},"isRecommended":false},{"name":{"en":"S6: To The New World"},"description":{"en":"Multiplicatively increases base damage multiplier of Intro Skill by 42% and increases Crit DMG by 500%."},"isRecommended":false}],"guideDetails":{"en":"Shorekeeper is a premier support unit providing team-wide healing and massive Crit Rate/Crit DMG scaling buffs. Always cast her Resonance Liberation to establish the Stellarealm domain and keep her Energy Regen above 250%."}};
 
     function renderCharacterGuide(lang) {
       const data = window.characterData;
       if (!data) return;
 
       // Render hero texts
-      document.getElementById("hero-element").textContent = data.element[lang] || data.element.en;
+      document.getElementById("hero-attribute").textContent = data.attribute[lang] || data.attribute.en;
       document.getElementById("hero-weaponType").textContent = data.weaponType[lang] || data.weaponType.en;
       
       
@@ -407,14 +537,14 @@
       // Render weapons
       const weaponsContainer = document.getElementById("weapons-list");
       if (weaponsContainer) {
-        weaponsContainer.innerHTML = data.weapons.map(weapon => {
+        weaponsContainer.innerHTML = data.recommWeapons.map(weapon => {
           const isSig = weapon.isSignature;
-          const borderClass = isSig ? `border-yellow-500/10 hover:border-yellow-500/30` : `border-white/5 hover:border-yellow-500/20`;
+          const borderClass = isSig ? `border-[#B9A81C]/10 hover:border-[#B9A81C]/30` : `border-white/5 hover:border-[#B9A81C]/20`;
           const badgeClass = isSig ? `bg-yellow-500/20 text-yellow-300 border border-yellow-500/30` : `bg-purple-500/20 text-purple-300 border border-purple-500/30`;
           const iconClass = isSig ? "fa-solid fa-sparkles text-xl" : "fa-solid fa-shield-halved text-xl";
-          const iconColor = isSig ? `text-yellow-500` : "text-gray-400";
-          const iconBg = isSig ? `bg-yellow-500/10` : "bg-gray-500/10";
-          const borderIcon = isSig ? `border-yellow-500/20` : "border-white/10";
+          const iconColor = isSig ? `text-[#B9A81C]` : "text-gray-400";
+          const iconBg = isSig ? `bg-[#B9A81C]/10` : "bg-gray-500/10";
+          const borderIcon = isSig ? `border-[#B9A81C]/20` : "border-white/10";
           
           const weaponName = weapon.name[lang] || weapon.name.en;
           const rarityLabel = weapon.rarityLabel[lang] || weapon.rarityLabel.en;
@@ -444,22 +574,52 @@
       }
 
       // Echo Setup
-      const echo = data.echoSetup;
-      document.getElementById("echo-best-set").textContent = echo.bestSetBonus[lang] || echo.bestSetBonus.en;
-      document.getElementById("echo-cost-4-name").textContent = echo.cost4Name[lang] || echo.cost4Name.en;
+      const echo = data.recommEcho;
+      if (echo) {
+        const sonataObj = echo.sonataObject || { name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
+        const echoObj = echo.mainSlotEchoObject || { name: { en: "" }, costType: "4", id: "" };
+
+        document.getElementById("echo-best-set").textContent = sonataObj.name[lang] || sonataObj.name.en;
+
+        // Update sonata set illustration
+        const sonataIllustContainer = document.getElementById("sonata-set-illustration");
+        if (sonataIllustContainer && sonataObj.id) {
+          sonataIllustContainer.innerHTML = `
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <i class="fa-solid fa-circle-nodes hidden"></i>`;
+        }
+
+        // Update sonata effects
+        const effect2pc = sonataObj.effect_2pc[lang] || sonataObj.effect_2pc.en;
+        const effect5pc = sonataObj.effect_5pc[lang] || sonataObj.effect_5pc.en;
+        document.getElementById("sonata-effect-2pc").textContent = effect2pc;
+        document.getElementById("sonata-effect-5pc").textContent = effect5pc;
+
+        // Update main slot echo info
+        const echoName = echoObj.name[lang] || echoObj.name.en;
+        document.getElementById("echo-cost-4-name").textContent = echoName;
       document.getElementById("echo-cost-4").textContent = echo.cost4[lang] || echo.cost4.en;
       document.getElementById("echo-cost-3").textContent = echo.cost3[lang] || echo.cost3.en;
       document.getElementById("echo-cost-1").textContent = echo.cost1[lang] || echo.cost1.en;
       document.getElementById("echo-substats-priority").textContent = echo.substatsPriority[lang] || echo.substatsPriority.en;
       document.getElementById("echo-note").textContent = echo.note[lang] || echo.note.en;
 
+      // Update main echo illustration
+        const illustContainer = document.getElementById("echo-main-illustration");
+        if (illustContainer && echoObj.id) {
+          illustContainer.innerHTML = `
+            <img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoName}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <i class="fa-solid fa-dna text-xl hidden"></i>`;
+        }
+      }
+
       // Stat Priorities
       const statsContainer = document.getElementById("stat-priorities-list");
       if (statsContainer) {
-        const priorities = data.statPriorities[lang] || data.statPriorities.en;
+        const priorities = data.recommStats[lang] || data.recommStats.en;
         statsContainer.innerHTML = priorities.map((stat, index) => {
           const isFirst = index === 0;
-          const numBg = isFirst ? `bg-yellow-500/20 text-yellow-400` : `bg-yellow-500/10 text-gray-400`;
+          const numBg = isFirst ? `bg-[#B9A81C]/20 text-yellow-400` : `bg-[#B9A81C]/10 text-gray-400`;
           return `
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
@@ -471,7 +631,7 @@
       // Skill priorities
       const skillsContainer = document.getElementById("skill-priorities-list");
       if (skillsContainer) {
-        skillsContainer.innerHTML = data.skillPriorities.map((item, index) => {
+        skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
           let prioClass = 'text-gray-500';
           if (index === 0) prioClass = `text-yellow-400 font-bold`;
           else if (index === 1) prioClass = `text-yellow-300 font-semibold`;
@@ -491,8 +651,8 @@
       // Recommended Teams
       const teamsContainer = document.getElementById("recommended-teams-list");
       if (teamsContainer) {
-        teamsContainer.innerHTML = data.recommendedTeams.map(team => {
-          const borderClass = team.isPremium ? `border-yellow-500/10` : 'border-white/5';
+        teamsContainer.innerHTML = data.recommTeammates.map(team => {
+          const borderClass = team.isPremium ? `border-[#B9A81C]/10` : 'border-white/5';
           const titleColor = team.isPremium ? `text-yellow-400` : 'text-gray-400';
           
           const teamName = team.name[lang] || team.name.en;
@@ -507,6 +667,43 @@
               </ul>
             </div>`;
         }).join('\n');
+      }
+
+      // Resonance Chain (Sequences)
+      const sequenceContainer = document.getElementById("sequence-list");
+      if (sequenceContainer && data.recommSequence) {
+        sequenceContainer.innerHTML = data.recommSequence.map((seq, index) => {
+          const isRec = seq.isRecommended;
+          const borderClass = isRec ? `border-[#B9A81C]/10 hover:border-[#B9A81C]/30` : 'border-white/5';
+          const badgeHtml = isRec ? `<span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
+          const stepIdx = index + 1;
+          const seqName = seq.name[lang] || seq.name.en;
+          const seqDesc = seq.description[lang] || seq.description.en;
+
+          return `
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all">
+              <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+                <!-- Ambient Glow Backdrop -->
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#B9A81C] via-yellow-400 to-[#B9A81C] opacity-20 blur-[1px]"></div>
+                <img src="../../assets/images/characters/${data.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(185, 168, 28, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S${stepIdx}</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>${seqName}</span>
+                  ${badgeHtml}
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">${seqDesc}</p>
+              </div>
+            </div>`;
+        }).join('\n');
+      }
+
+      // Gameplay Guide Details
+      const detailsContainer = document.getElementById("guide-details");
+      if (detailsContainer && data.guideDetails) {
+        const detailsText = data.guideDetails[lang] || data.guideDetails.en;
+        detailsContainer.innerHTML = `<p class="text-sm text-gray-300 leading-relaxed">${detailsText}</p>`;
       }
 
       // Update dynamic page titles

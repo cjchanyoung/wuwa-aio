@@ -86,7 +86,6 @@
     char_filter_5: "5★",
     char_filter_4: "4★",
     char_card_view: "View Guide Details",
-    char_difficulty: "Build Difficulty:",
 
     // Weapons Page
     weapons_tab_title: "Weapons Database & Tiers - WuWa AIO",
@@ -282,8 +281,8 @@
     // Dynamic UI labels (added for Pattern B cleanup)
     resonator_label: "Resonator",
     build_guide_label: "Build Guide",
-    best_echo_label: "Best Echo:",
-    difficulty_label: "Build Difficulty:",
+    echo_label: "Sonata:",
+    weapon_label: "Weapon:",
     view_guide_label: "View Guide Details",
     best_resonators_label: "Best Resonators:",
     swap_cancel_label: "Swap Cancel",

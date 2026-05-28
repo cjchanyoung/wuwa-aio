@@ -4,33 +4,22 @@
     "name": {
       "en": "Jinhsi"
     },
-    "element": {
+    "attribute": {
       "en": "Spectro"
     },
     "weaponType": {
       "en": "Broadblade"
     },
     "roles": [
-      {
-        "id": "main_damage_dealer",
-        "name": { "en": "Main Damage Dealer" }
-      },
-      {
-        "id": "resonance_skill_dmg",
-        "name": { "en": "Resonance Skill DMG" }
-      }
+      "main_damage_dealer",
+      "resonance_skill_dmg"
     ],
     "rarity": 5,
     "description": {
       "en": "The magistrate of Jinzhou, carrying the weight of prophecy and the blessing of the Sentinel Jué. She acts as a premier Spectro Carry, dealing monumental burst damage through her specialized Forte Circuit state and Resonance Skill multiplier stacks."
     },
-    "bestEcho": {
-      "en": "Jué (4-3-3-1-1)"
-    },
-    "difficulty": {
-      "en": "Medium"
-    },
-    "weapons": [
+    "mainSlotEcho": "jue",
+    "recommWeapons": [
       {
         "id": "ages_of_harvest",
         "rarityLabel": {
@@ -46,13 +35,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "celestial_light",
+    "recommEcho": {
+      "sonata": "celestial_light",
+      "mainSlotEcho": "jue",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Jué"
       },
       "cost3": {
         "en": "Spectro DMG% / Spectro DMG%"
@@ -67,7 +54,7 @@
         "en": "Note: Target around 115% - 120% Energy Regen for smooth combat rotations."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "ATK% / Flat ATK",
@@ -75,7 +62,7 @@
         "Energy Regen (115%+)"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Forte Circuit"
@@ -117,7 +104,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Optimal Premium Team"
@@ -144,40 +131,88 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: Abyssal Ascenslon"
+        },
+        "description": {
+          "en": "When casting Basic Attack &quot;Incarnation - Basic Attack&quot; or Resonance Skill Crescent Divinity, Jinhsi gains one stack of Herald of Revival, stacking up to 4 times and lasting for 6s. When casting Resonance Skill Illuminous Epiphany, Jinhsi consumes all stacks of Herald of Revival. Each stack increases the damage of Resonance Skill Illuminous Epiphany by 20%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S2: Abyssal Ascenslon"
+        },
+        "description": {
+          "en": "When casting Basic Attack &quot;Incarnation - Basic Attack&quot; or Resonance Skill Crescent Divinity, Jinhsi gains one stack of Herald of Revival, stacking up to 4 times and lasting for 6s. When casting Resonance Skill Illuminous Epiphany, Jinhsi consumes all stacks of Herald of Revival. Each stack increases the damage of Resonance Skill Illuminous Epiphany by 20%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S3: Abyssal Ascenslon"
+        },
+        "description": {
+          "en": "When casting Basic Attack &quot;Incarnation - Basic Attack&quot; or Resonance Skill Crescent Divinity, Jinhsi gains one stack of Herald of Revival, stacking up to 4 times and lasting for 6s. When casting Resonance Skill Illuminous Epiphany, Jinhsi consumes all stacks of Herald of Revival. Each stack increases the damage of Resonance Skill Illuminous Epiphany by 20%."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S4: Abyssal Ascenslon"
+        },
+        "description": {
+          "en": "When casting Basic Attack &quot;Incarnation - Basic Attack&quot; or Resonance Skill Crescent Divinity, Jinhsi gains one stack of Herald of Revival, stacking up to 4 times and lasting for 6s. When casting Resonance Skill Illuminous Epiphany, Jinhsi consumes all stacks of Herald of Revival. Each stack increases the damage of Resonance Skill Illuminous Epiphany by 20%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S5: Abyssal Ascenslon"
+        },
+        "description": {
+          "en": "When casting Basic Attack &quot;Incarnation - Basic Attack&quot; or Resonance Skill Crescent Divinity, Jinhsi gains one stack of Herald of Revival, stacking up to 4 times and lasting for 6s. When casting Resonance Skill Illuminous Epiphany, Jinhsi consumes all stacks of Herald of Revival. Each stack increases the damage of Resonance Skill Illuminous Epiphany by 20%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: Abyssal Ascenslon"
+        },
+        "description": {
+          "en": "When casting Basic Attack &quot;Incarnation - Basic Attack&quot; or Resonance Skill Crescent Divinity, Jinhsi gains one stack of Herald of Revival, stacking up to 4 times and lasting for 6s. When casting Resonance Skill Illuminous Epiphany, Jinhsi consumes all stacks of Herald of Revival. Each stack increases the damage of Resonance Skill Illuminous Epiphany by 20%."
+        },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Jinhsi is a highly explosive burst DPS whose main damage comes from her Forte Circuit. Coordinate with sub-DPS units (like Yinlin or Yuanwu) who can deal coordinated attacks to quickly build Jinhsi's Forte Circuit stacks."
+    }
   },
   {
     "id": "yinlin",
     "name": {
       "en": "Yinlin"
     },
-    "element": {
+    "attribute": {
       "en": "Electro"
     },
     "weaponType": {
       "en": "Rectifier"
     },
     "roles": [
-      {
-        "id": "concerto_efficiency",
-        "name": { "en": "Concerto Efficiency" }
-      },
-      {
-        "id": "resonance_skill_dmg",
-        "name": { "en": "Resonance Skill DMG" }
-      }
+      "concerto_efficiency",
+      "resonance_skill_dmg"
     ],
     "rarity": 5,
     "description": {
       "en": "A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."
     },
-    "bestEcho": {
-      "en": "Tempest Mephis"
-    },
-    "difficulty": {
-      "en": "Hard"
-    },
-    "weapons": [
+    "mainSlotEcho": "tempest_mephis",
+    "recommWeapons": [
       {
         "id": "stringmaster",
         "rarityLabel": {
@@ -193,13 +228,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "void_thunder",
+    "recommEcho": {
+      "sonata": "void_thunder",
+      "mainSlotEcho": "tempest_mephis",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Tempest Mephis"
       },
       "cost3": {
         "en": "Electro DMG% / Electro DMG% (or Energy Regen)"
@@ -214,7 +247,7 @@
         "en": "Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "Electro DMG%",
@@ -222,7 +255,7 @@
         "ATK% / Flat ATK"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Forte Circuit"
@@ -264,7 +297,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Electro Dominance"
@@ -291,36 +324,87 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: Morality's Crossroads"
+        },
+        "description": {
+          "en": "Magnetic Roar and Lightning Execution deal 70% extra damage."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S2: Ensnarled by Rapport"
+        },
+        "description": {
+          "en": "Electromagnetic Blast recovers an additional 5 Judgement Points and 5 Resonance Energy on hit."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S3: Unyielding Verdict"
+        },
+        "description": {
+          "en": "Judgment Strike damage multiplier increased by 55%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S4: Steadfast Conviction"
+        },
+        "description": {
+          "en": "When Judgment Strike hits, team ATK is increased by 20% for 12 seconds."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S5: Resounding Will"
+        },
+        "description": {
+          "en": "Resonance Liberation deals 100% extra damage to targets affected by marks."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: Pursuit of Justice"
+        },
+        "description": {
+          "en": "For 30s after casting Resonance Liberation, basic attacks trigger Furious Thunder dealing massive Electro damage."
+        },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed."
+    }
   },
   {
     "id": "chixia",
     "name": {
       "en": "Chixia"
     },
-    "element": {
+    "attribute": {
       "en": "Fusion"
     },
     "weaponType": {
       "en": "Pistols"
     },
     "roles": [
-      {
-        "id": "main_damage_dealer",
-        "name": { "en": "Main Damage Dealer" }
-      }
+      "main_damage_dealer"
     ],
     "rarity": 4,
     "description": {
       "en": "A bright and energetic patroller of Jinzhou, who is always ready to lend a hand. Chixia functions as a powerful ranged Fusion DPS, dealing rapid fire damage through her specialized pistols and continuous Daka-Daka Resonance Skill firing mode."
     },
-    "bestEcho": {
-      "en": "Inferno Rider"
-    },
-    "difficulty": {
-      "en": "Easy"
-    },
-    "weapons": [
+    "mainSlotEcho": "inferno_rider",
+    "recommWeapons": [
       {
         "id": "static_mist",
         "rarityLabel": {
@@ -336,13 +420,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "molten_rift",
+    "recommEcho": {
+      "sonata": "molten_rift",
+      "mainSlotEcho": "inferno_rider",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Inferno Rider"
       },
       "cost3": {
         "en": "Fusion DMG% / Fusion DMG%"
@@ -357,7 +439,7 @@
         "en": "Note: Chixia does not require high Energy Regen, making offensive substats the primary goal."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "Fusion DMG%",
@@ -365,7 +447,7 @@
         "Resonance Skill DMG%"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Resonance Skill"
@@ -407,7 +489,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Fusion Quickswap Comp"
@@ -434,40 +516,88 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: No.1 Hero Play Fan"
+        },
+        "description": {
+          "en": "Chixia's Resonance Skill (\"Boom Boom\" hits) will always be a Critical Hit."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S2: Leaping Sparkles"
+        },
+        "description": {
+          "en": "During Resonance Liberation, for every target defeated, Chixia recovers 5 Resonance Energy (up to 20 per Liberation)."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S3: Eternal Flames"
+        },
+        "description": {
+          "en": "Resonance Liberation deals 40% more damage to targets with HP below 50%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S4: Hero's Ultimate Move"
+        },
+        "description": {
+          "en": "Resonance Liberation grants 60 \"Thermobaric Bullets\" and immediately resets the cooldown of her Resonance Skill."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S5: Triumphant Explosions"
+        },
+        "description": {
+          "en": "When inherent skill (\"Numbingly Spicy!\") reaches max stacks, her ATK is increased by 30%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: Easter Egg Performance"
+        },
+        "description": {
+          "en": "Resonance Skill increases the Basic Attack DMG Bonus of all team members by 25% for 15 seconds."
+        },
+        "isRecommended": false
+      }
+    ],
+    "guideDetails": {
+      "en": "Chixia is a high-firepower Fusion DPS who relies heavily on her continuous Resonance Skill attacks. Focus on utilizing her rapid-fire state and quickly swap to off-field supports who can boost her Fusion damage."
+    }
   },
   {
     "id": "changli",
     "name": {
       "en": "Changli"
     },
-    "element": {
+    "attribute": {
       "en": "Fusion"
     },
     "weaponType": {
       "en": "Sword"
     },
     "roles": [
-      {
-        "id": "main_damage_dealer",
-        "name": { "en": "Main Damage Dealer" }
-      },
-      {
-        "id": "resonance_skill_dmg",
-        "name": { "en": "Resonance Skill DMG" }
-      }
+      "main_damage_dealer",
+      "resonance_skill_dmg"
     ],
     "rarity": 5,
     "description": {
       "en": "Counselor to the Jinzhou Magistrate and mentor to Jinhsi. Possessing a clever mind and a graceful demeanor, Changli commands the battlefield as a powerful Fusion Carry, capable of acting as both a primary Main DPS or a high-multiplier Sub-DPS that buffs incoming Fusion Resonators."
     },
-    "bestEcho": {
-      "en": "Inferno Rider"
-    },
-    "difficulty": {
-      "en": "Medium"
-    },
-    "weapons": [
+    "mainSlotEcho": "inferno_rider",
+    "recommWeapons": [
       {
         "id": "blazing_brilliance",
         "rarityLabel": {
@@ -483,13 +613,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "molten_rift",
+    "recommEcho": {
+      "sonata": "molten_rift",
+      "mainSlotEcho": "inferno_rider",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Inferno Rider"
       },
       "cost3": {
         "en": "Fusion DMG% / Fusion DMG%"
@@ -504,7 +632,7 @@
         "en": "Note: Target around 120% Energy Regen to ensure smooth skill/ult sequencing."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "Fusion DMG%",
@@ -512,7 +640,7 @@
         "Energy Regen (120%+)"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Forte Circuit"
@@ -554,7 +682,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Fusion Resonance Team"
@@ -581,44 +709,89 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: Hidden Thoughts"
+        },
+        "description": {
+          "en": "Resonance Skill and Heavy Attack increase her DMG dealt by 10% and grant resistance to interruption."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S2: Pursuit of Desires"
+        },
+        "description": {
+          "en": "Obtaining a stack of Enflamement increases Changli's Crit Rate by 25% for 8 seconds."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S3: Learned Secrets"
+        },
+        "description": {
+          "en": "Resonance Liberation DMG is increased by 80%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S4: Polished Words"
+        },
+        "description": {
+          "en": "After casting her Intro Skill, all team members' ATK is increased by 20% for 30 seconds."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S5: Sacrificed Gains"
+        },
+        "description": {
+          "en": "Heavy Attack base damage multiplier is increased by 50% and its DMG dealt is increased by 50%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: Realized Plans"
+        },
+        "description": {
+          "en": "Resonance Skill, Heavy Attack, and Resonance Liberation ignore an additional 40% of the target's DEF."
+        },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Changli excels as a high-burst Fusion Carry who can act as both a primary Main DPS and a Sub-DPS. Accumulate Enflamement stacks through her skills to unleash her high-multiplier Heavy Attacks, and leverage her Fusion damage buff for teammates."
+    }
   },
   {
     "id": "shorekeeper",
     "name": {
       "en": "Shorekeeper"
     },
-    "element": {
+    "attribute": {
       "en": "Spectro"
     },
     "weaponType": {
       "en": "Rectifier"
     },
     "roles": [
-      {
-        "id": "support_and_healer",
-        "name": { "en": "Support and Healer" }
-      },
-      {
-        "id": "traction",
-        "name": { "en": "Traction" }
-      },
-      {
-        "id": "dmg_amplification",
-        "name": { "en": "DMG Amplification" }
-      }
+      "support_and_healer",
+      "traction",
+      "dmg_amplification"
     ],
     "rarity": 5,
     "description": {
       "en": "The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."
     },
-    "bestEcho": {
-      "en": "Fallacy of No Return"
-    },
-    "difficulty": {
-      "en": "Easy"
-    },
-    "weapons": [
+    "mainSlotEcho": "fallacy_of_no_return",
+    "recommWeapons": [
       {
         "id": "stellar_symphony",
         "rarityLabel": {
@@ -634,13 +807,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "rejuvenating_glow",
+    "recommEcho": {
+      "sonata": "rejuvenating_glow",
+      "mainSlotEcho": "fallacy_of_no_return",
       "cost4": {
         "en": "Healing Bonus% or HP%"
-      },
-      "cost4Name": {
-        "en": "Fallacy of No Return"
       },
       "cost3": {
         "en": "Energy Regen% / Energy Regen%"
@@ -655,7 +826,7 @@
         "en": "Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Energy Regen (250%+)",
         "HP% / Flat HP",
@@ -663,7 +834,7 @@
         "Healing Bonus%"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Resonance Liberation"
@@ -705,7 +876,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Universal Top Tier Carry Comp"
@@ -732,6 +903,643 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: Unspoken Conjecture"
+        },
+        "description": {
+          "en": "Increases the radius of Stellarealms by 150% and their duration by 10 seconds. Intro Skill no longer ends Stellarealm prematurely."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S2: Night's Gift and Refusal"
+        },
+        "description": {
+          "en": "The Outer Stellarealm now grants a 40% ATK Bonus to team members inside it."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S3: Infinity Awaits Me"
+        },
+        "description": {
+          "en": "Casting Resonance Liberation grants an additional 20 Concerto Energy (once every 25 seconds)."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S4: Overflowing Quietude"
+        },
+        "description": {
+          "en": "Increases the Healing Bonus of her Resonance Skill by 70%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S5: Echoes in Silence"
+        },
+        "description": {
+          "en": "Increases the pulling effect range of her Basic Attack 3 by 50% and her Forte Heavy Attack (Illation) by 30%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: To The New World"
+        },
+        "description": {
+          "en": "Multiplicatively increases base damage multiplier of Intro Skill by 42% and increases Crit DMG by 500%."
+        },
+        "isRecommended": false
+      }
+    ],
+    "guideDetails": {
+      "en": "Shorekeeper is a premier support unit providing team-wide healing and massive Crit Rate/Crit DMG scaling buffs. Always cast her Resonance Liberation to establish the Stellarealm domain and keep her Energy Regen above 250%."
+    }
+  },
+  {
+    "id": "jiyan",
+    "name": {
+      "en": "Jiyan"
+    },
+    "attribute": {
+      "en": "Aero"
+    },
+    "weaponType": {
+      "en": "Broadblade"
+    },
+    "roles": [
+      "main_damage_dealer",
+      "heavy_attack_dmg"
+    ],
+    "rarity": 5,
+    "description": {
+      "en": "The commander of the Midnight Rangers in Jinzhou, wielding his broadblade with wind-carving swiftness and summoning the Qingloong. Jiyan acts as a premier Aero Main DPS, converting his attacks into heavy-damage Lance strikes during his Resonance Liberation."
+    },
+    "mainSlotEcho": "feilian_primal",
+    "recommWeapons": [
+      {
+        "id": "verdant_summit",
+        "rarityLabel": {
+          "en": "5★ Signature"
+        },
+        "isSignature": true
+      },
+      {
+        "id": "autumntrace",
+        "rarityLabel": {
+          "en": "4★ Best BP Alternative"
+        },
+        "isSignature": false
+      }
+    ],
+    "recommEcho": {
+      "sonata": "sierra_gale",
+      "mainSlotEcho": "feilian_primal",
+      "cost4": {
+        "en": "Crit Rate / Crit DMG"
+      },
+      "cost3": {
+        "en": "Aero DMG% / Aero DMG%"
+      },
+      "cost1": {
+        "en": "ATK% / ATK%"
+      },
+      "substatsPriority": {
+        "en": "Crit Rate% / Crit DMG% > Heavy Attack DMG% > ATK% > Energy Regen%"
+      },
+      "note": {
+        "en": "Note: Aim for 120% - 130% Energy Regen to ensure smooth ultimate uptime."
+      }
+    },
+    "recommStats": {
+      "en": [
+        "Crit Rate / Crit DMG",
+        "Aero DMG%",
+        "Energy Regen (120%+)",
+        "Heavy Attack DMG%"
+      ]
+    },
+    "recommSkill": [
+      {
+        "skill": {
+          "en": "1. Resonance Liberation"
+        },
+        "priority": {
+          "en": "Highest Priority"
+        }
+      },
+      {
+        "skill": {
+          "en": "2. Forte Circuit"
+        },
+        "priority": {
+          "en": "High Priority"
+        }
+      },
+      {
+        "skill": {
+          "en": "3. Resonance Skill"
+        },
+        "priority": {
+          "en": "Medium"
+        }
+      },
+      {
+        "skill": {
+          "en": "4. Basic Attack"
+        },
+        "priority": {
+          "en": "Low"
+        }
+      },
+      {
+        "skill": {
+          "en": "5. Intro Skill"
+        },
+        "priority": {
+          "en": "Low"
+        }
+      }
+    ],
+    "recommTeammates": [
+      {
+        "name": {
+          "en": "Aero Hurricane Team"
+        },
+        "isPremium": true,
+        "members": {
+          "en": [
+            "Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>",
+            "Mortefi <span class=\"text-gray-500 text-[10px]\">(Heavy ATK Amp Sub-DPS)</span>",
+            "Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"
+          ]
+        }
+      },
+      {
+        "name": {
+          "en": "F2P Friendly Team"
+        },
+        "isPremium": false,
+        "members": {
+          "en": [
+            "Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>",
+            "Yangyang <span class=\"text-gray-500 text-[10px]\">(Energy Battery Sub-DPS)</span>",
+            "Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"
+          ]
+        }
+      }
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: Benevolence"
+        },
+        "description": {
+          "en": "Resonance Skill Windqueller can be cast 1 more time. The active time of the skill is increased by 1 second."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S2: Versatility"
+        },
+        "description": {
+          "en": "When casting Intro Skill Tactical Strike, Jiyan recovers 30 Resolve and increases ATK by 28% for 15 seconds."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S3: Spectator"
+        },
+        "description": {
+          "en": "When casting Resonance Liberation Emerald Storm or Intro Skill Tactical Strike, increases Crit Rate by 16% and Crit DMG by 32% for 8 seconds."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S4: Prudence"
+        },
+        "description": {
+          "en": "When casting Resonance Liberation, increases all team members' Heavy Attack DMG by 25% for 30 seconds."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S5: Resoluteness"
+        },
+        "description": {
+          "en": "Outro Skill damage multiplier is increased by 120%. Jiyan's attacks ignore 15% of the target's DEF."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: Fortitude"
+        },
+        "description": {
+          "en": "Increases the damage multiplier of Jiyan's attacks in Qingloong state by an additional 120%."
+        },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Jiyan is a highly consistent Aero Main DPS. Pair him with Mortefi to gain a massive Heavy Attack DMG boost from Mortefi's Outro Skill, and make sure to swap to Jiyan when his concerto energy is full to activate his high-impact entry attacks."
+    }
+  },
+  {
+    "id": "sanhua",
+    "name": {
+      "en": "Sanhua"
+    },
+    "attribute": {
+      "en": "Glacio"
+    },
+    "weaponType": {
+      "en": "Sword"
+    },
+    "roles": [
+      "concerto_efficiency",
+      "basic_attack_dmg_amplification"
+    ],
+    "rarity": 4,
+    "description": {
+      "en": "A bodyguard to the Magistrate of Jinzhou, quiet and reserved, keeping her emotions hidden. Sanhua serves as a fast-paced Glacio Sub-DPS, providing outstanding basic attack damage amplification and exceptionally rapid Concerto accumulation."
+    },
+    "mainSlotEcho": "lampylumen_myriad",
+    "recommWeapons": [
+      {
+        "id": "emerald_of_genesis",
+        "rarityLabel": {
+          "en": "5★ Standard"
+        },
+        "isSignature": true
+      },
+      {
+        "id": "commando_of_conviction",
+        "rarityLabel": {
+          "en": "4★ Best Alternative"
+        },
+        "isSignature": false
+      }
+    ],
+    "recommEcho": {
+      "sonata": "moonlit_clouds",
+      "mainSlotEcho": "lampylumen_myriad",
+      "cost4": {
+        "en": "Crit Rate / Crit DMG"
+      },
+      "cost3": {
+        "en": "Glacio DMG% / Energy Regen%"
+      },
+      "cost1": {
+        "en": "ATK% / ATK%"
+      },
+      "substatsPriority": {
+        "en": "Crit Rate% / Crit DMG% > Energy Regen% > ATK% > Resonance Skill DMG%"
+      },
+      "note": {
+        "en": "Note: Focus on high Energy Regen to spam her Ultimate and maintain the Moonlit Clouds buff rotation."
+      }
+    },
+    "recommStats": {
+      "en": [
+        "Crit Rate / Crit DMG",
+        "Energy Regen (130%+)",
+        "Glacio DMG%",
+        "ATK% / Flat ATK"
+      ]
+    },
+    "recommSkill": [
+      {
+        "skill": {
+          "en": "1. Forte Circuit"
+        },
+        "priority": {
+          "en": "Highest Priority"
+        }
+      },
+      {
+        "skill": {
+          "en": "2. Resonance Skill"
+        },
+        "priority": {
+          "en": "High Priority"
+        }
+      },
+      {
+        "skill": {
+          "en": "3. Resonance Liberation"
+        },
+        "priority": {
+          "en": "Medium"
+        }
+      },
+      {
+        "skill": {
+          "en": "4. Basic Attack"
+        },
+        "priority": {
+          "en": "Low"
+        }
+      },
+      {
+        "skill": {
+          "en": "5. Intro Skill"
+        },
+        "priority": {
+          "en": "Low"
+        }
+      }
+    ],
+    "recommTeammates": [
+      {
+        "name": {
+          "en": "Basic Attack Carry Duo"
+        },
+        "isPremium": true,
+        "members": {
+          "en": [
+            "Encore or Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>",
+            "Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Basic ATK Amp)</span>",
+            "Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"
+          ]
+        }
+      },
+      {
+        "name": {
+          "en": "F2P Speed Team"
+        },
+        "isPremium": false,
+        "members": {
+          "en": [
+            "Rover (Spectro) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>",
+            "Sanhua <span class=\"text-gray-500 text-[10px]\">(Concerto Battery)</span>",
+            "Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"
+          ]
+        }
+      }
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: Solitude's Solace"
+        },
+        "description": {
+          "en": "Basic Attack 5 increases Sanhua's Crit Rate by 15% for 15 seconds."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S2: Snow's Spark"
+        },
+        "description": {
+          "en": "Resonance Skill cooldown is reduced by 20% and Stamina consumption is reduced by 15%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S3: Cold's Clarity"
+        },
+        "description": {
+          "en": "Sanhua's damage against targets with HP below 50% is increased by 35%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S4: Frost's Focus"
+        },
+        "description": {
+          "en": "Casting Resonance Liberation recovers 10 Resonance Energy and increases Heavy Attack DMG by 120% for 5 seconds."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S5: Blizzard's Bite"
+        },
+        "description": {
+          "en": "Forte Circuit Ice Burst critical damage is increased by 100%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: Glaclal Grace"
+        },
+        "description": {
+          "en": "Upon detonating Ice Thorns or Glaciers, increases all team members' ATK by 20% for 20 seconds."
+        },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Sanhua is an incredibly fast Sub-DPS focused on basic attack amplification and speedy rotation. Master her Forte gauge timing (detonating ice glaciers with heavy attacks) to maximize her off-field damage contribution."
+    }
+  },
+  {
+    "id": "rover_havoc",
+    "name": {
+      "en": "Rover (Havoc)"
+    },
+    "attribute": {
+      "en": "Havoc"
+    },
+    "weaponType": {
+      "en": "Sword"
+    },
+    "roles": [
+      "main_damage_dealer"
+    ],
+    "rarity": 5,
+    "description": {
+      "en": "The mysterious protagonist of Solaris-3, awakening their slumbering Havoc powers. Wielding their dark sword, Rover (Havoc) acts as a highly explosive Main DPS, dealing devastating area damage through their Dark Surge state and ultimate."
+    },
+    "mainSlotEcho": "dreamless",
+    "recommWeapons": [
+      {
+        "id": "emerald_of_genesis",
+        "rarityLabel": {
+          "en": "5★ Standard Best"
+        },
+        "isSignature": true
+      },
+      {
+        "id": "commando_of_conviction",
+        "rarityLabel": {
+          "en": "4★ Best Alternative"
+        },
+        "isSignature": false
+      }
+    ],
+    "recommEcho": {
+      "sonata": "sun_sinking_havoc",
+      "mainSlotEcho": "dreamless",
+      "cost4": {
+        "en": "Crit Rate / Crit DMG"
+      },
+      "cost3": {
+        "en": "Havoc DMG% / Havoc DMG%"
+      },
+      "cost1": {
+        "en": "ATK% / ATK%"
+      },
+      "substatsPriority": {
+        "en": "Crit Rate% / Crit DMG% > Resonance Liberation DMG% > ATK% > Resonance Skill DMG%"
+      },
+      "note": {
+        "en": "Note: Focus on building high Crit Rate/DMG to fully capitalize on her high-scaling multipliers."
+      }
+    },
+    "recommStats": {
+      "en": [
+        "Crit Rate / Crit DMG",
+        "Havoc DMG%",
+        "Resonance Liberation DMG%",
+        "ATK%"
+      ]
+    },
+    "recommSkill": [
+      {
+        "skill": {
+          "en": "1. Resonance Liberation"
+        },
+        "priority": {
+          "en": "Highest Priority"
+        }
+      },
+      {
+        "skill": {
+          "en": "2. Forte Circuit"
+        },
+        "priority": {
+          "en": "High Priority"
+        }
+      },
+      {
+        "skill": {
+          "en": "3. Resonance Skill"
+        },
+        "priority": {
+          "en": "Medium"
+        }
+      },
+      {
+        "skill": {
+          "en": "4. Basic Attack"
+        },
+        "priority": {
+          "en": "Low"
+        }
+      },
+      {
+        "skill": {
+          "en": "5. Intro Skill"
+        },
+        "priority": {
+          "en": "Low"
+        }
+      }
+    ],
+    "recommTeammates": [
+      {
+        "name": {
+          "en": "Havoc Resonance Team"
+        },
+        "isPremium": true,
+        "members": {
+          "en": [
+            "Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>",
+            "Danjin <span class=\"text-gray-500 text-[10px]\">(Havoc Amp Sub-DPS)</span>",
+            "Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"
+          ]
+        }
+      },
+      {
+        "name": {
+          "en": "F2P Speed Team"
+        },
+        "isPremium": false,
+        "members": {
+          "en": [
+            "Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>",
+            "Sanhua <span class=\"text-gray-500 text-[10px]\">(Concerto Battery)</span>",
+            "Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"
+          ]
+        }
+      }
+    ],
+    "recommSequence": [
+      {
+        "name": {
+          "en": "S1: Lycoris Bloom"
+        },
+        "description": {
+          "en": "Increases Crit Rate of Resonance Skill by 15% for 6s when Rover's HP is above 60%."
+        },
+        "isRecommended": true
+      },
+      {
+        "name": {
+          "en": "S2: Crimson Bloom"
+        },
+        "description": {
+          "en": "Increases Havoc DMG by 20% when Rover's HP is below 60%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S3: Shadow Bloom"
+        },
+        "description": {
+          "en": "Forte Circuit Heavy Attack Devastation damage multiplier increased by 50%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S4: Dark Bloom"
+        },
+        "description": {
+          "en": "Resonance Liberation ignores 20% of the target's DEF."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S5: Thorn Bloom"
+        },
+        "description": {
+          "en": "Rover recovers 20% HP on casting Resonance Liberation if HP is below 50%."
+        },
+        "isRecommended": false
+      },
+      {
+        "name": {
+          "en": "S6: Decay Bloom"
+        },
+        "description": {
+          "en": "Increases Rover's ATK by 25% for 15s after casting Resonance Liberation."
+        },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Rover (Havoc) is an exceptional F2P main damage dealer. Her burst capability during her Forte Circuit state (Dark Surge) and the massive multipliers on her Resonance Liberation make her highly competitive. Always pair her with Danjin to receive a 23% Havoc DMG Amplification boost from Danjin's Outro Skill."
+    }
   }
 ]
