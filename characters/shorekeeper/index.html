@@ -123,8 +123,8 @@
               <span>Support And Healer</span>
             </span>
 <span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
-              <img src="../../assets/images/roles/traction.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
-              <span>Traction</span>
+              <img src="../../assets/images/roles/resonance_liberation_regeneration.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <span>Resonance Liberation Regeneration</span>
             </span>
 <span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
               <img src="../../assets/images/roles/dmg_amplification.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
@@ -215,22 +215,31 @@
           </h3>
 
           <div class="space-y-6">
-            <!-- Best Set Summary -->
-            <div class="flex items-center gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
+            <!-- Best Set Summary (Sonata) -->
+            <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
               <div class="w-10 h-10 bg-yellow-500/10 rounded-lg flex items-center justify-center text-yellow-500 shrink-0 border border-white/5">
-                <i class="fa-solid fa-dna"></i>
+                <i class="fa-solid fa-circle-nodes"></i>
               </div>
-              <div>
+              <div class="flex-grow">
                 <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
-                <span id="echo-best-set" class="block text-sm text-yellow-500 font-semibold">Rejuvenating Glow (5-Piece Set)</span>
+                <span id="echo-best-set" class="block text-sm text-yellow-500 font-semibold">Rejuvenating Glow</span>
+                <p id="sonata-effects" class="text-xs text-gray-400 mt-2 space-y-1">
+                  <span class="block">• 2-Pc: <span id="sonata-effect-2pc" class="text-gray-300">Healing Bonus +10%</span></span>
+                  <span class="block">• 5-Pc: <span id="sonata-effect-5pc" class="text-gray-300">Upon healing allies, increases ATK of all team members by 15% for 30s.</span></span>
+                </p>
               </div>
             </div>
 
             <!-- Cost breakdown -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
-                <span class="block text-xs text-gray-500 font-bold uppercase mb-1"><span data-i18n="detail_cost_4"></span> (<span id="echo-cost-4-name">Fallacy of No Return</span>)</span>
-                <span id="echo-cost-4" class="text-sm font-semibold text-white">Healing Bonus% or HP%</span>
+              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 flex gap-3 items-center">
+                <div class="w-12 h-12 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center shrink-0 overflow-hidden" id="echo-main-illustration">
+                  <i class="fa-solid fa-dna text-xl"></i>
+                </div>
+                <div>
+                  <span class="block text-xs text-gray-500 font-bold uppercase"><span data-i18n="detail_cost_4"></span> (<span id="echo-cost-4-name">Fallacy of No Return</span>)</span>
+                  <span id="echo-cost-4" class="text-sm font-semibold text-white">Healing Bonus% or HP%</span>
+                </div>
               </div>
               <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3"></span>
@@ -346,8 +355,111 @@
           </div>
         </div>
 
-      </div>
+    </div>
 
+    <!-- Resonance Chain (Sequences) Section -->
+    <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
+      <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
+        <i class="fa-solid fa-network-wired text-yellow-500"></i>
+        <span data-i18n="detail_sequence_title">Resonance Chain (Sequences)</span>
+      </h3>
+      <div id="sequence-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Sequence 1 Card -->
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-yellow-500/10 hover:border-yellow-500/30 flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/shorekeeper/sequence/1.png" alt="S1: Starlit Path" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S1</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S1: Starlit Path</span>
+                  <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">The radius of her Resonance Liberation domain is expanded by 30%. Duration extended by 5s.</p>
+              </div>
+            </div>
+            <!-- Sequence 2 Card -->
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-yellow-500/10 hover:border-yellow-500/30 flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/shorekeeper/sequence/2.png" alt="S2: Butterfly's Echo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S2</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S2: Butterfly's Echo</span>
+                  <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Domain buffs now grant allies up to 40% ATK boosts depending on HP status.</p>
+              </div>
+            </div>
+            <!-- Sequence 3 Card -->
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/shorekeeper/sequence/3.png" alt="S3: Deep Sea Call" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S3</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S3: Deep Sea Call</span>
+                  
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Casting Intro Skill generates extra Concerto energy automatically.</p>
+              </div>
+            </div>
+            <!-- Sequence 4 Card -->
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/shorekeeper/sequence/4.png" alt="S4: Black Shore's Tide" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S4</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S4: Black Shore's Tide</span>
+                  
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Domain boosts team-wide Healing Bonus by 15%.</p>
+              </div>
+            </div>
+            <!-- Sequence 5 Card -->
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/shorekeeper/sequence/5.png" alt="S5: Guardianship" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S5</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S5: Guardianship</span>
+                  
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Outro Skill cooldown is reduced by 4 seconds.</p>
+              </div>
+            </div>
+            <!-- Sequence 6 Card -->
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-yellow-500/10 hover:border-yellow-500/30 flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/shorekeeper/sequence/6.png" alt="S6: Sentinel's Dream" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S6</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>S6: Sentinel's Dream</span>
+                  <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Transforms Shorekeeper's domain into a combat zone, allowing her to deal massive damage based on team stacks.</p>
+              </div>
+            </div>
+      </div>
+    </div>
+
+    <!-- Gameplay Guide Details Section -->
+    <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
+      <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2">
+        <i class="fa-solid fa-book-open text-yellow-500"></i>
+        <span data-i18n="detail_guide_details_title">Gameplay Guidelines & Tips</span>
+      </h3>
+      <div id="guide-details" class="prose prose-invert max-w-none">
+        <p class="text-sm text-gray-300 leading-relaxed">Shorekeeper is a premier healer. Her main goal is to activate her Resonance Liberation domain, which upgrades through three levels as team members enter and exit the zone. Ensure she reaches 250% ER for continuous domain uptime.</p>
+      </div>
     </div>
 
   </main>
@@ -385,14 +497,14 @@
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Dynamic Character Guide Hydration (Bilingual)
-    window.characterData = {"id":"shorekeeper","name":{"en":"Shorekeeper"},"element":{"en":"Spectro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"support_and_healer","name":{"en":"Support And Healer"}},{"id":"traction","name":{"en":"Traction"}},{"id":"dmg_amplification","name":{"en":"DMG Amplification"}}],"rarity":5,"description":{"en":"The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."},"bestEcho":{"en":"Fallacy of No Return"},"weapons":[{"id":"stellar_symphony","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stellar Symphony"},"specs":{"en":"Base ATK: 412 • 77.0% HP% (Lvl 90)"},"desc":{"en":"Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."}},{"id":"variation","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Variation"},"specs":{"en":"Base ATK: 337 • 51.8% Energy Regen (Lvl 90)"},"desc":{"en":"Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."}}],"echoSetup":{"bestSetBonusId":"rejuvenating_glow","cost4":{"en":"Healing Bonus% or HP%"},"cost4Name":{"en":"Fallacy of No Return"},"cost3":{"en":"Energy Regen% / Energy Regen%"},"cost1":{"en":"HP% / HP%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"bestSetBonus":{"en":"Rejuvenating Glow (5-Piece Set)"}},"statPriorities":{"en":["Energy Regen (250%+)","HP% / Flat HP","Crit Rate (Target 20%+)","Healing Bonus%"]},"skillPriorities":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Forte Circuit"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommendedTeams":[{"name":{"en":"Universal Top Tier Carry Comp"},"isPremium":true,"members":{"en":["Jinhsi or Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin or Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Buffer)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Solo Support)</span>"]}},{"name":{"en":"Havoc Burst Comp"},"isPremium":false,"members":{"en":["Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Danjin <span class=\"text-gray-500 text-[10px]\">(Havoc Amp Sub-DPS)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Support Healer)</span>"]}}]};
+    window.characterData = {"id":"shorekeeper","name":{"en":"Shorekeeper"},"attribute":{"en":"Spectro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"support_and_healer","name":{"en":"Support And Healer"}},{"id":"resonance_liberation_regeneration","name":{"en":"Resonance Liberation Regeneration"}},{"id":"dmg_amplification","name":{"en":"DMG Amplification"}}],"rarity":5,"description":{"en":"The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."},"mainSlotEcho":{"id":"fallacy_of_no_return","name":{"en":"Fallacy of No Return"},"costType":"4"},"recommWeapons":[{"id":"stellar_symphony","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stellar Symphony"},"specs":{"en":"Base ATK: 412 • 77.0% HP% (Lvl 90)"},"desc":{"en":"Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."}},{"id":"variation","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Variation"},"specs":{"en":"Base ATK: 337 • 51.8% Energy Regen (Lvl 90)"},"desc":{"en":"Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."}}],"recommEcho":{"sonata":"rejuvenating_glow","mainSlotEcho":"fallacy_of_no_return","cost4":{"en":"Healing Bonus% or HP%"},"cost3":{"en":"Energy Regen% / Energy Regen%"},"cost1":{"en":"HP% / HP%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"sonataObject":{"id":"rejuvenating_glow","name":{"en":"Rejuvenating Glow"},"effect_2pc":{"en":"Healing Bonus +10%"},"effect_5pc":{"en":"Upon healing allies, increases ATK of all team members by 15% for 30s."}},"mainSlotEchoObject":{"id":"fallacy_of_no_return","name":{"en":"Fallacy of No Return"},"costType":"4"}},"recommStats":{"en":["Energy Regen (250%+)","HP% / Flat HP","Crit Rate (Target 20%+)","Healing Bonus%"]},"recommSkill":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Forte Circuit"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Universal Top Tier Carry Comp"},"isPremium":true,"members":{"en":["Jinhsi or Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin or Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Buffer)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Solo Support)</span>"]}},{"name":{"en":"Havoc Burst Comp"},"isPremium":false,"members":{"en":["Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Danjin <span class=\"text-gray-500 text-[10px]\">(Havoc Amp Sub-DPS)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Support Healer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Starlit Path"},"description":{"en":"The radius of her Resonance Liberation domain is expanded by 30%. Duration extended by 5s."},"isRecommended":true},{"name":{"en":"S2: Butterfly's Echo"},"description":{"en":"Domain buffs now grant allies up to 40% ATK boosts depending on HP status."},"isRecommended":true},{"name":{"en":"S3: Deep Sea Call"},"description":{"en":"Casting Intro Skill generates extra Concerto energy automatically."},"isRecommended":false},{"name":{"en":"S4: Black Shore's Tide"},"description":{"en":"Domain boosts team-wide Healing Bonus by 15%."},"isRecommended":false},{"name":{"en":"S5: Guardianship"},"description":{"en":"Outro Skill cooldown is reduced by 4 seconds."},"isRecommended":false},{"name":{"en":"S6: Sentinel's Dream"},"description":{"en":"Transforms Shorekeeper's domain into a combat zone, allowing her to deal massive damage based on team stacks."},"isRecommended":true}],"guideDetails":{"en":"Shorekeeper is a premier healer. Her main goal is to activate her Resonance Liberation domain, which upgrades through three levels as team members enter and exit the zone. Ensure she reaches 250% ER for continuous domain uptime."}};
 
     function renderCharacterGuide(lang) {
       const data = window.characterData;
       if (!data) return;
 
       // Render hero texts
-      document.getElementById("hero-element").textContent = data.element[lang] || data.element.en;
+      document.getElementById("hero-element").textContent = data.attribute[lang] || data.attribute.en;
       document.getElementById("hero-weaponType").textContent = data.weaponType[lang] || data.weaponType.en;
       
       
@@ -418,7 +530,7 @@
       // Render weapons
       const weaponsContainer = document.getElementById("weapons-list");
       if (weaponsContainer) {
-        weaponsContainer.innerHTML = data.weapons.map(weapon => {
+        weaponsContainer.innerHTML = data.recommWeapons.map(weapon => {
           const isSig = weapon.isSignature;
           const borderClass = isSig ? `border-yellow-500/10 hover:border-yellow-500/30` : `border-white/5 hover:border-yellow-500/20`;
           const badgeClass = isSig ? `bg-yellow-500/20 text-yellow-300 border border-yellow-500/30` : `bg-purple-500/20 text-purple-300 border border-purple-500/30`;
@@ -455,19 +567,41 @@
       }
 
       // Echo Setup
-      const echo = data.echoSetup;
-      document.getElementById("echo-best-set").textContent = echo.bestSetBonus[lang] || echo.bestSetBonus.en;
-      document.getElementById("echo-cost-4-name").textContent = echo.cost4Name[lang] || echo.cost4Name.en;
-      document.getElementById("echo-cost-4").textContent = echo.cost4[lang] || echo.cost4.en;
-      document.getElementById("echo-cost-3").textContent = echo.cost3[lang] || echo.cost3.en;
-      document.getElementById("echo-cost-1").textContent = echo.cost1[lang] || echo.cost1.en;
-      document.getElementById("echo-substats-priority").textContent = echo.substatsPriority[lang] || echo.substatsPriority.en;
-      document.getElementById("echo-note").textContent = echo.note[lang] || echo.note.en;
+      const echo = data.recommEcho;
+      if (echo) {
+        const sonataObj = echo.sonataObject || { name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
+        const echoObj = echo.mainSlotEchoObject || { name: { en: "" }, costType: "4", id: "" };
+        
+        document.getElementById("echo-best-set").textContent = sonataObj.name[lang] || sonataObj.name.en;
+        
+        // Update sonata effects
+        const effect2pc = sonataObj.effect_2pc[lang] || sonataObj.effect_2pc.en;
+        const effect5pc = sonataObj.effect_5pc[lang] || sonataObj.effect_5pc.en;
+        document.getElementById("sonata-effect-2pc").textContent = effect2pc;
+        document.getElementById("sonata-effect-5pc").textContent = effect5pc;
+
+        // Update main slot echo info
+        const echoName = echoObj.name[lang] || echoObj.name.en;
+        document.getElementById("echo-cost-4-name").textContent = echoName;
+        document.getElementById("echo-cost-4").textContent = echo.cost4[lang] || echo.cost4.en;
+        document.getElementById("echo-cost-3").textContent = echo.cost3[lang] || echo.cost3.en;
+        document.getElementById("echo-cost-1").textContent = echo.cost1[lang] || echo.cost1.en;
+        document.getElementById("echo-substats-priority").textContent = echo.substatsPriority[lang] || echo.substatsPriority.en;
+        document.getElementById("echo-note").textContent = echo.note[lang] || echo.note.en;
+        
+        // Update main echo illustration
+        const illustContainer = document.getElementById("echo-main-illustration");
+        if (illustContainer && echoObj.id) {
+          illustContainer.innerHTML = `
+            <img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoName}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+            <i class="fa-solid fa-dna text-xl hidden"></i>`;
+        }
+      }
 
       // Stat Priorities
       const statsContainer = document.getElementById("stat-priorities-list");
       if (statsContainer) {
-        const priorities = data.statPriorities[lang] || data.statPriorities.en;
+        const priorities = data.recommStats[lang] || data.recommStats.en;
         statsContainer.innerHTML = priorities.map((stat, index) => {
           const isFirst = index === 0;
           const numBg = isFirst ? `bg-yellow-500/20 text-yellow-400` : `bg-yellow-500/10 text-gray-400`;
@@ -482,7 +616,7 @@
       // Skill priorities
       const skillsContainer = document.getElementById("skill-priorities-list");
       if (skillsContainer) {
-        skillsContainer.innerHTML = data.skillPriorities.map((item, index) => {
+        skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
           let prioClass = 'text-gray-500';
           if (index === 0) prioClass = `text-yellow-400 font-bold`;
           else if (index === 1) prioClass = `text-yellow-300 font-semibold`;
@@ -502,7 +636,7 @@
       // Recommended Teams
       const teamsContainer = document.getElementById("recommended-teams-list");
       if (teamsContainer) {
-        teamsContainer.innerHTML = data.recommendedTeams.map(team => {
+        teamsContainer.innerHTML = data.recommTeammates.map(team => {
           const borderClass = team.isPremium ? `border-yellow-500/10` : 'border-white/5';
           const titleColor = team.isPremium ? `text-yellow-400` : 'text-gray-400';
           
@@ -518,6 +652,41 @@
               </ul>
             </div>`;
         }).join('\n');
+      }
+
+      // Resonance Chain (Sequences)
+      const sequenceContainer = document.getElementById("sequence-list");
+      if (sequenceContainer && data.recommSequence) {
+        sequenceContainer.innerHTML = data.recommSequence.map((seq, index) => {
+          const isRec = seq.isRecommended;
+          const borderClass = isRec ? `border-yellow-500/10 hover:border-yellow-500/30` : 'border-white/5';
+          const badgeHtml = isRec ? `<span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
+          const stepIdx = index + 1;
+          const seqName = seq.name[lang] || seq.name.en;
+          const seqDesc = seq.description[lang] || seq.description.en;
+
+          return `
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/${data.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S${stepIdx}</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>${seqName}</span>
+                  ${badgeHtml}
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">${seqDesc}</p>
+              </div>
+            </div>`;
+        }).join('\n');
+      }
+
+      // Gameplay Guide Details
+      const detailsContainer = document.getElementById("guide-details");
+      if (detailsContainer && data.guideDetails) {
+        const detailsText = data.guideDetails[lang] || data.guideDetails.en;
+        detailsContainer.innerHTML = `<p class="text-sm text-gray-300 leading-relaxed">${detailsText}</p>`;
       }
 
       // Update dynamic page titles

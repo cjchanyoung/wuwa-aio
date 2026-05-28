@@ -199,7 +199,7 @@
       try {
         if (!cachedEchoes || !cachedCharacters) {
           const [echoesRes, charactersRes] = await Promise.all([
-            fetch('../assets/data/echoes.json'),
+            fetch('../assets/data/sonata.json'),
             fetch('../assets/data/characters.json')
           ]);
           if (!echoesRes.ok || !charactersRes.ok) {

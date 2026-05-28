@@ -4,24 +4,19 @@
     "name": {
       "en": "Jinhsi"
     },
-    "element": {
+    "attribute": {
       "en": "Spectro"
     },
     "weaponType": {
       "en": "Broadblade"
     },
-    "roles": [
-      "main_damage_dealer",
-      "resonance_skill_dmg"
-    ],
+    "roles": ["main_damage_dealer", "resonance_skill_dmg"],
     "rarity": 5,
     "description": {
       "en": "The magistrate of Jinzhou, carrying the weight of prophecy and the blessing of the Sentinel Jué. She acts as a premier Spectro Carry, dealing monumental burst damage through her specialized Forte Circuit state and Resonance Skill multiplier stacks."
     },
-    "bestEcho": {
-      "en": "Jué (4-3-3-1-1)"
-    },
-    "weapons": [
+    "mainSlotEcho": "jue",
+    "recommWeapons": [
       {
         "id": "ages_of_harvest",
         "rarityLabel": {
@@ -37,13 +32,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "celestial_light",
+    "recommEcho": {
+      "sonata": "celestial_light",
+      "mainSlotEcho": "jue",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Jué"
       },
       "cost3": {
         "en": "Spectro DMG% / Spectro DMG%"
@@ -58,7 +51,7 @@
         "en": "Note: Target around 115% - 120% Energy Regen for smooth combat rotations."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "ATK% / Flat ATK",
@@ -66,7 +59,7 @@
         "Energy Regen (115%+)"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Forte Circuit"
@@ -108,7 +101,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Optimal Premium Team"
@@ -135,31 +128,61 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": { "en": "S1: Immense Luminance" },
+        "description": { "en": "Increases Resonance Skill DMG by 20% after using Basic Attacks or Skills." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S2: Chronobreak" },
+        "description": { "en": "Jinhsi restores 50 Forte Circuit stacks when out of combat for more than 4 seconds." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S3: Celestial Aegis" },
+        "description": { "en": "Gain ATK +25% for 12s after casting Intro Skill." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S4: Sentinel's Grace" },
+        "description": { "en": "Boosts team members' Element DMG by 20% when Jinhsi triggers Outro Skill." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S5: Frostfire Halo" },
+        "description": { "en": "Resonance Liberation DMG multiplier increased by 120%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S6: Unveiled Sentinel" },
+        "description": { "en": "The damage multiplier of Jinhsi's enhanced Resonance Skill is dramatically increased by an additional 148%." },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Jinhsi is a highly explosive burst DPS whose main damage comes from her Forte Circuit. Coordinate with sub-DPS units (like Yinlin or Yuanwu) who can deal coordinated attacks to quickly build Jinhsi's Forte Circuit stacks."
+    }
   },
   {
     "id": "yinlin",
     "name": {
       "en": "Yinlin"
     },
-    "element": {
+    "attribute": {
       "en": "Electro"
     },
     "weaponType": {
       "en": "Rectifier"
     },
-    "roles": [
-      "concerto_efficiency",
-      "resonance_skill_dmg"
-    ],
+    "roles": ["coordinated_attack", "coordinated_attack_dmg_amplification", "electro_dmg_amplification"],
     "rarity": 5,
     "description": {
       "en": "A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."
     },
-    "bestEcho": {
-      "en": "Tempest Mephis"
-    },
-    "weapons": [
+    "mainSlotEcho": "tempest_mephis",
+    "recommWeapons": [
       {
         "id": "stringmaster",
         "rarityLabel": {
@@ -175,13 +198,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "void_thunder",
+    "recommEcho": {
+      "sonata": "void_thunder",
+      "mainSlotEcho": "tempest_mephis",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Tempest Mephis"
       },
       "cost3": {
         "en": "Electro DMG% / Electro DMG% (or Energy Regen)"
@@ -196,7 +217,7 @@
         "en": "Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "Electro DMG%",
@@ -204,7 +225,7 @@
         "ATK% / Flat ATK"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Forte Circuit"
@@ -246,7 +267,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Electro Dominance"
@@ -273,30 +294,61 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": { "en": "S1: Morality's Gambit" },
+        "description": { "en": "Resonance Skill DMG is increased by 15%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S2: Unfinished Pact" },
+        "description": { "en": "Resonance Skill generates additional Concerto energy when hitting targets." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S3: Unyielding Will" },
+        "description": { "en": "Forte Circuit coordinated damage multiplier is increased by 55%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S4: Puppet Master" },
+        "description": { "en": "Casting Judgement Execution increases team ATK by 20% for 12 seconds." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S5: Chains of Fate" },
+        "description": { "en": "Resonance Liberation DMG multiplier is increased by 100%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S6: Executioner's Right" },
+        "description": { "en": "After casting Resonance Liberation, basic attacks trigger explosive lightning, dealing monumental damage." },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Yinlin relies on her Forte Circuit to tag enemies with the 'Sinner's Mark'. When allies attack marked targets, it triggers coordinated Electro attacks. Always complete her full rotation to trigger her Outro Skill before swapping to your primary DPS."
+    }
   },
   {
     "id": "chixia",
     "name": {
       "en": "Chixia"
     },
-    "element": {
+    "attribute": {
       "en": "Fusion"
     },
     "weaponType": {
       "en": "Pistols"
     },
-    "roles": [
-      "main_damage_dealer"
-    ],
+    "roles": ["main_damage_dealer", "resonance_skill_dmg"],
     "rarity": 4,
     "description": {
       "en": "A bright and energetic patroller of Jinzhou, who is always ready to lend a hand. Chixia functions as a powerful ranged Fusion DPS, dealing rapid fire damage through her specialized pistols and continuous Daka-Daka Resonance Skill firing mode."
     },
-    "bestEcho": {
-      "en": "Inferno Rider"
-    },
-    "weapons": [
+    "mainSlotEcho": "inferno_rider",
+    "recommWeapons": [
       {
         "id": "static_mist",
         "rarityLabel": {
@@ -312,13 +364,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "molten_rift",
+    "recommEcho": {
+      "sonata": "molten_rift",
+      "mainSlotEcho": "inferno_rider",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Inferno Rider"
       },
       "cost3": {
         "en": "Fusion DMG% / Fusion DMG%"
@@ -333,7 +383,7 @@
         "en": "Note: Chixia does not require high Energy Regen, making offensive substats the primary goal."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "Fusion DMG%",
@@ -341,7 +391,7 @@
         "Resonance Skill DMG%"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Resonance Skill"
@@ -383,7 +433,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Fusion Quickswap Comp"
@@ -410,31 +460,61 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": { "en": "S1: Hero's Entrance" },
+        "description": { "en": "Resonance Skill 'Daka Daka' is guaranteed to land critical strikes." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S2: Spirited Pace" },
+        "description": { "en": "Casting Resonance Liberation increases Fusion DMG by 20% for 15s." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S3: Patroller's Honor" },
+        "description": { "en": "Forte Circuit 'Boom Boom' damage is increased by 40%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S4: Guns Blazing" },
+        "description": { "en": "Resonance Liberation resets the cooldown of Resonance Skill." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S5: Justice Prevails" },
+        "description": { "en": "When Chixia hits an enemy, she gains additional ATK stacks." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S6: Easter Egg" },
+        "description": { "en": "Using Resonance Skill boosts team members' ATK by 15% for 15s." },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Chixia is an easy-to-play ranged DPS. Her primary loop involves holding down her Resonance Skill ('Daka-Daka') until her Forte meter is empty, and then tapping the Basic Attack key to trigger the final 'Boom-Boom' blow."
+    }
   },
   {
     "id": "changli",
     "name": {
       "en": "Changli"
     },
-    "element": {
+    "attribute": {
       "en": "Fusion"
     },
     "weaponType": {
       "en": "Sword"
     },
-    "roles": [
-      "main_damage_dealer",
-      "resonance_skill_dmg"
-    ],
+    "roles": ["main_damage_dealer", "fusion_dmg_amplification"],
     "rarity": 5,
     "description": {
       "en": "Counselor to the Jinzhou Magistrate and mentor to Jinhsi. Possessing a clever mind and a graceful demeanor, Changli commands the battlefield as a powerful Fusion Carry, capable of acting as both a primary Main DPS or a high-multiplier Sub-DPS that buffs incoming Fusion Resonators."
     },
-    "bestEcho": {
-      "en": "Inferno Rider"
-    },
-    "weapons": [
+    "mainSlotEcho": "inferno_rider",
+    "recommWeapons": [
       {
         "id": "blazing_brilliance",
         "rarityLabel": {
@@ -450,13 +530,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "molten_rift",
+    "recommEcho": {
+      "sonata": "molten_rift",
+      "mainSlotEcho": "inferno_rider",
       "cost4": {
         "en": "Crit Rate / Crit DMG"
-      },
-      "cost4Name": {
-        "en": "Inferno Rider"
       },
       "cost3": {
         "en": "Fusion DMG% / Fusion DMG%"
@@ -471,7 +549,7 @@
         "en": "Note: Target around 120% Energy Regen to ensure smooth skill/ult sequencing."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Crit Rate / Crit DMG",
         "Fusion DMG%",
@@ -479,7 +557,7 @@
         "Energy Regen (120%+)"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Forte Circuit"
@@ -521,7 +599,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Fusion Resonance Team"
@@ -548,32 +626,61 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": { "en": "S1: Hidden Fire" },
+        "description": { "en": "Resonance Skill and Heavy Attack DMG are increased by 10%. Interrupt resistance increased." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S2: Pursuit of Truth" },
+        "description": { "en": "Consuming Forte stacks grants +25% Crit Rate for 8 seconds." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S3: Learned Scholar" },
+        "description": { "en": "Resonance Liberation DMG multiplier is increased by 80%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S4: Calculated Strategy" },
+        "description": { "en": "Intro Skill increases team-wide ATK by 20% for 12 seconds." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S5: Crimson plumage" },
+        "description": { "en": "Forte heavy attack damage multiplier is increased by 120%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S6: Unveiled Scheme" },
+        "description": { "en": "Resonance Skill and Heavy Attack ignore 40% of the enemy's DEF." },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Changli revolves around gathering 'Enlightenment' stacks. Each stack is obtained via Resonance Skill or the final hit of her basic attack sequences. Consuming 4 stacks triggers a powerful slash that deals massive Fusion DMG."
+    }
   },
   {
     "id": "shorekeeper",
     "name": {
       "en": "Shorekeeper"
     },
-    "element": {
+    "attribute": {
       "en": "Spectro"
     },
     "weaponType": {
       "en": "Rectifier"
     },
-    "roles": [
-      "support_and_healer",
-      "traction",
-      "dmg_amplification"
-    ],
+    "roles": ["support_and_healer", "resonance_liberation_regeneration", "dmg_amplification"],
     "rarity": 5,
     "description": {
       "en": "The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."
     },
-    "bestEcho": {
-      "en": "Fallacy of No Return"
-    },
-    "weapons": [
+    "mainSlotEcho": "fallacy_of_no_return",
+    "recommWeapons": [
       {
         "id": "stellar_symphony",
         "rarityLabel": {
@@ -589,13 +696,11 @@
         "isSignature": false
       }
     ],
-    "echoSetup": {
-      "bestSetBonusId": "rejuvenating_glow",
+    "recommEcho": {
+      "sonata": "rejuvenating_glow",
+      "mainSlotEcho": "fallacy_of_no_return",
       "cost4": {
         "en": "Healing Bonus% or HP%"
-      },
-      "cost4Name": {
-        "en": "Fallacy of No Return"
       },
       "cost3": {
         "en": "Energy Regen% / Energy Regen%"
@@ -610,7 +715,7 @@
         "en": "Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."
       }
     },
-    "statPriorities": {
+    "recommStats": {
       "en": [
         "Energy Regen (250%+)",
         "HP% / Flat HP",
@@ -618,7 +723,7 @@
         "Healing Bonus%"
       ]
     },
-    "skillPriorities": [
+    "recommSkill": [
       {
         "skill": {
           "en": "1. Resonance Liberation"
@@ -660,7 +765,7 @@
         }
       }
     ],
-    "recommendedTeams": [
+    "recommTeammates": [
       {
         "name": {
           "en": "Universal Top Tier Carry Comp"
@@ -687,6 +792,41 @@
           ]
         }
       }
-    ]
+    ],
+    "recommSequence": [
+      {
+        "name": { "en": "S1: Starlit Path" },
+        "description": { "en": "The radius of her Resonance Liberation domain is expanded by 30%. Duration extended by 5s." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S2: Butterfly's Echo" },
+        "description": { "en": "Domain buffs now grant allies up to 40% ATK boosts depending on HP status." },
+        "isRecommended": true
+      },
+      {
+        "name": { "en": "S3: Deep Sea Call" },
+        "description": { "en": "Casting Intro Skill generates extra Concerto energy automatically." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S4: Black Shore's Tide" },
+        "description": { "en": "Domain boosts team-wide Healing Bonus by 15%." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S5: Guardianship" },
+        "description": { "en": "Outro Skill cooldown is reduced by 4 seconds." },
+        "isRecommended": false
+      },
+      {
+        "name": { "en": "S6: Sentinel's Dream" },
+        "description": { "en": "Transforms Shorekeeper's domain into a combat zone, allowing her to deal massive damage based on team stacks." },
+        "isRecommended": true
+      }
+    ],
+    "guideDetails": {
+      "en": "Shorekeeper is a premier healer. Her main goal is to activate her Resonance Liberation domain, which upgrades through three levels as team members enter and exit the zone. Ensure she reaches 250% ER for continuous domain uptime."
+    }
   }
 ]

@@ -209,35 +209,61 @@
     };
     // Load character, weapon and echo data dynamically from JSON
     let cachedCharacters = null;
-    let cachedWeapons = null;
-    let cachedEchoes = null;
     async function loadCharacters() {
       const grid = document.getElementById('resonators-grid');
       try {
         if (!cachedCharacters) {
-          const response = await fetch('../assets/data/characters.json');
-          if (!response.ok) {
-            throw new Error('Failed to fetch character JSON database');
+          const [charRes, rolesRes, sonataRes, echoesRes] = await Promise.all([
+            fetch('../assets/data/characters.json'),
+            fetch('../assets/data/roles.json'),
+            fetch('../assets/data/sonata.json'),
+            fetch('../assets/data/echoes.json')
+          ]);
+          if (!charRes.ok || !rolesRes.ok || !sonataRes.ok || !echoesRes.ok) {
+            throw new Error('Failed to fetch character, roles, sonata, or echoes JSON database');
           }
-          cachedCharacters = await response.json();
-        }
-        if (!cachedWeapons) {
-          const response = await fetch('../assets/data/weapons.json');
-          if (!response.ok) {
-            throw new Error('Failed to fetch weapon JSON database');
-          }
-          cachedWeapons = await response.json();
-        }
-        if (!cachedEchoes) {
-          const response = await fetch('../assets/data/echoes.json');
-          if (!response.ok) {
-            throw new Error('Failed to fetch echo JSON database');
-          }
-          cachedEchoes = await response.json();
+          const rawChars = await charRes.json();
+          const rolesMaster = await rolesRes.json();
+          const sonataMaster = await sonataRes.json();
+          const echoesMaster = await echoesRes.json();
+
+          // Resolve ID array of roles into localized objects
+          cachedCharacters = rawChars.map(char => {
+            const resolved = { ...char };
+            if (char.roles) {
+              resolved.roles = char.roles.map(roleId => {
+                const master = rolesMaster[roleId];
+                return {
+                  id: roleId,
+                  name: master ? master.name : { en: roleId }
+                };
+              });
+            } else {
+              resolved.roles = [];
+            }
+
+            // Resolve recommEcho relations
+            if (char.recommEcho) {
+              const setBonusId = char.recommEcho.sonata;
+              const masterSonata = sonataMaster[setBonusId];
+              resolved.recommEcho.sonataObject = masterSonata ? {
+                id: setBonusId,
+                name: masterSonata.name
+              } : { id: setBonusId, name: { en: "Custom Set" } };
+
+              const mainEchoId = char.recommEcho.mainSlotEcho;
+              const masterEcho = echoesMaster[mainEchoId];
+              resolved.recommEcho.mainSlotEchoObject = masterEcho ? {
+                id: mainEchoId,
+                name: masterEcho.name,
+                costType: masterEcho.costType
+              } : { id: mainEchoId, name: { en: mainEchoId }, costType: "4" };
+            }
+
+            return resolved;
+          });
         }
         const characters = cachedCharacters;
-        const weapons = cachedWeapons;
-        const echoes = cachedEchoes;
         let lang = "en";
         try {
           lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : (localStorage.getItem("wuwa_lang") || "en");
@@ -247,74 +273,78 @@
         
         // Generate and append cards
         grid.innerHTML = characters.map(char => {
-          const styles = elementCardsStyles[char.element.en] || defaultStyles;
+          const charElement = char.attribute[lang] || char.attribute.en;
+          const styles = elementCardsStyles[char.attribute.en] || defaultStyles;
           const stars = '<i class="fa-solid fa-star"></i>'.repeat(char.rarity);
           
           const charName = char.name[lang] || char.name.en;
-          const charElement = char.element[lang] || char.element.en;
           const charWeaponType = char.weaponType[lang] || char.weaponType.en;
           
-          // Get the echo set name for this character from echoes.json
-          let charBestEcho = 'None';
-          if (char.echoSetup && char.echoSetup.bestSetBonusId) {
-            const echoMaster = echoes[char.echoSetup.bestSetBonusId];
-            if (echoMaster) {
-              charBestEcho = echoMaster.name[lang] || echoMaster.name.en;
-            }
-          }
+          const mainEchoName = char.recommEcho && char.recommEcho.mainSlotEchoObject ? (char.recommEcho.mainSlotEchoObject.name[lang] || char.recommEcho.mainSlotEchoObject.name.en) : "";
+          const sonataName = char.recommEcho && char.recommEcho.sonataObject ? (char.recommEcho.sonataObject.name[lang] || char.recommEcho.sonataObject.name.en) : "";
+          const charBestEcho = sonataName ? `${mainEchoName} (${sonataName})` : mainEchoName;
           
-          // Get the weapon name for this character
-          let charWeapon = 'None';
-          if (char.weapons && char.weapons.length > 0) {
-            const firstWeaponId = char.weapons[0].id;
-            const weaponMaster = weapons[firstWeaponId];
-            if (weaponMaster) {
-              charWeapon = weaponMaster.name[lang] || weaponMaster.name.en;
-            }
-          }
-          
-          const echoLabel = window.wuwaI18n ? window.wuwaI18n.t('echo_label') : 'Echo:';
-          const weaponLabel = window.wuwaI18n ? window.wuwaI18n.t('weapon_label') : 'Weapon:';
+          const bestEchoLabel = window.wuwaI18n ? window.wuwaI18n.t('best_echo_label') : 'Best Echo:';
           const viewGuideLabel = window.wuwaI18n ? window.wuwaI18n.t('view_guide_label') : 'View Guide Details';
+          
           const searchTagParts = [char.id];
           const langsList = ['en', 'ko', 'ja', 'zh'];
           langsList.forEach(l => {
             if (char.name[l]) searchTagParts.push(char.name[l]);
-            if (char.element[l]) searchTagParts.push(char.element[l]);
+            if (char.attribute && char.attribute[l]) searchTagParts.push(char.attribute[l]);
             if (char.weaponType[l]) searchTagParts.push(char.weaponType[l]);
+            if (char.roles) {
+              char.roles.forEach(r => {
+                if (r.name[l]) searchTagParts.push(r.name[l]);
+              });
+            }
           });
           const searchTags = searchTagParts.join(' ').toLowerCase();
           
           return `
           <div class="resonator-card group bg-[#1a181f] border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1" data-rarity="${char.rarity}-star" data-id="${char.id}" data-search-tags="${searchTags}">
             <div class="relative h-48 bg-gradient-to-t from-[#1a181f] ${styles.bg_to} overflow-hidden flex items-center justify-center">
-              <div class="h-full w-full flex items-center justify-center relative">
-                <!-- 1. Try loading potrait.png (Jiyan typo fallback) -->
-                <img src="../assets/images/characters/${char.id}/icon.png" class="h-full w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <span class="element-badge absolute top-3 left-3 ${styles.badge} px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">${charElement}</span>
+              <span class="star-rating absolute top-3 right-3 text-yellow-400 text-xs flex gap-0.5">
+                ${stars}
+              </span>
+              <div class="w-24 h-24 flex items-center justify-center relative">
+                <!-- 1. Try loading portrait.png (large, full aspect ratio) -->
+                <img src="../assets/images/characters/${char.id}/portrait.png" class="h-full w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                 
-                <!-- 2. Final fallback to circular element icon -->
+                <!-- 2. Try loading potrait.png (Jiyan typo fallback) -->
+                <img src="../assets/images/characters/${char.id}/potrait.png" class="h-full w-auto object-contain" style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                
+                <!-- 3. Try loading icon.png (fallback, w-20 h-20 object-contain) -->
+                <img src="../assets/images/characters/${char.id}/icon.png" class="w-20 h-20 object-contain" style="display:none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                
+                <!-- 4. Final fallback to circular element icon -->
                 <div class="w-20 h-20 rounded-full bg-gradient-to-tr ${styles.icon_ring} p-0.5 shadow-xl flex items-center justify-center" style="display:none;">
                   <div class="w-full h-full rounded-full bg-[#1a181f] flex items-center justify-center">
                     <i class="${char.icon_class} ${styles.icon_text} text-3xl"></i>
                   </div>
                 </div>
               </div>
-              <span class="element-badge absolute top-3 left-3 ${styles.badge} px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">${charElement}</span>
-              <span class="star-rating absolute top-3 right-3 text-yellow-400 text-xs flex gap-0.5">
-                ${stars}
-              </span>
             </div>
             <div class="p-5">
               <h3 class="font-display font-bold text-xl text-white group-hover:text-purple-400 transition-colors">${charName}</h3>
+              <p class="text-xs text-gray-500 mt-1 uppercase font-semibold">${charWeaponType}</p>
+              
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                ${char.roles.map(r => {
+                  const rName = r.name[lang] || r.name.en;
+                  return `
+                    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#0a080f]/50 border border-white/5 text-[10px] text-gray-400 font-medium" title="${rName}">
+                      <img src="../assets/images/roles/${r.id}.png" class="w-3.5 h-3.5 object-contain" onerror="this.style.display='none';">
+                      <span>${rName}</span>
+                    </span>`;
+                }).join('')}
+              </div>
               
               <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
                 <div class="flex justify-between">
-                  <span class="text-gray-500">${echoLabel}</span>
+                  <span class="text-gray-500">${bestEchoLabel}</span>
                   <span class="${styles.echo_text} font-semibold">${charBestEcho}</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-500">${weaponLabel}</span>
-                  <span class="text-gray-300 font-semibold">${charWeapon}</span>
                 </div>
               </div>
               <button class="w-full mt-5 py-2.5 bg-white/5 group-hover:bg-purple-600 text-gray-300 group-hover:text-white text-xs font-semibold rounded-xl transition-all duration-300">${viewGuideLabel}</button>

@@ -107,6 +107,7 @@ const elementStyles = {
 const charactersFilePath = path.join(__dirname, '../assets/data/characters.json');
 const templateFilePath = path.join(__dirname, '../characters/template.html');
 const weaponsFilePath = path.join(__dirname, '../assets/data/weapons.json');
+const sonataFilePath = path.join(__dirname, '../assets/data/sonata.json');
 const echoesFilePath = path.join(__dirname, '../assets/data/echoes.json');
 const rolesFilePath = path.join(__dirname, '../assets/data/roles.json');
 
@@ -124,6 +125,10 @@ if (!fs.existsSync(weaponsFilePath)) {
   console.error(`Error: File not found at ${weaponsFilePath}`);
   process.exit(1);
 }
+if (!fs.existsSync(sonataFilePath)) {
+  console.error(`Error: File not found at ${sonataFilePath}`);
+  process.exit(1);
+}
 if (!fs.existsSync(echoesFilePath)) {
   console.error(`Error: File not found at ${echoesFilePath}`);
   process.exit(1);
@@ -136,6 +141,7 @@ if (!fs.existsSync(rolesFilePath)) {
 const rawCharacters = JSON.parse(fs.readFileSync(charactersFilePath, 'utf8'));
 const template = fs.readFileSync(templateFilePath, 'utf8');
 const weaponsMaster = JSON.parse(fs.readFileSync(weaponsFilePath, 'utf8'));
+const sonataMaster = JSON.parse(fs.readFileSync(sonataFilePath, 'utf8'));
 const echoesMaster = JSON.parse(fs.readFileSync(echoesFilePath, 'utf8'));
 const rolesMaster = JSON.parse(fs.readFileSync(rolesFilePath, 'utf8'));
 
@@ -144,57 +150,96 @@ const characters = rawCharacters.map(char => {
   const resolvedChar = JSON.parse(JSON.stringify(char));
   
   // Resolve weapons
-  resolvedChar.weapons = char.weapons.map(wRef => {
-    const master = weaponsMaster[wRef.id];
-    if (!master) {
-      console.warn(`Warning: Master weapon "${wRef.id}" not found for resonator "${char.id}".`);
-      return wRef;
-    }
-    return {
-      ...wRef,
-      name: master.name,
-      specs: {
-        en: `Base ATK: ${master.baseAtk} • ${master.secondaryStat.en} (Lvl 90)`
-      },
-      desc: master.desc
-    };
-  });
-
-  // Resolve echoes set
-  const setBonusId = char.echoSetup.bestSetBonusId;
-  const masterEcho = echoesMaster[setBonusId];
-  if (masterEcho) {
-    resolvedChar.echoSetup.bestSetBonus = {
-      en: `${masterEcho.name.en} (5-Piece Set)`
-    };
+  if (char.recommWeapons) {
+    resolvedChar.recommWeapons = char.recommWeapons.map(wRef => {
+      const master = weaponsMaster[wRef.id];
+      if (!master) {
+        console.warn(`Warning: Master weapon "${wRef.id}" not found for resonator "${char.id}".`);
+        return wRef;
+      }
+      return {
+        ...wRef,
+        name: master.name,
+        specs: {
+          en: `Base ATK: ${master.baseAtk} • ${master.secondaryStat.en} (Lvl 90)`
+        },
+        desc: master.desc
+      };
+    });
   } else {
-    resolvedChar.echoSetup.bestSetBonus = { en: "Custom Set" };
+    resolvedChar.recommWeapons = [];
+  }
+
+  // Resolve mainSlotEcho (character root level)
+  if (char.mainSlotEcho) {
+    const masterEcho = echoesMaster[char.mainSlotEcho];
+    if (masterEcho) {
+      resolvedChar.mainSlotEcho = {
+        id: char.mainSlotEcho,
+        name: masterEcho.name,
+        costType: masterEcho.costType
+      };
+    } else {
+      resolvedChar.mainSlotEcho = { id: char.mainSlotEcho, name: { en: char.mainSlotEcho }, costType: "4" };
+    }
+  }
+
+  // Resolve recommEcho
+  if (char.recommEcho) {
+    // Resolve sonata set
+    const setBonusId = char.recommEcho.sonata;
+    const masterSonata = sonataMaster[setBonusId];
+    if (masterSonata) {
+      resolvedChar.recommEcho.sonataObject = {
+        id: setBonusId,
+        name: masterSonata.name,
+        effect_2pc: masterSonata.effect_2pc,
+        effect_5pc: masterSonata.effect_5pc
+      };
+    } else {
+      resolvedChar.recommEcho.sonataObject = { id: setBonusId, name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
+    }
+
+    // Resolve mainSlotEcho inside recommEcho
+    const mainEchoId = char.recommEcho.mainSlotEcho;
+    const masterEcho = echoesMaster[mainEchoId];
+    if (masterEcho) {
+      resolvedChar.recommEcho.mainSlotEchoObject = {
+        id: mainEchoId,
+        name: masterEcho.name,
+        costType: masterEcho.costType
+      };
+    } else {
+      resolvedChar.recommEcho.mainSlotEchoObject = { id: mainEchoId, name: { en: mainEchoId }, costType: "4" };
+    }
   }
 
   // Resolve roles
-  resolvedChar.roles = (char.roles || []).map(rId => {
-    const master = rolesMaster[rId];
-    if (!master) {
-      console.warn(`Warning: Master role "${rId}" not found for resonator "${char.id}".`);
-      return { id: rId, name: { en: rId } };
-    }
-    return {
-      id: rId,
-      name: master.name
-    };
-  });
+  if (char.roles) {
+    resolvedChar.roles = char.roles.map(roleId => {
+      const master = rolesMaster[roleId];
+      if (!master) {
+        console.warn(`Warning: Master role "${roleId}" not found for resonator "${char.id}".`);
+        return { id: roleId, name: { en: roleId } };
+      }
+      return {
+        id: roleId,
+        name: master.name
+      };
+    });
+  } else {
+    resolvedChar.roles = [];
+  }
 
   return resolvedChar;
 });
 
-
-
 characters.forEach(char => {
   console.log(`Compiling guide details for ${char.name.en}...`);
 
-  const styles = elementStyles[char.element.en];
+  const styles = elementStyles[char.attribute.en];
   if (!styles) {
-    console.error(`Warning: Style profile not found for element "${char.element.en}". Skipping ${char.name.en}.`);
+    console.error(`Warning: Style profile not found for element "${char.attribute.en}". Skipping ${char.name.en}.`);
     return;
   }
 
@@ -216,7 +261,7 @@ characters.forEach(char => {
   }
 
   // Generate weapons list HTML
-  const weaponsListHtml = char.weapons.map(weapon => {
+  const weaponsListHtml = char.recommWeapons.map(weapon => {
     const isSig = weapon.isSignature;
     const borderClass = isSig ? styles.weapon_sig_card_border : styles.weapon_alt_card_border;
     const badgeClass = isSig ? styles.weapon_sig_badge : styles.weapon_alt_badge;
@@ -225,7 +270,6 @@ characters.forEach(char => {
     const iconBg = isSig ? styles.echo_icon_bg : "bg-gray-500/10";
     const borderIcon = isSig ? styles.hero_border_class : "border-white/10";
 
-    // Check if weapon image exists
     const weaponImgPath = path.join(__dirname, '../assets/images/weapons', `${weapon.id}.png`);
     let weaponIconHtml = '';
     if (fs.existsSync(weaponImgPath)) {
@@ -255,7 +299,7 @@ characters.forEach(char => {
   }).join('\n');
 
   // Generate stat priorities HTML
-  const statPrioritiesHtml = char.statPriorities.en.map((stat, index) => {
+  const statPrioritiesHtml = char.recommStats.en.map((stat, index) => {
     const isFirst = index === 0;
     const numBg = isFirst ? styles.stat_idx1_bg_border_text : styles.stat_idx2_bg_border_text;
     return `            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
@@ -265,7 +309,7 @@ characters.forEach(char => {
   }).join('\n');
 
   // Generate skill priorities HTML
-  const skillPrioritiesHtml = char.skillPriorities.map((item, index) => {
+  const skillPrioritiesHtml = char.recommSkill.map((item, index) => {
     let prioClass = 'text-gray-500';
     if (index === 0) prioClass = styles.priority_highlight_text;
     else if (index === 1) prioClass = styles.priority_high_text;
@@ -278,7 +322,7 @@ characters.forEach(char => {
   }).join('\n');
 
   // Generate recommended teams HTML
-  const recommendedTeamsHtml = char.recommendedTeams.map(team => {
+  const recommendedTeamsHtml = char.recommTeammates.map(team => {
     const borderClass = team.isPremium ? styles.team_premium_border : 'border-white/5';
     const titleColor = team.isPremium ? styles.team_premium_badge : 'text-gray-400';
     const membersList = team.members.en.map(member => `                <li>• ${member}</li>`).join('\n');
@@ -299,12 +343,48 @@ ${membersList}
             </span>`;
   }).join('\n');
 
+  // Generate sequences list HTML
+  const sequenceListHtml = char.recommSequence.map((seq, index) => {
+    const isRec = seq.isRecommended;
+    const borderClass = isRec ? styles.weapon_sig_card_border : 'border-white/5';
+    const badgeHtml = isRec ? `<span class="text-[10px] ${styles.weapon_sig_badge} px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
+    const stepIdx = index + 1;
+    
+    return `            <!-- Sequence ${stepIdx} Card -->
+            <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all hover:border-purple-500/10">
+              <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative">
+                <img src="../../assets/images/characters/${char.id}/sequence/${stepIdx}.png" alt="${seq.name.en}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                <span class="font-display font-bold text-lg text-gray-500 hidden">S${stepIdx}</span>
+              </div>
+              <div class="flex-grow">
+                <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                  <span>${seq.name.en}</span>
+                  ${badgeHtml}
+                </h4>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">${seq.description.en}</p>
+              </div>
+            </div>`;
+  }).join('\n');
+
+  // Generate guide details HTML
+  const guideDetailsHtml = char.guideDetails ? `<p class="text-sm text-gray-300 leading-relaxed">${char.guideDetails.en}</p>` : '';
+
+  // Generate main slot echo image fallback block
+  const echoImgPath = path.join(__dirname, '../assets/images/echoes', `${char.recommEcho.mainSlotEchoObject.id}.png`);
+  let mainEchoHtml = '';
+  if (fs.existsSync(echoImgPath)) {
+    mainEchoHtml = `<img src="../../assets/images/echoes/${char.recommEcho.mainSlotEchoObject.id}.png" alt="${char.recommEcho.mainSlotEchoObject.name.en}" class="w-full h-full object-contain p-1">`;
+  } else {
+    mainEchoHtml = `<i class="fa-solid fa-dna text-xl"></i>`;
+  }
+
   // Apply substitutions to layout template
   let pageContent = template
     .replace(/{{name}}/g, char.name.en)
     .replace(/{{description}}/g, char.description.en)
-    .replace(/{{element}}/g, char.element.en)
+    .replace(/{{element}}/g, char.attribute.en)
     .replace(/{{weaponType}}/g, char.weaponType.en)
+    .replace(/{{roles_html}}/g, rolesHtml)
     .replace(/{{rarity}}/g, char.rarity)
     .replace(/{{icon_class}}/g, char.icon_class)
     
@@ -325,6 +405,7 @@ ${membersList}
     .replace(/{{hero_bg_class}}/g, styles.hero_bg_class)
     .replace(/{{hero_border_class}}/g, styles.hero_border_class)
     .replace(/{{element_badge_theme}}/g, styles.element_badge_theme)
+    .replace(/{{role_badge_theme}}/g, styles.role_badge_theme)
     .replace(/{{accent_gradient}}/g, styles.accent_gradient)
     .replace(/{{echo_icon_bg}}/g, styles.echo_icon_bg)
     .replace(/{{note_text_color}}/g, styles.note_text_color)
@@ -344,17 +425,23 @@ ${membersList}
     .replace(/{{portrait_html}}/g, portraitHtml)
     .replace(/{{stars_html}}/g, starsHtml.trim())
     .replace(/{{weapons_list_html}}/g, weaponsListHtml)
-    .replace(/{{best_set_bonus}}/g, char.echoSetup.bestSetBonus.en)
-    .replace(/{{cost_4_name}}/g, char.echoSetup.cost4Name.en)
-    .replace(/{{cost_4}}/g, char.echoSetup.cost4.en)
-    .replace(/{{cost_3}}/g, char.echoSetup.cost3.en)
-    .replace(/{{cost_1}}/g, char.echoSetup.cost1.en)
-    .replace(/{{substats_priority}}/g, char.echoSetup.substatsPriority.en)
-    .replace(/{{echo_note}}/g, char.echoSetup.note.en)
+    .replace(/{{sonata_name}}/g, char.recommEcho.sonataObject.name.en)
+    .replace(/{{sonata_effect_2pc}}/g, char.recommEcho.sonataObject.effect_2pc.en)
+    .replace(/{{sonata_effect_5pc}}/g, char.recommEcho.sonataObject.effect_5pc.en)
+    .replace(/{{main_echo_name}}/g, char.recommEcho.mainSlotEchoObject.name.en)
+    .replace(/{{main_echo_cost}}/g, char.recommEcho.mainSlotEchoObject.costType)
+    .replace(/{{main_echo_id}}/g, char.recommEcho.mainSlotEchoObject.id)
+    .replace(/{{main_echo_html}}/g, mainEchoHtml)
+    .replace(/{{cost_4}}/g, char.recommEcho.cost4.en)
+    .replace(/{{cost_3}}/g, char.recommEcho.cost3.en)
+    .replace(/{{cost_1}}/g, char.recommEcho.cost1.en)
+    .replace(/{{substats_priority}}/g, char.recommEcho.substatsPriority.en)
+    .replace(/{{echo_note}}/g, char.recommEcho.note.en)
     .replace(/{{stat_priorities_html}}/g, statPrioritiesHtml)
     .replace(/{{skill_priorities_html}}/g, skillPrioritiesHtml)
     .replace(/{{recommended_teams_html}}/g, recommendedTeamsHtml)
-    .replace(/{{roles_html}}/g, rolesHtml)
+    .replace(/{{sequence_list_html}}/g, sequenceListHtml)
+    .replace(/{{guide_details_html}}/g, guideDetailsHtml)
     .replace(/{{character_json_data}}/g, JSON.stringify(char));
 
   // Write out file
