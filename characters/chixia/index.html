@@ -83,12 +83,6 @@
 
       <!-- Action Button -->
       <div class="flex items-center space-x-4">
-        <a href="../index.html" class="relative group hidden sm:inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-xs font-semibold text-gray-900 rounded-xl group bg-gradient-to-br from-[#C4294E] to-rose-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-rose-800">
-          <span class="relative px-4 py-2.5 transition-all ease-in duration-75 bg-[#0a080f] rounded-[10px] group-hover:bg-opacity-0">
-            <i class="fa-solid fa-arrow-left mr-2 text-[#C4294E] group-hover:text-white transition-colors"></i><span data-i18n="detail_btn_back"></span>
-          </span>
-        </a>
-        
         <!-- Mobile Menu Trigger -->
         <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
           <i class="fa-solid fa-bars text-xl"></i>
@@ -105,18 +99,30 @@
       <a href="../../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons"></a>
       <a href="../../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap"></a>
       <a href="../../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation"></a>
-      <a href="../index.html" class="inline-block text-center py-3 bg-gradient-to-r from-[#C4294E] to-rose-700 text-white rounded-xl font-semibold shadow-lg shadow-[#C4294E]/25" onclick="toggleMobileMenu()" data-i18n="detail_btn_back"></a>
     </div>
   </div>
 
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
     
+    <!-- Back Button & Breadcrumb -->
+    <div class="mb-8">
+      <a href="../index.html" class="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-[#C4294E] transition-colors bg-[#1a181f] border border-white/5 px-3 py-1.5 rounded-xl">
+        <i class="fa-solid fa-arrow-left"></i> <span data-i18n="detail_btn_back"></span>
+      </a>
+    </div>
+
     <!-- Hero Details Section -->
     <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#C4294E]/20 to-[#1a181f]/40 border border-[#C4294E]/20 p-8 sm:p-12 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-4 text-center md:text-left">
         <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
-          <span id="hero-attribute" class="bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider">Fusion</span>
-          <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium">Pistols</span>
+          <span id="hero-attribute" class="bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider inline-flex items-center gap-1.5">
+            <img id="hero-attribute-icon" src="../../assets/images/attribute/fusion.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+            <span id="hero-attribute-text">Fusion</span>
+          </span>
+          <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium inline-flex items-center gap-1.5">
+            <img id="hero-weapon-icon" src="../../assets/images/weapons/type/pistol.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+            <span id="hero-weapon-text">Pistols</span>
+          </span>
           <div id="hero-roles" class="flex flex-wrap justify-center md:justify-start gap-2">
             <span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
               <img src="../../assets/images/roles/main_damage_dealer.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
@@ -153,17 +159,25 @@
         
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
-          <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-            <i class="fa-solid fa-khanda text-[#C4294E]"></i>
-            <span data-i18n="detail_weapon_title"></span>
-          </h3>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <h3 class="font-display font-bold text-xl text-white flex items-center gap-2">
+              <i class="fa-solid fa-khanda text-[#C4294E]"></i>
+              <span data-i18n="detail_weapon_title"></span>
+            </h3>
+            <!-- Rarity Filter Buttons -->
+            <div class="flex gap-2" id="weapon-rarity-filter">
+              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all" data-rarity="all">All</button>
+              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all" data-rarity="5">5★</button>
+              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all" data-rarity="4">4★</button>
+            </div>
+          </div>
 
-          <div id="weapons-list" class="space-y-6">
+          <div id="weapons-list" class="space-y-6 max-h-[280px] overflow-y-auto pr-1.5">
                         <!-- Signature Weapon -->
             <div class="bg-[#0a080f] p-5 rounded-xl border border-[#C4294E]/10 hover:border-[#C4294E]/30 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 bg-[#C4294E]/10 rounded-lg flex items-center justify-center text-[#C4294E] shrink-0 border border-[#C4294E]/20 overflow-hidden">
-                  <i class="fa-solid fa-sparkles text-xl"></i>
+                  <img src="../../assets/images/weapons/static_mist.png" alt="Static Mist" class="w-full h-full object-contain p-1">
                 </div>
                 <div>
                   <h4 class="text-base font-bold text-white flex items-center gap-2">
@@ -181,7 +195,7 @@
             <div class="bg-[#0a080f] p-5 rounded-xl border border-white/5 hover:border-[#C4294E]/20 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
               <div class="flex items-start gap-4">
                 <div class="w-12 h-12 bg-gray-500/10 rounded-lg flex items-center justify-center text-gray-400 shrink-0 border border-white/10 overflow-hidden">
-                  <i class="fa-solid fa-shield-halved text-xl"></i>
+                  <img src="../../assets/images/weapons/undying_flame.png" alt="Undying Flame" class="w-full h-full object-contain p-1">
                 </div>
                 <div>
                   <h4 class="text-base font-bold text-white flex items-center gap-2">
@@ -205,6 +219,10 @@
             <span data-i18n="detail_echo_title"></span>
           </h3>
 
+          <!-- Echo Sets Tabs Container -->
+          <div id="echo-tabs-container" class="flex flex-wrap gap-2 mb-6 hidden">
+          </div>
+
           <div class="space-y-6">
             <!-- Best Set Summary (Sonata) -->
             <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
@@ -221,16 +239,23 @@
               </div>
             </div>
 
+            <!-- Main Slot Echo -->
+            <div class="flex items-center gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
+              <div id="echo-main-illustration" class="w-12 h-12 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center shrink-0 overflow-hidden">
+                <img src="../../assets/images/echoes/inferno_rider.png" alt="inferno_rider" class="w-full h-full object-contain p-1">
+              </div>
+              <div class="flex-grow">
+                <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_main_echo">Main Slot Echo Skill</span>
+                <span id="echo-main-name" class="block text-sm text-white font-semibold">inferno_rider</span>
+                <span id="echo-main-cost" class="inline-block text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-1.5 py-0.5 rounded font-bold uppercase mt-1">4-Cost</span>
+              </div>
+            </div>
+
             <!-- Cost breakdown -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 flex gap-3 items-center">
-                <div class="w-12 h-12 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center shrink-0 overflow-hidden" id="echo-main-illustration">
-                  <i class="fa-solid fa-dna text-xl"></i>
-                </div>
-                <div>
-                  <span class="block text-xs text-gray-500 font-bold uppercase"><span data-i18n="detail_cost_4"></span> (<span id="echo-cost-4-name">inferno_rider</span>)</span>
-                  <span id="echo-cost-4" class="text-sm font-semibold text-white">Crit Rate / Crit DMG</span>
-                </div>
+              <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
+                <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_4"></span>
+                <span id="echo-cost-4" class="text-sm font-semibold text-white">Crit Rate / Crit DMG</span>
               </div>
               <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3"></span>
@@ -324,7 +349,7 @@
             <span data-i18n="detail_teams_title"></span>
           </h3>
 
-          <div id="recommended-teams-list" class="space-y-4 text-xs">
+          <div id="recommended-teams-list" class="space-y-4 text-xs max-h-[260px] overflow-y-auto pr-1.5">
                         <!-- Team Card -->
             <div class="bg-[#0a080f]/50 border border-[#C4294E]/10 rounded-xl p-3.5 space-y-2">
               <span class="block text-rose-400 font-bold tracking-wide uppercase">Fusion Quickswap Comp</span>
@@ -360,13 +385,12 @@
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#C4294E] via-rose-400 to-[#C4294E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/chixia/sequence/1.png" alt="S1: No.1 Hero Play Fan" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S1</span>
+                <img src="../../assets/images/characters/chixia/sequence/1.png" alt="S1: No.1 Hero Play Fan" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
                   <span>S1: No.1 Hero Play Fan</span>
-                  <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
+                  <span class="text-[10px] bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
                 </h4>
                 <p class="text-xs text-gray-400 mt-1 leading-relaxed">Chixia's Resonance Skill ("Boom Boom" hits) will always be a Critical Hit.</p>
               </div>
@@ -375,8 +399,7 @@
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#C4294E] via-rose-400 to-[#C4294E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/chixia/sequence/2.png" alt="S2: Leaping Sparkles" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S2</span>
+                <img src="../../assets/images/characters/chixia/sequence/2.png" alt="S2: Leaping Sparkles" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -390,8 +413,7 @@
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#C4294E] via-rose-400 to-[#C4294E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/chixia/sequence/3.png" alt="S3: Eternal Flames" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S3</span>
+                <img src="../../assets/images/characters/chixia/sequence/3.png" alt="S3: Eternal Flames" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -405,13 +427,12 @@
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#C4294E] via-rose-400 to-[#C4294E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/chixia/sequence/4.png" alt="S4: Hero's Ultimate Move" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S4</span>
+                <img src="../../assets/images/characters/chixia/sequence/4.png" alt="S4: Hero's Ultimate Move" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
                   <span>S4: Hero's Ultimate Move</span>
-                  <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
+                  <span class="text-[10px] bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>
                 </h4>
                 <p class="text-xs text-gray-400 mt-1 leading-relaxed">Resonance Liberation grants 60 "Thermobaric Bullets" and immediately resets the cooldown of her Resonance Skill.</p>
               </div>
@@ -420,8 +441,7 @@
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#C4294E] via-rose-400 to-[#C4294E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/chixia/sequence/5.png" alt="S5: Triumphant Explosions" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S5</span>
+                <img src="../../assets/images/characters/chixia/sequence/5.png" alt="S5: Triumphant Explosions" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -435,8 +455,7 @@
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#C4294E] via-rose-400 to-[#C4294E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/chixia/sequence/6.png" alt="S6: Easter Egg Performance" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S6</span>
+                <img src="../../assets/images/characters/chixia/sequence/6.png" alt="S6: Easter Egg Performance" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -495,15 +514,37 @@
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Dynamic Character Guide Hydration (Bilingual)
-    window.characterData = {"id":"chixia","name":{"en":"Chixia"},"attribute":{"en":"Fusion"},"weaponType":{"en":"Pistols"},"roles":[{"id":"main_damage_dealer","name":{"en":"Main Damage Dealer"}}],"rarity":4,"description":{"en":"A bright and energetic patroller of Jinzhou, who is always ready to lend a hand. Chixia functions as a powerful ranged Fusion DPS, dealing rapid fire damage through her specialized pistols and continuous Daka-Daka Resonance Skill firing mode."},"mainSlotEcho":"inferno_rider","recommWeapons":[{"id":"static_mist","rarityLabel":{"en":"5★ Recommended"},"isSignature":true,"name":{"en":"Static Mist"},"specs":{"en":"Base ATK: 587 • 24.3% Crit Rate (Lvl 90)"},"desc":{"en":"Grants high Crit Rate and increases Energy Regen by 12%. Upon switching out, the incoming Resonator gains 10% ATK for 14 seconds. Provides great raw DPS stats and team utility."}},{"id":"undying_flame","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Undying Flame"},"specs":{"en":"Base ATK: 412 • 20.2% ATK% (Lvl 90)"},"desc":{"en":"Increases Resonance Skill DMG by 20% for 15s upon casting Intro Skill. Highly synergistic with Chixia's reliance on her rapid-fire skill hits."}}],"recommEcho":{"sonata":"molten_rift","mainSlotEcho":"inferno_rider","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Fusion DMG% / Fusion DMG%"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > ATK% > Basic Attack DMG%"},"note":{"en":"Note: Chixia does not require high Energy Regen, making offensive substats the primary goal."},"sonataObject":{"id":"molten_rift","name":{"en":"Molten Rift"},"effect_2pc":{"en":"Fusion DMG +10%"},"effect_5pc":{"en":"Upon using Resonance Skill, increases Fusion DMG by 30% for 15s."}},"mainSlotEchoObject":{"id":"inferno_rider","name":{"en":"inferno_rider"},"costType":"4"}},"recommStats":{"en":["Crit Rate / Crit DMG","Fusion DMG%","ATK% / Flat ATK","Resonance Skill DMG%"]},"recommSkill":[{"skill":{"en":"1. Resonance Skill"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Forte Circuit"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Basic Attack"},"priority":{"en":"Low"}},{"skill":{"en":"5. Intro Skill"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Fusion Quickswap Comp"},"isPremium":true,"members":{"en":["Chixia <span class=\"text-gray-500 text-[10px]\">(Main DPS)</span>","Changli <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Fusion Amp)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"F2P Starter Team"},"isPremium":false,"members":{"en":["Chixia <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Rover (Spectro) <span class=\"text-gray-500 text-[10px]\">(Sub-DPS)</span>","Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: No.1 Hero Play Fan"},"description":{"en":"Chixia's Resonance Skill (\"Boom Boom\" hits) will always be a Critical Hit."},"isRecommended":true},{"name":{"en":"S2: Leaping Sparkles"},"description":{"en":"During Resonance Liberation, for every target defeated, Chixia recovers 5 Resonance Energy (up to 20 per Liberation)."},"isRecommended":false},{"name":{"en":"S3: Eternal Flames"},"description":{"en":"Resonance Liberation deals 40% more damage to targets with HP below 50%."},"isRecommended":false},{"name":{"en":"S4: Hero's Ultimate Move"},"description":{"en":"Resonance Liberation grants 60 \"Thermobaric Bullets\" and immediately resets the cooldown of her Resonance Skill."},"isRecommended":true},{"name":{"en":"S5: Triumphant Explosions"},"description":{"en":"When inherent skill (\"Numbingly Spicy!\") reaches max stacks, her ATK is increased by 30%."},"isRecommended":false},{"name":{"en":"S6: Easter Egg Performance"},"description":{"en":"Resonance Skill increases the Basic Attack DMG Bonus of all team members by 25% for 15 seconds."},"isRecommended":false}],"guideDetails":{"en":"Chixia is a high-firepower Fusion DPS who relies heavily on her continuous Resonance Skill attacks. Focus on utilizing her rapid-fire state and quickly swap to off-field supports who can boost her Fusion damage."}};
+    window.characterData = {"id":"chixia","name":{"en":"Chixia"},"attribute":{"en":"Fusion"},"weaponType":{"en":"Pistols"},"roles":[{"id":"main_damage_dealer","name":{"en":"Main Damage Dealer"}}],"rarity":4,"description":{"en":"A bright and energetic patroller of Jinzhou, who is always ready to lend a hand. Chixia functions as a powerful ranged Fusion DPS, dealing rapid fire damage through her specialized pistols and continuous Daka-Daka Resonance Skill firing mode."},"mainSlotEcho":"inferno_rider","recommWeapons":[{"id":"static_mist","rarityLabel":{"en":"5★ Recommended"},"isSignature":true,"name":{"en":"Static Mist"},"rarity":5,"specs":{"en":"Base ATK: 587 • 24.3% Crit Rate (Lvl 90)"},"desc":{"en":"Grants high Crit Rate and increases Energy Regen by 12%. Upon switching out, the incoming Resonator gains 10% ATK for 14 seconds. Provides great raw DPS stats and team utility."}},{"id":"undying_flame","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Undying Flame"},"rarity":4,"specs":{"en":"Base ATK: 412 • 20.2% ATK% (Lvl 90)"},"desc":{"en":"Increases Resonance Skill DMG by 20% for 15s upon casting Intro Skill. Highly synergistic with Chixia's reliance on her rapid-fire skill hits."}}],"recommEcho":[{"setName":{"en":"Molten Rift (5pc)","ko":"용융 5세트 (Molten Rift)"},"sonata":"molten_rift","mainSlotEcho":"inferno_rider","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Fusion DMG% / Fusion DMG%"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > ATK% > Basic Attack DMG%"},"note":{"en":"Note: Chixia does not require high Energy Regen, making offensive substats the primary goal."},"sonataObject":{"id":"molten_rift","name":{"en":"Molten Rift"},"effect_2pc":{"en":"Fusion DMG +10%"},"effect_5pc":{"en":"Upon using Resonance Skill, increases Fusion DMG by 30% for 15s."}},"mainSlotEchoObject":{"id":"inferno_rider","name":{"en":"inferno_rider"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Fusion DMG% / Energy Regen%","ko":"융합 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > ATK% > Basic Attack DMG%"},"note":{"en":"Note: Chixia does not require high Energy Regen, making offensive substats the primary goal."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Fusion DMG%","ATK% / Flat ATK","Resonance Skill DMG%"]},"recommSkill":[{"skill":{"en":"1. Resonance Skill"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Forte Circuit"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Basic Attack"},"priority":{"en":"Low"}},{"skill":{"en":"5. Intro Skill"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Fusion Quickswap Comp"},"isPremium":true,"members":{"en":["Chixia <span class=\"text-gray-500 text-[10px]\">(Main DPS)</span>","Changli <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Fusion Amp)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"F2P Starter Team"},"isPremium":false,"members":{"en":["Chixia <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Rover (Spectro) <span class=\"text-gray-500 text-[10px]\">(Sub-DPS)</span>","Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: No.1 Hero Play Fan"},"description":{"en":"Chixia's Resonance Skill (\"Boom Boom\" hits) will always be a Critical Hit."},"isRecommended":true},{"name":{"en":"S2: Leaping Sparkles"},"description":{"en":"During Resonance Liberation, for every target defeated, Chixia recovers 5 Resonance Energy (up to 20 per Liberation)."},"isRecommended":false},{"name":{"en":"S3: Eternal Flames"},"description":{"en":"Resonance Liberation deals 40% more damage to targets with HP below 50%."},"isRecommended":false},{"name":{"en":"S4: Hero's Ultimate Move"},"description":{"en":"Resonance Liberation grants 60 \"Thermobaric Bullets\" and immediately resets the cooldown of her Resonance Skill."},"isRecommended":true},{"name":{"en":"S5: Triumphant Explosions"},"description":{"en":"When inherent skill (\"Numbingly Spicy!\") reaches max stacks, her ATK is increased by 30%."},"isRecommended":false},{"name":{"en":"S6: Easter Egg Performance"},"description":{"en":"Resonance Skill increases the Basic Attack DMG Bonus of all team members by 25% for 15 seconds."},"isRecommended":false}],"guideDetails":{"en":"Chixia is a high-firepower Fusion DPS who relies heavily on her continuous Resonance Skill attacks. Focus on utilizing her rapid-fire state and quickly swap to off-field supports who can boost her Fusion damage."}};
+
+    window.toggleSequenceDesc = function(btn) {
+      const p = btn.closest('p');
+      const isExpanded = btn.getAttribute('data-expanded') === 'true';
+      const fullText = btn.getAttribute('data-full');
+      const truncatedText = btn.getAttribute('data-truncated');
+      
+      if (isExpanded) {
+        p.innerHTML = `${truncatedText}... <button onclick="toggleSequenceDesc(this)" data-expanded="false" data-full="${fullText.replace(/"/g, '&quot;')}" data-truncated="${truncatedText.replace(/"/g, '&quot;')}" class="text-[#C4294E] hover:underline ml-1 font-semibold focus:outline-none">more</button>`;
+      } else {
+        p.innerHTML = `${fullText} <button onclick="toggleSequenceDesc(this)" data-expanded="true" data-full="${fullText.replace(/"/g, '&quot;')}" data-truncated="${truncatedText.replace(/"/g, '&quot;')}" class="text-[#C4294E] hover:underline ml-1 font-semibold focus:outline-none">less</button>`;
+      }
+    };
 
     function renderCharacterGuide(lang) {
       const data = window.characterData;
       if (!data) return;
 
       // Render hero texts
-      document.getElementById("hero-attribute").textContent = data.attribute[lang] || data.attribute.en;
-      document.getElementById("hero-weaponType").textContent = data.weaponType[lang] || data.weaponType.en;
+      document.getElementById("hero-attribute-text").textContent = data.attribute[lang] || data.attribute.en;
+      document.getElementById("hero-weapon-text").textContent = data.weaponType[lang] || data.weaponType.en;
+
+      // Update attribute and weapon icons dynamically
+      const attrId = data.attribute.en.toLowerCase();
+      document.getElementById("hero-attribute-icon").src = `../../assets/images/attribute/${attrId}.png`;
+      document.getElementById("hero-attribute-icon").style.display = '';
+
+      const weaponTypeId = data.weaponType.en.toLowerCase().replace(/s$/, '');
+      document.getElementById("hero-weapon-icon").src = `../../assets/images/weapons/type/${weaponTypeId}.png`;
+      document.getElementById("hero-weapon-icon").style.display = '';
       
       
       // Render roles list
@@ -525,29 +566,33 @@
       const resonatorLabel = window.wuwaI18n ? window.wuwaI18n.t('resonator_label') : 'Resonator';
       document.getElementById("hero-rarity-label").textContent = `(${data.rarity}★ ${resonatorLabel})`;
 
-      // Render weapons
-      const weaponsContainer = document.getElementById("weapons-list");
-      if (weaponsContainer) {
-        weaponsContainer.innerHTML = data.recommWeapons.map(weapon => {
+      // Render weapons list function (supporting dynamic rarity filtering)
+      window.renderWeaponsList = function(activeLang, filterRarity = 'all') {
+        const weaponsContainer = document.getElementById("weapons-list");
+        if (!weaponsContainer) return;
+
+        const filtered = data.recommWeapons.filter(weapon => {
+          if (filterRarity === 'all') return true;
+          return String(weapon.rarity) === String(filterRarity);
+        });
+
+        weaponsContainer.innerHTML = filtered.map(weapon => {
           const isSig = weapon.isSignature;
           const borderClass = isSig ? `border-[#C4294E]/10 hover:border-[#C4294E]/30` : `border-white/5 hover:border-[#C4294E]/20`;
           const badgeClass = isSig ? `bg-yellow-500/20 text-yellow-300 border border-yellow-500/30` : `bg-purple-500/20 text-purple-300 border border-purple-500/30`;
-          const iconClass = isSig ? "fa-solid fa-sparkles text-xl" : "fa-solid fa-shield-halved text-xl";
-          const iconColor = isSig ? `text-[#C4294E]` : "text-gray-400";
           const iconBg = isSig ? `bg-[#C4294E]/10` : "bg-gray-500/10";
           const borderIcon = isSig ? `border-[#C4294E]/20` : "border-white/10";
           
-          const weaponName = weapon.name[lang] || weapon.name.en;
-          const rarityLabel = weapon.rarityLabel[lang] || weapon.rarityLabel.en;
-          const specs = weapon.specs[lang] || weapon.specs.en;
-          const desc = weapon.desc[lang] || weapon.desc.en;
+          const weaponName = weapon.name[activeLang] || weapon.name.en;
+          const rarityLabel = weapon.rarityLabel[activeLang] || weapon.rarityLabel.en;
+          const specs = weapon.specs[activeLang] || weapon.specs.en;
+          const desc = weapon.desc[activeLang] || weapon.desc.en;
 
           return `
             <div class="bg-[#0a080f] p-5 rounded-xl border ${borderClass} transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
               <div class="flex items-start gap-4">
-                <div class="w-12 h-12 ${iconBg} rounded-lg flex items-center justify-center ${iconColor} shrink-0 border ${borderIcon} overflow-hidden">
-                  <img src="../../assets/images/weapons/${weapon.id}.png" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                  <i class="${iconClass} hidden"></i>
+                <div class="w-12 h-12 ${iconBg} rounded-lg flex items-center justify-center text-white shrink-0 border ${borderIcon} overflow-hidden">
+                  <img src="../../assets/images/weapons/${weapon.id}.png" class="w-full h-full object-contain p-1">
                 </div>
                 <div>
                   <h4 class="text-base font-bold text-white flex items-center gap-2">
@@ -562,45 +607,121 @@
               </div>
             </div>`;
         }).join('\n');
+      };
+
+      // Initial render for weapons
+      if (!window.currentWeaponFilter) {
+        window.currentWeaponFilter = 'all';
       }
+      renderWeaponsList(lang, window.currentWeaponFilter);
+
+      // Initialize filter buttons active states
+      const activeFilterClassList = "bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30".split(' ');
+      const inactiveFilterClassList = ["bg-white/5", "border", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
+
+      const filterButtons = document.querySelectorAll('.weapon-filter-btn');
+      filterButtons.forEach(btn => {
+        const btnRarity = btn.getAttribute('data-rarity');
+        // Reset classes
+        activeFilterClassList.forEach(c => btn.classList.remove(c));
+        inactiveFilterClassList.forEach(c => btn.classList.add(c));
+
+        if (btnRarity === window.currentWeaponFilter) {
+          inactiveFilterClassList.forEach(c => btn.classList.remove(c));
+          activeFilterClassList.forEach(c => btn.classList.add(c));
+        }
+      });
 
       // Echo Setup
-      const echo = data.recommEcho;
-      if (echo) {
+      const recommEchoes = Array.isArray(data.recommEcho) ? data.recommEcho : [data.recommEcho];
+      
+      window.renderEchoSet = function(activeLang, setIndex = 0) {
+        const echo = recommEchoes[setIndex];
+        if (!echo) return;
+
         const sonataObj = echo.sonataObject || { name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
         const echoObj = echo.mainSlotEchoObject || { name: { en: "" }, costType: "4", id: "" };
 
-        document.getElementById("echo-best-set").textContent = sonataObj.name[lang] || sonataObj.name.en;
+        document.getElementById("echo-best-set").textContent = sonataObj.name[activeLang] || sonataObj.name.en;
 
         // Update sonata set illustration
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
         if (sonataIllustContainer && sonataObj.id) {
           sonataIllustContainer.innerHTML = `
-            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-            <i class="fa-solid fa-circle-nodes hidden"></i>`;
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1">`;
         }
 
         // Update sonata effects
-        const effect2pc = sonataObj.effect_2pc[lang] || sonataObj.effect_2pc.en;
-        const effect5pc = sonataObj.effect_5pc[lang] || sonataObj.effect_5pc.en;
+        const effect2pc = sonataObj.effect_2pc[activeLang] || sonataObj.effect_2pc.en;
+        const effect5pc = sonataObj.effect_5pc[activeLang] || sonataObj.effect_5pc.en;
         document.getElementById("sonata-effect-2pc").textContent = effect2pc;
         document.getElementById("sonata-effect-5pc").textContent = effect5pc;
 
         // Update main slot echo info
-        const echoName = echoObj.name[lang] || echoObj.name.en;
-        document.getElementById("echo-cost-4-name").textContent = echoName;
-      document.getElementById("echo-cost-4").textContent = echo.cost4[lang] || echo.cost4.en;
-      document.getElementById("echo-cost-3").textContent = echo.cost3[lang] || echo.cost3.en;
-      document.getElementById("echo-cost-1").textContent = echo.cost1[lang] || echo.cost1.en;
-      document.getElementById("echo-substats-priority").textContent = echo.substatsPriority[lang] || echo.substatsPriority.en;
-      document.getElementById("echo-note").textContent = echo.note[lang] || echo.note.en;
-
-      // Update main echo illustration
+        const echoName = echoObj.name[activeLang] || echoObj.name.en;
+        document.getElementById("echo-main-name").textContent = echoName;
+        const costLabel = window.wuwaI18n ? window.wuwaI18n.t('cost_label') : 'Cost';
+        document.getElementById("echo-main-cost").textContent = `${echoObj.costType}-${costLabel}`;
+        document.getElementById("echo-cost-4").textContent = echo.cost4[activeLang] || echo.cost4.en;
+        document.getElementById("echo-cost-3").textContent = echo.cost3[activeLang] || echo.cost3.en;
+        document.getElementById("echo-cost-1").textContent = echo.cost1[activeLang] || echo.cost1.en;
+        
+        // Update main echo illustration
         const illustContainer = document.getElementById("echo-main-illustration");
         if (illustContainer && echoObj.id) {
           illustContainer.innerHTML = `
-            <img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoName}" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-            <i class="fa-solid fa-dna text-xl hidden"></i>`;
+            <img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoName}" class="w-full h-full object-contain p-1">`;
+        }
+      };
+
+      // Set Substats priority (Shared/Unchanged across tabs)
+      if (recommEchoes[0]) {
+        const baseEcho = recommEchoes[0];
+        document.getElementById("echo-substats-priority").textContent = baseEcho.substatsPriority[lang] || baseEcho.substatsPriority.en;
+        document.getElementById("echo-note").textContent = baseEcho.note[lang] || baseEcho.note.en;
+      }
+
+      // Initial render for echo set
+      if (typeof window.currentEchoSetIndex === 'undefined') {
+        window.currentEchoSetIndex = 0;
+      }
+      renderEchoSet(lang, window.currentEchoSetIndex);
+
+      // Render tab buttons if multiple sets are available
+      const tabsContainer = document.getElementById("echo-tabs-container");
+      if (tabsContainer) {
+        if (recommEchoes.length > 1) {
+          tabsContainer.classList.remove("hidden");
+          const activeTabClassList = "bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30".split(' ');
+          const inactiveTabClassList = ["bg-white/5", "border", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
+
+          tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
+            const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
+            const isActive = idx === window.currentEchoSetIndex;
+            const classes = isActive ? activeTabClassList.join(' ') : inactiveTabClassList.join(' ');
+            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all ${classes}" data-index="${idx}">${setName}</button>`;
+          }).join('\n');
+
+          // Register click listeners for tabs
+          const tabButtons = tabsContainer.querySelectorAll('.echo-tab-btn');
+          tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const selectedIdx = parseInt(btn.getAttribute('data-index'), 10);
+              window.currentEchoSetIndex = selectedIdx;
+              
+              tabButtons.forEach(b => {
+                activeTabClassList.forEach(c => b.classList.remove(c));
+                inactiveTabClassList.forEach(c => b.classList.add(c));
+              });
+              inactiveTabClassList.forEach(c => btn.classList.remove(c));
+              activeTabClassList.forEach(c => btn.classList.add(c));
+
+              const currentLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+              renderEchoSet(currentLang, selectedIdx);
+            });
+          });
+        } else {
+          tabsContainer.classList.add("hidden");
         }
       }
 
@@ -666,25 +787,35 @@
         sequenceContainer.innerHTML = data.recommSequence.map((seq, index) => {
           const isRec = seq.isRecommended;
           const borderClass = isRec ? `border-[#C4294E]/10 hover:border-[#C4294E]/30` : 'border-white/5';
-          const badgeHtml = isRec ? `<span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
+          const badgeHtml = isRec ? `<span class="text-[10px] bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
           const stepIdx = index + 1;
           const seqName = seq.name[lang] || seq.name.en;
           const seqDesc = seq.description[lang] || seq.description.en;
+
+          const maxLen = 120;
+          let seqDescHtml = '';
+          if (seqDesc.length > maxLen) {
+            const truncated = seqDesc.slice(0, maxLen);
+            const escapedFull = seqDesc.replace(/"/g, '&quot;');
+            const escapedTrunc = truncated.replace(/"/g, '&quot;');
+            seqDescHtml = `${truncated}... <button onclick="toggleSequenceDesc(this)" data-expanded="false" data-full="${escapedFull}" data-truncated="${escapedTrunc}" class="text-[#C4294E] hover:underline ml-1 font-semibold focus:outline-none">more</button>`;
+          } else {
+            seqDescHtml = seqDesc;
+          }
 
           return `
             <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all">
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#C4294E] via-rose-400 to-[#C4294E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/${data.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S${stepIdx}</span>
+                <img src="../../assets/images/characters/${data.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(196, 41, 78, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
                   <span>${seqName}</span>
                   ${badgeHtml}
                 </h4>
-                <p class="text-xs text-gray-400 mt-1 leading-relaxed">${seqDesc}</p>
+                <p class="text-xs text-gray-400 mt-1 leading-relaxed">${seqDescHtml}</p>
               </div>
             </div>`;
         }).join('\n');
@@ -711,6 +842,28 @@
         console.warn("Storage access denied. Defaulting to English.");
       }
       renderCharacterGuide(activeLang);
+
+      // Register weapon filter clicks
+      const activeFilterClassList = "bg-[#C4294E]/20 text-[#C4294E] border border-[#C4294E]/30".split(' ');
+      const inactiveFilterClassList = ["bg-white/5", "border", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
+      const filterButtons = document.querySelectorAll('.weapon-filter-btn');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => {
+            activeFilterClassList.forEach(c => b.classList.remove(c));
+            inactiveFilterClassList.forEach(c => b.classList.add(c));
+          });
+          inactiveFilterClassList.forEach(c => btn.classList.remove(c));
+          activeFilterClassList.forEach(c => btn.classList.add(c));
+          
+          window.currentWeaponFilter = btn.getAttribute('data-rarity');
+          const currentLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+          if (window.renderWeaponsList) {
+            window.renderWeaponsList(currentLang, window.currentWeaponFilter);
+          }
+        });
+      });
+
       if (window.wuwaI18n) window.wuwaI18n.showPage();
     });
 

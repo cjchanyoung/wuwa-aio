@@ -1,141 +1,206 @@
 {
   "ages_of_harvest": {
     "id": "ages_of_harvest",
-    "name": { "en": "Ages of Harvest" },
+    "name": {
+      "en": "Ages of Harvest"
+    },
     "type": "Broadblade",
     "rarity": 5,
     "baseAtk": 587,
-    "secondaryStat": { "en": "24.3% Crit Rate" },
+    "secondaryStat": {
+      "en": "24.3% Crit Rate"
+    },
     "signatureFor": "jinhsi",
-    "recommendedFor": ["jinhsi"],
+    "recommendedFor": [
+      "jinhsi"
+    ],
     "desc": {
       "en": "Increases Attribute DMG by 12%. When using Intro Skill or Resonance Skill, gain a stacking Resonance Skill DMG boost of up to 48%. Jinhsi's absolute best-in-class option."
     }
   },
   "helios_cleaver": {
     "id": "helios_cleaver",
-    "name": { "en": "Helios Cleaver" },
+    "name": {
+      "en": "Helios Cleaver"
+    },
     "type": "Broadblade",
     "rarity": 4,
     "baseAtk": 412,
-    "secondaryStat": { "en": "30.3% ATK%" },
+    "secondaryStat": {
+      "en": "30.3% ATK%"
+    },
     "signatureFor": null,
-    "recommendedFor": ["jinhsi"],
+    "recommendedFor": [
+      "jinhsi"
+    ],
     "desc": {
       "en": "Increases ATK by 3% every 2s upon entering the field, stacking up to 5 times. High base attack and high ATK scaling make it a solid free-to-play weapon."
     }
   },
   "stringmaster": {
     "id": "stringmaster",
-    "name": { "en": "Stringmaster" },
+    "name": {
+      "en": "Stringmaster"
+    },
     "type": "Rectifier",
     "rarity": 5,
     "baseAtk": 500,
-    "secondaryStat": { "en": "36.0% Crit Rate" },
+    "secondaryStat": {
+      "en": "36.0% Crit Rate"
+    },
     "signatureFor": "yinlin",
-    "recommendedFor": ["yinlin"],
+    "recommendedFor": [
+      "yinlin"
+    ],
     "desc": {
       "en": "Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."
     }
   },
   "rectifier_25": {
     "id": "rectifier_25",
-    "name": { "en": "Rectifier #25" },
+    "name": {
+      "en": "Rectifier #25"
+    },
     "type": "Rectifier",
     "rarity": 4,
     "baseAtk": 412,
-    "secondaryStat": { "en": "30.3% ATK%" },
+    "secondaryStat": {
+      "en": "30.3% ATK%"
+    },
     "signatureFor": null,
-    "recommendedFor": ["yinlin"],
+    "recommendedFor": [
+      "yinlin"
+    ],
     "desc": {
       "en": "When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."
     }
   },
   "static_mist": {
     "id": "static_mist",
-    "name": { "en": "Static Mist" },
+    "name": {
+      "en": "Static Mist"
+    },
     "type": "Pistols",
     "rarity": 5,
     "baseAtk": 587,
-    "secondaryStat": { "en": "24.3% Crit Rate" },
-    "signatureFor": "chixia",
-    "recommendedFor": ["chixia"],
+    "secondaryStat": {
+      "en": "24.3% Crit Rate"
+    },
+    "signatureFor": null,
+    "recommendedFor": [
+      "chixia"
+    ],
     "desc": {
       "en": "Grants high Crit Rate and increases Energy Regen by 12%. Upon switching out, the incoming Resonator gains 10% ATK for 14 seconds. Provides great raw DPS stats and team utility."
     }
   },
   "undying_flame": {
     "id": "undying_flame",
-    "name": { "en": "Undying Flame" },
+    "name": {
+      "en": "Undying Flame"
+    },
     "type": "Pistols",
     "rarity": 4,
     "baseAtk": 412,
-    "secondaryStat": { "en": "20.2% ATK%" },
+    "secondaryStat": {
+      "en": "20.2% ATK%"
+    },
     "signatureFor": null,
-    "recommendedFor": ["chixia"],
+    "recommendedFor": [
+      "chixia"
+    ],
     "desc": {
       "en": "Increases Resonance Skill DMG by 20% for 15s upon casting Intro Skill. Highly synergistic with Chixia's reliance on her rapid-fire skill hits."
     }
   },
   "blazing_brilliance": {
     "id": "blazing_brilliance",
-    "name": { "en": "Blazing Brilliance" },
+    "name": {
+      "en": "Blazing Brilliance"
+    },
     "type": "Sword",
     "rarity": 5,
     "baseAtk": 587,
-    "secondaryStat": { "en": "56.2% Crit DMG" },
+    "secondaryStat": {
+      "en": "Crit.DMG 48.6%"
+    },
     "signatureFor": "changli",
-    "recommendedFor": ["changli"],
+    "recommendedFor": [
+      "changli"
+    ],
     "desc": {
       "en": "Provides massive Crit DMG. Increases ATK by 12%. When dealing damage, grants stacks that increase Resonance Skill DMG by up to 56%. Specially designed to unleash Changli's skill-intensive combat rotation."
     }
   },
   "commando_of_conviction": {
     "id": "commando_of_conviction",
-    "name": { "en": "Commando of Conviction" },
+    "name": {
+      "en": "Commando of Conviction"
+    },
     "type": "Sword",
     "rarity": 4,
     "baseAtk": 412,
-    "secondaryStat": { "en": "30.3% ATK%" },
+    "secondaryStat": {
+      "en": "30.3% ATK%"
+    },
     "signatureFor": null,
-    "recommendedFor": ["changli"],
+    "recommendedFor": [
+      "changli"
+    ],
     "desc": {
       "en": "When Intro Skill is triggered, increases ATK by 15% for 15s. Excellent F2P weapon with a straightforward trigger condition for quickswap builds."
     }
   },
   "stellar_symphony": {
     "id": "stellar_symphony",
-    "name": { "en": "Stellar Symphony" },
+    "name": {
+      "en": "Stellar Symphony"
+    },
     "type": "Rectifier",
     "rarity": 5,
     "baseAtk": 412,
-    "secondaryStat": { "en": "77.0% HP%" },
+    "secondaryStat": {
+      "en": "77.0% HP%"
+    },
     "signatureFor": "shorekeeper",
-    "recommendedFor": ["shorekeeper"],
+    "recommendedFor": [
+      "shorekeeper"
+    ],
     "desc": {
       "en": "Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."
     }
   },
   "variation": {
     "id": "variation",
-    "name": { "en": "Variation" },
+    "name": {
+      "en": "Variation"
+    },
     "type": "Rectifier",
     "rarity": 4,
     "baseAtk": 337,
-    "secondaryStat": { "en": "51.8% Energy Regen" },
+    "secondaryStat": {
+      "en": "51.8% Energy Regen"
+    },
     "signatureFor": null,
-    "recommendedFor": ["shorekeeper", "verina"],
+    "recommendedFor": [
+      "shorekeeper",
+      "verina"
+    ],
     "desc": {
       "en": "Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."
     }
   },
   "broadblade_of_night": {
     "id": "broadblade_of_night",
-    "name": { "en": "Broadblade of Night" },
+    "name": {
+      "en": "Broadblade of Night"
+    },
     "type": "Broadblade",
     "rarity": 3,
     "baseAtk": 325,
-    "secondaryStat": { "en": "20.2% ATK%" },
+    "secondaryStat": {
+      "en": "20.2% ATK%"
+    },
     "signatureFor": null,
     "recommendedFor": [],
     "desc": {
@@ -144,11 +209,15 @@
   },
   "origin_sword": {
     "id": "origin_sword",
-    "name": { "en": "Origin Sword" },
+    "name": {
+      "en": "Origin Sword"
+    },
     "type": "Sword",
     "rarity": 2,
     "baseAtk": 250,
-    "secondaryStat": { "en": "15.0% DEF%" },
+    "secondaryStat": {
+      "en": "15.0% DEF%"
+    },
     "signatureFor": null,
     "recommendedFor": [],
     "desc": {
@@ -157,11 +226,15 @@
   },
   "training_pistols": {
     "id": "training_pistols",
-    "name": { "en": "Training Pistols" },
+    "name": {
+      "en": "Training Pistols"
+    },
     "type": "Pistols",
     "rarity": 1,
     "baseAtk": 180,
-    "secondaryStat": { "en": "10.0% HP%" },
+    "secondaryStat": {
+      "en": "10.0% HP%"
+    },
     "signatureFor": null,
     "recommendedFor": [],
     "desc": {
@@ -170,52 +243,76 @@
   },
   "tragicomedy": {
     "id": "tragicomedy",
-    "name": { "en": "Tragicomedy" },
+    "name": {
+      "en": "Tragicomedy"
+    },
     "type": "Gauntlets",
     "rarity": 5,
     "baseAtk": 587,
-    "secondaryStat": { "en": "24.3% Crit Rate" },
+    "secondaryStat": {
+      "en": "24.3% Crit Rate"
+    },
     "signatureFor": "Roccia",
-    "recommendedFor": ["roccia"],
+    "recommendedFor": [
+      "roccia"
+    ],
     "desc": {
       "en": "Increases ATK by (12%/15%/18%/21%/24%). Every time Basic Attack or Intro Skill is cast, Heavy Attack DMG Bonus increases by (48%/60%/72%/84%/96%) for 3s."
     }
   },
   "verdant_summit": {
     "id": "verdant_summit",
-    "name": { "en": "Verdant Summit" },
+    "name": {
+      "en": "Verdant Summit"
+    },
     "type": "Broadblade",
     "rarity": 5,
     "baseAtk": 587,
-    "secondaryStat": { "en": "48.6% Crit DMG" },
+    "secondaryStat": {
+      "en": "48.6% Crit DMG"
+    },
     "signatureFor": "jiyan",
-    "recommendedFor": ["jiyan"],
+    "recommendedFor": [
+      "jiyan"
+    ],
     "desc": {
       "en": "Increases Heavy Attack DMG by 12% and when casting Intro Skill or Resonance Liberation, boosts Heavy Attack DMG by 38%."
     }
   },
   "autumntrace": {
     "id": "autumntrace",
-    "name": { "en": "Autumntrace" },
+    "name": {
+      "en": "Autumntrace"
+    },
     "type": "Broadblade",
     "rarity": 4,
     "baseAtk": 412,
-    "secondaryStat": { "en": "20.2% Crit Rate" },
+    "secondaryStat": {
+      "en": "20.2% Crit Rate"
+    },
     "signatureFor": null,
-    "recommendedFor": ["jiyan"],
+    "recommendedFor": [
+      "jiyan"
+    ],
     "desc": {
       "en": "Increases ATK by 4% on dealing Basic or Heavy Attack DMG, stacking up to 5 times."
     }
   },
   "emerald_of_genesis": {
     "id": "emerald_of_genesis",
-    "name": { "en": "Emerald of Genesis" },
+    "name": {
+      "en": "Emerald of Genesis"
+    },
     "type": "Sword",
     "rarity": 5,
     "baseAtk": 587,
-    "secondaryStat": { "en": "24.3% Crit Rate" },
-    "signatureFor": "sanhua",
-    "recommendedFor": ["sanhua"],
+    "secondaryStat": {
+      "en": "24.3% Crit Rate"
+    },
+    "signatureFor": null,
+    "recommendedFor": [
+      "sanhua"
+    ],
     "desc": {
       "en": "Increases Energy Regen by 12.8%. When Resonance Skill is cast, ATK is increased by 6%, stacking up to 2 times."
     }

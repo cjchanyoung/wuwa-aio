@@ -145,12 +145,55 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="weapons-container">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="weapons-container">
         <!-- Dynamic weapons cards will be injected here -->
 
       </div>
     </section>
   </main>
+
+  <!-- Weapon Details Modal -->
+  <div id="weapon-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0a080f]/85 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div id="weapon-modal-card" class="bg-[#1a181f] border border-white/10 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl transition-transform duration-300 scale-95 flex flex-col">
+      <!-- Modal Header with Accent Glow -->
+      <div class="relative p-6 border-b border-white/5 flex gap-4 items-start">
+        <div id="modal-weapon-img-container" class="w-16 h-16 rounded-xl border flex items-center justify-center font-bold text-2xl shrink-0 overflow-hidden">
+          <!-- Image will be set dynamically -->
+        </div>
+        <div class="flex-grow min-w-0">
+          <h2 id="modal-weapon-name" class="font-display font-bold text-2xl text-white tracking-wide"></h2>
+          <span id="modal-weapon-sub" class="text-xs text-gray-500 uppercase font-semibold"></span>
+        </div>
+        <button id="modal-close-btn" class="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-white/5 transition-colors focus:outline-none">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="p-6 space-y-6 overflow-y-auto max-h-[60vh] text-sm">
+        <!-- Stats grid -->
+        <div class="grid grid-cols-3 gap-4">
+          <div class="bg-[#0a080f] p-3.5 rounded-xl border border-white/5">
+            <span class="block text-xs text-gray-500 uppercase font-semibold mb-1" data-i18n="weapon_stat_base_atk">Base ATK</span>
+            <span id="modal-weapon-atk" class="text-base font-bold text-white"></span>
+          </div>
+          <div class="bg-[#0a080f] p-3.5 rounded-xl border border-white/5 col-span-2">
+            <span class="block text-xs text-gray-500 uppercase font-semibold mb-1" data-i18n="weapon_stat_secondary">Secondary Stat</span>
+            <span id="modal-weapon-stat" class="text-base font-semibold text-white"></span>
+          </div>
+        </div>
+        <!-- Signature / Recommended -->
+        <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
+          <span id="modal-weapon-sig-label" class="block text-xs text-gray-500 uppercase font-semibold mb-1"></span>
+          <span id="modal-weapon-sig" class="text-sm font-semibold text-purple-400"></span>
+        </div>
+        <!-- Description -->
+        <div class="space-y-2">
+          <span class="block text-xs text-gray-500 uppercase font-semibold" data-i18n="weapon_stat_description">Description</span>
+          <p id="modal-weapon-desc" class="text-gray-300 leading-relaxed text-sm"></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer Section -->
   <footer class="bg-[#0a080f] border-t border-white/5 py-12">
@@ -224,8 +267,26 @@
         });
 
         container.innerHTML = cachedWeapons.map(weapon => {
-          const rarityColor = weapon.rarity === 5 ? 'text-yellow-400' : weapon.rarity === 4 ? 'text-purple-400' : 'text-blue-400';
-          const rarityBg = weapon.rarity === 5 ? 'bg-yellow-500/10 border-yellow-500/20' : weapon.rarity === 4 ? 'bg-purple-500/10 border-purple-500/20' : 'bg-blue-500/10 border-blue-500/20';
+          let rarityColor = 'text-gray-400';
+          let rarityBg = 'bg-gray-500/10 border-gray-500/20';
+          let hoverBorder = 'hover:border-gray-500/30';
+          if (weapon.rarity === 5) {
+            rarityColor = 'text-yellow-400';
+            rarityBg = 'bg-yellow-500/10 border-yellow-500/20';
+            hoverBorder = 'hover:border-yellow-500/40 hover:shadow-lg hover:shadow-yellow-500/5';
+          } else if (weapon.rarity === 4) {
+            rarityColor = 'text-purple-400';
+            rarityBg = 'bg-purple-500/10 border-purple-500/20';
+            hoverBorder = 'hover:border-purple-500/40 hover:shadow-lg hover:shadow-purple-500/5';
+          } else if (weapon.rarity === 3) {
+            rarityColor = 'text-blue-400';
+            rarityBg = 'bg-blue-500/10 border-blue-500/20';
+            hoverBorder = 'hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/5';
+          } else if (weapon.rarity === 2) {
+            rarityColor = 'text-emerald-400';
+            rarityBg = 'bg-emerald-500/10 border-emerald-500/20';
+            hoverBorder = 'hover:border-emerald-500/30 hover:shadow-lg hover:shadow-emerald-500/5';
+          }
 
           const weaponName = weapon.name[lang] || weapon.name.en;
           const weaponDesc = weapon.desc[lang] || weapon.desc.en;
@@ -243,40 +304,48 @@
           const subStatLabel = window.wuwaI18n ? window.wuwaI18n.t('weapon_stat_secondary') : 'Secondary Stat:';
 
           return `
-            <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-6 hover:border-purple-500/20 transition-all duration-300 flex gap-4" data-type="${weapon.type}" data-rarity="${weapon.rarity}">
-              <div class="w-16 h-16 rounded-xl ${rarityBg} border flex items-center justify-center ${rarityColor} font-bold text-2xl shrink-0 overflow-hidden">
-                <img src="../assets/images/weapons/${weapon.id}.png" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="hidden">${weapon.rarity}★</span>
+            <div class="weapon-card bg-[#1a181f] border border-white/5 rounded-2xl p-4.5 ${hoverBorder} transition-all duration-300 flex flex-col gap-3 cursor-pointer" data-id="${weapon.id}" data-type="${weapon.type}" data-rarity="${weapon.rarity}">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-xl ${rarityBg} border flex items-center justify-center ${rarityColor} font-bold text-lg shrink-0 overflow-hidden">
+                  <img src="../assets/images/weapons/${weapon.id}.png" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+                  <span class="hidden">${weapon.rarity}★</span>
+                </div>
+                <div class="flex-grow min-w-0">
+                  <h3 class="font-display font-semibold text-base text-white truncate">${weaponName}</h3>
+                  <span class="text-[10px] text-gray-500 uppercase font-semibold block">${weapon.type} • ${'★'.repeat(weapon.rarity)}</span>
+                </div>
+                <span class="text-[10px] ${rarityBg} border ${rarityColor} px-2 py-0.5 rounded font-bold shrink-0">${weapon.baseAtk} ATK</span>
               </div>
-              <div class="flex-grow">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <h3 class="font-display font-semibold text-lg text-white">${weaponName}</h3>
-                    <span class="text-[10px] text-gray-500 uppercase font-semibold">${weapon.type} • ${'★'.repeat(weapon.rarity)}</span>
-                  </div>
-                  <span class="text-xs ${rarityBg} border ${rarityColor} px-2 py-0.5 rounded font-bold">${weapon.baseAtk} ATK</span>
+              
+              <div class="grid grid-cols-2 gap-2 p-2.5 bg-[#0a080f]/50 rounded-xl border border-white/5 text-[10px]">
+                <div class="min-w-0">
+                  <span class="block text-gray-500">${subStatLabel}</span>
+                  <span class="text-white font-medium truncate block">${secondaryStatVal}</span>
                 </div>
-                
-                <div class="grid grid-cols-2 gap-4 my-4 p-3 bg-[#0a080f]/50 rounded-xl border border-white/5 text-xs">
-                  <div>
-                    <span class="block text-gray-500">${subStatLabel}</span>
-                    <span class="text-white font-medium">${secondaryStatVal}</span>
-                  </div>
-                  <div>
-                    <span class="block text-gray-500">${signatureLabel}</span>
-                    <span class="text-purple-400 font-medium">${linkedResonators || '-'}</span>
-                  </div>
+                <div class="min-w-0">
+                  <span class="block text-gray-500">${signatureLabel}</span>
+                  <span class="text-purple-400 font-medium truncate block">${linkedResonators || '-'}</span>
                 </div>
+              </div>
 
-                <p class="text-xs text-gray-400 leading-relaxed">
-                  ${weaponDesc}
-                </p>
-              </div>
+              <p class="text-[11px] text-gray-400 leading-relaxed">
+                ${weaponDesc}
+              </p>
             </div>
           `;
         }).join('');
 
         filterWeapons();
+
+        // Set up click handler for cards
+        const cards = container.querySelectorAll('.weapon-card');
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            const weaponId = card.dataset.id;
+            openWeaponModal(weaponId);
+          });
+        });
+
         if (window.wuwaI18n) window.wuwaI18n.showPage();
       } catch (err) {
         console.error('Failed to load weapons list:', err);
@@ -342,6 +411,92 @@
         }
         filterWeapons();
       });
+    });
+
+    // Modal open/close actions
+    function openWeaponModal(weaponId) {
+      const weapon = cachedWeapons.find(w => w.id === weaponId);
+      if (!weapon) return;
+
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+
+      let rarityColor = 'text-gray-400';
+      let rarityBg = 'bg-gray-500/10 border-gray-500/20';
+      if (weapon.rarity === 5) {
+        rarityColor = 'text-yellow-400';
+        rarityBg = 'bg-yellow-500/10 border-yellow-500/20';
+      } else if (weapon.rarity === 4) {
+        rarityColor = 'text-purple-400';
+        rarityBg = 'bg-purple-500/10 border-purple-500/20';
+      } else if (weapon.rarity === 3) {
+        rarityColor = 'text-blue-400';
+        rarityBg = 'bg-blue-500/10 border-blue-500/20';
+      } else if (weapon.rarity === 2) {
+        rarityColor = 'text-emerald-400';
+        rarityBg = 'bg-emerald-500/10 border-emerald-500/20';
+      }
+
+      const weaponName = weapon.name[lang] || weapon.name.en;
+      const weaponDesc = weapon.desc[lang] || weapon.desc.en;
+      const secondaryStatVal = weapon.secondaryStat[lang] || weapon.secondaryStat.en;
+
+      const isSig = weapon.signatureFor;
+      const signatureLabelKey = isSig ? 'weapon_stat_signature' : 'weapon_stat_recommended';
+      const signatureLabel = window.wuwaI18n ? window.wuwaI18n.t(signatureLabelKey) : (isSig ? 'Signature For:' : 'Recommended For:');
+
+      const linkedResonators = (isSig ? [weapon.signatureFor] : (weapon.recommendedFor || [])).map(charId => {
+        const char = cachedCharacters.find(c => c.id === charId);
+        return char ? (char.name[lang] || char.name.en) : charId;
+      }).join(', ');
+
+      const imgContainer = document.getElementById('modal-weapon-img-container');
+      imgContainer.className = `w-16 h-16 rounded-xl ${rarityBg} border flex items-center justify-center ${rarityColor} font-bold text-2xl shrink-0 overflow-hidden`;
+      imgContainer.innerHTML = `
+        <img src="../assets/images/weapons/${weapon.id}.png" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+        <span class="hidden ${rarityColor}">${weapon.rarity}★</span>
+      `;
+
+      document.getElementById('modal-weapon-name').textContent = weaponName;
+      document.getElementById('modal-weapon-sub').textContent = `${weapon.type} • ${'★'.repeat(weapon.rarity)}`;
+      document.getElementById('modal-weapon-atk').textContent = `${weapon.baseAtk} ATK`;
+      
+      const subStatLabel = window.wuwaI18n ? window.wuwaI18n.t('weapon_stat_secondary') : 'Secondary Stat:';
+      document.getElementById('modal-weapon-stat').innerHTML = `<span class="block text-[10px] text-gray-500">${subStatLabel}</span><span class="text-white font-medium">${secondaryStatVal}</span>`;
+      
+      document.getElementById('modal-weapon-sig-label').textContent = signatureLabel;
+      document.getElementById('modal-weapon-sig').textContent = linkedResonators || '-';
+      document.getElementById('modal-weapon-desc').textContent = weaponDesc;
+
+      const modal = document.getElementById('weapon-modal');
+      if (window.weaponModalTimeout) {
+        clearTimeout(window.weaponModalTimeout);
+        window.weaponModalTimeout = null;
+      }
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        document.getElementById('weapon-modal-card').classList.remove('scale-95');
+      });
+    }
+
+    function closeWeaponModal() {
+      const modal = document.getElementById('weapon-modal');
+      modal.classList.add('opacity-0');
+      document.getElementById('weapon-modal-card').classList.add('scale-95');
+      if (window.weaponModalTimeout) {
+        clearTimeout(window.weaponModalTimeout);
+      }
+      window.weaponModalTimeout = setTimeout(() => {
+        modal.classList.add('hidden');
+        window.weaponModalTimeout = null;
+      }, 300);
+    }
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeWeaponModal);
+    document.getElementById('weapon-modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('weapon-modal')) {
+        closeWeaponModal();
+      }
     });
 
     document.addEventListener('DOMContentLoaded', loadWeapons);

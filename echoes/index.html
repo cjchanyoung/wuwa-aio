@@ -50,6 +50,9 @@
     .glow-effect {
       animation: pulse-glow 4s infinite ease-in-out;
     }
+    .sonata-card:hover {
+      border-color: color-mix(in srgb, var(--theme-color) 30%, transparent) !important;
+    }
   </style>
 </head>
 <body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200">
@@ -116,7 +119,7 @@
 
     <!-- Sonata Effects Section -->
     <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div id="sonata-sets-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      <div id="sonata-sets-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mb-16">
         <!-- Dynamically loaded from data.csv -->
       </div>
 
@@ -174,6 +177,43 @@
     </div>
   </footer>
 
+  <!-- Echo Details Modal -->
+  <div id="echo-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0a080f]/85 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+    <div id="echo-modal-card" class="bg-[#1a181f] border border-white/10 rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl transition-transform duration-300 scale-95 flex flex-col">
+      <!-- Modal Header with Accent Glow -->
+      <div class="relative p-6 border-b border-white/5 flex gap-4 items-start">
+        <div id="modal-echo-img-container" class="w-16 h-16 rounded-xl flex items-center justify-center font-bold text-2xl shrink-0 overflow-hidden border border-white/5">
+          <!-- Image will be set dynamically -->
+        </div>
+        <div class="flex-grow min-w-0">
+          <h2 id="modal-echo-name" class="font-display font-bold text-2xl tracking-wide"></h2>
+          <span id="modal-echo-sub" class="text-xs uppercase font-semibold block leading-none mt-1"></span>
+        </div>
+        <button id="modal-close-btn" class="text-gray-400 hover:text-white p-1 rounded-lg hover:bg-white/5 transition-colors focus:outline-none">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+      </div>
+      <!-- Modal Body -->
+      <div class="p-6 space-y-6 overflow-y-auto max-h-[60vh] text-sm">
+        <!-- 2-Piece Effect -->
+        <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
+          <span id="modal-echo-2pc-label" class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold mb-1"></span>
+          <span id="modal-echo-2pc" class="text-gray-300 font-medium"></span>
+        </div>
+        <!-- 5-Piece Effect -->
+        <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
+          <span id="modal-echo-5pc-label" class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold mb-1"></span>
+          <span id="modal-echo-5pc" class="text-gray-300 font-medium"></span>
+        </div>
+        <!-- Best Resonators -->
+        <div class="pt-2 flex justify-between items-center text-gray-500 text-xs">
+          <span id="modal-echo-resonators-label"></span>
+          <span id="modal-echo-resonators" class="text-gray-300 font-semibold"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Mobile Menu & Dynamic Echo Sync Scripts -->
   <script>
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -230,42 +270,63 @@
             const char = cachedCharacters.find(c => c.id === charId);
             return char ? (char.name[lang] || char.name.en) : charId;
           }).join(', ');
-          
-          let hoverClass = 'hover:border-purple-500/30';
-          if (set.id === 'celestial_light') hoverClass = 'hover:border-yellow-500/30';
-          else if (set.id === 'molten_rift') hoverClass = 'hover:border-red-500/30';
-          else if (set.id === 'sierra_gale') hoverClass = 'hover:border-emerald-500/30';
-          else if (set.id === 'sun_sinking_havoc') hoverClass = 'hover:border-indigo-500/30';
-          else if (set.id === 'rejuvenating_glow') hoverClass = 'hover:border-green-500/30';
+
+          // 색상 값이 헥사코드(#)인지 판별하여 인라인 스타일 또는 클래스명으로 분기 적용
+          const isHexText = set.textColor.startsWith('#');
+          const isHexBg = set.bgColor.startsWith('#');
+
+          const textColorClass = isHexText ? '' : set.textColor;
+          const textColorStyle = isHexText ? `style="color: ${set.textColor}"` : '';
+
+          const bgColorClass = isHexBg ? '' : set.bgColor;
+          const bgColorStyle = isHexBg ? `style="background-color: ${set.bgColor}"` : '';
+
+          // 호버 테두리용 테마 색상 값 추출 (헥사코드 혹은 Tailwind v4 CSS 변수 매핑)
+          let themeColorVal = '';
+          if (isHexText) {
+            themeColorVal = set.textColor;
+          } else if (set.textColor.startsWith('text-')) {
+            const colorName = set.textColor.replace('text-', '');
+            themeColorVal = `var(--color-${colorName})`;
+          }
 
           return `
-          <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 ${hoverClass} transition-all duration-300 shadow-lg shadow-purple-500/2">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-lg ${set.bgColor} flex items-center justify-center ${set.textColor} font-bold overflow-hidden">
-                <img src="../assets/images/sonatas/${set.id}.png" class="w-full h-full object-contain p-1" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <i class="${set.icon} hidden"></i>
+          <div class="sonata-card bg-[#1a181f] border border-white/5 rounded-2xl p-4 transition-all duration-300 shadow-lg shadow-purple-500/2 cursor-pointer" data-id="${set.id}" style="--theme-color: ${themeColorVal}">
+            <div class="flex items-center gap-2.5 mb-3">
+              <div class="w-8 h-8 rounded-lg ${bgColorClass} flex items-center justify-center font-bold overflow-hidden" ${bgColorStyle} ${textColorStyle}>
+                <img src="../assets/images/sonatas/${set.id}.png" class="w-full h-full object-contain p-1">
               </div>
               <div>
-                <h3 class="font-display font-bold text-lg text-white">${setName}</h3>
-                <span class="text-[10px] ${set.textColor} font-bold uppercase tracking-wider">${setElement}</span>
+                <h3 class="font-display font-bold text-base ${textColorClass}" ${textColorStyle}>${setName}</h3>
+                <span class="text-[9px] ${textColorClass} font-bold uppercase tracking-wider block leading-none" ${textColorStyle}>${setElement}</span>
               </div>
             </div>
-            <div class="space-y-3 text-xs">
-              <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
-                <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold">${echoesSet2pcLabel}</span>
+            <div class="space-y-2 text-[11px]">
+              <div class="bg-[#0a080f] p-2.5 rounded-lg border border-white/5">
+                <span class="block text-gray-500 uppercase tracking-widest text-[8px] font-bold">${echoesSet2pcLabel}</span>
                 <span class="text-gray-300 font-medium">${effect2pc}</span>
               </div>
-              <div class="bg-[#0a080f] p-3 rounded-lg border border-white/5">
-                <span class="block text-gray-500 uppercase tracking-widest text-[9px] font-bold">${echoesSet5pcLabel}</span>
+              <div class="bg-[#0a080f] p-2.5 rounded-lg border border-white/5">
+                <span class="block text-gray-500 uppercase tracking-widest text-[8px] font-bold">${echoesSet5pcLabel}</span>
                 <span class="text-gray-300 font-medium">${effect5pc}</span>
               </div>
-              <div class="pt-2 border-t border-white/5 flex justify-between items-center text-gray-500">
+              <div class="pt-1.5 border-t border-white/5 flex justify-between items-center text-gray-500">
                 <span>${bestResonatorsLabel}</span>
                 <span class="text-gray-300 font-semibold">${linkedResonators}</span>
               </div>
             </div>
           </div>`;
         }).join('');
+
+        // Set up click handler for cards
+        const cards = grid.querySelectorAll('.sonata-card');
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            const setId = card.dataset.id;
+            openEchoModal(setId);
+          });
+        });
+
         if (window.wuwaI18n) window.wuwaI18n.showPage();
       } catch (err) {
         console.error('Error rendering echo sets:', err);
@@ -276,6 +337,100 @@
         if (window.wuwaI18n) window.wuwaI18n.showPage();
       }
     }
+
+    // Modal open/close actions
+    function openEchoModal(setId) {
+      const set = cachedEchoes.find(s => s.id === setId);
+      if (!set) return;
+
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+
+      const setName = set.name[lang] || set.name.en;
+      const setElement = set.attribute[lang] || set.attribute.en;
+      const effect2pc = set.effect_2pc[lang] || set.effect_2pc.en;
+      const effect5pc = set.effect_5pc[lang] || set.effect_5pc.en;
+      
+      const linkedResonators = set.recommendedFor.map(charId => {
+        const char = cachedCharacters.find(c => c.id === charId);
+        return char ? (char.name[lang] || char.name.en) : charId;
+      }).join(', ');
+
+      const isHexText = set.textColor.startsWith('#');
+      const isHexBg = set.bgColor.startsWith('#');
+      const textColorStyle = isHexText ? set.textColor : '';
+      const bgColorStyle = isHexBg ? set.bgColor : '';
+
+      const imgContainer = document.getElementById('modal-echo-img-container');
+      imgContainer.style.backgroundColor = bgColorStyle;
+      imgContainer.style.color = textColorStyle;
+      imgContainer.innerHTML = `
+        <img src="../assets/images/sonatas/${set.id}.png" class="w-full h-full object-contain p-1">
+      `;
+
+      const nameEl = document.getElementById('modal-echo-name');
+      nameEl.textContent = setName;
+      if (isHexText) {
+        nameEl.style.color = textColorStyle;
+        nameEl.className = 'font-display font-bold text-2xl tracking-wide';
+      } else {
+        nameEl.style.color = '';
+        nameEl.className = `font-display font-bold text-2xl tracking-wide ${set.textColor}`;
+      }
+
+      const subEl = document.getElementById('modal-echo-sub');
+      subEl.textContent = setElement;
+      if (isHexText) {
+        subEl.style.color = textColorStyle;
+        subEl.className = 'text-xs uppercase font-semibold block leading-none mt-1';
+      } else {
+        subEl.style.color = '';
+        subEl.className = `text-xs uppercase font-semibold block leading-none mt-1 ${set.textColor}`;
+      }
+
+      const echoesSet2pcLabel = window.wuwaI18n ? window.wuwaI18n.t('echoes_set_2pc') : '2-Piece Effect';
+      const echoesSet5pcLabel = window.wuwaI18n ? window.wuwaI18n.t('echoes_set_5pc') : '5-Piece Effect';
+      const bestResonatorsLabel = window.wuwaI18n ? window.wuwaI18n.t('best_resonators_label') : 'Best Resonators:';
+
+      document.getElementById('modal-echo-2pc-label').textContent = echoesSet2pcLabel;
+      document.getElementById('modal-echo-2pc').textContent = effect2pc;
+
+      document.getElementById('modal-echo-5pc-label').textContent = echoesSet5pcLabel;
+      document.getElementById('modal-echo-5pc').textContent = effect5pc;
+
+      document.getElementById('modal-echo-resonators-label').textContent = bestResonatorsLabel;
+      document.getElementById('modal-echo-resonators').textContent = linkedResonators || '-';
+
+      const modal = document.getElementById('echo-modal');
+      if (window.echoModalTimeout) {
+        clearTimeout(window.echoModalTimeout);
+        window.echoModalTimeout = null;
+      }
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0');
+        document.getElementById('echo-modal-card').classList.remove('scale-95');
+      });
+    }
+
+    function closeEchoModal() {
+      const modal = document.getElementById('echo-modal');
+      modal.classList.add('opacity-0');
+      document.getElementById('echo-modal-card').classList.add('scale-95');
+      if (window.echoModalTimeout) {
+        clearTimeout(window.echoModalTimeout);
+      }
+      window.echoModalTimeout = setTimeout(() => {
+        modal.classList.add('hidden');
+        window.echoModalTimeout = null;
+      }, 300);
+    }
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeEchoModal);
+    document.getElementById('echo-modal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('echo-modal')) {
+        closeEchoModal();
+      }
+    });
 
     document.addEventListener('DOMContentLoaded', loadEchoSets);
     window.addEventListener("wuwalangchange", loadEchoSets);

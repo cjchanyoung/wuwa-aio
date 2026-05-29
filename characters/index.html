@@ -50,6 +50,17 @@
     .glow-effect {
       animation: pulse-glow 4s infinite ease-in-out;
     }
+    .resonator-card {
+      transition: all 0.3s ease;
+    }
+    .resonator-card:hover {
+      border-color: color-mix(in srgb, var(--theme-color) 35%, transparent) !important;
+      transform: translateY(-4px);
+    }
+    .resonator-card:hover .view-guide-btn {
+      background-color: var(--theme-color) !important;
+      color: #ffffff !important;
+    }
   </style>
 </head>
 <body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-yellow-500/30 selection:text-yellow-200">
@@ -108,32 +119,58 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Header & Search Tools -->
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
-          <div>
-            <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
-              <span class="w-2.5 h-8 bg-purple-500 rounded-full inline-block"></span>
-              <span data-i18n="char_list_title"></span>
-            </h1>
-            <p class="text-gray-400 text-sm mt-2" data-i18n="char_list_subtitle"></p>
-          </div>
-          
-          <!-- Search & Filter Controls -->
-          <div class="flex flex-wrap items-center gap-3 w-full md:w-auto">
-            <div class="relative flex-grow md:flex-grow-0">
+        <!-- Header & Search Tools -->
+        <div class="mb-8">
+          <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+            <span class="w-2.5 h-8 bg-purple-500 rounded-full inline-block"></span>
+            <span data-i18n="char_list_title"></span>
+          </h1>
+          <p class="text-gray-400 text-sm mt-2" data-i18n="char_list_subtitle"></p>
+        </div>
+        
+        <!-- Search & Filter Controls -->
+        <div class="flex flex-col gap-5 w-full mb-12 bg-[#1a181f]/40 p-6 rounded-2xl border border-white/5">
+          <div class="flex flex-wrap gap-4 items-center justify-between">
+            <!-- Search Input -->
+            <div class="relative w-80">
               <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-              <input type="text" id="resonator-search" placeholder="" data-i18n-placeholder="char_search_placeholder" class="w-full md:w-64 pl-10 pr-4 py-2.5 bg-[#1a181f] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors">
+              <input type="text" id="resonator-search" placeholder="" data-i18n-placeholder="char_search_placeholder" class="w-full pl-10 pr-4 py-2.5 bg-[#1a181f] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors">
             </div>
-            
-            <div class="flex gap-2">
-              <button class="filter-btn active px-4 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-semibold tracking-wide uppercase transition-all" data-filter="all" data-i18n="char_filter_all"></button>
-              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-filter="5-star" data-i18n="char_filter_5"></button>
-              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold tracking-wide uppercase transition-all" data-filter="4-star" data-i18n="char_filter_4"></button>
+
+            <!-- Rarity Filters -->
+            <div class="flex flex-wrap gap-2 filter-group" data-filter-type="rarity">
+              <button class="filter-btn active px-4 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-semibold uppercase transition-all" data-filter="all" data-i18n="char_filter_all"></button>
+              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all" data-filter="5-star" data-i18n="char_filter_5"></button>
+              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all" data-filter="4-star" data-i18n="char_filter_4"></button>
             </div>
+          </div>
+
+          <!-- Attribute Filters -->
+          <div class="flex flex-wrap items-center gap-2 filter-group" data-filter-type="attribute">
+            <span class="text-xs text-gray-500 uppercase font-semibold mr-2" data-i18n="char_filter_attribute">Attribute:</span>
+            <button class="filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white text-xs font-semibold uppercase transition-all" data-filter="all" data-i18n="char_filter_all">All</button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="fusion"><img src="../assets/images/attribute/fusion.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_fusion">Fusion</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="electro"><img src="../assets/images/attribute/electro.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_electro">Electro</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="glacio"><img src="../assets/images/attribute/glacio.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_glacio">Glacio</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="spectro"><img src="../assets/images/attribute/spectro.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_spectro">Spectro</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="aero"><img src="../assets/images/attribute/aero.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_aero">Aero</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="havoc"><img src="../assets/images/attribute/havoc.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_havoc">Havoc</span></button>
+          </div>
+
+          <!-- Weapon Filters -->
+          <div class="flex flex-wrap items-center gap-2 filter-group" data-filter-type="weapon">
+            <span class="text-xs text-gray-500 uppercase font-semibold mr-2" data-i18n="char_filter_weapon">Weapon:</span>
+            <button class="filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white text-xs font-semibold uppercase transition-all" data-filter="all" data-i18n="char_filter_all">All</button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="broadblade"><img src="../assets/images/weapons/type/broadblade.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_broadblade">Broadblade</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="sword"><img src="../assets/images/weapons/type/sword.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_sword">Sword</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="pistol"><img src="../assets/images/weapons/type/pistol.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_pistol">Pistols</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="gauntlet"><img src="../assets/images/weapons/type/gauntlet.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_gauntlet">Gauntlets</span></button>
+            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="rectifier"><img src="../assets/images/weapons/type/rectifier.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_rectifier">Rectifiers</span></button>
           </div>
         </div>
 
         <!-- Grid Container for Resonators -->
-        <div id="resonators-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div id="resonators-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-16">
           <!-- Dynamically populated from data.json -->
         </div>
 
@@ -177,14 +214,8 @@
 
     // Style configuration mapping for resonators by attribute type
     const attributeCardsStyles = {
-      Spectro: {
-        bg_to: 'to-[#B9A81C]/10',
-        badge: 'bg-[#B9A81C]/20 text-[#B9A81C] border border-[#B9A81C]/30',
-        icon_ring: 'from-[#B9A81C] to-yellow-400',
-        icon_text: 'text-[#B9A81C]',
-        echo_text: 'text-[#B9A81C]'
-      },
       Fusion: {
+        theme_color: '#C4294E',
         bg_to: 'to-[#C4294E]/10',
         badge: 'bg-[#C4294E]/20 text-rose-300 border border-[#C4294E]/30',
         icon_ring: 'from-[#C4294E] to-rose-400',
@@ -192,13 +223,31 @@
         echo_text: 'text-[#C4294E]'
       },
       Electro: {
+        theme_color: '#A431AE',
         bg_to: 'to-[#A431AE]/10',
         badge: 'bg-[#A431AE]/20 text-fuchsia-300 border border-[#A431AE]/30',
         icon_ring: 'from-[#A431AE] to-fuchsia-400',
         icon_text: 'text-[#A431AE]',
         echo_text: 'text-[#A431AE]'
       },
+      Glacio: {
+        theme_color: '#36AED0',
+        bg_to: 'to-[#36AED0]/10',
+        badge: 'bg-[#36AED0]/20 text-cyan-300 border border-[#36AED0]/30',
+        icon_ring: 'from-[#36AED0] to-cyan-400',
+        icon_text: 'text-[#36AED0]',
+        echo_text: 'text-[#36AED0]'
+      },
+      Spectro: {
+        theme_color: '#B9A81C',
+        bg_to: 'to-[#B9A81C]/10',
+        badge: 'bg-[#B9A81C]/20 text-[#B9A81C] border border-[#B9A81C]/30',
+        icon_ring: 'from-[#B9A81C] to-yellow-400',
+        icon_text: 'text-[#B9A81C]',
+        echo_text: 'text-[#B9A81C]'
+      },
       Aero: {
+        theme_color: '#2EC69E',
         bg_to: 'to-[#2EC69E]/10',
         badge: 'bg-[#2EC69E]/20 text-emerald-300 border border-[#2EC69E]/30',
         icon_ring: 'from-[#2EC69E] to-emerald-400',
@@ -206,22 +255,17 @@
         echo_text: 'text-[#2EC69E]'
       },
       Havoc: {
+        theme_color: '#971654',
         bg_to: 'to-[#971654]/10',
         badge: 'bg-[#971654]/20 text-rose-300 border border-[#971654]/30',
         icon_ring: 'from-[#971654] to-rose-400',
         icon_text: 'text-[#971654]',
         echo_text: 'text-[#971654]'
-      },
-      Glacio: {
-        bg_to: 'to-[#36AED0]/10',
-        badge: 'bg-[#36AED0]/20 text-cyan-300 border border-[#36AED0]/30',
-        icon_ring: 'from-[#36AED0] to-cyan-400',
-        icon_text: 'text-[#36AED0]',
-        echo_text: 'text-[#36AED0]'
       }
     };
 
     const defaultStyles = {
+      theme_color: '#a855f7',
       bg_to: 'to-purple-950/20',
       badge: 'bg-purple-500/20 text-purple-300 border border-purple-500/30',
       icon_ring: 'from-purple-600 to-indigo-400',
@@ -310,21 +354,14 @@
         
         // Generate and append cards
         grid.innerHTML = characters.map(char => {
-          const charElement = char.attribute[lang] || char.attribute.en;
+          const attrId = char.attribute.en.toLowerCase();
+          const weaponTypeId = char.weaponType.en.toLowerCase().replace(/s$/, '');
+          const charElement = window.wuwaI18n ? window.wuwaI18n.t(`attr_${attrId}`) : char.attribute.en;
           const styles = attributeCardsStyles[char.attribute.en] || defaultStyles;
           const stars = '<i class="fa-solid fa-star"></i>'.repeat(char.rarity);
           
           const charName = char.name[lang] || char.name.en;
-          const charWeaponType = char.weaponType[lang] || char.weaponType.en;
-          
-          const sonataName = char.recommEcho && char.recommEcho.sonataObject ? (char.recommEcho.sonataObject.name[lang] || char.recommEcho.sonataObject.name.en) : "";
-          const charBestEcho = sonataName;
-          
-          const firstWeapon = char.recommWeapons && char.recommWeapons[0];
-          const charWeapon = firstWeapon ? (firstWeapon.name[lang] || firstWeapon.name.en) : "";
-          
-          const echoLabel = window.wuwaI18n ? window.wuwaI18n.t('echo_label') : 'Sonata:';
-          const weaponLabel = window.wuwaI18n ? window.wuwaI18n.t('weapon_label') : 'Weapon:';
+          const charWeaponType = window.wuwaI18n ? window.wuwaI18n.t(`weapon_${weaponTypeId}`) : char.weaponType.en;
           const viewGuideLabel = window.wuwaI18n ? window.wuwaI18n.t('view_guide_label') : 'View Guide Details';
 
           const searchTagParts = [char.id];
@@ -342,8 +379,8 @@
           const searchTags = searchTagParts.join(' ').toLowerCase();
           
           return `
-          <div class="resonator-card group bg-[#1a181f] border border-white/5 rounded-2xl overflow-hidden hover:border-purple-500/30 transition-all duration-300 hover:-translate-y-1" data-rarity="${char.rarity}-star" data-id="${char.id}" data-search-tags="${searchTags}">
-            <div class="relative h-48 bg-gradient-to-t from-[#1a181f] ${styles.bg_to} overflow-hidden flex items-center justify-center">
+          <div class="resonator-card group bg-[#1a181f] border border-white/5 rounded-2xl overflow-hidden flex flex-col" style="--theme-color: ${styles.theme_color || '#a855f7'};" data-rarity="${char.rarity}-star" data-attribute="${char.attribute.en.toLowerCase()}" data-weapon="${char.weaponType.en.toLowerCase().replace(/s$/, '')}" data-id="${char.id}" data-search-tags="${searchTags}">
+            <div class="relative h-36 bg-gradient-to-t from-[#1a181f] ${styles.bg_to} overflow-hidden flex items-center justify-center">
               <div class="h-full w-full flex items-center justify-center relative">
                 <!-- 1. Try loading potrait.png (Jiyan typo fallback) -->
                 <img src="../assets/images/characters/${char.id}/icon.png" class="h-full w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -355,25 +392,27 @@
                   </div>
                 </div>
               </div>
-              <span class="attribute-badge absolute top-3 left-3 ${styles.badge} px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">${charElement}</span>
-              <span class="star-rating absolute top-3 right-3 text-yellow-400 text-xs flex gap-0.5">
+              <span class="attribute-badge absolute top-2.5 left-2.5 ${styles.badge} px-2 py-0.5 rounded text-[10px] uppercase font-bold tracking-wider">${charElement}</span>
+              <span class="star-rating absolute top-2.5 right-2.5 text-yellow-400 text-xs flex gap-0.5">
                 ${stars}
               </span>
             </div>
-            <div class="p-5">
-              <h3 class="font-display font-bold text-xl text-white group-hover:text-purple-400 transition-colors">${charName}</h3>
-              
-              <div class="mt-4 pt-4 border-t border-white/5 space-y-2 text-xs">
-                <div class="flex justify-between">
-                  <span class="text-gray-500">${echoLabel}</span>
-                  <span class="${styles.echo_text} font-semibold">${charBestEcho}</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-gray-500">${weaponLabel}</span>
-                  <span class="text-gray-300 font-semibold">${charWeapon}</span>
+            <div class="p-3.5 flex flex-col justify-between flex-grow">
+              <div>
+                <h3 class="font-display font-bold text-lg text-white transition-colors">${charName}</h3>
+                <div class="flex flex-row flex-nowrap items-center gap-1 mt-2 w-full overflow-hidden">
+                  <span class="${styles.badge} px-1.5 py-0.5 rounded text-[9px] uppercase font-bold tracking-wider inline-flex items-center gap-0.5 whitespace-nowrap shrink-0">
+                    <img src="../assets/images/attribute/${attrId}.png" class="w-3 h-3 object-contain">
+                    <span>${charElement}</span>
+                  </span>
+                  <span class="bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-[9px] text-gray-400 font-bold uppercase tracking-wider inline-flex items-center gap-0.5 whitespace-nowrap shrink-0">
+                    <img src="../assets/images/weapons/type/${weaponTypeId}.png" class="w-3 h-3 object-contain">
+                    <span>${charWeaponType}</span>
+                  </span>
                 </div>
               </div>
-              <button class="w-full mt-5 py-2.5 bg-white/5 group-hover:bg-purple-600 text-gray-300 group-hover:text-white text-xs font-semibold rounded-xl transition-all duration-300">${viewGuideLabel}</button>
+              
+              <button class="view-guide-btn w-full mt-4 py-2 bg-white/5 text-gray-300 text-xs font-semibold rounded-xl transition-all duration-300">${viewGuideLabel}</button>
             </div>
           </div>`;
         }).join('');
@@ -401,17 +440,28 @@
 
     function filterResonators() {
       const query = searchInput.value.toLowerCase().trim();
-      const activeFilterBtn = document.querySelector('.filter-btn.active');
-      const filterValue = activeFilterBtn ? activeFilterBtn.dataset.filter : 'all';
+      
+      const activeRarityBtn = document.querySelector('.filter-group[data-filter-type="rarity"] .filter-btn.active');
+      const rarityFilter = activeRarityBtn ? activeRarityBtn.dataset.filter : 'all';
+
+      const activeAttrBtn = document.querySelector('.filter-group[data-filter-type="attribute"] .filter-btn.active');
+      const attrFilter = activeAttrBtn ? activeAttrBtn.dataset.filter : 'all';
+
+      const activeWeaponBtn = document.querySelector('.filter-group[data-filter-type="weapon"] .filter-btn.active');
+      const weaponFilter = activeWeaponBtn ? activeWeaponBtn.dataset.filter : 'all';
 
       resonatorCards().forEach(card => {
         const searchTags = card.dataset.searchTags || '';
         const rarity = card.dataset.rarity;
+        const attribute = card.dataset.attribute;
+        const weapon = card.dataset.weapon;
 
         const matchesSearch = !query || searchTags.includes(query);
-        const matchesFilter = filterValue === 'all' || rarity === filterValue;
+        const matchesRarity = rarityFilter === 'all' || rarity === rarityFilter;
+        const matchesAttr = attrFilter === 'all' || attribute === attrFilter;
+        const matchesWeapon = weaponFilter === 'all' || weapon === weaponFilter;
 
-        if (matchesSearch && matchesFilter) {
+        if (matchesSearch && matchesRarity && matchesAttr && matchesWeapon) {
           card.classList.remove('hidden');
         } else {
           card.classList.add('hidden');
@@ -423,12 +473,44 @@
 
     filterButtons.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterButtons.forEach(b => {
+        const group = btn.closest('.filter-group');
+        if (!group) return;
+        const filterType = group.dataset.filterType;
+
+        // Deactivate other buttons in the same filter group
+        group.querySelectorAll('.filter-btn').forEach(b => {
           b.classList.remove('bg-purple-600', 'text-white', 'active');
+          if (filterType === 'attribute') {
+            b.classList.remove('bg-[#C4294E]', 'bg-[#A431AE]', 'bg-[#36AED0]', 'bg-[#B9A81C]', 'bg-[#2EC69E]', 'bg-[#971654]');
+          }
           b.classList.add('bg-[#1a181f]', 'border', 'border-white/5', 'text-gray-400');
         });
+
+        // Activate the clicked button
         btn.classList.remove('bg-[#1a181f]', 'border', 'border-white/5', 'text-gray-400');
-        btn.classList.add('bg-purple-600', 'text-white', 'active');
+        btn.classList.add('text-white', 'active');
+
+        if (filterType === 'attribute') {
+          const attr = btn.dataset.filter;
+          if (attr === 'all') {
+            btn.classList.add('bg-purple-600');
+          } else if (attr === 'fusion') {
+            btn.classList.add('bg-[#C4294E]');
+          } else if (attr === 'electro') {
+            btn.classList.add('bg-[#A431AE]');
+          } else if (attr === 'glacio') {
+            btn.classList.add('bg-[#36AED0]');
+          } else if (attr === 'spectro') {
+            btn.classList.add('bg-[#B9A81C]');
+          } else if (attr === 'aero') {
+            btn.classList.add('bg-[#2EC69E]');
+          } else if (attr === 'havoc') {
+            btn.classList.add('bg-[#971654]');
+          }
+        } else {
+          btn.classList.add('bg-purple-600');
+        }
+        
         filterResonators();
       });
     });

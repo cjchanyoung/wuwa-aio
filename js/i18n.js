@@ -85,6 +85,19 @@
     char_filter_all: "All",
     char_filter_5: "5★",
     char_filter_4: "4★",
+    char_filter_attribute: "Attribute:",
+    char_filter_weapon: "Weapon:",
+    attr_spectro: "Spectro",
+    attr_fusion: "Fusion",
+    attr_electro: "Electro",
+    attr_aero: "Aero",
+    attr_havoc: "Havoc",
+    attr_glacio: "Glacio",
+    weapon_broadblade: "Broadblade",
+    weapon_sword: "Sword",
+    weapon_pistol: "Pistols",
+    weapon_gauntlet: "Gauntlets",
+    weapon_rectifier: "Rectifiers",
     char_card_view: "View Guide Details",
 
     // Weapons Page
@@ -265,10 +278,11 @@
     footer_disclaimer: "© 2026 WuWa AIO Guides. This is a fan-made database tool. Wuthering Waves, game assets, and content are trademarks of Kuro Games.",
 
     // Detail Page Elements
-    detail_btn_back: "Back to Database",
+    detail_btn_back: "Back to List",
     detail_weapon_title: "Weapon Recommendations",
     detail_echo_title: "Echo Setup & Substats",
-    detail_best_set: "Best Set Bonus",
+    detail_best_set: "Best Set Sonata",
+    detail_main_echo: "Main Slot Echo",
     detail_cost_4: "4-Cost Echo",
     detail_cost_3: "3-Cost Echos",
     detail_cost_1: "1-Cost Echos",
@@ -277,6 +291,7 @@
     detail_skill_priority: "Skill Priority",
     detail_teams_title: "Recommended Teams",
     detail_resonator: "Resonator",
+    cost_label: "COST",
 
     // Dynamic UI labels (added for Pattern B cleanup)
     resonator_label: "Resonator",

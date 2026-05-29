@@ -278,6 +278,7 @@ const characters = rawCharacters.map(char => {
       return {
         ...wRef,
         name: master.name,
+        rarity: master.rarity,
         specs: {
           en: `Base ATK: ${master.baseAtk} • ${master.secondaryStat.en} (Lvl 90)`
         },
@@ -290,22 +291,31 @@ const characters = rawCharacters.map(char => {
 
   // Resolve echoes set
   if (char.recommEcho) {
-    const setBonusId = char.recommEcho.sonata;
-    const masterSonata = sonatasMaster[setBonusId];
-    resolvedChar.recommEcho.sonataObject = masterSonata ? {
-      id: setBonusId,
-      name: masterSonata.name,
-      effect_2pc: masterSonata.effect_2pc,
-      effect_5pc: masterSonata.effect_5pc
-    } : { id: setBonusId, name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
+    const recommEchoes = Array.isArray(char.recommEcho) ? char.recommEcho : [char.recommEcho];
+    resolvedChar.recommEcho = recommEchoes.map(echo => {
+      const setBonusId = echo.sonata;
+      const masterSonata = sonatasMaster[setBonusId];
+      const sonataObject = masterSonata ? {
+        id: setBonusId,
+        name: masterSonata.name,
+        effect_2pc: masterSonata.effect_2pc,
+        effect_5pc: masterSonata.effect_5pc
+      } : { id: setBonusId, name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
 
-    const mainEchoId = char.recommEcho.mainSlotEcho;
-    const masterEcho = echoesMaster[mainEchoId];
-    resolvedChar.recommEcho.mainSlotEchoObject = masterEcho ? {
-      id: mainEchoId,
-      name: masterEcho.name,
-      costType: masterEcho.costType
-    } : { id: mainEchoId, name: { en: mainEchoId }, costType: "4" };
+      const mainEchoId = echo.mainSlotEcho;
+      const masterEcho = echoesMaster[mainEchoId];
+      const mainSlotEchoObject = masterEcho ? {
+        id: mainEchoId,
+        name: masterEcho.name,
+        costType: masterEcho.costType
+      } : { id: mainEchoId, name: { en: mainEchoId }, costType: "4" };
+
+      return {
+        ...echo,
+        sonataObject,
+        mainSlotEchoObject
+      };
+    });
   }
 
   return resolvedChar;
@@ -351,12 +361,7 @@ characters.forEach(char => {
 
     // Check if weapon image exists
     const weaponImgPath = path.join(__dirname, '../assets/images/weapons', `${weapon.id}.png`);
-    let weaponIconHtml = '';
-    if (fs.existsSync(weaponImgPath)) {
-      weaponIconHtml = `<img src="../../assets/images/weapons/${weapon.id}.png" alt="${weapon.name.en}" class="w-full h-full object-contain p-1">`;
-    } else {
-      weaponIconHtml = `<i class="${iconClass}"></i>`;
-    }
+    const weaponIconHtml = `<img src="../../assets/images/weapons/${weapon.id}.png" alt="${weapon.name.en}" class="w-full h-full object-contain p-1">`;
 
     return `            <!-- ${isSig ? 'Signature Weapon' : 'Alternative Weapon'} -->
             <div class="bg-[#0a080f] p-5 rounded-xl border ${borderClass} transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
@@ -424,15 +429,11 @@ ${membersList}
   }).join('\n');
 
   // Generate main echo HTML
-  const echoObj = char.recommEcho ? char.recommEcho.mainSlotEchoObject : null;
+  const primaryEcho = Array.isArray(char.recommEcho) ? char.recommEcho[0] : char.recommEcho;
+  const echoObj = primaryEcho ? primaryEcho.mainSlotEchoObject : null;
   let mainEchoHtml = '';
   if (echoObj) {
-    const mainEchoImgPath = path.join(__dirname, '../assets/images/echoes', `${echoObj.id}.png`);
-    if (fs.existsSync(mainEchoImgPath)) {
-      mainEchoHtml = `<img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoObj.name.en}" class="w-full h-full object-contain p-1">`;
-    } else {
-      mainEchoHtml = `<i class="fa-solid fa-dna text-xl"></i>`;
-    }
+    mainEchoHtml = `<img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoObj.name.en}" class="w-full h-full object-contain p-1">`;
   }
 
   // Generate sequence list HTML
@@ -441,7 +442,7 @@ ${membersList}
     sequenceListHtml = char.recommSequence.map((seq, index) => {
       const isRec = seq.isRecommended;
       const borderClass = isRec ? styles.weapon_sig_card_border : 'border-white/5';
-      const badgeHtml = isRec ? `<span class="text-[10px] ${styles.weapon_sig_badge} px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
+      const badgeHtml = isRec ? `<span class="text-[10px] ${styles.attribute_badge_theme} px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
       const stepIdx = index + 1;
       const seqName = seq.name.en;
       const seqDesc = seq.description.en;
@@ -450,8 +451,7 @@ ${membersList}
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr ${styles.accent_gradient} opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/${char.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: ${styles.sequence_filter};" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
-                <span class="font-display font-bold text-lg text-gray-500 hidden relative z-10">S${stepIdx}</span>
+                <img src="../../assets/images/characters/${char.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: ${styles.sequence_filter};">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -475,7 +475,9 @@ ${membersList}
     .replace(/{{name}}/g, char.name.en)
     .replace(/{{description}}/g, char.description.en)
     .replace(/{{attribute}}/g, char.attribute.en)
+    .replace(/{{attribute_id}}/g, char.attribute.en.toLowerCase())
     .replace(/{{weaponType}}/g, char.weaponType.en)
+    .replace(/{{weapon_type_id}}/g, char.weaponType.en.toLowerCase().replace(/s$/, ''))
     .replace(/{{rarity}}/g, char.rarity)
     .replace(/{{icon_class}}/g, char.icon_class)
     
@@ -517,16 +519,17 @@ ${membersList}
     .replace(/{{portrait_html}}/g, portraitHtml)
     .replace(/{{stars_html}}/g, starsHtml.trim())
     .replace(/{{weapons_list_html}}/g, weaponsListHtml)
-    .replace(/{{sonata_name}}/g, char.recommEcho ? (char.recommEcho.sonataObject.name.en + " (5-Piece Set)") : "Custom Set")
-    .replace(/{{sonata_effect_2pc}}/g, char.recommEcho ? char.recommEcho.sonataObject.effect_2pc.en : "")
-    .replace(/{{sonata_effect_5pc}}/g, char.recommEcho ? char.recommEcho.sonataObject.effect_5pc.en : "")
+    .replace(/{{sonata_name}}/g, primaryEcho ? (primaryEcho.sonataObject.name.en + " (5-Piece Set)") : "Custom Set")
+    .replace(/{{sonata_effect_2pc}}/g, primaryEcho ? primaryEcho.sonataObject.effect_2pc.en : "")
+    .replace(/{{sonata_effect_5pc}}/g, primaryEcho ? primaryEcho.sonataObject.effect_5pc.en : "")
     .replace(/{{main_echo_html}}/g, mainEchoHtml)
-    .replace(/{{main_echo_name}}/g, char.recommEcho ? char.recommEcho.mainSlotEchoObject.name.en : "")
-    .replace(/{{cost_4}}/g, char.recommEcho ? char.recommEcho.cost4.en : "")
-    .replace(/{{cost_3}}/g, char.recommEcho ? char.recommEcho.cost3.en : "")
-    .replace(/{{cost_1}}/g, char.recommEcho ? char.recommEcho.cost1.en : "")
-    .replace(/{{substats_priority}}/g, char.recommEcho ? char.recommEcho.substatsPriority.en : "")
-    .replace(/{{echo_note}}/g, char.recommEcho ? char.recommEcho.note.en : "")
+    .replace(/{{main_echo_name}}/g, primaryEcho ? primaryEcho.mainSlotEchoObject.name.en : "")
+    .replace(/{{main_echo_cost}}/g, primaryEcho ? `${primaryEcho.mainSlotEchoObject.costType}-Cost` : "")
+    .replace(/{{cost_4}}/g, primaryEcho ? primaryEcho.cost4.en : "")
+    .replace(/{{cost_3}}/g, primaryEcho ? primaryEcho.cost3.en : "")
+    .replace(/{{cost_1}}/g, primaryEcho ? primaryEcho.cost1.en : "")
+    .replace(/{{substats_priority}}/g, primaryEcho ? primaryEcho.substatsPriority.en : "")
+    .replace(/{{echo_note}}/g, primaryEcho ? primaryEcho.note.en : "")
     .replace(/{{stat_priorities_html}}/g, statPrioritiesHtml)
     .replace(/{{skill_priorities_html}}/g, skillPrioritiesHtml)
     .replace(/{{recommended_teams_html}}/g, recommendedTeamsHtml)
