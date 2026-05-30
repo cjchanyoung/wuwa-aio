@@ -21,12 +21,19 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    :root {
+      --gpx: 0.4px;
+    }
     body {
       font-family: 'Outfit', sans-serif;
       background-color: #0a080f;
     }
     .font-display {
       font-family: 'Space Grotesk', sans-serif;
+    }
+    .flex-align-center {
+      display: flex;
+      align-items: center;
     }
     ::-webkit-scrollbar {
       width: 6px;
@@ -174,7 +181,7 @@
         <div class="grid grid-cols-3 gap-4">
           <div class="bg-[#0a080f] p-3.5 rounded-xl border border-white/5">
             <span class="block text-xs text-gray-500 uppercase font-semibold mb-1" data-i18n="weapon_stat_base_atk">Base ATK</span>
-            <span id="modal-weapon-atk" class="text-base font-bold text-white"></span>
+            <span id="modal-weapon-atk" class="s-name flex-align-center text-base font-bold text-white" style="font-size: calc(32 * var(--gpx));"></span>
           </div>
           <div class="bg-[#0a080f] p-3.5 rounded-xl border border-white/5 col-span-2">
             <span class="block text-xs text-gray-500 uppercase font-semibold mb-1" data-i18n="weapon_stat_secondary">Secondary Stat</span>
@@ -314,13 +321,13 @@
                   <h3 class="font-display font-semibold text-base text-white truncate">${weaponName}</h3>
                   <span class="text-[10px] text-gray-500 uppercase font-semibold block">${weapon.type} • ${'★'.repeat(weapon.rarity)}</span>
                 </div>
-                <span class="text-[10px] ${rarityBg} border ${rarityColor} px-2 py-0.5 rounded font-bold shrink-0">${weapon.baseAtk} ATK</span>
+                 <span class="s-name flex-align-center text-[10px] ${rarityBg} border ${rarityColor} px-2 py-0.5 rounded font-bold shrink-0" style="font-size: calc(32 * var(--gpx));">${weapon.baseAtk} ATK</span>
               </div>
               
               <div class="grid grid-cols-2 gap-2 p-2.5 bg-[#0a080f]/50 rounded-xl border border-white/5 text-[10px]">
                 <div class="min-w-0">
                   <span class="block text-gray-500">${subStatLabel}</span>
-                  <span class="text-white font-medium truncate block">${secondaryStatVal}</span>
+                  <span class="s-name flex-align-center text-white font-medium truncate block" style="font-size: calc(32 * var(--gpx));">${secondaryStatVal}</span>
                 </div>
                 <div class="min-w-0">
                   <span class="block text-gray-500">${signatureLabel}</span>
@@ -461,7 +468,7 @@
       document.getElementById('modal-weapon-atk').textContent = `${weapon.baseAtk} ATK`;
       
       const subStatLabel = window.wuwaI18n ? window.wuwaI18n.t('weapon_stat_secondary') : 'Secondary Stat:';
-      document.getElementById('modal-weapon-stat').innerHTML = `<span class="block text-[10px] text-gray-500">${subStatLabel}</span><span class="text-white font-medium">${secondaryStatVal}</span>`;
+      document.getElementById('modal-weapon-stat').innerHTML = `<span class="block text-[10px] text-gray-500">${subStatLabel}</span><span class="s-name flex-align-center text-white font-medium" style="font-size: calc(32 * var(--gpx));">${secondaryStatVal}</span>`;
       
       document.getElementById('modal-weapon-sig-label').textContent = signatureLabel;
       document.getElementById('modal-weapon-sig').textContent = linkedResonators || '-';

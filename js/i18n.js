@@ -493,13 +493,101 @@
   setStorageItem("wuwa_lang", currentLang);
 
   // Translate all tags on the page matching [data-i18n]
+  // Helper to check if a navigation link is active (works for both http/https and file:// protocols)
+  function isLinkActive(link) {
+    const href = link.getAttribute('href');
+    if (!href) return false;
+    try {
+      const linkUrl = new URL(href, window.location.href);
+      const currentUrl = new URL(window.location.href);
+      const linkPath = linkUrl.pathname.replace(/\/$/, '');
+      const currentPath = currentUrl.pathname.replace(/\/$/, '');
+      
+      if (linkPath.includes('/characters/index.html') || linkPath.endsWith('/characters')) {
+        return currentPath.includes('/characters/');
+      }
+      if (linkPath.includes('/echoes/index.html') || linkPath.endsWith('/echoes')) {
+        return currentPath.includes('/echoes/');
+      }
+      if (linkPath.includes('/weapons/index.html') || linkPath.endsWith('/weapons')) {
+        return currentPath.includes('/weapons/');
+      }
+      if (linkPath.includes('/quick-swap/index.html') || linkPath.endsWith('/quick-swap') || linkPath.includes('/quick-swap/detail.html')) {
+        return currentPath.includes('/quick-swap/');
+      }
+      if (linkPath.includes('/calculation/index.html') || linkPath.endsWith('/calculation')) {
+        return currentPath.includes('/calculation/');
+      }
+      return linkPath === currentPath;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  // Translate all tags on the page matching [data-i18n]
   function translatePage() {
     // Translate text contents
     document.querySelectorAll("[data-i18n]").forEach(elem => {
       const key = elem.getAttribute("data-i18n");
       const val = translateKey(key);
       if (val) {
-        elem.innerHTML = val;
+        if (key.startsWith('nav_')) {
+          const isMobile = elem.closest('#mobile-menu') !== null;
+          const prefix = getLocalesPathPrefix().replace('locales/', '');
+          const isFrover = localStorage.getItem('frover_mode') === 'true';
+          
+          let iconName = '';
+          let scale = 1.0;
+          
+          if (key === 'nav_characters') {
+            iconName = isFrover ? 'char_icon_frover.png' : 'char_icon_rover.png';
+            scale = 1.0;
+          } else if (key === 'nav_echoes') {
+            iconName = 'sonata.png';
+            scale = 1.35; // Scale up to compensate for transparent margins in sonata.png
+          } else if (key === 'nav_weapons') {
+            iconName = 'weapon.png';
+            scale = 1.15; // Scale up slightly to compensate for weapon.png dimensions
+          }
+          
+          if (isMobile) {
+            // Mobile full width button layout (similar to second photo)
+            elem.className = "flex items-center justify-between w-full px-5 py-3.5 rounded-xl transition-all duration-200 text-xl font-bold border-b-0";
+            if (isLinkActive(elem)) {
+              elem.classList.add("bg-purple-600", "text-white");
+              elem.classList.remove("text-gray-300", "hover:text-white", "hover:bg-white/5");
+            } else {
+              elem.classList.add("text-gray-300", "hover:text-white", "hover:bg-white/5");
+              elem.classList.remove("bg-purple-600", "text-white");
+            }
+            
+            if (iconName) {
+              const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 28px; height: 28px;`;
+              elem.innerHTML = `<span>${val}</span><span class="inline-block shrink-0" style="${maskStyle}"></span>`;
+            } else {
+              elem.innerHTML = `<span>${val}</span>`;
+            }
+          } else {
+            // Desktop menu styling: increase text size to text-base and font-semibold
+            elem.classList.remove('text-sm', 'font-medium');
+            elem.classList.add('text-base', 'font-semibold');
+            
+            // Dynamic centering and vertical alignment layout
+            elem.style.display = 'inline-flex';
+            elem.style.alignItems = 'center';
+            elem.style.justifyContent = 'center';
+            elem.style.gap = '8px';
+            
+            if (iconName) {
+              const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 22px; height: 22px;`;
+              elem.innerHTML = `<span class="inline-block shrink-0" style="${maskStyle}"></span><span>${val}</span>`;
+            } else {
+              elem.innerHTML = `<span>${val}</span>`;
+            }
+          }
+        } else {
+          elem.innerHTML = val;
+        }
       }
     });
 
@@ -616,6 +704,40 @@
   } else {
     init();
   }
+
+  // Track consecutive clicks on characters navigation button for Frover mode
+  document.addEventListener('click', (e) => {
+    const charBtn = e.target.closest('[data-i18n="nav_characters"]');
+    if (charBtn) {
+      // Prevent default navigation if we are already on the characters list page
+      // to avoid continuous page reloads while clicking consecutively.
+      if (document.getElementById('resonators-grid')) {
+        e.preventDefault();
+      }
+      
+      const now = Date.now();
+      let clickCount = parseInt(localStorage.getItem('frover_clicks') || '0', 10);
+      let lastClick = parseInt(localStorage.getItem('frover_last_click') || '0', 10);
+      
+      if (now - lastClick < 2000) {
+        clickCount++;
+      } else {
+        clickCount = 1;
+      }
+      
+      localStorage.setItem('frover_clicks', clickCount);
+      localStorage.setItem('frover_last_click', now);
+      
+      if (clickCount === 6) {
+        const currentMode = localStorage.getItem('frover_mode') === 'true';
+        localStorage.setItem('frover_mode', !currentMode ? 'true' : 'false');
+        localStorage.setItem('frover_clicks', '0');
+        
+        // Refresh page to apply everything cleanly
+        window.location.reload();
+      }
+    }
+  });
 
   // Export globally for custom rendering scripts
   window.wuwaI18n = {

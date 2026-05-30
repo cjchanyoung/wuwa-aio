@@ -21,12 +21,19 @@
   <script src="../../js/i18n.js"></script>
 
   <style>
+    :root {
+      --gpx: 0.4px;
+    }
     body {
       font-family: 'Outfit', sans-serif;
       background-color: #0a080f;
     }
     .font-display {
       font-family: 'Space Grotesk', sans-serif;
+    }
+    .flex-align-center {
+      display: flex;
+      align-items: center;
     }
     ::-webkit-scrollbar {
       width: 6px;
@@ -163,7 +170,7 @@
       </div>
 
       <!-- Hero Visual Accent -->
-      <div class="w-64 h-64 shrink-0 relative flex items-center justify-center">
+      <div class="w-64 h-64 shrink-0 relative flex items-center justify-center" id="hero-portrait-container">
         <img src="../../assets/images/characters/yinlin/portrait.png" alt="Yinlin" class="w-full h-full object-contain">
       </div>
     </div>
@@ -177,8 +184,8 @@
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-            <h3 class="font-display font-bold text-xl text-white flex items-center gap-2">
-              <i class="fa-solid fa-khanda text-[#A431AE]"></i>
+            <h3 class="font-display font-bold text-xl text-white flex items-center gap-2.5">
+              <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 43/39; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/weapon.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/weapon.png') no-repeat center; mask-size: contain;"></span>
               <span data-i18n="detail_weapon_title"></span>
             </h3>
             <!-- Rarity Filter Buttons (Hidden in Build Mode) -->
@@ -203,7 +210,7 @@
                     Stringmaster
                     <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded uppercase font-bold">5★ Signature</span>
                   </h4>
-                  <p class="text-xs text-gray-500 mt-1">Base ATK: 500 • 36.0% Crit Rate (Lvl 90)</p>
+                  <p class="s-name flex-align-center text-xs text-gray-500 mt-1" style="font-size: calc(32 * var(--gpx));">Base ATK: 500 • 36.0% Crit Rate (Lvl 90)</p>
                   <p class="text-xs text-gray-300 mt-2">
                     Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role.
                   </p>
@@ -221,7 +228,7 @@
                     Rectifier #25
                     <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded uppercase font-bold">4★ Best Alternative</span>
                   </h4>
-                  <p class="text-xs text-gray-500 mt-1">Base ATK: 412 • 30.3% ATK% (Lvl 90)</p>
+                  <p class="s-name flex-align-center text-xs text-gray-500 mt-1" style="font-size: calc(32 * var(--gpx));">Base ATK: 412 • 30.3% ATK% (Lvl 90)</p>
                   <p class="text-xs text-gray-300 mt-2">
                     When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option.
                   </p>
@@ -263,8 +270,8 @@
 
         <!-- Echos Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
-          <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-            <i class="fa-solid fa-atom text-[#A431AE]"></i>
+          <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 49/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/echo.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/echo.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_echo_title"></span>
           </h3>
 
@@ -306,22 +313,22 @@
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_4"></span>
-                  <span id="echo-cost-4" class="text-sm font-semibold text-white">Crit Rate / Crit DMG</span>
+                  <span id="echo-cost-4" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
                 </div>
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3"></span>
-                  <span id="echo-cost-3" class="text-sm font-semibold text-white">Electro DMG% / Electro DMG% (or Energy Regen)</span>
+                  <span id="echo-cost-3" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Electro DMG% / Electro DMG% (or Energy Regen)</span>
                 </div>
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_1"></span>
-                  <span id="echo-cost-1" class="text-sm font-semibold text-white">ATK% / ATK%</span>
+                  <span id="echo-cost-1" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK% / ATK%</span>
                 </div>
               </div>
 
               <!-- Substats priority -->
               <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 space-y-2">
                 <span class="block text-xs text-gray-500 font-bold uppercase" data-i18n="detail_substat_priority"></span>
-                <p id="echo-substats-priority" class="text-sm text-gray-300 leading-relaxed font-mono">
+                <p id="echo-substats-priority" class="s-name flex-align-center text-sm text-gray-300 leading-relaxed font-semibold" style="font-size: calc(32 * var(--gpx));">
                   Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%
                 </p>
                 <span id="echo-note" class="block text-[10px] text-[#A431AE]/70 font-semibold italic">Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime.</span>
@@ -462,34 +469,34 @@
 
         <!-- Stat Priorities Card -->
         <div id="stat-priorities-card" class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
-          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-list-check text-[#A431AE]"></i>
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/stats.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/stats.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_stat_priority"></span>
           </h3>
           <div id="stat-priorities-list" class="space-y-3 text-xs">
                         <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#A431AE]/20 text-fuchsia-400 font-bold font-mono flex items-center justify-center">1</span>
-              <span class="font-semibold text-white">Crit Rate / Crit DMG</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
-              <span class="font-semibold text-white">Electro DMG%</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Electro DMG%</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
-              <span class="font-semibold text-white">Energy Regen (125%+)</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen (125%+)</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
-              <span class="font-semibold text-white">ATK% / Flat ATK</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK% / Flat ATK</span>
             </div>
           </div>
         </div>
 
         <!-- Skill Levelling Priority -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
-          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-chart-line text-[#A431AE]"></i>
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 72/42; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/skill.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/skill.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_skill_priority"></span>
           </h3>
           
@@ -533,7 +540,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -548,7 +555,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -563,7 +570,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -578,7 +585,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -593,7 +600,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
             </div>
@@ -602,8 +609,8 @@
 
         <!-- Recommended Teams Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
-          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-users text-[#A431AE]"></i>
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 27/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/party_member.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/party_member.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_teams_title"></span>
           </h3>
 
@@ -698,9 +705,9 @@
 
     <!-- Resonance Chain (Sequences) Section -->
     <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
-      <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-        <i class="fa-solid fa-network-wired text-[#A431AE]"></i>
-        <span data-i18n="detail_sequence_title">Resonance Chain (Sequences)</span>
+      <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2.5">
+        <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; mask-size: contain;"></span>
+        <span data-i18n="detail_sequence_title">Recommended Sequences</span>
       </h3>
       
       <div id="sequence-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -811,9 +818,9 @@
 
     <!-- Gameplay Guide Details Section -->
     <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
-      <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2">
-        <i class="fa-solid fa-book-open text-[#A431AE]"></i>
-        <span id="gameplay-guide-title" data-i18n="detail_guide_details_title">Gameplay Guidelines & Tips</span>
+      <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2.5">
+        <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 32/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/guide_details.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/guide_details.png') no-repeat center; mask-size: contain;"></span>
+        <span id="gameplay-guide-title" data-i18n="detail_guide_details_title">Guide Details</span>
       </h3>
       
       <div id="guide-details-guide-mode" class="prose prose-invert max-w-none">
@@ -843,7 +850,7 @@
               </div>
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Main Echo / Cost Main Stats</span>
-                <span class="text-white font-semibold text-right text-xs" id="summary-echo-mainstat">-</span>
+                <span class="s-name flex-align-center text-white font-semibold text-right text-xs" id="summary-echo-mainstat" style="font-size: calc(32 * var(--gpx));">-</span>
               </div>
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Skill Levels</span>
@@ -939,7 +946,7 @@
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Dynamic Character Guide Hydration (Bilingual)
-    window.characterData = {"id":"yinlin","name":{"en":"Yinlin"},"attribute":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"resonance_skill_dmg","name":{"en":"Resonance Skill DMG"}},{"id":"coordinated_attack","name":{"en":"Coordinated Attack"}},{"id":"electro_dmg_amplification","name":{"en":"Electro DMG Amplification"}},{"id":"resonance_liberation_damage_amplification","name":{"en":"Resonance Liberation Damage Amplification"}}],"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"mainSlotEcho":"tempest_mephis","recommWeapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"rarity":5,"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"recommEcho":[{"setName":{"en":"Void Thunder (5pc)","ko":"전도 5세트 (Void Thunder)"},"sonata":"void_thunder","mainSlotEcho":"tempest_mephis","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"void_thunder","name":{"en":"Void Thunder"},"effect_2pc":{"en":"Electro DMG +10%"},"effect_5pc":{"en":"Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"tempest_mephis","name":{"en":"tempest_mephis"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Electro DMG% / Energy Regen%","ko":"전도 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Electro DMG%","Energy Regen (125%+)","ATK% / Flat ATK"]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Morality's Crossroads"},"description":{"en":"Magnetic Roar and Lightning Execution deal 70% extra damage."},"isRecommended":true},{"name":{"en":"S2: Ensnarled by Rapport"},"description":{"en":"Electromagnetic Blast recovers an additional 5 Judgement Points and 5 Resonance Energy on hit."},"isRecommended":false},{"name":{"en":"S3: Unyielding Verdict"},"description":{"en":"Judgment Strike damage multiplier increased by 55%."},"isRecommended":false},{"name":{"en":"S4: Steadfast Conviction"},"description":{"en":"When Judgment Strike hits, team ATK is increased by 20% for 12 seconds."},"isRecommended":false},{"name":{"en":"S5: Resounding Will"},"description":{"en":"Resonance Liberation deals 100% extra damage to targets affected by marks."},"isRecommended":false},{"name":{"en":"S6: Pursuit of Justice"},"description":{"en":"For 30s after casting Resonance Liberation, basic attacks trigger Furious Thunder dealing massive Electro damage."},"isRecommended":true}],"guideDetails":{"en":"Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed."}};
+    window.characterData = {"id":"yinlin","name":{"en":"Yinlin"},"attribute":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"resonance_skill_dmg","name":{"en":"Resonance Skill DMG"}},{"id":"coordinated_attack","name":{"en":"Coordinated Attack"}},{"id":"electro_dmg_amplification","name":{"en":"Electro DMG Amplification"}},{"id":"resonance_liberation_damage_amplification","name":{"en":"Resonance Liberation Damage Amplification"}}],"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"mainSlotEcho":"tempest_mephis","recommWeapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"rarity":5,"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"recommEcho":[{"setName":{"en":"Void Thunder (5pc)","ko":"전도 5세트 (Void Thunder)"},"sonata":"void_thunder","mainSlotEcho":"tempest_mephis","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"void_thunder","name":{"en":"Void Thunder"},"textColor":"#A96FF6","bgColor":"#A96FF61a","effect_2pc":{"en":"Electro DMG +10%"},"effect_5pc":{"en":"Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"tempest_mephis","name":{"en":"tempest_mephis"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Electro DMG% / Energy Regen%","ko":"전도 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Electro DMG%","Energy Regen (125%+)","ATK% / Flat ATK"]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Morality's Crossroads"},"description":{"en":"Magnetic Roar and Lightning Execution deal 70% extra damage."},"isRecommended":true},{"name":{"en":"S2: Ensnarled by Rapport"},"description":{"en":"Electromagnetic Blast recovers an additional 5 Judgement Points and 5 Resonance Energy on hit."},"isRecommended":false},{"name":{"en":"S3: Unyielding Verdict"},"description":{"en":"Judgment Strike damage multiplier increased by 55%."},"isRecommended":false},{"name":{"en":"S4: Steadfast Conviction"},"description":{"en":"When Judgment Strike hits, team ATK is increased by 20% for 12 seconds."},"isRecommended":false},{"name":{"en":"S5: Resounding Will"},"description":{"en":"Resonance Liberation deals 100% extra damage to targets affected by marks."},"isRecommended":false},{"name":{"en":"S6: Pursuit of Justice"},"description":{"en":"For 30s after casting Resonance Liberation, basic attacks trigger Furious Thunder dealing massive Electro damage."},"isRecommended":true}],"guideDetails":{"en":"Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed."}};
 
     window.toggleSequenceDesc = function(btn) {
       const p = btn.closest('p');
@@ -986,6 +993,16 @@
       }
       document.getElementById("hero-name").textContent = data.name[lang] || data.name.en;
       document.getElementById("hero-description").textContent = data.description[lang] || data.description.en;
+
+      // Update portrait dynamically if it is Rover
+      const portraitContainer = document.getElementById("hero-portrait-container");
+      if (portraitContainer && (data.id === 'rover_havoc' || data.id.startsWith('rover'))) {
+        const isFrover = localStorage.getItem('frover_mode') === 'true';
+        const roverFolder = isFrover ? 'frover' : 'rover';
+        const attrId = data.attribute.en.toLowerCase();
+        
+        portraitContainer.innerHTML = `<img src="../../assets/images/characters/${roverFolder}/${attrId}/portrait.png" alt="${data.name.en}" class="w-full h-full object-contain" onerror="this.src='../../assets/images/characters/default.png'">`;
+      }
       
       // Render stars label
       const resonatorLabel = window.wuwaI18n ? window.wuwaI18n.t('resonator_label') : 'Resonator';
@@ -1024,7 +1041,7 @@
                     ${weaponName}
                     <span class="text-[10px] ${badgeClass} px-1.5 py-0.5 rounded uppercase font-bold">${rarityLabel}</span>
                   </h4>
-                  <p class="text-xs text-gray-500 mt-1">${specs}</p>
+                  <p class="s-name flex-align-center text-xs text-gray-500 mt-1" style="font-size: calc(32 * var(--gpx));">${specs}</p>
                   <p class="text-xs text-gray-300 mt-2">
                     ${desc}
                   </p>
@@ -1060,6 +1077,31 @@
       // Echo Setup
       const recommEchoes = Array.isArray(data.recommEcho) ? data.recommEcho : [data.recommEcho];
       
+      // Render tab buttons if multiple sets are available
+      const tabsContainer = document.getElementById("echo-tabs-container");
+      if (tabsContainer) {
+        if (recommEchoes.length > 1) {
+          tabsContainer.classList.remove("hidden");
+          tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
+            const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
+            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border" data-index="${idx}">${setName}</button>`;
+          }).join('\n');
+
+          // Register click listeners for tabs
+          const tabButtons = tabsContainer.querySelectorAll('.echo-tab-btn');
+          tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const selectedIdx = parseInt(btn.getAttribute('data-index'), 10);
+              window.currentEchoSetIndex = selectedIdx;
+              const currentLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+              renderEchoSet(currentLang, selectedIdx);
+            });
+          });
+        } else {
+          tabsContainer.classList.add("hidden");
+        }
+      }
+
       window.renderEchoSet = function(activeLang, setIndex = 0) {
         const echo = recommEchoes[setIndex];
         if (!echo) return;
@@ -1067,7 +1109,15 @@
         const sonataObj = echo.sonataObject || { name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
         const echoObj = echo.mainSlotEchoObject || { name: { en: "" }, costType: "4", id: "" };
 
-        document.getElementById("echo-best-set").textContent = sonataObj.name[activeLang] || sonataObj.name.en;
+        const bestSetEl = document.getElementById("echo-best-set");
+        if (bestSetEl) {
+          bestSetEl.textContent = sonataObj.name[activeLang] || sonataObj.name.en;
+          if (sonataObj.textColor) {
+            bestSetEl.style.color = sonataObj.textColor;
+          } else {
+            bestSetEl.style.color = '';
+          }
+        }
 
         // Update sonata set illustration
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
@@ -1086,7 +1136,19 @@
         const echoName = echoObj.name[activeLang] || echoObj.name.en;
         document.getElementById("echo-main-name").textContent = echoName;
         const costLabel = window.wuwaI18n ? window.wuwaI18n.t('cost_label') : 'Cost';
-        document.getElementById("echo-main-cost").textContent = `${echoObj.costType}-${costLabel}`;
+        const costBadgeEl = document.getElementById("echo-main-cost");
+        if (costBadgeEl) {
+          costBadgeEl.textContent = `${echoObj.costType}-${costLabel}`;
+          if (sonataObj.textColor && sonataObj.bgColor) {
+            costBadgeEl.style.color = sonataObj.textColor;
+            costBadgeEl.style.backgroundColor = sonataObj.bgColor;
+            costBadgeEl.style.borderColor = sonataObj.textColor + '4d'; // 30% opacity border
+          } else {
+            costBadgeEl.style.color = '';
+            costBadgeEl.style.backgroundColor = '';
+            costBadgeEl.style.borderColor = '';
+          }
+        }
         document.getElementById("echo-cost-4").textContent = echo.cost4[activeLang] || echo.cost4.en;
         document.getElementById("echo-cost-3").textContent = echo.cost3[activeLang] || echo.cost3.en;
         document.getElementById("echo-cost-1").textContent = echo.cost1[activeLang] || echo.cost1.en;
@@ -1097,6 +1159,42 @@
           illustContainer.innerHTML = `
             <img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoName}" class="w-full h-full object-contain p-1">`;
         }
+
+        // Update tabs active states and dynamic sonata coloring
+        const tabButtons = document.querySelectorAll('#echo-tabs-container .echo-tab-btn');
+        tabButtons.forEach(btn => {
+          const idx = parseInt(btn.getAttribute('data-index'), 10);
+          if (idx === setIndex) {
+            // Style active tab with its specific Sonata's colors
+            const tabEcho = recommEchoes[idx];
+            const tabSonataObj = tabEcho ? tabEcho.sonataObject : null;
+            
+            // Remove inactive classes
+            const inactiveTabClassList = ["bg-white/5", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
+            inactiveTabClassList.forEach(c => btn.classList.remove(c));
+            
+            if (tabSonataObj && tabSonataObj.textColor && tabSonataObj.bgColor) {
+              btn.style.color = tabSonataObj.textColor;
+              btn.style.backgroundColor = tabSonataObj.bgColor;
+              btn.style.borderColor = tabSonataObj.textColor + '4d'; // 30% opacity
+            } else {
+              // Fallback to active badge theme
+              const activeTabClassList = "bg-[#A431AE]/20 text-[#A431AE] border border-[#A431AE]/30".split(' ');
+              activeTabClassList.forEach(c => btn.classList.add(c));
+              btn.style.color = '';
+              btn.style.backgroundColor = '';
+              btn.style.borderColor = '';
+            }
+          } else {
+            // Style inactive tab
+            const inactiveTabClassList = ["bg-white/5", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
+            inactiveTabClassList.forEach(c => btn.classList.add(c));
+
+            btn.style.color = '';
+            btn.style.backgroundColor = '';
+            btn.style.borderColor = '';
+          }
+        });
       };
 
       // Set Substats priority (Shared/Unchanged across tabs)
@@ -1112,44 +1210,6 @@
       }
       renderEchoSet(lang, window.currentEchoSetIndex);
 
-      // Render tab buttons if multiple sets are available
-      const tabsContainer = document.getElementById("echo-tabs-container");
-      if (tabsContainer) {
-        if (recommEchoes.length > 1) {
-          tabsContainer.classList.remove("hidden");
-          const activeTabClassList = "bg-[#A431AE]/20 text-[#A431AE] border border-[#A431AE]/30".split(' ');
-          const inactiveTabClassList = ["bg-white/5", "border", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
-
-          tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
-            const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
-            const isActive = idx === window.currentEchoSetIndex;
-            const classes = isActive ? activeTabClassList.join(' ') : inactiveTabClassList.join(' ');
-            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all ${classes}" data-index="${idx}">${setName}</button>`;
-          }).join('\n');
-
-          // Register click listeners for tabs
-          const tabButtons = tabsContainer.querySelectorAll('.echo-tab-btn');
-          tabButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-              const selectedIdx = parseInt(btn.getAttribute('data-index'), 10);
-              window.currentEchoSetIndex = selectedIdx;
-              
-              tabButtons.forEach(b => {
-                activeTabClassList.forEach(c => b.classList.remove(c));
-                inactiveTabClassList.forEach(c => b.classList.add(c));
-              });
-              inactiveTabClassList.forEach(c => btn.classList.remove(c));
-              activeTabClassList.forEach(c => btn.classList.add(c));
-
-              const currentLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
-              renderEchoSet(currentLang, selectedIdx);
-            });
-          });
-        } else {
-          tabsContainer.classList.add("hidden");
-        }
-      }
-
       // Stat Priorities
       const statsContainer = document.getElementById("stat-priorities-list");
       if (statsContainer) {
@@ -1160,7 +1220,7 @@
           return `
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="font-semibold text-white">${stat}</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
             </div>`;
         }).join('\n');
       }
@@ -1228,12 +1288,19 @@
             seqDescHtml = seqDesc;
           }
 
+          let seqImgSrc = `../../assets/images/characters/${data.id}/sequence/${stepIdx}.png`;
+          if (data.id === 'rover_havoc' || data.id.startsWith('rover')) {
+            const isFrover = localStorage.getItem('frover_mode') === 'true';
+            const roverFolder = isFrover ? 'frover' : 'rover';
+            seqImgSrc = `../../assets/images/characters/${roverFolder}/${data.attribute.en.toLowerCase()}/sequence/${stepIdx}.png`;
+          }
+
           return `
             <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all">
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#A431AE] via-fuchsia-400 to-[#A431AE] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/${data.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(164, 49, 174, 0.9));">
+                <img src="${seqImgSrc}" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(164, 49, 174, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -1289,11 +1356,11 @@
         heavy_dmg: 0.0
       },
       skills: {
-        normal: 1,
-        skill: 1,
-        forte: 1,
-        liberation: 1,
-        intro: 1
+        normal: 10,
+        skill: 10,
+        forte: 10,
+        liberation: 10,
+        intro: 10
       },
       sequence: 0,
       team: {
@@ -1497,7 +1564,8 @@
       const skillKeys = ['normal', 'skill', 'forte', 'liberation', 'intro'];
       skillKeys.forEach(k => {
         const el = document.getElementById(`build-skill-${k}`);
-        if (el) el.value = 1;
+        if (el) el.value = 10;
+        window.buildState.skills[k] = 10;
       });
 
       // Reset sequence
@@ -1536,8 +1604,8 @@
                 <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded font-bold">Rank ${rank}</span>
               </h4>
               <div class="grid grid-cols-2 gap-4 mt-2 text-xs text-gray-400">
-                <div><span class="text-gray-500">Base ATK:</span> <span class="text-white font-mono">${weapon.baseAtk}</span></div>
-                <div><span class="text-gray-500">Secondary:</span> <span class="text-white font-mono">${secStatText}</span></div>
+                <div class="s-name flex-align-center" style="font-size: calc(32 * var(--gpx));"><span class="text-gray-500 mr-1">Base ATK:</span> <span class="text-white font-semibold">${weapon.baseAtk}</span></div>
+                <div class="s-name flex-align-center" style="font-size: calc(32 * var(--gpx));"><span class="text-gray-500 mr-1">Secondary:</span> <span class="text-white font-semibold">${secStatText}</span></div>
               </div>
               <p class="text-xs text-gray-300 mt-2 italic leading-relaxed border-t border-white/5 pt-2">${descText}</p>
             </div>
@@ -1666,10 +1734,17 @@
             ? `<span class="text-[10px] bg-[#A431AE]/20 text-[#A431AE] border border-[#A431AE]/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` 
             : '';
 
+          let seqImgSrc = `../../assets/images/characters/${data.id}/sequence/${val}.png`;
+          if (data.id === 'rover_havoc' || data.id.startsWith('rover')) {
+            const isFrover = localStorage.getItem('frover_mode') === 'true';
+            const roverFolder = isFrover ? 'frover' : 'rover';
+            seqImgSrc = `../../assets/images/characters/${roverFolder}/${data.attribute.en.toLowerCase()}/sequence/${val}.png`;
+          }
+
           card.innerHTML = `
             <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
               <div class="absolute inset-0 bg-gradient-to-tr from-[#A431AE] via-fuchsia-400 to-[#A431AE] opacity-20 blur-[1px]"></div>
-              <img src="../../assets/images/characters/${data.id}/sequence/${val}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(164, 49, 174, 0.9));" onerror="this.src='../../assets/images/characters/default.png'">
+              <img src="${seqImgSrc}" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(164, 49, 174, 0.9));" onerror="this.src='../../assets/images/characters/default.png'">
             </div>
             <div class="flex-grow">
               <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -1776,15 +1851,15 @@
       if (subEl) {
         const sub = window.buildState.substats;
         subEl.innerHTML = `
-          <div>Crit Rate: <span class="text-white">${sub.crit_rate}%</span></div>
-          <div>Crit DMG: <span class="text-white">${sub.crit_dmg}%</span></div>
-          <div>ATK%: <span class="text-white">${sub.atk_pct}%</span></div>
-          <div>Flat ATK: <span class="text-white">${sub.atk_flat}</span></div>
-          <div>Energy Regen: <span class="text-white">${sub.er}%</span></div>
-          <div>Skill DMG%: <span class="text-white">${sub.skill_dmg}%</span></div>
-          <div>Lib. DMG%: <span class="text-white">${sub.lib_dmg}%</span></div>
-          <div>Basic DMG%: <span class="text-white">${sub.basic_dmg}%</span></div>
-          <div>Heavy DMG%: <span class="text-white">${sub.heavy_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Crit Rate:<span class="text-white ml-1">${sub.crit_rate}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Crit DMG:<span class="text-white ml-1">${sub.crit_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">ATK%:<span class="text-white ml-1">${sub.atk_pct}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Flat ATK:<span class="text-white ml-1">${sub.atk_flat}</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Energy Regen:<span class="text-white ml-1">${sub.er}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Skill DMG%:<span class="text-white ml-1">${sub.skill_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Lib. DMG%:<span class="text-white ml-1">${sub.lib_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Basic DMG%:<span class="text-white ml-1">${sub.basic_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Heavy DMG%:<span class="text-white ml-1">${sub.heavy_dmg}%</span></div>
         `;
       }
     };

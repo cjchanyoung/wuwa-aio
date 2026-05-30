@@ -21,12 +21,19 @@
   <script src="../../js/i18n.js"></script>
 
   <style>
+    :root {
+      --gpx: 0.4px;
+    }
     body {
       font-family: 'Outfit', sans-serif;
       background-color: #0a080f;
     }
     .font-display {
       font-family: 'Space Grotesk', sans-serif;
+    }
+    .flex-align-center {
+      display: flex;
+      align-items: center;
     }
     ::-webkit-scrollbar {
       width: 6px;
@@ -155,7 +162,7 @@
       </div>
 
       <!-- Hero Visual Accent -->
-      <div class="w-64 h-64 shrink-0 relative flex items-center justify-center">
+      <div class="w-64 h-64 shrink-0 relative flex items-center justify-center" id="hero-portrait-container">
         <img src="../../assets/images/characters/jiyan/potrait.png" alt="Jiyan" class="w-full h-full object-contain">
       </div>
     </div>
@@ -169,8 +176,8 @@
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-            <h3 class="font-display font-bold text-xl text-white flex items-center gap-2">
-              <i class="fa-solid fa-khanda text-[#2EC69E]"></i>
+            <h3 class="font-display font-bold text-xl text-white flex items-center gap-2.5">
+              <span class="h-5 inline-block shrink-0 text-[#2EC69E]" style="aspect-ratio: 43/39; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/weapon.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/weapon.png') no-repeat center; mask-size: contain;"></span>
               <span data-i18n="detail_weapon_title"></span>
             </h3>
             <!-- Rarity Filter Buttons (Hidden in Build Mode) -->
@@ -195,7 +202,7 @@
                     Verdant Summit
                     <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded uppercase font-bold">5★ Signature</span>
                   </h4>
-                  <p class="text-xs text-gray-500 mt-1">Base ATK: 587 • 48.6% Crit DMG (Lvl 90)</p>
+                  <p class="s-name flex-align-center text-xs text-gray-500 mt-1" style="font-size: calc(32 * var(--gpx));">Base ATK: 587 • 48.6% Crit DMG (Lvl 90)</p>
                   <p class="text-xs text-gray-300 mt-2">
                     Increases Heavy Attack DMG by 12% and when casting Intro Skill or Resonance Liberation, boosts Heavy Attack DMG by 38%.
                   </p>
@@ -213,7 +220,7 @@
                     Autumntrace
                     <span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded uppercase font-bold">4★ Best BP Alternative</span>
                   </h4>
-                  <p class="text-xs text-gray-500 mt-1">Base ATK: 412 • 20.2% Crit Rate (Lvl 90)</p>
+                  <p class="s-name flex-align-center text-xs text-gray-500 mt-1" style="font-size: calc(32 * var(--gpx));">Base ATK: 412 • 20.2% Crit Rate (Lvl 90)</p>
                   <p class="text-xs text-gray-300 mt-2">
                     Increases ATK by 4% on dealing Basic or Heavy Attack DMG, stacking up to 5 times.
                   </p>
@@ -255,8 +262,8 @@
 
         <!-- Echos Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
-          <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-            <i class="fa-solid fa-atom text-[#2EC69E]"></i>
+          <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#2EC69E]" style="aspect-ratio: 49/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/echo.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/echo.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_echo_title"></span>
           </h3>
 
@@ -298,22 +305,22 @@
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_4"></span>
-                  <span id="echo-cost-4" class="text-sm font-semibold text-white">Crit Rate / Crit DMG</span>
+                  <span id="echo-cost-4" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
                 </div>
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3"></span>
-                  <span id="echo-cost-3" class="text-sm font-semibold text-white">Aero DMG% / Aero DMG%</span>
+                  <span id="echo-cost-3" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Aero DMG% / Aero DMG%</span>
                 </div>
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_1"></span>
-                  <span id="echo-cost-1" class="text-sm font-semibold text-white">ATK% / ATK%</span>
+                  <span id="echo-cost-1" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK% / ATK%</span>
                 </div>
               </div>
 
               <!-- Substats priority -->
               <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 space-y-2">
                 <span class="block text-xs text-gray-500 font-bold uppercase" data-i18n="detail_substat_priority"></span>
-                <p id="echo-substats-priority" class="text-sm text-gray-300 leading-relaxed font-mono">
+                <p id="echo-substats-priority" class="s-name flex-align-center text-sm text-gray-300 leading-relaxed font-semibold" style="font-size: calc(32 * var(--gpx));">
                   Crit Rate% / Crit DMG% > Heavy Attack DMG% > ATK% > Energy Regen%
                 </p>
                 <span id="echo-note" class="block text-[10px] text-[#2EC69E]/70 font-semibold italic">Note: Aim for 120% - 130% Energy Regen to ensure smooth ultimate uptime.</span>
@@ -454,34 +461,34 @@
 
         <!-- Stat Priorities Card -->
         <div id="stat-priorities-card" class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
-          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-list-check text-[#2EC69E]"></i>
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#2EC69E]" style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/stats.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/stats.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_stat_priority"></span>
           </h3>
           <div id="stat-priorities-list" class="space-y-3 text-xs">
                         <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#2EC69E]/20 text-emerald-400 font-bold font-mono flex items-center justify-center">1</span>
-              <span class="font-semibold text-white">Crit Rate / Crit DMG</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#2EC69E]/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
-              <span class="font-semibold text-white">Aero DMG%</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Aero DMG%</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#2EC69E]/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
-              <span class="font-semibold text-white">Energy Regen (120%+)</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen (120%+)</span>
             </div>
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md bg-[#2EC69E]/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
-              <span class="font-semibold text-white">Heavy Attack DMG%</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Heavy Attack DMG%</span>
             </div>
           </div>
         </div>
 
         <!-- Skill Levelling Priority -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
-          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-chart-line text-[#2EC69E]"></i>
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#2EC69E]" style="aspect-ratio: 72/42; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/skill.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/skill.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_skill_priority"></span>
           </h3>
           
@@ -525,7 +532,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -540,7 +547,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -555,7 +562,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -570,7 +577,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
               <div class="flex items-center justify-between">
@@ -585,7 +592,7 @@
                   <option value="7">7</option>
                   <option value="8">8</option>
                   <option value="9">9</option>
-                  <option value="10">10</option>
+                  <option value="10" selected>10</option>
                 </select>
               </div>
             </div>
@@ -594,8 +601,8 @@
 
         <!-- Recommended Teams Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
-          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-users text-[#2EC69E]"></i>
+          <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
+            <span class="h-5 inline-block shrink-0 text-[#2EC69E]" style="aspect-ratio: 27/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/party_member.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/party_member.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_teams_title"></span>
           </h3>
 
@@ -690,9 +697,9 @@
 
     <!-- Resonance Chain (Sequences) Section -->
     <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
-      <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2">
-        <i class="fa-solid fa-network-wired text-[#2EC69E]"></i>
-        <span data-i18n="detail_sequence_title">Resonance Chain (Sequences)</span>
+      <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2.5">
+        <span class="h-5 inline-block shrink-0 text-[#2EC69E]" style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; mask-size: contain;"></span>
+        <span data-i18n="detail_sequence_title">Recommended Sequences</span>
       </h3>
       
       <div id="sequence-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -803,9 +810,9 @@
 
     <!-- Gameplay Guide Details Section -->
     <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
-      <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2">
-        <i class="fa-solid fa-book-open text-[#2EC69E]"></i>
-        <span id="gameplay-guide-title" data-i18n="detail_guide_details_title">Gameplay Guidelines & Tips</span>
+      <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2.5">
+        <span class="h-5 inline-block shrink-0 text-[#2EC69E]" style="aspect-ratio: 32/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/guide_details.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/guide_details.png') no-repeat center; mask-size: contain;"></span>
+        <span id="gameplay-guide-title" data-i18n="detail_guide_details_title">Guide Details</span>
       </h3>
       
       <div id="guide-details-guide-mode" class="prose prose-invert max-w-none">
@@ -835,7 +842,7 @@
               </div>
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Main Echo / Cost Main Stats</span>
-                <span class="text-white font-semibold text-right text-xs" id="summary-echo-mainstat">-</span>
+                <span class="s-name flex-align-center text-white font-semibold text-right text-xs" id="summary-echo-mainstat" style="font-size: calc(32 * var(--gpx));">-</span>
               </div>
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Skill Levels</span>
@@ -931,7 +938,7 @@
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Dynamic Character Guide Hydration (Bilingual)
-    window.characterData = {"id":"jiyan","name":{"en":"Jiyan"},"attribute":{"en":"Aero"},"weaponType":{"en":"Broadblade"},"roles":[{"id":"main_damage_dealer","name":{"en":"Main Damage Dealer"}},{"id":"heavy_attack_dmg","name":{"en":"Heavy Attack DMG"}},{"id":"traction","name":{"en":"Traction"}}],"rarity":5,"description":{"en":"The commander of the Midnight Rangers in Jinzhou, wielding his broadblade with wind-carving swiftness and summoning the Qingloong. Jiyan acts as a premier Aero Main DPS, converting his attacks into heavy-damage Lance strikes during his Resonance Liberation."},"mainSlotEcho":"feilian_primal","recommWeapons":[{"id":"verdant_summit","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Verdant Summit"},"rarity":5,"specs":{"en":"Base ATK: 587 • 48.6% Crit DMG (Lvl 90)"},"desc":{"en":"Increases Heavy Attack DMG by 12% and when casting Intro Skill or Resonance Liberation, boosts Heavy Attack DMG by 38%."}},{"id":"autumntrace","rarityLabel":{"en":"4★ Best BP Alternative"},"isSignature":false,"name":{"en":"Autumntrace"},"rarity":4,"specs":{"en":"Base ATK: 412 • 20.2% Crit Rate (Lvl 90)"},"desc":{"en":"Increases ATK by 4% on dealing Basic or Heavy Attack DMG, stacking up to 5 times."}}],"recommEcho":[{"setName":{"en":"Sierra Gale (5pc)","ko":"기류 5세트 (Sierra Gale)"},"sonata":"sierra_gale","mainSlotEcho":"feilian_primal","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Aero DMG% / Aero DMG%"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Heavy Attack DMG% > ATK% > Energy Regen%"},"note":{"en":"Note: Aim for 120% - 130% Energy Regen to ensure smooth ultimate uptime."},"sonataObject":{"id":"sierra_gale","name":{"en":"Sierra Gale"},"effect_2pc":{"en":"Aero DMG +10%"},"effect_5pc":{"en":"Upon using Intro Skill, increases Aero DMG by 30% for 15s."}},"mainSlotEchoObject":{"id":"feilian_primal","name":{"en":"Feilian Primal"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Aero DMG% / Energy Regen%","ko":"기류 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Heavy Attack DMG% > ATK% > Energy Regen%"},"note":{"en":"Note: Aim for 120% - 130% Energy Regen to ensure smooth ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Aero DMG%","Energy Regen (120%+)","Heavy Attack DMG%"]},"recommSkill":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Forte Circuit"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Skill"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Basic Attack"},"priority":{"en":"Low"}},{"skill":{"en":"5. Intro Skill"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Aero Hurricane Team"},"isPremium":true,"members":{"en":["Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Mortefi <span class=\"text-gray-500 text-[10px]\">(Heavy ATK Amp Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"F2P Friendly Team"},"isPremium":false,"members":{"en":["Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yangyang <span class=\"text-gray-500 text-[10px]\">(Energy Battery Sub-DPS)</span>","Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Benevolence"},"description":{"en":"Resonance Skill Windqueller can be cast 1 more time. The active time of the skill is increased by 1 second."},"isRecommended":true},{"name":{"en":"S2: Versatility"},"description":{"en":"When casting Intro Skill Tactical Strike, Jiyan recovers 30 Resolve and increases ATK by 28% for 15 seconds."},"isRecommended":false},{"name":{"en":"S3: Spectator"},"description":{"en":"When casting Resonance Liberation Emerald Storm or Intro Skill Tactical Strike, increases Crit Rate by 16% and Crit DMG by 32% for 8 seconds."},"isRecommended":false},{"name":{"en":"S4: Prudence"},"description":{"en":"When casting Resonance Liberation, increases all team members' Heavy Attack DMG by 25% for 30 seconds."},"isRecommended":false},{"name":{"en":"S5: Resoluteness"},"description":{"en":"Outro Skill damage multiplier is increased by 120%. Jiyan's attacks ignore 15% of the target's DEF."},"isRecommended":false},{"name":{"en":"S6: Fortitude"},"description":{"en":"Increases the damage multiplier of Jiyan's attacks in Qingloong state by an additional 120%."},"isRecommended":true}],"guideDetails":{"en":"Jiyan is a highly consistent Aero Main DPS. Pair him with Mortefi to gain a massive Heavy Attack DMG boost from Mortefi's Outro Skill, and make sure to swap to Jiyan when his concerto energy is full to activate his high-impact entry attacks."}};
+    window.characterData = {"id":"jiyan","name":{"en":"Jiyan"},"attribute":{"en":"Aero"},"weaponType":{"en":"Broadblade"},"roles":[{"id":"main_damage_dealer","name":{"en":"Main Damage Dealer"}},{"id":"heavy_attack_dmg","name":{"en":"Heavy Attack DMG"}},{"id":"traction","name":{"en":"Traction"}}],"rarity":5,"description":{"en":"The commander of the Midnight Rangers in Jinzhou, wielding his broadblade with wind-carving swiftness and summoning the Qingloong. Jiyan acts as a premier Aero Main DPS, converting his attacks into heavy-damage Lance strikes during his Resonance Liberation."},"mainSlotEcho":"feilian_primal","recommWeapons":[{"id":"verdant_summit","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Verdant Summit"},"rarity":5,"specs":{"en":"Base ATK: 587 • 48.6% Crit DMG (Lvl 90)"},"desc":{"en":"Increases Heavy Attack DMG by 12% and when casting Intro Skill or Resonance Liberation, boosts Heavy Attack DMG by 38%."}},{"id":"autumntrace","rarityLabel":{"en":"4★ Best BP Alternative"},"isSignature":false,"name":{"en":"Autumntrace"},"rarity":4,"specs":{"en":"Base ATK: 412 • 20.2% Crit Rate (Lvl 90)"},"desc":{"en":"Increases ATK by 4% on dealing Basic or Heavy Attack DMG, stacking up to 5 times."}}],"recommEcho":[{"setName":{"en":"Sierra Gale (5pc)","ko":"기류 5세트 (Sierra Gale)"},"sonata":"sierra_gale","mainSlotEcho":"feilian_primal","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Aero DMG% / Aero DMG%"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Heavy Attack DMG% > ATK% > Energy Regen%"},"note":{"en":"Note: Aim for 120% - 130% Energy Regen to ensure smooth ultimate uptime."},"sonataObject":{"id":"sierra_gale","name":{"en":"Sierra Gale"},"textColor":"#99FBBA","bgColor":"#99FBBA1a","effect_2pc":{"en":"Aero DMG +10%"},"effect_5pc":{"en":"Upon using Intro Skill, increases Aero DMG by 30% for 15s."}},"mainSlotEchoObject":{"id":"feilian_primal","name":{"en":"Feilian Primal"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Aero DMG% / Energy Regen%","ko":"기류 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Heavy Attack DMG% > ATK% > Energy Regen%"},"note":{"en":"Note: Aim for 120% - 130% Energy Regen to ensure smooth ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Aero DMG%","Energy Regen (120%+)","Heavy Attack DMG%"]},"recommSkill":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Forte Circuit"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Skill"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Basic Attack"},"priority":{"en":"Low"}},{"skill":{"en":"5. Intro Skill"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Aero Hurricane Team"},"isPremium":true,"members":{"en":["Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Mortefi <span class=\"text-gray-500 text-[10px]\">(Heavy ATK Amp Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"F2P Friendly Team"},"isPremium":false,"members":{"en":["Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yangyang <span class=\"text-gray-500 text-[10px]\">(Energy Battery Sub-DPS)</span>","Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Benevolence"},"description":{"en":"Resonance Skill Windqueller can be cast 1 more time. The active time of the skill is increased by 1 second."},"isRecommended":true},{"name":{"en":"S2: Versatility"},"description":{"en":"When casting Intro Skill Tactical Strike, Jiyan recovers 30 Resolve and increases ATK by 28% for 15 seconds."},"isRecommended":false},{"name":{"en":"S3: Spectator"},"description":{"en":"When casting Resonance Liberation Emerald Storm or Intro Skill Tactical Strike, increases Crit Rate by 16% and Crit DMG by 32% for 8 seconds."},"isRecommended":false},{"name":{"en":"S4: Prudence"},"description":{"en":"When casting Resonance Liberation, increases all team members' Heavy Attack DMG by 25% for 30 seconds."},"isRecommended":false},{"name":{"en":"S5: Resoluteness"},"description":{"en":"Outro Skill damage multiplier is increased by 120%. Jiyan's attacks ignore 15% of the target's DEF."},"isRecommended":false},{"name":{"en":"S6: Fortitude"},"description":{"en":"Increases the damage multiplier of Jiyan's attacks in Qingloong state by an additional 120%."},"isRecommended":true}],"guideDetails":{"en":"Jiyan is a highly consistent Aero Main DPS. Pair him with Mortefi to gain a massive Heavy Attack DMG boost from Mortefi's Outro Skill, and make sure to swap to Jiyan when his concerto energy is full to activate his high-impact entry attacks."}};
 
     window.toggleSequenceDesc = function(btn) {
       const p = btn.closest('p');
@@ -978,6 +985,16 @@
       }
       document.getElementById("hero-name").textContent = data.name[lang] || data.name.en;
       document.getElementById("hero-description").textContent = data.description[lang] || data.description.en;
+
+      // Update portrait dynamically if it is Rover
+      const portraitContainer = document.getElementById("hero-portrait-container");
+      if (portraitContainer && (data.id === 'rover_havoc' || data.id.startsWith('rover'))) {
+        const isFrover = localStorage.getItem('frover_mode') === 'true';
+        const roverFolder = isFrover ? 'frover' : 'rover';
+        const attrId = data.attribute.en.toLowerCase();
+        
+        portraitContainer.innerHTML = `<img src="../../assets/images/characters/${roverFolder}/${attrId}/portrait.png" alt="${data.name.en}" class="w-full h-full object-contain" onerror="this.src='../../assets/images/characters/default.png'">`;
+      }
       
       // Render stars label
       const resonatorLabel = window.wuwaI18n ? window.wuwaI18n.t('resonator_label') : 'Resonator';
@@ -1016,7 +1033,7 @@
                     ${weaponName}
                     <span class="text-[10px] ${badgeClass} px-1.5 py-0.5 rounded uppercase font-bold">${rarityLabel}</span>
                   </h4>
-                  <p class="text-xs text-gray-500 mt-1">${specs}</p>
+                  <p class="s-name flex-align-center text-xs text-gray-500 mt-1" style="font-size: calc(32 * var(--gpx));">${specs}</p>
                   <p class="text-xs text-gray-300 mt-2">
                     ${desc}
                   </p>
@@ -1052,6 +1069,31 @@
       // Echo Setup
       const recommEchoes = Array.isArray(data.recommEcho) ? data.recommEcho : [data.recommEcho];
       
+      // Render tab buttons if multiple sets are available
+      const tabsContainer = document.getElementById("echo-tabs-container");
+      if (tabsContainer) {
+        if (recommEchoes.length > 1) {
+          tabsContainer.classList.remove("hidden");
+          tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
+            const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
+            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border" data-index="${idx}">${setName}</button>`;
+          }).join('\n');
+
+          // Register click listeners for tabs
+          const tabButtons = tabsContainer.querySelectorAll('.echo-tab-btn');
+          tabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const selectedIdx = parseInt(btn.getAttribute('data-index'), 10);
+              window.currentEchoSetIndex = selectedIdx;
+              const currentLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+              renderEchoSet(currentLang, selectedIdx);
+            });
+          });
+        } else {
+          tabsContainer.classList.add("hidden");
+        }
+      }
+
       window.renderEchoSet = function(activeLang, setIndex = 0) {
         const echo = recommEchoes[setIndex];
         if (!echo) return;
@@ -1059,7 +1101,15 @@
         const sonataObj = echo.sonataObject || { name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
         const echoObj = echo.mainSlotEchoObject || { name: { en: "" }, costType: "4", id: "" };
 
-        document.getElementById("echo-best-set").textContent = sonataObj.name[activeLang] || sonataObj.name.en;
+        const bestSetEl = document.getElementById("echo-best-set");
+        if (bestSetEl) {
+          bestSetEl.textContent = sonataObj.name[activeLang] || sonataObj.name.en;
+          if (sonataObj.textColor) {
+            bestSetEl.style.color = sonataObj.textColor;
+          } else {
+            bestSetEl.style.color = '';
+          }
+        }
 
         // Update sonata set illustration
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
@@ -1078,7 +1128,19 @@
         const echoName = echoObj.name[activeLang] || echoObj.name.en;
         document.getElementById("echo-main-name").textContent = echoName;
         const costLabel = window.wuwaI18n ? window.wuwaI18n.t('cost_label') : 'Cost';
-        document.getElementById("echo-main-cost").textContent = `${echoObj.costType}-${costLabel}`;
+        const costBadgeEl = document.getElementById("echo-main-cost");
+        if (costBadgeEl) {
+          costBadgeEl.textContent = `${echoObj.costType}-${costLabel}`;
+          if (sonataObj.textColor && sonataObj.bgColor) {
+            costBadgeEl.style.color = sonataObj.textColor;
+            costBadgeEl.style.backgroundColor = sonataObj.bgColor;
+            costBadgeEl.style.borderColor = sonataObj.textColor + '4d'; // 30% opacity border
+          } else {
+            costBadgeEl.style.color = '';
+            costBadgeEl.style.backgroundColor = '';
+            costBadgeEl.style.borderColor = '';
+          }
+        }
         document.getElementById("echo-cost-4").textContent = echo.cost4[activeLang] || echo.cost4.en;
         document.getElementById("echo-cost-3").textContent = echo.cost3[activeLang] || echo.cost3.en;
         document.getElementById("echo-cost-1").textContent = echo.cost1[activeLang] || echo.cost1.en;
@@ -1089,6 +1151,42 @@
           illustContainer.innerHTML = `
             <img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoName}" class="w-full h-full object-contain p-1">`;
         }
+
+        // Update tabs active states and dynamic sonata coloring
+        const tabButtons = document.querySelectorAll('#echo-tabs-container .echo-tab-btn');
+        tabButtons.forEach(btn => {
+          const idx = parseInt(btn.getAttribute('data-index'), 10);
+          if (idx === setIndex) {
+            // Style active tab with its specific Sonata's colors
+            const tabEcho = recommEchoes[idx];
+            const tabSonataObj = tabEcho ? tabEcho.sonataObject : null;
+            
+            // Remove inactive classes
+            const inactiveTabClassList = ["bg-white/5", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
+            inactiveTabClassList.forEach(c => btn.classList.remove(c));
+            
+            if (tabSonataObj && tabSonataObj.textColor && tabSonataObj.bgColor) {
+              btn.style.color = tabSonataObj.textColor;
+              btn.style.backgroundColor = tabSonataObj.bgColor;
+              btn.style.borderColor = tabSonataObj.textColor + '4d'; // 30% opacity
+            } else {
+              // Fallback to active badge theme
+              const activeTabClassList = "bg-[#2EC69E]/20 text-[#2EC69E] border border-[#2EC69E]/30".split(' ');
+              activeTabClassList.forEach(c => btn.classList.add(c));
+              btn.style.color = '';
+              btn.style.backgroundColor = '';
+              btn.style.borderColor = '';
+            }
+          } else {
+            // Style inactive tab
+            const inactiveTabClassList = ["bg-white/5", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
+            inactiveTabClassList.forEach(c => btn.classList.add(c));
+
+            btn.style.color = '';
+            btn.style.backgroundColor = '';
+            btn.style.borderColor = '';
+          }
+        });
       };
 
       // Set Substats priority (Shared/Unchanged across tabs)
@@ -1104,44 +1202,6 @@
       }
       renderEchoSet(lang, window.currentEchoSetIndex);
 
-      // Render tab buttons if multiple sets are available
-      const tabsContainer = document.getElementById("echo-tabs-container");
-      if (tabsContainer) {
-        if (recommEchoes.length > 1) {
-          tabsContainer.classList.remove("hidden");
-          const activeTabClassList = "bg-[#2EC69E]/20 text-[#2EC69E] border border-[#2EC69E]/30".split(' ');
-          const inactiveTabClassList = ["bg-white/5", "border", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
-
-          tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
-            const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
-            const isActive = idx === window.currentEchoSetIndex;
-            const classes = isActive ? activeTabClassList.join(' ') : inactiveTabClassList.join(' ');
-            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all ${classes}" data-index="${idx}">${setName}</button>`;
-          }).join('\n');
-
-          // Register click listeners for tabs
-          const tabButtons = tabsContainer.querySelectorAll('.echo-tab-btn');
-          tabButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-              const selectedIdx = parseInt(btn.getAttribute('data-index'), 10);
-              window.currentEchoSetIndex = selectedIdx;
-              
-              tabButtons.forEach(b => {
-                activeTabClassList.forEach(c => b.classList.remove(c));
-                inactiveTabClassList.forEach(c => b.classList.add(c));
-              });
-              inactiveTabClassList.forEach(c => btn.classList.remove(c));
-              activeTabClassList.forEach(c => btn.classList.add(c));
-
-              const currentLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
-              renderEchoSet(currentLang, selectedIdx);
-            });
-          });
-        } else {
-          tabsContainer.classList.add("hidden");
-        }
-      }
-
       // Stat Priorities
       const statsContainer = document.getElementById("stat-priorities-list");
       if (statsContainer) {
@@ -1152,7 +1212,7 @@
           return `
             <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="font-semibold text-white">${stat}</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
             </div>`;
         }).join('\n');
       }
@@ -1220,12 +1280,19 @@
             seqDescHtml = seqDesc;
           }
 
+          let seqImgSrc = `../../assets/images/characters/${data.id}/sequence/${stepIdx}.png`;
+          if (data.id === 'rover_havoc' || data.id.startsWith('rover')) {
+            const isFrover = localStorage.getItem('frover_mode') === 'true';
+            const roverFolder = isFrover ? 'frover' : 'rover';
+            seqImgSrc = `../../assets/images/characters/${roverFolder}/${data.attribute.en.toLowerCase()}/sequence/${stepIdx}.png`;
+          }
+
           return `
             <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all">
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr from-[#2EC69E] via-emerald-400 to-[#2EC69E] opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/${data.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(46, 198, 158, 0.9));">
+                <img src="${seqImgSrc}" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(46, 198, 158, 0.9));">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -1281,11 +1348,11 @@
         heavy_dmg: 0.0
       },
       skills: {
-        normal: 1,
-        skill: 1,
-        forte: 1,
-        liberation: 1,
-        intro: 1
+        normal: 10,
+        skill: 10,
+        forte: 10,
+        liberation: 10,
+        intro: 10
       },
       sequence: 0,
       team: {
@@ -1489,7 +1556,8 @@
       const skillKeys = ['normal', 'skill', 'forte', 'liberation', 'intro'];
       skillKeys.forEach(k => {
         const el = document.getElementById(`build-skill-${k}`);
-        if (el) el.value = 1;
+        if (el) el.value = 10;
+        window.buildState.skills[k] = 10;
       });
 
       // Reset sequence
@@ -1528,8 +1596,8 @@
                 <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded font-bold">Rank ${rank}</span>
               </h4>
               <div class="grid grid-cols-2 gap-4 mt-2 text-xs text-gray-400">
-                <div><span class="text-gray-500">Base ATK:</span> <span class="text-white font-mono">${weapon.baseAtk}</span></div>
-                <div><span class="text-gray-500">Secondary:</span> <span class="text-white font-mono">${secStatText}</span></div>
+                <div class="s-name flex-align-center" style="font-size: calc(32 * var(--gpx));"><span class="text-gray-500 mr-1">Base ATK:</span> <span class="text-white font-semibold">${weapon.baseAtk}</span></div>
+                <div class="s-name flex-align-center" style="font-size: calc(32 * var(--gpx));"><span class="text-gray-500 mr-1">Secondary:</span> <span class="text-white font-semibold">${secStatText}</span></div>
               </div>
               <p class="text-xs text-gray-300 mt-2 italic leading-relaxed border-t border-white/5 pt-2">${descText}</p>
             </div>
@@ -1658,10 +1726,17 @@
             ? `<span class="text-[10px] bg-[#2EC69E]/20 text-[#2EC69E] border border-[#2EC69E]/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` 
             : '';
 
+          let seqImgSrc = `../../assets/images/characters/${data.id}/sequence/${val}.png`;
+          if (data.id === 'rover_havoc' || data.id.startsWith('rover')) {
+            const isFrover = localStorage.getItem('frover_mode') === 'true';
+            const roverFolder = isFrover ? 'frover' : 'rover';
+            seqImgSrc = `../../assets/images/characters/${roverFolder}/${data.attribute.en.toLowerCase()}/sequence/${val}.png`;
+          }
+
           card.innerHTML = `
             <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
               <div class="absolute inset-0 bg-gradient-to-tr from-[#2EC69E] via-emerald-400 to-[#2EC69E] opacity-20 blur-[1px]"></div>
-              <img src="../../assets/images/characters/${data.id}/sequence/${val}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(46, 198, 158, 0.9));" onerror="this.src='../../assets/images/characters/default.png'">
+              <img src="${seqImgSrc}" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(46, 198, 158, 0.9));" onerror="this.src='../../assets/images/characters/default.png'">
             </div>
             <div class="flex-grow">
               <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
@@ -1768,15 +1843,15 @@
       if (subEl) {
         const sub = window.buildState.substats;
         subEl.innerHTML = `
-          <div>Crit Rate: <span class="text-white">${sub.crit_rate}%</span></div>
-          <div>Crit DMG: <span class="text-white">${sub.crit_dmg}%</span></div>
-          <div>ATK%: <span class="text-white">${sub.atk_pct}%</span></div>
-          <div>Flat ATK: <span class="text-white">${sub.atk_flat}</span></div>
-          <div>Energy Regen: <span class="text-white">${sub.er}%</span></div>
-          <div>Skill DMG%: <span class="text-white">${sub.skill_dmg}%</span></div>
-          <div>Lib. DMG%: <span class="text-white">${sub.lib_dmg}%</span></div>
-          <div>Basic DMG%: <span class="text-white">${sub.basic_dmg}%</span></div>
-          <div>Heavy DMG%: <span class="text-white">${sub.heavy_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Crit Rate:<span class="text-white ml-1">${sub.crit_rate}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Crit DMG:<span class="text-white ml-1">${sub.crit_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">ATK%:<span class="text-white ml-1">${sub.atk_pct}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Flat ATK:<span class="text-white ml-1">${sub.atk_flat}</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Energy Regen:<span class="text-white ml-1">${sub.er}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Skill DMG%:<span class="text-white ml-1">${sub.skill_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Lib. DMG%:<span class="text-white ml-1">${sub.lib_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Basic DMG%:<span class="text-white ml-1">${sub.basic_dmg}%</span></div>
+          <div class="s-name flex-align-center text-gray-400 font-semibold" style="font-size: calc(32 * var(--gpx));">Heavy DMG%:<span class="text-white ml-1">${sub.heavy_dmg}%</span></div>
         `;
       }
     };

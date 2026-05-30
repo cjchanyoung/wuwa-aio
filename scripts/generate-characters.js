@@ -298,9 +298,11 @@ const characters = rawCharacters.map(char => {
       const sonataObject = masterSonata ? {
         id: setBonusId,
         name: masterSonata.name,
+        textColor: masterSonata.textColor,
+        bgColor: masterSonata.bgColor,
         effect_2pc: masterSonata.effect_2pc,
         effect_5pc: masterSonata.effect_5pc
-      } : { id: setBonusId, name: { en: "Custom Set" }, effect_2pc: { en: "" }, effect_5pc: { en: "" } };
+      } : { id: setBonusId, name: { en: "Custom Set" }, textColor: "#FFFFFF", bgColor: "#FFFFFF1a", effect_2pc: { en: "" }, effect_5pc: { en: "" } };
 
       const mainEchoId = echo.mainSlotEcho;
       const masterEcho = echoesMaster[mainEchoId];
@@ -339,13 +341,23 @@ characters.forEach(char => {
   }
 
   // Generate character portrait HTML
-  const charImagesDir = path.join(__dirname, '../assets/images/characters', char.id);
+  let charImagesDir = path.join(__dirname, '../assets/images/characters', char.id);
+  let portraitSrc = `../../assets/images/characters/${char.id}/portrait.png`;
+  let potraitSrc = `../../assets/images/characters/${char.id}/potrait.png`;
+  
+  if (char.id === 'rover_havoc' || char.id.startsWith('rover')) {
+    const attrId = char.attribute.en.toLowerCase();
+    charImagesDir = path.join(__dirname, '../assets/images/characters/rover', attrId);
+    portraitSrc = `../../assets/images/characters/rover/${attrId}/portrait.png`;
+    potraitSrc = `../../assets/images/characters/rover/${attrId}/potrait.png`;
+  }
+
   let portraitHtml = `<div class="w-32 h-32 rounded-full bg-gradient-to-tr ${styles.accent_gradient} p-0.5 shadow-2xl ${styles.logo_shadow_theme} flex items-center justify-center overflow-hidden"><div class="w-full h-full rounded-full bg-[#1a181f] flex items-center justify-center"><i class="${char.icon_class} ${styles.accent_text} text-6xl"></i></div></div>`;
   if (fs.existsSync(charImagesDir)) {
     if (fs.existsSync(path.join(charImagesDir, 'portrait.png'))) {
-      portraitHtml = `<img src="../../assets/images/characters/${char.id}/portrait.png" alt="${char.name.en}" class="w-full h-full object-contain">`;
+      portraitHtml = `<img src="${portraitSrc}" alt="${char.name.en}" class="w-full h-full object-contain">`;
     } else if (fs.existsSync(path.join(charImagesDir, 'potrait.png'))) {
-      portraitHtml = `<img src="../../assets/images/characters/${char.id}/potrait.png" alt="${char.name.en}" class="w-full h-full object-contain">`;
+      portraitHtml = `<img src="${potraitSrc}" alt="${char.name.en}" class="w-full h-full object-contain">`;
     }
   }
 
@@ -374,7 +386,7 @@ characters.forEach(char => {
                     ${weapon.name.en}
                     <span class="text-[10px] ${badgeClass} px-1.5 py-0.5 rounded uppercase font-bold">${weapon.rarityLabel.en}</span>
                   </h4>
-                  <p class="text-xs text-gray-500 mt-1">${weapon.specs.en}</p>
+                  <p class="s-name flex-align-center text-xs text-gray-500 mt-1" style="font-size: calc(32 * var(--gpx));">${weapon.specs.en}</p>
                   <p class="text-xs text-gray-300 mt-2">
                     ${weapon.desc.en}
                   </p>
@@ -389,7 +401,7 @@ characters.forEach(char => {
     const numBg = isFirst ? styles.stat_idx1_bg_border_text : styles.stat_idx2_bg_border_text;
     return `            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
               <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="font-semibold text-white">${stat}</span>
+              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
             </div>`;
   }).join('\n');
 
@@ -446,12 +458,18 @@ ${membersList}
       const stepIdx = index + 1;
       const seqName = seq.name.en;
       const seqDesc = seq.description.en;
+      
+      let seqImgSrc = `../../assets/images/characters/${char.id}/sequence/${stepIdx}.png`;
+      if (char.id === 'rover_havoc' || char.id.startsWith('rover')) {
+        const attrId = char.attribute.en.toLowerCase();
+        seqImgSrc = `../../assets/images/characters/rover/${attrId}/sequence/${stepIdx}.png`;
+      }
 
       return `            <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all">
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
                 <!-- Ambient Glow Backdrop -->
                 <div class="absolute inset-0 bg-gradient-to-tr ${styles.accent_gradient} opacity-20 blur-[1px]"></div>
-                <img src="../../assets/images/characters/${char.id}/sequence/${stepIdx}.png" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: ${styles.sequence_filter};">
+                <img src="${seqImgSrc}" alt="${seqName}" class="w-full h-full object-contain relative z-10" style="filter: ${styles.sequence_filter};">
               </div>
               <div class="flex-grow">
                 <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
