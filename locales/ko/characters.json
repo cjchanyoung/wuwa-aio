@@ -37,5 +37,17 @@
   "echo_label": "소나타:",
   "weapon_label": "무기:",
   "view_guide_label": "가이드 상세 보기",
-  "cost_label": "코스트"
+  "cost_label": "코스트",
+  "build_toggle_title": "커스텀 빌드 모드",
+  "build_toggle_desc": "자신의 무기, 에코, 스킬 및 파티 스펙을 입력하고 저장하거나 파일로 내보냅니다.",
+  "build_btn_start": "나의 빌드 설정",
+  "build_btn_cancel": "빌드 설정 취소",
+  "build_stat_base_atk": "기본 공격력",
+  "build_stat_secondary": "부옵션 스탯",
+  "build_stat_description": "상세 설명",
+  "build_save_btn": "빌드 저장",
+  "build_download_btn": "JSON 다운로드",
+  "build_import_btn": "JSON 업로드",
+  "build_load_placeholder": "저장된 빌드 선택...",
+  "build_name_placeholder": "빌드 이름 입력..."
 }

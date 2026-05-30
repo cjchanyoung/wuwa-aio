@@ -37,5 +37,17 @@
   "echo_label": "Sonata:",
   "weapon_label": "Weapon:",
   "view_guide_label": "View Guide Details",
-  "cost_label": "COST"
+  "cost_label": "COST",
+  "build_toggle_title": "Custom Build Mode",
+  "build_toggle_desc": "Configure your own equipment, levels, and stats to export as a build config.",
+  "build_btn_start": "Configure My Build",
+  "build_btn_cancel": "Cancel Build Mode",
+  "build_stat_base_atk": "Base ATK",
+  "build_stat_secondary": "Secondary Stat",
+  "build_stat_description": "Description",
+  "build_save_btn": "Save Build",
+  "build_download_btn": "Download JSON",
+  "build_import_btn": "Import JSON",
+  "build_load_placeholder": "Select Saved Build...",
+  "build_name_placeholder": "Enter Build Name..."
 }

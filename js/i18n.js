@@ -303,7 +303,19 @@
     swap_cancel_label: "Swap Cancel",
     step_execution_label: "Step Execution",
     qsd_premium_badge: "Premium Guide",
-    qsd_custom_badge: "Custom Sheet"
+    qsd_custom_badge: "Custom Sheet",
+    build_toggle_title: "Custom Build Mode",
+    build_toggle_desc: "Configure your own equipment, levels, and stats to export as a build config.",
+    build_btn_start: "Configure My Build",
+    build_btn_cancel: "Cancel Build Mode",
+    build_stat_base_atk: "Base ATK",
+    build_stat_secondary: "Secondary Stat",
+    build_stat_description: "Description",
+    build_save_btn: "Save Build",
+    build_download_btn: "Download JSON",
+    build_import_btn: "Import JSON",
+    build_load_placeholder: "Select Saved Build...",
+    build_name_placeholder: "Enter Build Name..."
   };
 
   // Safe localStorage helper
