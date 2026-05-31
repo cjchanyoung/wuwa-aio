@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Resonator Guides - WuWa AIO</title>
-  <meta name="description" content="Explore Wuthering Waves characters database. Real-time builds, weapons, echo sets, and skills synced directly from our serverless Google Sheet database.">
-  
+  <meta name="description"
+    content="Explore Wuthering Waves characters database. Real-time builds, weapons, echo sets, and skills synced directly from our serverless Google Sheet database.">
+
   <!-- Font Integrations -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- Compiled Tailwind CSS -->
   <link rel="stylesheet" href="../output.css">
-  
+
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -25,77 +29,114 @@
       font-family: 'Outfit', sans-serif;
       background-color: #0a080f;
     }
+
     .font-display {
       font-family: 'Space Grotesk', sans-serif;
     }
+
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
+
     ::-webkit-scrollbar-track {
       background: #0a080f;
     }
+
     ::-webkit-scrollbar-thumb {
       background: #312e3f;
       border-radius: 3px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: #504a6b;
     }
-    
+
     @keyframes pulse-glow {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.6; }
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.6;
+      }
     }
+
     .glow-effect {
       animation: pulse-glow 4s infinite ease-in-out;
     }
+
     .resonator-card {
       transition: all 0.3s ease;
     }
+
     .resonator-card:hover {
       border-color: color-mix(in srgb, var(--theme-color) 35%, transparent) !important;
       transform: translateY(-4px);
     }
+
     .resonator-card:hover .view-guide-btn {
       background-color: var(--theme-color) !important;
       color: #ffffff !important;
     }
   </style>
 </head>
-<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-yellow-500/30 selection:text-yellow-200">
+
+<body
+  class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-yellow-500/30 selection:text-yellow-200">
 
   <!-- Ambient Glow Effects -->
-  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+  <div
+    class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect">
+  </div>
+  <div
+    class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect"
+    style="animation-delay: 2s;"></div>
 
   <!-- Header Section -->
   <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logo (Home Button) -->
       <a href="../index.html" class="flex items-center space-x-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+        <div
+          class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
           <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
         </div>
         <div>
-          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent">WUWA<span class="text-purple-500">.AIO</span></span>
-          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo"></span>
+          <span
+            class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent">WUWA<span
+              class="text-purple-500">.AIO</span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold"
+            data-i18n="sub_logo"></span>
         </div>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center space-x-1">
-        <a href="../characters/index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-purple-400 bg-white/5 border-b-2 border-purple-500/50 transition-all" data-i18n="nav_characters"></a>
-        <a href="../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_echoes"></a>
-        <a href="../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_weapons"></a>
-        <a href="../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_quickswap"></a>
-        <a href="../calculation/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_calculation"></a>
+        <a href="../characters/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-semibold text-purple-400 bg-white/5 border-b-2 border-purple-500/50 transition-all"
+          data-i18n="nav_characters"></a>
+        <a href="../echoes/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_echoes"></a>
+        <a href="../weapons/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_weapons"></a>
+        <a href="../quick-swap/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_quickswap"></a>
+        <a href="../calculation/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_calculation"></a>
       </nav>
 
       <!-- Action Button -->
       <div class="flex items-center space-x-4">
         <!-- Mobile Menu Trigger -->
-        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+        <button id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
           <i class="fa-solid fa-bars text-xl"></i>
         </button>
       </div>
@@ -105,11 +146,16 @@
   <!-- Mobile Navigation Menu -->
   <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
     <div class="flex flex-col space-y-4">
-      <a href="../characters/index.html" class="text-xl font-semibold text-purple-400 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters"></a>
-      <a href="../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_echoes"></a>
-      <a href="../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons"></a>
-      <a href="../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap"></a>
-      <a href="../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation"></a>
+      <a href="../characters/index.html" class="text-xl font-semibold text-purple-400 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_characters"></a>
+      <a href="../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_echoes"></a>
+      <a href="../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_weapons"></a>
+      <a href="../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_quickswap"></a>
+      <a href="../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_calculation"></a>
     </div>
   </div>
 
@@ -117,7 +163,7 @@
     <!-- Character Guide Grid Section -->
     <section id="characters-list" class="py-12 bg-[#1a181f]/20 border-b border-white/5 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         <!-- Header & Search Tools -->
         <!-- Header & Search Tools -->
         <div class="mb-8">
@@ -127,50 +173,98 @@
           </h1>
           <p class="text-gray-400 text-sm mt-2" data-i18n="char_list_subtitle"></p>
         </div>
-        
+
         <!-- Search & Filter Controls -->
         <div class="flex flex-col gap-5 w-full mb-12 bg-[#1a181f]/40 p-6 rounded-2xl border border-white/5">
           <div class="flex flex-wrap gap-4 items-center justify-between">
             <!-- Search Input -->
             <div class="relative w-80">
-              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
-              <input type="text" id="resonator-search" placeholder="" data-i18n-placeholder="char_search_placeholder" class="w-full pl-10 pr-4 py-2.5 bg-[#1a181f] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors">
+              <i
+                class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 text-sm"></i>
+              <input type="text" id="resonator-search" placeholder="" data-i18n-placeholder="char_search_placeholder"
+                class="w-full pl-10 pr-4 py-2.5 bg-[#1a181f] border border-white/10 rounded-xl text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 transition-colors">
             </div>
 
             <!-- Rarity Filters -->
             <div class="flex flex-wrap gap-2 filter-group" data-filter-type="rarity">
-              <button class="filter-btn active px-4 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-semibold uppercase transition-all" data-filter="all" data-i18n="char_filter_all"></button>
-              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all" data-filter="5-star" data-i18n="char_filter_5"></button>
-              <button class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all" data-filter="4-star" data-i18n="char_filter_4"></button>
+              <button
+                class="filter-btn active px-4 py-2.5 rounded-xl bg-purple-600 text-white text-xs font-semibold uppercase transition-all"
+                data-filter="all" data-i18n="char_filter_all"></button>
+              <button
+                class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all"
+                data-filter="5-star" data-i18n="char_filter_5"></button>
+              <button
+                class="filter-btn px-4 py-2.5 rounded-xl bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all"
+                data-filter="4-star" data-i18n="char_filter_4"></button>
             </div>
           </div>
 
           <!-- Attribute Filters -->
           <div class="flex flex-wrap items-center gap-2 filter-group" data-filter-type="attribute">
-            <span class="text-xs text-gray-500 uppercase font-semibold mr-2" data-i18n="char_filter_attribute">Attribute:</span>
-            <button class="filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white text-xs font-semibold uppercase transition-all" data-filter="all" data-i18n="char_filter_all">All</button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="fusion"><img src="../assets/images/attribute/fusion.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_fusion">Fusion</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="electro"><img src="../assets/images/attribute/electro.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_electro">Electro</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="glacio"><img src="../assets/images/attribute/glacio.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_glacio">Glacio</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="spectro"><img src="../assets/images/attribute/spectro.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_spectro">Spectro</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="aero"><img src="../assets/images/attribute/aero.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_aero">Aero</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="havoc"><img src="../assets/images/attribute/havoc.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_havoc">Havoc</span></button>
+            <span class="text-xs text-gray-500 uppercase font-semibold mr-2"
+              data-i18n="char_filter_attribute">Attribute:</span>
+            <button
+              class="filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white text-xs font-semibold uppercase transition-all"
+              data-filter="all" data-i18n="char_filter_all">All</button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="fusion"><img src="../assets/images/attribute/fusion.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_fusion">Fusion</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="electro"><img src="../assets/images/attribute/electro.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_electro">Electro</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="glacio"><img src="../assets/images/attribute/glacio.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_glacio">Glacio</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="spectro"><img src="../assets/images/attribute/spectro.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_spectro">Spectro</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="aero"><img src="../assets/images/attribute/aero.png" class="w-3.5 h-3.5 object-contain"><span
+                data-i18n="attr_aero">Aero</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="havoc"><img src="../assets/images/attribute/havoc.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="attr_havoc">Havoc</span></button>
           </div>
 
           <!-- Weapon Filters -->
           <div class="flex flex-wrap items-center gap-2 filter-group" data-filter-type="weapon">
-            <span class="text-xs text-gray-500 uppercase font-semibold mr-2" data-i18n="char_filter_weapon">Weapon:</span>
-            <button class="filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white text-xs font-semibold uppercase transition-all" data-filter="all" data-i18n="char_filter_all">All</button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="broadblade"><img src="../assets/images/weapons/type/broadblade.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_broadblade">Broadblade</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="sword"><img src="../assets/images/weapons/type/sword.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_sword">Sword</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="pistol"><img src="../assets/images/weapons/type/pistol.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_pistol">Pistols</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="gauntlet"><img src="../assets/images/weapons/type/gauntlet.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_gauntlet">Gauntlets</span></button>
-            <button class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5" data-filter="rectifier"><img src="../assets/images/weapons/type/rectifier.png" class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_rectifier">Rectifiers</span></button>
+            <span class="text-xs text-gray-500 uppercase font-semibold mr-2"
+              data-i18n="char_filter_weapon">Weapon:</span>
+            <button
+              class="filter-btn active px-3 py-1.5 rounded-lg bg-purple-600 text-white text-xs font-semibold uppercase transition-all"
+              data-filter="all" data-i18n="char_filter_all">All</button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="broadblade"><img src="../assets/images/weapons/type/broadblade.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_broadblade">Broadblade</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="sword"><img src="../assets/images/weapons/type/sword.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_sword">Sword</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="pistol"><img src="../assets/images/weapons/type/pistol.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_pistol">Pistols</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="gauntlet"><img src="../assets/images/weapons/type/gauntlet.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_gauntlet">Gauntlets</span></button>
+            <button
+              class="filter-btn px-3 py-1.5 rounded-lg bg-[#1a181f] border border-white/5 text-gray-400 hover:text-white text-xs font-semibold uppercase transition-all inline-flex items-center gap-1.5"
+              data-filter="rectifier"><img src="../assets/images/weapons/type/rectifier.png"
+                class="w-3.5 h-3.5 object-contain"><span data-i18n="weapon_rectifier">Rectifiers</span></button>
           </div>
         </div>
 
         <!-- Grid Container for Resonators -->
-        <div id="resonators-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-16">
+        <div id="resonators-grid"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 mb-16">
           <!-- Dynamically populated from data.json -->
         </div>
 
@@ -187,7 +281,8 @@
           <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
             <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
           </div>
-          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-purple-500">.AIO</span></span>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span
+              class="text-purple-500">.AIO</span></span>
         </div>
         <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer"></p>
       </div>
@@ -199,7 +294,7 @@
     // Mobile navigation toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     function toggleMobileMenu() {
       mobileMenu.classList.toggle('hidden');
       const icon = mobileMenuBtn.querySelector('i');
@@ -209,7 +304,7 @@
         icon.className = 'fa-solid fa-xmark text-xl';
       }
     }
-    
+
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Style configuration mapping for resonators by attribute type
@@ -351,7 +446,7 @@
         } catch (e) {
           console.warn("Storage access denied. Defaulting to English.");
         }
-        
+
         // Generate and append cards
         grid.innerHTML = characters.map(char => {
           const attrId = char.attribute.en.toLowerCase();
@@ -359,7 +454,7 @@
           const charElement = window.wuwaI18n ? window.wuwaI18n.t(`attr_${attrId}`) : char.attribute.en;
           const styles = attributeCardsStyles[char.attribute.en] || defaultStyles;
           const stars = '<i class="fa-solid fa-star"></i>'.repeat(char.rarity);
-          
+
           const charName = char.name[lang] || char.name.en;
           const charWeaponType = window.wuwaI18n ? window.wuwaI18n.t(`weapon_${weaponTypeId}`) : char.weaponType.en;
           const viewGuideLabel = window.wuwaI18n ? window.wuwaI18n.t('view_guide_label') : 'View Guide Details';
@@ -377,14 +472,14 @@
             }
           });
           const searchTags = searchTagParts.join(' ').toLowerCase();
-          
+
           let iconPath = `../assets/images/characters/${char.id}/icon.png`;
           if (char.id === "rover_havoc" || char.id.startsWith("rover")) {
             const isFrover = localStorage.getItem("frover_mode") === "true";
             const roverFolder = isFrover ? "frover" : "rover";
             iconPath = `../assets/images/characters/${roverFolder}/${attrId}/icon.png`;
           }
-          
+
           return `
           <div class="resonator-card group bg-[#1a181f] border border-white/5 rounded-2xl overflow-hidden flex flex-col" style="--theme-color: ${styles.theme_color || '#a855f7'};" data-rarity="${char.rarity}-star" data-attribute="${char.attribute.en.toLowerCase()}" data-weapon="${char.weaponType.en.toLowerCase().replace(/s$/, '')}" data-id="${char.id}" data-search-tags="${searchTags}">
             <div class="relative h-36 bg-gradient-to-t from-[#1a181f] ${styles.bg_to} overflow-hidden flex items-center justify-center">
@@ -447,7 +542,7 @@
 
     function filterResonators() {
       const query = searchInput.value.toLowerCase().trim();
-      
+
       const activeRarityBtn = document.querySelector('.filter-group[data-filter-type="rarity"] .filter-btn.active');
       const rarityFilter = activeRarityBtn ? activeRarityBtn.dataset.filter : 'all';
 
@@ -517,7 +612,7 @@
         } else {
           btn.classList.add('bg-purple-600');
         }
-        
+
         filterResonators();
       });
     });
@@ -533,11 +628,12 @@
 
     // Initialize character list loading
     document.addEventListener('DOMContentLoaded', loadCharacters);
-    
+
     // Listen to global language change event to reload list
     window.addEventListener("wuwalangchange", () => {
       loadCharacters();
     });
   </script>
 </body>
+
 </html>

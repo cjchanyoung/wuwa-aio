@@ -148,7 +148,7 @@
     weapon_val_atk_500: "500 ATK",
     weapon_val_atk_337: "337 ATK",
     weapon_val_atk_412: "412 ATK",
-    
+
     // Echoes Page
     echoes_title: "Echo Database",
     echoes_subtitle: "Browse all Sonata Effects, Echo stats, and primary farming drop targets.",
@@ -360,7 +360,7 @@
   function showPage() {
     if (isPageShown) return;
     isPageShown = true;
-    
+
     const reveal = () => {
       if (document.body) {
         document.body.classList.add('wuwa-ready');
@@ -446,24 +446,24 @@
     document.querySelectorAll("a").forEach(link => {
       let href = link.getAttribute("href");
       if (!href) return;
-      
+
       if (href.startsWith("http://") || href.startsWith("https://") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("#") || href.startsWith("javascript:")) {
         return;
       }
-      
+
       try {
         const hashIdx = href.indexOf('#');
         const queryIdx = href.indexOf('?');
-        
+
         let basePath = href;
         let searchPart = "";
         let hashPart = "";
-        
+
         if (hashIdx !== -1) {
           hashPart = href.substring(hashIdx);
           basePath = href.substring(0, hashIdx);
         }
-        
+
         if (queryIdx !== -1) {
           if (hashIdx !== -1 && queryIdx < hashIdx) {
             searchPart = href.substring(queryIdx, hashIdx);
@@ -473,10 +473,10 @@
             basePath = href.substring(0, queryIdx);
           }
         }
-        
+
         const params = new URLSearchParams(searchPart);
         params.set("lang", lang);
-        
+
         link.setAttribute("href", basePath + "?" + params.toString() + hashPart);
       } catch (e) {
         console.warn("Failed to rewrite link href: " + href, e);
@@ -502,7 +502,7 @@
       const currentUrl = new URL(window.location.href);
       const linkPath = linkUrl.pathname.replace(/\/$/, '');
       const currentPath = currentUrl.pathname.replace(/\/$/, '');
-      
+
       if (linkPath.includes('/characters/index.html') || linkPath.endsWith('/characters')) {
         return currentPath.includes('/characters/');
       }
@@ -535,21 +535,21 @@
           const isMobile = elem.closest('#mobile-menu') !== null;
           const prefix = getLocalesPathPrefix().replace('locales/', '');
           const isFrover = localStorage.getItem('frover_mode') === 'true';
-          
+
           let iconName = '';
           let scale = 1.0;
-          
+
           if (key === 'nav_characters') {
             iconName = isFrover ? 'char_icon_frover.png' : 'char_icon_rover.png';
             scale = 1.0;
           } else if (key === 'nav_echoes') {
             iconName = 'sonata.png';
-            scale = 1.35; // Scale up to compensate for transparent margins in sonata.png
+            scale = 1.0; // Scale up to compensate for transparent margins in sonata.png
           } else if (key === 'nav_weapons') {
             iconName = 'weapon.png';
-            scale = 1.15; // Scale up slightly to compensate for weapon.png dimensions
+            scale = 1.0; // Scale up slightly to compensate for weapon.png dimensions
           }
-          
+
           if (isMobile) {
             // Mobile full width button layout (similar to second photo)
             elem.className = "flex items-center justify-between w-full px-5 py-3.5 rounded-xl transition-all duration-200 text-xl font-bold border-b-0";
@@ -560,7 +560,7 @@
               elem.classList.add("text-gray-300", "hover:text-white", "hover:bg-white/5");
               elem.classList.remove("bg-purple-600", "text-white");
             }
-            
+
             if (iconName) {
               const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 28px; height: 28px;`;
               elem.innerHTML = `<span>${val}</span><span class="inline-block shrink-0" style="${maskStyle}"></span>`;
@@ -571,13 +571,13 @@
             // Desktop menu styling: increase text size to text-base and font-semibold
             elem.classList.remove('text-sm', 'font-medium');
             elem.classList.add('text-base', 'font-semibold');
-            
+
             // Dynamic centering and vertical alignment layout
             elem.style.display = 'inline-flex';
             elem.style.alignItems = 'center';
             elem.style.justifyContent = 'center';
             elem.style.gap = '8px';
-            
+
             if (iconName) {
               const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 22px; height: 22px;`;
               elem.innerHTML = `<span class="inline-block shrink-0" style="${maskStyle}"></span><span>${val}</span>`;
@@ -614,7 +614,7 @@
   function injectLanguageSelector() {
     const mobileBtn = document.getElementById("mobile-menu-btn");
     if (!mobileBtn) return;
-    
+
     const parentContainer = mobileBtn.parentElement;
     if (!parentContainer) return;
 
@@ -659,14 +659,14 @@
           currentLang = selectedLang;
           setStorageItem("wuwa_lang", currentLang);
           document.getElementById("current-lang-label").innerText = currentLang.toUpperCase();
-          
+
           updateAddressBar();
 
           // Wait for translations to be fetched
           await loadTranslations(currentLang);
 
           translatePage();
-          
+
           const event = new CustomEvent("wuwalangchange", { detail: { lang: currentLang } });
           window.dispatchEvent(event);
         }
@@ -679,16 +679,16 @@
     injectLanguageSelector();
     await loadTranslations(currentLang);
     translatePage();
-    
+
     // Check if the page has dynamic components that load data at runtime
-    const hasDynamicComponents = 
-      document.getElementById('resonators-grid') || 
-      document.getElementById('weapons-container') || 
-      document.getElementById('sonata-sets-grid') || 
-      document.getElementById('calc-preset') || 
+    const hasDynamicComponents =
+      document.getElementById('resonators-grid') ||
+      document.getElementById('weapons-container') ||
+      document.getElementById('sonata-sets-grid') ||
+      document.getElementById('calc-preset') ||
       document.getElementById('user-builds-grid') ||
       window.characterData; // Details page has window.characterData
-      
+
     if (hasDynamicComponents) {
       // Wait for the page script to call showPage() once dynamic rendering is complete.
       // We set a safety timeout of 300ms so it never remains blank if something errors.
@@ -714,25 +714,25 @@
       if (document.getElementById('resonators-grid')) {
         e.preventDefault();
       }
-      
+
       const now = Date.now();
       let clickCount = parseInt(localStorage.getItem('frover_clicks') || '0', 10);
       let lastClick = parseInt(localStorage.getItem('frover_last_click') || '0', 10);
-      
+
       if (now - lastClick < 2000) {
         clickCount++;
       } else {
         clickCount = 1;
       }
-      
+
       localStorage.setItem('frover_clicks', clickCount);
       localStorage.setItem('frover_last_click', now);
-      
+
       if (clickCount === 6) {
         const currentMode = localStorage.getItem('frover_mode') === 'true';
         localStorage.setItem('frover_mode', !currentMode ? 'true' : 'false');
         localStorage.setItem('frover_clicks', '0');
-        
+
         // Refresh page to apply everything cleanly
         window.location.reload();
       }

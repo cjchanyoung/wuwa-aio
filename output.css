@@ -451,6 +451,9 @@
   .mt-auto {
     margin-top: auto;
   }
+  .mr-1 {
+    margin-right: calc(var(--spacing) * 1);
+  }
   .mr-1\.5 {
     margin-right: calc(var(--spacing) * 1.5);
   }
@@ -565,8 +568,8 @@
   .h-44 {
     height: calc(var(--spacing) * 44);
   }
-  .h-64 {
-    height: calc(var(--spacing) * 64);
+  .h-56 {
+    height: calc(var(--spacing) * 56);
   }
   .h-80 {
     height: calc(var(--spacing) * 80);
@@ -658,6 +661,9 @@
   .w-48 {
     width: calc(var(--spacing) * 48);
   }
+  .w-56 {
+    width: calc(var(--spacing) * 56);
+  }
   .w-64 {
     width: calc(var(--spacing) * 64);
   }
@@ -747,6 +753,9 @@
     --tw-scale-y: 105%;
     --tw-scale-z: 105%;
     scale: var(--tw-scale-x) var(--tw-scale-y);
+  }
+  .scale-\[1\.3\] {
+    scale: 1.3;
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -990,6 +999,10 @@
   .border-b {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 1px;
+  }
+  .border-b-0 {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 0px;
   }
   .border-b-2 {
     border-bottom-style: var(--tw-border-style);
@@ -1820,6 +1833,9 @@
   .py-3 {
     padding-block: calc(var(--spacing) * 3);
   }
+  .py-3\.5 {
+    padding-block: calc(var(--spacing) * 3.5);
+  }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
@@ -2328,9 +2344,17 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .duration-200 {
+    --tw-duration: 200ms;
+    transition-duration: 200ms;
+  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
+  }
+  .duration-500 {
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
   }
   .ease-in-out {
     --tw-ease: var(--ease-in-out);
@@ -3220,6 +3244,16 @@
   .md\:hidden {
     @media (width >= 48rem) {
       display: none;
+    }
+  }
+  .md\:h-64 {
+    @media (width >= 48rem) {
+      height: calc(var(--spacing) * 64);
+    }
+  }
+  .md\:w-64 {
+    @media (width >= 48rem) {
+      width: calc(var(--spacing) * 64);
     }
   }
   .md\:grid-cols-2 {

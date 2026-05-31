@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yinlin Build Guide - WuWa AIO</title>
-  <meta name="description" content="Ultimate Yinlin build guide. Best weapons, echo sets, skill priorities, and team comps for Yinlin in Wuthering Waves.">
-  
+  <meta name="description"
+    content="Ultimate Yinlin build guide. Best weapons, echo sets, skill priorities, and team comps for Yinlin in Wuthering Waves.">
+
   <!-- Font Integrations -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
   <!-- Compiled Tailwind CSS -->
   <link rel="stylesheet" href="../../output.css">
-  
+
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -24,74 +28,108 @@
     :root {
       --gpx: 0.4px;
     }
+
     body {
       font-family: 'Outfit', sans-serif;
       background-color: #0a080f;
     }
+
     .font-display {
       font-family: 'Space Grotesk', sans-serif;
     }
+
     .flex-align-center {
       display: flex;
       align-items: center;
     }
+
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
     }
+
     ::-webkit-scrollbar-track {
       background: #0a080f;
     }
+
     ::-webkit-scrollbar-thumb {
       background: #312e3f;
       border-radius: 3px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background: #504a6b;
     }
-    
+
     @keyframes pulse-glow {
-      0%, 100% { opacity: 0.3; }
-      50% { opacity: 0.6; }
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.6;
+      }
     }
+
     .glow-effect {
       animation: pulse-glow 4s infinite ease-in-out;
     }
   </style>
 </head>
+
 <body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-[#A431AE]/30 selection:text-fuchsia-200">
 
   <!-- Ambient Glow Effects -->
-  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#A431AE]/10 blur-[120px] pointer-events-none glow-effect"></div>
-  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-fuchsia-950/5 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+  <div
+    class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#A431AE]/10 blur-[120px] pointer-events-none glow-effect">
+  </div>
+  <div
+    class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-fuchsia-950/5 blur-[120px] pointer-events-none glow-effect"
+    style="animation-delay: 2s;"></div>
 
   <!-- Header Section -->
   <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-[#A431AE]/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       <!-- Logo (Home Button) -->
       <a href="../../index.html" class="flex items-center space-x-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#A431AE] to-fuchsia-600 flex items-center justify-center shadow-lg shadow-[#A431AE]/20 group-hover:scale-105 transition-transform duration-300">
+        <div
+          class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#A431AE] to-fuchsia-600 flex items-center justify-center shadow-lg shadow-[#A431AE]/20 group-hover:scale-105 transition-transform duration-300">
           <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
         </div>
         <div>
-          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-fuchsia-400 bg-clip-text text-transparent">WUWA<span class="text-[#A431AE]">.AIO</span></span>
-          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo"></span>
+          <span
+            class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-fuchsia-400 bg-clip-text text-transparent">WUWA<span
+              class="text-[#A431AE]">.AIO</span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold"
+            data-i18n="sub_logo"></span>
         </div>
       </a>
 
       <!-- Desktop Nav -->
       <nav class="hidden md:flex items-center space-x-1">
-        <a href="../index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-[#A431AE] bg-white/5 border-b-2 border-[#A431AE]/50 transition-all" data-i18n="nav_characters"></a>
-        <a href="../../echoes/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_echoes"></a>
-        <a href="../../weapons/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_weapons"></a>
-        <a href="../../quick-swap/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_quickswap"></a>
-        <a href="../../calculation/index.html" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all" data-i18n="nav_calculation"></a>
+        <a href="../index.html" class="px-4 py-2 rounded-lg text-sm font-semibold text-[#A431AE] bg-white/5 border-b-2 border-[#A431AE]/50 transition-all"
+          data-i18n="nav_characters"></a>
+        <a href="../../echoes/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_echoes"></a>
+        <a href="../../weapons/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_weapons"></a>
+        <a href="../../quick-swap/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_quickswap"></a>
+        <a href="../../calculation/index.html"
+          class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+          data-i18n="nav_calculation"></a>
       </nav>
 
       <!-- Action Button -->
       <div class="flex items-center space-x-4">
         <!-- Mobile Menu Trigger -->
-        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+        <button id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
           <i class="fa-solid fa-bars text-xl"></i>
         </button>
       </div>
@@ -101,33 +139,44 @@
   <!-- Mobile Navigation Menu -->
   <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6">
     <div class="flex flex-col space-y-4">
-      <a href="../index.html" class="text-xl font-semibold text-[#A431AE] py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_characters"></a>
-      <a href="../../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_echoes"></a>
-      <a href="../../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_weapons"></a>
-      <a href="../../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_quickswap"></a>
-      <a href="../../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5" onclick="toggleMobileMenu()" data-i18n="nav_calculation"></a>
+      <a href="../index.html" class="text-xl font-semibold text-[#A431AE] py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_characters"></a>
+      <a href="../../echoes/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_echoes"></a>
+      <a href="../../weapons/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_weapons"></a>
+      <a href="../../quick-swap/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_quickswap"></a>
+      <a href="../../calculation/index.html" class="text-xl font-medium text-gray-300 py-2 border-b border-white/5"
+        onclick="toggleMobileMenu()" data-i18n="nav_calculation"></a>
     </div>
   </div>
 
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    
+
     <!-- Back Button & Breadcrumb -->
     <div class="mb-8">
-      <a href="../index.html" class="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-[#A431AE] transition-colors bg-[#1a181f] border border-white/5 px-3 py-1.5 rounded-xl">
+      <a href="../index.html"
+        class="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-[#A431AE] transition-colors bg-[#1a181f] border border-white/5 px-3 py-1.5 rounded-xl">
         <i class="fa-solid fa-arrow-left"></i> <span data-i18n="detail_btn_back"></span>
       </a>
     </div>
 
     <!-- Hero Details Section -->
-    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#A431AE]/20 to-[#1a181f]/40 border border-[#A431AE]/20 p-8 sm:p-12 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
+    <div
+      class="relative rounded-3xl overflow-hidden bg-gradient-to-b from-[#A431AE]/20 to-[#1a181f]/40 border border-[#A431AE]/20 p-8 sm:p-12 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
       <div class="space-y-4 text-center md:text-left">
         <div class="flex flex-wrap justify-center md:justify-start items-center gap-3">
-          <span id="hero-attribute" class="bg-[#A431AE]/20 text-[#A431AE] border border-[#A431AE]/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider inline-flex items-center gap-1.5">
-            <img id="hero-attribute-icon" src="../../assets/images/attribute/electro.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+          <span id="hero-attribute"
+            class="bg-[#A431AE]/20 text-[#A431AE] border border-[#A431AE]/30 px-3 py-1 rounded-full text-xs uppercase font-bold tracking-wider inline-flex items-center gap-1.5">
+            <img id="hero-attribute-icon" src="../../assets/images/attribute/electro.png"
+              class="w-4 h-4 object-contain" onerror="this.style.display='none';">
             <span id="hero-attribute-text">Electro</span>
           </span>
-          <span id="hero-weaponType" class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium inline-flex items-center gap-1.5">
-            <img id="hero-weapon-icon" src="../../assets/images/weapons/type/rectifier.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+          <span id="hero-weaponType"
+            class="bg-white/5 border border-white/10 px-3 py-1 rounded-full text-xs text-gray-300 font-medium inline-flex items-center gap-1.5">
+            <img id="hero-weapon-icon" src="../../assets/images/weapons/type/rectifier.png"
+              class="w-4 h-4 object-contain" onerror="this.style.display='none';">
             <span id="hero-weapon-text">Rectifier</span>
           </span>
           <div id="hero-roles" class="flex flex-wrap justify-center md:justify-start gap-2">
@@ -170,29 +219,33 @@
       </div>
 
       <!-- Hero Visual Accent -->
-      <div class="w-64 h-64 shrink-0 relative flex items-center justify-center" id="hero-portrait-container">
-        <img src="../../assets/images/characters/yinlin/portrait.png" alt="Yinlin" class="w-full h-full object-contain">
+      <div class="w-56 h-56 md:w-64 md:h-64 shrink-0 relative flex items-center justify-center" id="hero-portrait-container">
+        <img src="../../assets/images/characters/yinlin/portrait.png" alt="Yinlin" class="w-full h-full object-contain scale-[1.3] transition-transform duration-500">
       </div>
     </div>
 
     <!-- Guide Grid Details -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
-      
+
       <!-- Left Column: Weapons & Echos -->
       <div class="lg:col-span-8 space-y-8">
-        
+
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <h3 class="font-display font-bold text-xl text-white flex items-center gap-2.5">
-              <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 43/39; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/weapon.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/weapon.png') no-repeat center; mask-size: contain;"></span>
+              <span class="h-5 inline-block shrink-0 text-[#A431AE]"
+                style="aspect-ratio: 43/39; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/weapon.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/weapon.png') no-repeat center; mask-size: contain;"></span>
               <span data-i18n="detail_weapon_title"></span>
             </h3>
             <!-- Rarity Filter Buttons (Hidden in Build Mode) -->
             <div class="flex gap-2" id="weapon-rarity-filter">
-              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all" data-rarity="all">All</button>
-              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all" data-rarity="5">5★</button>
-              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all" data-rarity="4">4★</button>
+              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all"
+                data-rarity="all">All</button>
+              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all"
+                data-rarity="5">5★</button>
+              <button class="weapon-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all"
+                data-rarity="4">4★</button>
             </div>
           </div>
 
@@ -244,14 +297,16 @@
               <!-- Select Weapon -->
               <div>
                 <label class="block text-xs text-gray-500 uppercase font-bold mb-2">Select Weapon</label>
-                <select id="build-weapon-select" onchange="window.updateBuildWeapon()" class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
+                <select id="build-weapon-select" onchange="window.updateBuildWeapon()"
+                  class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
                   <!-- Dynamically filled depending on weapon type -->
                 </select>
               </div>
               <!-- Refinement Rank -->
               <div>
                 <label class="block text-xs text-gray-500 uppercase font-bold mb-2">Refinement (Rank)</label>
-                <select id="build-weapon-rank" onchange="window.updateBuildWeapon()" class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
+                <select id="build-weapon-rank" onchange="window.updateBuildWeapon()"
+                  class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
                   <option value="1">Rank 1 (R1)</option>
                   <option value="2">Rank 2 (R2)</option>
                   <option value="3">Rank 3 (R3)</option>
@@ -260,9 +315,10 @@
                 </select>
               </div>
             </div>
-            
+
             <!-- Selected Weapon Preview Card -->
-            <div id="build-weapon-preview" class="bg-[#0a080f] p-5 rounded-xl border border-white/5 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
+            <div id="build-weapon-preview"
+              class="bg-[#0a080f] p-5 rounded-xl border border-white/5 transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
               <!-- Dynamically rendered preview of selected weapon -->
             </div>
           </div>
@@ -271,7 +327,8 @@
         <!-- Echos Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
           <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2.5">
-            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 49/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/echo.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/echo.png') no-repeat center; mask-size: contain;"></span>
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]"
+              style="aspect-ratio: 49/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/echo.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/echo.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_echo_title"></span>
           </h3>
 
@@ -284,28 +341,34 @@
             <div class="space-y-6">
               <!-- Best Set Summary (Sonata) -->
               <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
-                <div id="sonata-set-illustration" class="w-10 h-10 bg-[#A431AE]/10 rounded-lg flex items-center justify-center text-[#A431AE] shrink-0 border border-white/5 overflow-hidden">
+                <div id="sonata-set-illustration"
+                  class="w-6 h-6 bg-[#A431AE]/10 rounded-md flex items-center justify-center text-[#A431AE] shrink-0 border border-white/5 overflow-hidden">
                   <i class="fa-solid fa-circle-nodes"></i>
                 </div>
                 <div class="flex-grow">
                   <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
                   <span id="echo-best-set" class="block text-sm text-[#A431AE] font-semibold">Void Thunder (5-Piece Set)</span>
                   <p id="sonata-effects" class="text-xs text-gray-400 mt-2 space-y-1">
-                    <span class="block">• 2-Pc: <span id="sonata-effect-2pc" class="text-gray-300">Electro DMG +10%</span></span>
-                    <span class="block">• 5-Pc: <span id="sonata-effect-5pc" class="text-gray-300">Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s).</span></span>
+                    <span class="block">• 2-Pc: <span id="sonata-effect-2pc"
+                        class="text-gray-300">Electro DMG +10%</span></span>
+                    <span class="block">• 5-Pc: <span id="sonata-effect-5pc"
+                        class="text-gray-300">Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s).</span></span>
                   </p>
                 </div>
               </div>
 
               <!-- Main Slot Echo -->
               <div class="flex items-center gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
-                <div id="echo-main-illustration" class="w-12 h-12 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center shrink-0 overflow-hidden">
+                <div id="echo-main-illustration"
+                  class="w-12 h-12 bg-white/5 rounded-lg border border-white/10 flex items-center justify-center shrink-0 overflow-hidden">
                   <img src="../../assets/images/echoes/tempest_mephis.png" alt="tempest_mephis" class="w-full h-full object-contain p-1">
                 </div>
                 <div class="flex-grow">
-                  <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_main_echo">Main Slot Echo Skill</span>
+                  <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_main_echo">Main Slot
+                    Echo Skill</span>
                   <span id="echo-main-name" class="block text-sm text-white font-semibold">tempest_mephis</span>
-                  <span id="echo-main-cost" class="inline-block text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-1.5 py-0.5 rounded font-bold uppercase mt-1">4-Cost</span>
+                  <span id="echo-main-cost"
+                    class="inline-block text-[10px] bg-purple-500/10 text-purple-400 border border-purple-500/20 px-1.5 py-0.5 rounded font-bold uppercase mt-1">4-Cost</span>
                 </div>
               </div>
 
@@ -313,25 +376,32 @@
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_4"></span>
-                  <span id="echo-cost-4" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
+                  <span id="echo-cost-4" class="s-name flex-align-center text-sm font-semibold text-white"
+                    style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
                 </div>
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_3"></span>
-                  <span id="echo-cost-3" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Electro DMG% / Electro DMG% (or Energy Regen)</span>
+                  <span id="echo-cost-3" class="s-name flex-align-center text-sm font-semibold text-white"
+                    style="font-size: calc(32 * var(--gpx));">Electro DMG% / Electro DMG% (or Energy Regen)</span>
                 </div>
                 <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5">
                   <span class="block text-xs text-gray-500 font-bold uppercase mb-1" data-i18n="detail_cost_1"></span>
-                  <span id="echo-cost-1" class="s-name flex-align-center text-sm font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK% / ATK%</span>
+                  <span id="echo-cost-1" class="s-name flex-align-center text-sm font-semibold text-white"
+                    style="font-size: calc(32 * var(--gpx));">ATK% / ATK%</span>
                 </div>
               </div>
 
               <!-- Substats priority -->
               <div class="bg-[#0a080f] p-4 rounded-xl border border-white/5 space-y-2">
-                <span class="block text-xs text-gray-500 font-bold uppercase" data-i18n="detail_substat_priority"></span>
-                <p id="echo-substats-priority" class="s-name flex-align-center text-sm text-gray-300 leading-relaxed font-semibold" style="font-size: calc(32 * var(--gpx));">
+                <span class="block text-xs text-gray-500 font-bold uppercase"
+                  data-i18n="detail_substat_priority"></span>
+                <p id="echo-substats-priority"
+                  class="s-name flex-align-center text-sm text-gray-300 leading-relaxed font-semibold"
+                  style="font-size: calc(32 * var(--gpx));">
                   Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%
                 </p>
-                <span id="echo-note" class="block text-[10px] text-[#A431AE]/70 font-semibold italic">Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime.</span>
+                <span id="echo-note"
+                  class="block text-[10px] text-[#A431AE]/70 font-semibold italic">Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime.</span>
               </div>
             </div>
           </div>
@@ -342,14 +412,16 @@
               <!-- Select Sonata -->
               <div>
                 <label class="block text-xs text-gray-500 uppercase font-bold mb-2">Sonata Set</label>
-                <select id="build-echo-sonata" onchange="window.updateBuildEcho()" class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
+                <select id="build-echo-sonata" onchange="window.updateBuildEcho()"
+                  class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
                   <!-- Filled dynamically -->
                 </select>
               </div>
               <!-- Main Slot Echo -->
               <div>
                 <label class="block text-xs text-gray-500 uppercase font-bold mb-2">Main Slot Echo</label>
-                <select id="build-echo-main" onchange="window.updateBuildEcho()" class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
+                <select id="build-echo-main" onchange="window.updateBuildEcho()"
+                  class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-purple-500 transition-colors">
                   <!-- Filled dynamically -->
                 </select>
               </div>
@@ -362,7 +434,8 @@
                 <!-- 4-Cost -->
                 <div>
                   <label class="block text-[10px] text-gray-500 mb-1">4-Cost</label>
-                  <select id="build-mainstat-4" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
+                  <select id="build-mainstat-4"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
                     <option value="Crit Rate%">Crit Rate%</option>
                     <option value="Crit DMG%">Crit DMG%</option>
                     <option value="ATK%">ATK%</option>
@@ -374,14 +447,16 @@
                 <!-- 3-Cost 1 -->
                 <div>
                   <label class="block text-[10px] text-gray-500 mb-1">3-Cost Slot 1</label>
-                  <select id="build-mainstat-3-1" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
+                  <select id="build-mainstat-3-1"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
                     <!-- Filled dynamically -->
                   </select>
                 </div>
                 <!-- 3-Cost 2 -->
                 <div>
                   <label class="block text-[10px] text-gray-500 mb-1">3-Cost Slot 2</label>
-                  <select id="build-mainstat-3-2" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
+                  <select id="build-mainstat-3-2"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
                     <!-- Filled dynamically -->
                   </select>
                 </div>
@@ -390,7 +465,8 @@
                 <!-- 1-Cost 1 -->
                 <div>
                   <label class="block text-[10px] text-gray-500 mb-1">1-Cost Slot 1</label>
-                  <select id="build-mainstat-1-1" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
+                  <select id="build-mainstat-1-1"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
                     <option value="ATK%">ATK%</option>
                     <option value="HP%">HP%</option>
                     <option value="DEF%">DEF%</option>
@@ -399,7 +475,8 @@
                 <!-- 1-Cost 2 -->
                 <div>
                   <label class="block text-[10px] text-gray-500 mb-1">1-Cost Slot 2</label>
-                  <select id="build-mainstat-1-2" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
+                  <select id="build-mainstat-1-2"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1.5 text-xs text-white">
                     <option value="ATK%">ATK%</option>
                     <option value="HP%">HP%</option>
                     <option value="DEF%">DEF%</option>
@@ -414,39 +491,48 @@
               <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Crit Rate (%)</label>
-                  <input type="number" id="sub-crit-rate" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-crit-rate" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Crit DMG (%)</label>
-                  <input type="number" id="sub-crit-dmg" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-crit-dmg" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">ATK (%)</label>
-                  <input type="number" id="sub-atk-pct" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-atk-pct" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Flat ATK</label>
-                  <input type="number" id="sub-atk-flat" step="1" value="0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-atk-flat" step="1" value="0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Energy Regen (%)</label>
-                  <input type="number" id="sub-er" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-er" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Skill DMG (%)</label>
-                  <input type="number" id="sub-skill-dmg" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-skill-dmg" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Liberation DMG (%)</label>
-                  <input type="number" id="sub-lib-dmg" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-lib-dmg" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Basic ATK DMG (%)</label>
-                  <input type="number" id="sub-basic-dmg" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-basic-dmg" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
                 <div>
                   <label class="block text-[10px] text-gray-400 mb-1">Heavy ATK DMG (%)</label>
-                  <input type="number" id="sub-heavy-dmg" step="0.1" value="0.0" class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
+                  <input type="number" id="sub-heavy-dmg" step="0.1" value="0.0"
+                    class="w-full bg-[#0a080f] border border-white/10 rounded-lg px-2.5 py-1 text-xs text-white text-right">
                 </div>
               </div>
             </div>
@@ -457,11 +543,12 @@
 
       <!-- Right Column: Stats, Skills, Teams -->
       <div class="lg:col-span-4 space-y-8">
-        
+
         <!-- Build Mode Toggle Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-4 text-center relative overflow-hidden">
           <div class="absolute inset-0 bg-gradient-to-tr from-[#A431AE] via-fuchsia-400 to-[#A431AE] opacity-5 pointer-events-none"></div>
-          <button id="toggle-build-mode-btn" onclick="window.toggleBuildMode()" class="w-full py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all bg-gradient-to-r from-[#A431AE] to-fuchsia-600 text-white shadow-md cursor-pointer hover:opacity-90 active:scale-[0.98]">
+          <button id="toggle-build-mode-btn" onclick="window.toggleBuildMode()"
+            class="w-full py-2.5 rounded-xl font-bold text-sm tracking-wide transition-all bg-gradient-to-r from-[#A431AE] to-fuchsia-600 text-white shadow-md cursor-pointer hover:opacity-90 active:scale-[0.98]">
             <i class="fa-solid fa-wrench mr-1.5" id="toggle-build-mode-btn-icon"></i>
             <span id="toggle-build-mode-btn-text" data-i18n="build_btn_start">Configure My Build</span>
           </button>
@@ -470,7 +557,8 @@
         <!-- Stat Priorities Card -->
         <div id="stat-priorities-card" class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
           <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
-            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/stats.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/stats.png') no-repeat center; mask-size: contain;"></span>
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]"
+              style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/stats.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/stats.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_stat_priority"></span>
           </h3>
           <div id="stat-priorities-list" class="space-y-3 text-xs">
@@ -496,10 +584,11 @@
         <!-- Skill Levelling Priority -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
           <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
-            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 72/42; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/skill.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/skill.png') no-repeat center; mask-size: contain;"></span>
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]"
+              style="aspect-ratio: 72/42; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/skill.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/skill.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_skill_priority"></span>
           </h3>
-          
+
           <div id="skill-guide-mode" class="space-y-4">
             <!-- Priority List -->
             <div id="skill-priorities-list" class="flex flex-col gap-2">
@@ -530,7 +619,8 @@
             <div class="space-y-2.5">
               <div class="flex items-center justify-between">
                 <span class="text-gray-400">Normal Attack</span>
-                <select id="build-skill-normal" onchange="window.updateBuildSummary()" class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
+                <select id="build-skill-normal" onchange="window.updateBuildSummary()"
+                  class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -545,7 +635,8 @@
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-gray-400">Resonance Skill</span>
-                <select id="build-skill-skill" onchange="window.updateBuildSummary()" class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
+                <select id="build-skill-skill" onchange="window.updateBuildSummary()"
+                  class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -560,7 +651,8 @@
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-gray-400">Forte Circuit</span>
-                <select id="build-skill-forte" onchange="window.updateBuildSummary()" class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
+                <select id="build-skill-forte" onchange="window.updateBuildSummary()"
+                  class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -575,7 +667,8 @@
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-gray-400">Resonance Liberation</span>
-                <select id="build-skill-liberation" onchange="window.updateBuildSummary()" class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
+                <select id="build-skill-liberation" onchange="window.updateBuildSummary()"
+                  class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -590,7 +683,8 @@
               </div>
               <div class="flex items-center justify-between">
                 <span class="text-gray-400">Intro Skill</span>
-                <select id="build-skill-intro" onchange="window.updateBuildSummary()" class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
+                <select id="build-skill-intro" onchange="window.updateBuildSummary()"
+                  class="w-16 bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-xs text-white text-center">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -610,7 +704,8 @@
         <!-- Recommended Teams Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6">
           <h3 class="font-display font-bold text-lg text-white mb-4 flex items-center gap-2.5">
-            <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 27/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/party_member.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/party_member.png') no-repeat center; mask-size: contain;"></span>
+            <span class="h-5 inline-block shrink-0 text-[#A431AE]"
+              style="aspect-ratio: 27/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/party_member.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/party_member.png') no-repeat center; mask-size: contain;"></span>
             <span data-i18n="detail_teams_title"></span>
           </h3>
 
@@ -648,24 +743,28 @@
             <div class="bg-[#0a080f]/50 p-3 rounded-lg border border-white/5 space-y-2">
               <div class="flex items-center justify-between">
                 <span class="font-semibold text-white">Slot 2</span>
-                <select id="build-team-slot2-char" onchange="window.updateTeamSlot(2)" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                <select id="build-team-slot2-char" onchange="window.updateTeamSlot(2)"
+                  class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   <option value="">-- None --</option>
                 </select>
               </div>
               <div id="build-team-slot2-details" class="hidden space-y-2 pt-1.5 border-t border-white/5">
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-gray-500 text-[10px] uppercase font-bold">Weapon</span>
-                  <select id="build-team-slot2-weapon" onchange="window.updateBuildSummary()" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                  <select id="build-team-slot2-weapon" onchange="window.updateBuildSummary()"
+                    class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   </select>
                 </div>
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-gray-500 text-[10px] uppercase font-bold">Main Echo</span>
-                  <select id="build-team-slot2-echo" onchange="window.updateBuildSummary()" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                  <select id="build-team-slot2-echo" onchange="window.updateBuildSummary()"
+                    class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   </select>
                 </div>
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-gray-500 text-[10px] uppercase font-bold">Sonata Set</span>
-                  <select id="build-team-slot2-sonata" onchange="window.updateBuildSummary()" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                  <select id="build-team-slot2-sonata" onchange="window.updateBuildSummary()"
+                    class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   </select>
                 </div>
               </div>
@@ -675,24 +774,28 @@
             <div class="bg-[#0a080f]/50 p-3 rounded-lg border border-white/5 space-y-2">
               <div class="flex items-center justify-between">
                 <span class="font-semibold text-white">Slot 3</span>
-                <select id="build-team-slot3-char" onchange="window.updateTeamSlot(3)" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                <select id="build-team-slot3-char" onchange="window.updateTeamSlot(3)"
+                  class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   <option value="">-- None --</option>
                 </select>
               </div>
               <div id="build-team-slot3-details" class="hidden space-y-2 pt-1.5 border-t border-white/5">
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-gray-500 text-[10px] uppercase font-bold">Weapon</span>
-                  <select id="build-team-slot3-weapon" onchange="window.updateBuildSummary()" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                  <select id="build-team-slot3-weapon" onchange="window.updateBuildSummary()"
+                    class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   </select>
                 </div>
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-gray-500 text-[10px] uppercase font-bold">Main Echo</span>
-                  <select id="build-team-slot3-echo" onchange="window.updateBuildSummary()" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                  <select id="build-team-slot3-echo" onchange="window.updateBuildSummary()"
+                    class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   </select>
                 </div>
                 <div class="flex items-center justify-between gap-2">
                   <span class="text-gray-500 text-[10px] uppercase font-bold">Sonata Set</span>
-                  <select id="build-team-slot3-sonata" onchange="window.updateBuildSummary()" class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
+                  <select id="build-team-slot3-sonata" onchange="window.updateBuildSummary()"
+                    class="bg-[#0a080f] border border-white/10 rounded px-2 py-1 text-white text-xs w-[180px] truncate">
                   </select>
                 </div>
               </div>
@@ -706,10 +809,11 @@
     <!-- Resonance Chain (Sequences) Section -->
     <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
       <h3 class="font-display font-bold text-xl text-white mb-6 flex items-center gap-2.5">
-        <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; mask-size: contain;"></span>
+        <span class="h-5 inline-block shrink-0 text-[#A431AE]"
+          style="aspect-ratio: 1/1; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/resonance_chain.png') no-repeat center; mask-size: contain;"></span>
         <span data-i18n="detail_sequence_title">Recommended Sequences</span>
       </h3>
-      
+
       <div id="sequence-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-[#A431AE]/10 hover:border-[#A431AE]/30 flex gap-4 items-start transition-all">
               <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
@@ -800,17 +904,25 @@
       <!-- Build Mode: Resonance Chain Selection -->
       <div id="sequence-build-mode" class="hidden space-y-4">
         <div class="flex flex-wrap gap-3 justify-center py-6 bg-[#0a080f]/50 rounded-xl border border-white/5">
-          <button type="button" onclick="window.setSequence(0)" id="btn-seq-0" class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S0</button>
-          <button type="button" onclick="window.setSequence(1)" id="btn-seq-1" class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S1</button>
-          <button type="button" onclick="window.setSequence(2)" id="btn-seq-2" class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S2</button>
-          <button type="button" onclick="window.setSequence(3)" id="btn-seq-3" class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S3</button>
-          <button type="button" onclick="window.setSequence(4)" id="btn-seq-4" class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S4</button>
-          <button type="button" onclick="window.setSequence(5)" id="btn-seq-5" class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S5</button>
-          <button type="button" onclick="window.setSequence(6)" id="btn-seq-6" class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S6</button>
+          <button type="button" onclick="window.setSequence(0)" id="btn-seq-0"
+            class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S0</button>
+          <button type="button" onclick="window.setSequence(1)" id="btn-seq-1"
+            class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S1</button>
+          <button type="button" onclick="window.setSequence(2)" id="btn-seq-2"
+            class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S2</button>
+          <button type="button" onclick="window.setSequence(3)" id="btn-seq-3"
+            class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S3</button>
+          <button type="button" onclick="window.setSequence(4)" id="btn-seq-4"
+            class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S4</button>
+          <button type="button" onclick="window.setSequence(5)" id="btn-seq-5"
+            class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S5</button>
+          <button type="button" onclick="window.setSequence(6)" id="btn-seq-6"
+            class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S6</button>
         </div>
 
         <!-- Selected Sequence Detail Display Card -->
-        <div id="selected-seq-card" class="bg-[#0a080f]/50 p-5 rounded-xl border border-white/5 transition-all flex gap-4 items-start">
+        <div id="selected-seq-card"
+          class="bg-[#0a080f]/50 p-5 rounded-xl border border-white/5 transition-all flex gap-4 items-start">
           <!-- Dynamically populated selected sequence details -->
         </div>
       </div>
@@ -819,10 +931,11 @@
     <!-- Gameplay Guide Details Section -->
     <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8 mb-10">
       <h3 class="font-display font-bold text-xl text-white mb-4 flex items-center gap-2.5">
-        <span class="h-5 inline-block shrink-0 text-[#A431AE]" style="aspect-ratio: 32/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/guide_details.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/guide_details.png') no-repeat center; mask-size: contain;"></span>
+        <span class="h-5 inline-block shrink-0 text-[#A431AE]"
+          style="aspect-ratio: 32/43; background-color: currentColor; -webkit-mask: url('../../assets/images/guides/guide_details.png') no-repeat center; -webkit-mask-size: contain; mask: url('../../assets/images/guides/guide_details.png') no-repeat center; mask-size: contain;"></span>
         <span id="gameplay-guide-title" data-i18n="detail_guide_details_title">Guide Details</span>
       </h3>
-      
+
       <div id="guide-details-guide-mode" class="prose prose-invert max-w-none">
         <div id="guide-details">
           <p class="text-sm text-gray-300 leading-relaxed">Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed.</p>
@@ -838,7 +951,8 @@
             <div class="text-xs space-y-2.5">
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Resonator</span>
-                <span class="text-white font-semibold">Yinlin <span id="summary-sequence" class="text-[#A431AE]">S0</span></span>
+                <span class="text-white font-semibold">Yinlin <span id="summary-sequence"
+                    class="text-[#A431AE]">S0</span></span>
               </div>
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Weapon</span>
@@ -850,7 +964,8 @@
               </div>
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Main Echo / Cost Main Stats</span>
-                <span class="s-name flex-align-center text-white font-semibold text-right text-xs" id="summary-echo-mainstat" style="font-size: calc(32 * var(--gpx));">-</span>
+                <span class="s-name flex-align-center text-white font-semibold text-right text-xs"
+                  id="summary-echo-mainstat" style="font-size: calc(32 * var(--gpx));">-</span>
               </div>
               <div class="flex justify-between border-b border-white/5 pb-2">
                 <span class="text-gray-400">Skill Levels</span>
@@ -869,17 +984,20 @@
           <div class="bg-[#0a080f]/50 p-5 rounded-xl border border-white/5 flex flex-col justify-between gap-6">
             <div class="space-y-4">
               <span class="block text-xs text-gray-500 uppercase font-bold">Save / Load Configuration</span>
-              
+
               <!-- Build Name Input -->
               <div>
                 <label class="block text-[10px] text-gray-400 mb-1.5">Build Name</label>
-                <input type="text" id="build-name-input" data-i18n-placeholder="build_name_placeholder" placeholder="Enter Build Name..." class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-colors">
+                <input type="text" id="build-name-input" data-i18n-placeholder="build_name_placeholder"
+                  placeholder="Enter Build Name..."
+                  class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-colors">
               </div>
 
               <!-- Local Load Dropdown -->
               <div>
                 <label class="block text-[10px] text-gray-400 mb-1.5">Load Local Build</label>
-                <select id="build-load-select" onchange="window.loadSelectedBuild()" class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-colors">
+                <select id="build-load-select" onchange="window.loadSelectedBuild()"
+                  class="w-full bg-[#0a080f] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-500 transition-colors">
                   <option value="" data-i18n="build_load_placeholder">Select Saved Build...</option>
                 </select>
               </div>
@@ -888,11 +1006,13 @@
             <!-- Buttons Grid -->
             <div class="space-y-3">
               <div class="grid grid-cols-2 gap-3">
-                <button type="button" onclick="window.saveBuildLocal()" class="py-2.5 bg-gradient-to-r from-[#A431AE] to-fuchsia-600 hover:opacity-90 active:scale-[0.98] text-white rounded-xl font-semibold text-xs transition-all shadow-md cursor-pointer flex items-center justify-center gap-1">
+                <button type="button" onclick="window.saveBuildLocal()"
+                  class="py-2.5 bg-gradient-to-r from-[#A431AE] to-fuchsia-600 hover:opacity-90 active:scale-[0.98] text-white rounded-xl font-semibold text-xs transition-all shadow-md cursor-pointer flex items-center justify-center gap-1">
                   <i class="fa-solid fa-floppy-disk"></i>
                   <span data-i18n="build_save_btn">Save Build</span>
                 </button>
-                <button type="button" onclick="window.exportBuildJson()" class="py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl font-semibold text-xs transition-all cursor-pointer flex items-center justify-center gap-1">
+                <button type="button" onclick="window.exportBuildJson()"
+                  class="py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 text-white rounded-xl font-semibold text-xs transition-all cursor-pointer flex items-center justify-center gap-1">
                   <i class="fa-solid fa-download"></i>
                   <span data-i18n="build_download_btn">Download JSON</span>
                 </button>
@@ -900,11 +1020,13 @@
 
               <div>
                 <!-- Custom styling for file upload button to match our gorgeous premium dark theme -->
-                <label for="build-import-input" class="w-full py-2.5 bg-white/5 border border-white/10 hover:bg-[#1a181f] text-white rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
+                <label for="build-import-input"
+                  class="w-full py-2.5 bg-white/5 border border-white/10 hover:bg-[#1a181f] text-white rounded-xl font-semibold text-xs transition-all flex items-center justify-center gap-1.5 cursor-pointer">
                   <i class="fa-solid fa-upload"></i>
                   <span data-i18n="build_import_btn">Import JSON</span>
                 </label>
-                <input type="file" id="build-import-input" accept=".json" onchange="window.importBuildJson(event)" class="hidden">
+                <input type="file" id="build-import-input" accept=".json" onchange="window.importBuildJson(event)"
+                  class="hidden">
               </div>
             </div>
           </div>
@@ -921,18 +1043,22 @@
           <div class="w-8 h-8 rounded-lg bg-[#A431AE] flex items-center justify-center text-white">
             <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
           </div>
-          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-[#A431AE]">.AIO</span></span>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span
+              class="text-[#A431AE]">.AIO</span></span>
         </div>
         <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer"></p>
       </div>
     </div>
   </footer>
 
+  <!-- Character JSON data container for linter-friendly parsing -->
+  <script id="character-data-json" type="application/json">{"id":"yinlin","name":{"en":"Yinlin"},"attribute":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"resonance_skill_dmg","name":{"en":"Resonance Skill DMG"}},{"id":"coordinated_attack","name":{"en":"Coordinated Attack"}},{"id":"electro_dmg_amplification","name":{"en":"Electro DMG Amplification"}},{"id":"resonance_liberation_damage_amplification","name":{"en":"Resonance Liberation Damage Amplification"}}],"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"mainSlotEcho":"tempest_mephis","recommWeapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"rarity":5,"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"recommEcho":[{"setName":{"en":"Void Thunder (5pc)","ko":"전도 5세트 (Void Thunder)"},"sonata":"void_thunder","mainSlotEcho":"tempest_mephis","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"void_thunder","name":{"en":"Void Thunder"},"textColor":"#A96FF6","bgColor":"#A96FF61a","effect_2pc":{"en":"Electro DMG +10%"},"effect_5pc":{"en":"Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"tempest_mephis","name":{"en":"tempest_mephis"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Electro DMG% / Energy Regen%","ko":"전도 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Electro DMG%","Energy Regen (125%+)","ATK% / Flat ATK"]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Morality's Crossroads"},"description":{"en":"Magnetic Roar and Lightning Execution deal 70% extra damage."},"isRecommended":true},{"name":{"en":"S2: Ensnarled by Rapport"},"description":{"en":"Electromagnetic Blast recovers an additional 5 Judgement Points and 5 Resonance Energy on hit."},"isRecommended":false},{"name":{"en":"S3: Unyielding Verdict"},"description":{"en":"Judgment Strike damage multiplier increased by 55%."},"isRecommended":false},{"name":{"en":"S4: Steadfast Conviction"},"description":{"en":"When Judgment Strike hits, team ATK is increased by 20% for 12 seconds."},"isRecommended":false},{"name":{"en":"S5: Resounding Will"},"description":{"en":"Resonance Liberation deals 100% extra damage to targets affected by marks."},"isRecommended":false},{"name":{"en":"S6: Pursuit of Justice"},"description":{"en":"For 30s after casting Resonance Liberation, basic attacks trigger Furious Thunder dealing massive Electro damage."},"isRecommended":true}],"guideDetails":{"en":"Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed."}}</script>
+
   <!-- Script for Mobile Menu Toggle and Dynamic Hydration -->
   <script>
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    
+
     function toggleMobileMenu() {
       mobileMenu.classList.toggle('hidden');
       const icon = mobileMenuBtn.querySelector('i');
@@ -942,18 +1068,18 @@
         icon.className = 'fa-solid fa-xmark text-xl';
       }
     }
-    
+
     mobileMenuBtn.addEventListener('click', toggleMobileMenu);
 
     // Dynamic Character Guide Hydration (Bilingual)
-    window.characterData = {"id":"yinlin","name":{"en":"Yinlin"},"attribute":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"resonance_skill_dmg","name":{"en":"Resonance Skill DMG"}},{"id":"coordinated_attack","name":{"en":"Coordinated Attack"}},{"id":"electro_dmg_amplification","name":{"en":"Electro DMG Amplification"}},{"id":"resonance_liberation_damage_amplification","name":{"en":"Resonance Liberation Damage Amplification"}}],"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"mainSlotEcho":"tempest_mephis","recommWeapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"rarity":5,"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"recommEcho":[{"setName":{"en":"Void Thunder (5pc)","ko":"전도 5세트 (Void Thunder)"},"sonata":"void_thunder","mainSlotEcho":"tempest_mephis","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"void_thunder","name":{"en":"Void Thunder"},"textColor":"#A96FF6","bgColor":"#A96FF61a","effect_2pc":{"en":"Electro DMG +10%"},"effect_5pc":{"en":"Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"tempest_mephis","name":{"en":"tempest_mephis"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Electro DMG% / Energy Regen%","ko":"전도 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Electro DMG%","Energy Regen (125%+)","ATK% / Flat ATK"]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Morality's Crossroads"},"description":{"en":"Magnetic Roar and Lightning Execution deal 70% extra damage."},"isRecommended":true},{"name":{"en":"S2: Ensnarled by Rapport"},"description":{"en":"Electromagnetic Blast recovers an additional 5 Judgement Points and 5 Resonance Energy on hit."},"isRecommended":false},{"name":{"en":"S3: Unyielding Verdict"},"description":{"en":"Judgment Strike damage multiplier increased by 55%."},"isRecommended":false},{"name":{"en":"S4: Steadfast Conviction"},"description":{"en":"When Judgment Strike hits, team ATK is increased by 20% for 12 seconds."},"isRecommended":false},{"name":{"en":"S5: Resounding Will"},"description":{"en":"Resonance Liberation deals 100% extra damage to targets affected by marks."},"isRecommended":false},{"name":{"en":"S6: Pursuit of Justice"},"description":{"en":"For 30s after casting Resonance Liberation, basic attacks trigger Furious Thunder dealing massive Electro damage."},"isRecommended":true}],"guideDetails":{"en":"Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed."}};
+    window.characterData = JSON.parse(document.getElementById('character-data-json').textContent);
 
-    window.toggleSequenceDesc = function(btn) {
+    window.toggleSequenceDesc = function (btn) {
       const p = btn.closest('p');
       const isExpanded = btn.getAttribute('data-expanded') === 'true';
       const fullText = btn.getAttribute('data-full');
       const truncatedText = btn.getAttribute('data-truncated');
-      
+
       if (isExpanded) {
         p.innerHTML = `${truncatedText}... <button onclick="toggleSequenceDesc(this)" data-expanded="false" data-full="${fullText.replace(/"/g, '&quot;')}" data-truncated="${truncatedText.replace(/"/g, '&quot;')}" class="text-[#A431AE] hover:underline ml-1 font-semibold focus:outline-none">more</button>`;
       } else {
@@ -977,8 +1103,8 @@
       const weaponTypeId = data.weaponType.en.toLowerCase().replace(/s$/, '');
       document.getElementById("hero-weapon-icon").src = `../../assets/images/weapons/type/${weaponTypeId}.png`;
       document.getElementById("hero-weapon-icon").style.display = '';
-      
-      
+
+
       // Render roles list
       const rolesContainer = document.getElementById("hero-roles");
       if (rolesContainer && data.roles) {
@@ -1000,16 +1126,16 @@
         const isFrover = localStorage.getItem('frover_mode') === 'true';
         const roverFolder = isFrover ? 'frover' : 'rover';
         const attrId = data.attribute.en.toLowerCase();
-        
-        portraitContainer.innerHTML = `<img src="../../assets/images/characters/${roverFolder}/${attrId}/portrait.png" alt="${data.name.en}" class="w-full h-full object-contain" onerror="this.src='../../assets/images/characters/default.png'">`;
+
+        portraitContainer.innerHTML = `<img src="../../assets/images/characters/${roverFolder}/${attrId}/portrait.png" alt="${data.name.en}" class="w-full h-full object-contain scale-[1.3] transition-transform duration-500" onerror="this.src='../../assets/images/characters/default.png'">`;
       }
-      
+
       // Render stars label
       const resonatorLabel = window.wuwaI18n ? window.wuwaI18n.t('resonator_label') : 'Resonator';
       document.getElementById("hero-rarity-label").textContent = `(${data.rarity}★ ${resonatorLabel})`;
 
       // Render weapons list function (supporting dynamic rarity filtering)
-      window.renderWeaponsList = function(activeLang, filterRarity = 'all') {
+      window.renderWeaponsList = function (activeLang, filterRarity = 'all') {
         const weaponsContainer = document.getElementById("weapons-list");
         if (!weaponsContainer) return;
 
@@ -1024,7 +1150,7 @@
           const badgeClass = isSig ? `bg-purple-500/20 text-purple-300 border border-purple-500/30` : `bg-purple-500/20 text-purple-300 border border-purple-500/30`;
           const iconBg = isSig ? `bg-[#A431AE]/10` : "bg-gray-500/10";
           const borderIcon = isSig ? `border-[#A431AE]/20` : "border-white/10";
-          
+
           const weaponName = weapon.name[activeLang] || weapon.name.en;
           const rarityLabel = weapon.rarityLabel[activeLang] || weapon.rarityLabel.en;
           const specs = weapon.specs[activeLang] || weapon.specs.en;
@@ -1076,7 +1202,7 @@
 
       // Echo Setup
       const recommEchoes = Array.isArray(data.recommEcho) ? data.recommEcho : [data.recommEcho];
-      
+
       // Render tab buttons if multiple sets are available
       const tabsContainer = document.getElementById("echo-tabs-container");
       if (tabsContainer) {
@@ -1102,7 +1228,7 @@
         }
       }
 
-      window.renderEchoSet = function(activeLang, setIndex = 0) {
+      window.renderEchoSet = function (activeLang, setIndex = 0) {
         const echo = recommEchoes[setIndex];
         if (!echo) return;
 
@@ -1123,7 +1249,7 @@
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
         if (sonataIllustContainer && sonataObj.id) {
           sonataIllustContainer.innerHTML = `
-            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1">`;
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="h-6 w-auto object-contain p-0.5">`;
         }
 
         // Update sonata effects
@@ -1152,7 +1278,7 @@
         document.getElementById("echo-cost-4").textContent = echo.cost4[activeLang] || echo.cost4.en;
         document.getElementById("echo-cost-3").textContent = echo.cost3[activeLang] || echo.cost3.en;
         document.getElementById("echo-cost-1").textContent = echo.cost1[activeLang] || echo.cost1.en;
-        
+
         // Update main echo illustration
         const illustContainer = document.getElementById("echo-main-illustration");
         if (illustContainer && echoObj.id) {
@@ -1168,11 +1294,11 @@
             // Style active tab with its specific Sonata's colors
             const tabEcho = recommEchoes[idx];
             const tabSonataObj = tabEcho ? tabEcho.sonataObject : null;
-            
+
             // Remove inactive classes
             const inactiveTabClassList = ["bg-white/5", "border-white/10", "text-gray-400", "hover:text-white", "hover:bg-white/10"];
             inactiveTabClassList.forEach(c => btn.classList.remove(c));
-            
+
             if (tabSonataObj && tabSonataObj.textColor && tabSonataObj.bgColor) {
               btn.style.color = tabSonataObj.textColor;
               btn.style.backgroundColor = tabSonataObj.bgColor;
@@ -1251,7 +1377,7 @@
         teamsContainer.innerHTML = data.recommTeammates.map(team => {
           const borderClass = team.isPremium ? `border-[#A431AE]/10` : 'border-white/5';
           const titleColor = team.isPremium ? `text-fuchsia-400` : 'text-gray-400';
-          
+
           const teamName = team.name[lang] || team.name.en;
           const members = team.members[lang] || team.members.en;
           const membersList = members.map(member => `<li>• ${member}</li>`).join('\n');
@@ -1407,7 +1533,7 @@
       const select = document.getElementById('build-load-select');
       if (!select) return;
       const data = window.characterData;
-      
+
       let saved = {};
       try {
         saved = JSON.parse(localStorage.getItem(`wuwa_builds_${data.id}`)) || {};
@@ -1471,13 +1597,13 @@
       // 5. Teammates slot select
       const slot2Select = document.getElementById('build-team-slot2-char');
       const slot3Select = document.getElementById('build-team-slot3-char');
-      
+
       const otherChars = masterCharacters.filter(c => c.id !== data.id);
       const teammateOptions = [
         { value: '', label: '-- None --' },
         ...otherChars.map(c => ({ value: c.id, label: c.name[lang] || c.name.en }))
       ];
-      
+
       populateDropdown(slot2Select, teammateOptions, '');
       populateDropdown(slot3Select, teammateOptions, '');
 
@@ -1505,14 +1631,14 @@
 
     function applyGuideDefaults() {
       const data = window.characterData;
-      
+
       // First recommended weapon
       const firstRecWeapon = data.recommWeapons && data.recommWeapons[0] ? data.recommWeapons[0].id : '';
       if (firstRecWeapon && document.getElementById('build-weapon-select')) {
         document.getElementById('build-weapon-select').value = firstRecWeapon;
         window.buildState.weaponId = firstRecWeapon;
       }
-      
+
       window.buildState.refinement = 1;
       document.getElementById('build-weapon-rank').value = "1";
 
@@ -1532,7 +1658,7 @@
           const val4 = firstRecEcho.cost4.en.includes('Crit Rate') ? 'Crit Rate%' : 'Crit DMG%';
           document.getElementById('build-mainstat-4').value = val4;
         }
-        
+
         if (firstRecEcho.cost3 && firstRecEcho.cost3.en) {
           const parts = firstRecEcho.cost3.en.split('/');
           const val3_1 = parts[0] ? parts[0].trim() : 'ATK%';
@@ -1572,7 +1698,7 @@
       window.buildState.sequence = 0;
     }
 
-    window.updateBuildWeapon = function() {
+    window.updateBuildWeapon = function () {
       if (!masterWeapons) return;
       const select = document.getElementById('build-weapon-select');
       const rankSelect = document.getElementById('build-weapon-rank');
@@ -1616,7 +1742,7 @@
       window.updateBuildSummary();
     };
 
-    window.updateBuildEcho = function() {
+    window.updateBuildEcho = function () {
       if (!masterSonatas || !masterEchoes) return;
       const sonataSelect = document.getElementById('build-echo-sonata');
       const mainSelect = document.getElementById('build-echo-main');
@@ -1631,7 +1757,7 @@
       window.updateBuildSummary();
     };
 
-    window.updateTeamSlot = function(slotNum) {
+    window.updateTeamSlot = function (slotNum) {
       if (!masterCharacters || !masterWeapons || !masterEchoes || !masterSonatas) return;
       const charSelect = document.getElementById(`build-team-slot${slotNum}-char`);
       const detailsDiv = document.getElementById(`build-team-slot${slotNum}-details`);
@@ -1660,7 +1786,7 @@
 
       const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
 
-      populateDropdown(wSelect, charWeapons.map(w => ({ value: w.id, label: w.name[lang] || w.name.en })), 
+      populateDropdown(wSelect, charWeapons.map(w => ({ value: w.id, label: w.name[lang] || w.name.en })),
         window.buildState.team[`slot${slotNum}`].weaponId || (char.recommWeapons[0] ? char.recommWeapons[0].id : charWeapons[0].id)
       );
 
@@ -1695,7 +1821,7 @@
       window.updateBuildSummary();
     };
 
-    window.setSequence = function(val) {
+    window.setSequence = function (val) {
       window.buildState.sequence = val;
       for (let i = 0; i <= 6; i++) {
         const btn = document.getElementById(`btn-seq-${i}`);
@@ -1729,9 +1855,9 @@
           const seqName = seq.name[lang] || seq.name.en;
           const seqDesc = seq.description[lang] || seq.description.en;
           const isRec = seq.isRecommended;
-          
-          const badgeHtml = isRec 
-            ? `<span class="text-[10px] bg-[#A431AE]/20 text-[#A431AE] border border-[#A431AE]/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` 
+
+          const badgeHtml = isRec
+            ? `<span class="text-[10px] bg-[#A431AE]/20 text-[#A431AE] border border-[#A431AE]/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>`
             : '';
 
           let seqImgSrc = `../../assets/images/characters/${data.id}/sequence/${val}.png`;
@@ -1760,7 +1886,7 @@
       window.updateBuildSummary();
     };
 
-    window.updateBuildSummary = function() {
+    window.updateBuildSummary = function () {
       const substatsMap = {
         crit_rate: 'sub-crit-rate',
         crit_dmg: 'sub-crit-dmg',
@@ -1864,11 +1990,11 @@
       }
     };
 
-    window.toggleBuildMode = async function() {
+    window.toggleBuildMode = async function () {
       const toggleBtn = document.getElementById('toggle-build-mode-btn');
       const toggleText = document.getElementById('toggle-build-mode-btn-text');
       const toggleIcon = document.getElementById('toggle-build-mode-btn-icon');
-      
+
       const activeLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
 
       const isEntering = toggleBtn.classList.contains('bg-gradient-to-r');
@@ -1899,9 +2025,9 @@
         document.getElementById('guide-details-build-mode').classList.remove('hidden');
 
         document.getElementById('weapon-rarity-filter').classList.add('hidden');
-        
+
         await ensureMasterData();
-        
+
         if (!buildModeInitialized) {
           initializeBuildModeFields();
           buildModeInitialized = true;
@@ -2037,7 +2163,7 @@
       window.updateBuildSummary();
     }
 
-    window.saveBuildLocal = function() {
+    window.saveBuildLocal = function () {
       const nameInput = document.getElementById('build-name-input');
       if (!nameInput) return;
       const name = nameInput.value.trim();
@@ -2050,7 +2176,7 @@
       let saved = {};
       try {
         saved = JSON.parse(localStorage.getItem(`wuwa_builds_${data.id}`)) || {};
-      } catch (e) {}
+      } catch (e) { }
 
       window.updateBuildSummary();
       saved[name] = JSON.parse(JSON.stringify(window.buildState));
@@ -2068,7 +2194,7 @@
       alert(window.wuwaI18n && window.wuwaI18n.getLanguage() === 'ko' ? '빌드가 로컬에 저장되었습니다!' : 'Build saved locally!');
     };
 
-    window.loadSelectedBuild = function() {
+    window.loadSelectedBuild = function () {
       const select = document.getElementById('build-load-select');
       if (!select) return;
       const name = select.value;
@@ -2078,7 +2204,7 @@
       let saved = {};
       try {
         saved = JSON.parse(localStorage.getItem(`wuwa_builds_${data.id}`)) || {};
-      } catch (e) {}
+      } catch (e) { }
 
       const build = saved[name];
       if (!build) return;
@@ -2087,7 +2213,7 @@
       document.getElementById('build-name-input').value = name;
     };
 
-    window.exportBuildJson = function() {
+    window.exportBuildJson = function () {
       window.updateBuildSummary();
       const data = window.characterData;
       const nameInput = document.getElementById('build-name-input');
@@ -2109,12 +2235,12 @@
       downloadAnchor.remove();
     };
 
-    window.importBuildJson = function(event) {
+    window.importBuildJson = function (event) {
       const file = event.target.files[0];
       if (!file) return;
 
       const reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         try {
           const payload = JSON.parse(e.target.result);
           if (payload.version !== "wuwa-aio-build-v1" || !payload.build) {
@@ -2165,7 +2291,7 @@
           });
           inactiveFilterClassList.forEach(c => btn.classList.remove(c));
           activeFilterClassList.forEach(c => btn.classList.add(c));
-          
+
           window.currentWeaponFilter = btn.getAttribute('data-rarity');
           const currentLang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
           if (window.renderWeaponsList) {
@@ -2179,7 +2305,7 @@
 
     window.addEventListener("wuwalangchange", (e) => {
       renderCharacterGuide(e.detail.lang);
-      
+
       const toggleBtn = document.getElementById('toggle-build-mode-btn');
       if (toggleBtn) {
         const isEntering = toggleBtn.classList.contains('bg-gradient-to-r');
@@ -2194,4 +2320,5 @@
     });
   </script>
 </body>
+
 </html>

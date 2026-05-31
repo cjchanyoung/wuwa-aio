@@ -355,9 +355,9 @@ characters.forEach(char => {
   let portraitHtml = `<div class="w-32 h-32 rounded-full bg-gradient-to-tr ${styles.accent_gradient} p-0.5 shadow-2xl ${styles.logo_shadow_theme} flex items-center justify-center overflow-hidden"><div class="w-full h-full rounded-full bg-[#1a181f] flex items-center justify-center"><i class="${char.icon_class} ${styles.accent_text} text-6xl"></i></div></div>`;
   if (fs.existsSync(charImagesDir)) {
     if (fs.existsSync(path.join(charImagesDir, 'portrait.png'))) {
-      portraitHtml = `<img src="${portraitSrc}" alt="${char.name.en}" class="w-full h-full object-contain">`;
+      portraitHtml = `<img src="${portraitSrc}" alt="${char.name.en}" class="w-full h-full object-contain scale-[1.3] transition-transform duration-500">`;
     } else if (fs.existsSync(path.join(charImagesDir, 'potrait.png'))) {
-      portraitHtml = `<img src="${potraitSrc}" alt="${char.name.en}" class="w-full h-full object-contain">`;
+      portraitHtml = `<img src="${potraitSrc}" alt="${char.name.en}" class="w-full h-full object-contain scale-[1.3] transition-transform duration-500">`;
     }
   }
 
