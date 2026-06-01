@@ -228,7 +228,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
 
       <!-- Left Column: Weapons & Echos -->
-      <div class="lg:col-span-8 space-y-8">
+      <div class="lg:col-span-7 space-y-8">
 
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
@@ -342,8 +342,8 @@
               <!-- Best Set Summary (Sonata) -->
               <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <div id="sonata-set-illustration"
-                  class="w-6 h-6 bg-[#A431AE]/10 rounded-md flex items-center justify-center text-[#A431AE] shrink-0 border border-white/5 overflow-hidden">
-                  <i class="fa-solid fa-circle-nodes"></i>
+                  class="w-10 h-10 bg-[#A431AE]/10 rounded-xl flex items-center justify-center text-[#A431AE] shrink-0 border border-[#A431AE]/20 overflow-hidden">
+                  <i class="fa-solid fa-circle-nodes text-lg"></i>
                 </div>
                 <div class="flex-grow">
                   <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
@@ -542,7 +542,7 @@
       </div>
 
       <!-- Right Column: Stats, Skills, Teams -->
-      <div class="lg:col-span-4 space-y-8">
+      <div class="lg:col-span-5 space-y-8">
 
         <!-- Build Mode Toggle Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-4 text-center relative overflow-hidden">
@@ -562,21 +562,45 @@
             <span data-i18n="detail_stat_priority"></span>
           </h3>
           <div id="stat-priorities-list" class="space-y-3 text-xs">
-                        <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#A431AE]/20 text-fuchsia-400 font-bold font-mono flex items-center justify-center">1</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
+                        <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/crit_rate.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">1</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit. Rate</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 70%</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Electro DMG%</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/crit_dmg.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">2</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit. DMG</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 240%</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen (125%+)</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/atk.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">3</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 2000</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK% / Flat ATK</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#A431AE]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/energy_regen.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">4</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 125%</span>
             </div>
           </div>
         </div>
@@ -1052,7 +1076,7 @@
   </footer>
 
   <!-- Character JSON data container for linter-friendly parsing -->
-  <script id="character-data-json" type="application/json">{"id":"yinlin","name":{"en":"Yinlin"},"attribute":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"resonance_skill_dmg","name":{"en":"Resonance Skill DMG"}},{"id":"coordinated_attack","name":{"en":"Coordinated Attack"}},{"id":"electro_dmg_amplification","name":{"en":"Electro DMG Amplification"}},{"id":"resonance_liberation_damage_amplification","name":{"en":"Resonance Liberation Damage Amplification"}}],"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"mainSlotEcho":"tempest_mephis","recommWeapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"rarity":5,"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"recommEcho":[{"setName":{"en":"Void Thunder (5pc)","ko":"전도 5세트 (Void Thunder)"},"sonata":"void_thunder","mainSlotEcho":"tempest_mephis","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"void_thunder","name":{"en":"Void Thunder"},"textColor":"#A96FF6","bgColor":"#A96FF61a","effect_2pc":{"en":"Electro DMG +10%"},"effect_5pc":{"en":"Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"tempest_mephis","name":{"en":"tempest_mephis"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Electro DMG% / Energy Regen%","ko":"전도 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Electro DMG%","Energy Regen (125%+)","ATK% / Flat ATK"]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Morality's Crossroads"},"description":{"en":"Magnetic Roar and Lightning Execution deal 70% extra damage."},"isRecommended":true},{"name":{"en":"S2: Ensnarled by Rapport"},"description":{"en":"Electromagnetic Blast recovers an additional 5 Judgement Points and 5 Resonance Energy on hit."},"isRecommended":false},{"name":{"en":"S3: Unyielding Verdict"},"description":{"en":"Judgment Strike damage multiplier increased by 55%."},"isRecommended":false},{"name":{"en":"S4: Steadfast Conviction"},"description":{"en":"When Judgment Strike hits, team ATK is increased by 20% for 12 seconds."},"isRecommended":false},{"name":{"en":"S5: Resounding Will"},"description":{"en":"Resonance Liberation deals 100% extra damage to targets affected by marks."},"isRecommended":false},{"name":{"en":"S6: Pursuit of Justice"},"description":{"en":"For 30s after casting Resonance Liberation, basic attacks trigger Furious Thunder dealing massive Electro damage."},"isRecommended":true}],"guideDetails":{"en":"Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed."}}</script>
+  <script id="character-data-json" type="application/json">{"id":"yinlin","name":{"en":"Yinlin"},"attribute":{"en":"Electro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"resonance_skill_dmg","name":{"en":"Resonance Skill DMG"}},{"id":"coordinated_attack","name":{"en":"Coordinated Attack"}},{"id":"electro_dmg_amplification","name":{"en":"Electro DMG Amplification"}},{"id":"resonance_liberation_damage_amplification","name":{"en":"Resonance Liberation Damage Amplification"}}],"rarity":5,"description":{"en":"A former patroller of the Jinzhou Security Department, working under the cover of secrecy to hunt down the Fractsidus. Yinlin serves as an exceptional off-field Sub-DPS who inflicts coordinated Electro damage and amplifies team Ultimate and Electro damage output."},"mainSlotEcho":"tempest_mephis","recommWeapons":[{"id":"stringmaster","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stringmaster"},"rarity":5,"specs":{"en":"Base ATK: 500 • 36.0% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Crit Rate and boosts Resonance Attribute DMG by 12%. When casting Resonance Skill or when dealing damage off-field, ATK increases by 12% for 2 stacks. The absolute best choice for her dual on-field/off-field role."}},{"id":"rectifier_25","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Rectifier #25"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Resonance Skill is cast, increases ATK by 12% for 15s. Generates extra energy to help maintain critical ultimate uptime. Very accessible F2P option."}}],"recommEcho":[{"setName":{"en":"Void Thunder (5pc)","ko":"전도 5세트 (Void Thunder)"},"sonata":"void_thunder","mainSlotEcho":"tempest_mephis","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Electro DMG% / Electro DMG% (or Energy Regen)"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"void_thunder","name":{"en":"Void Thunder"},"textColor":"#A96FF6","bgColor":"#A96FF61a","effect_2pc":{"en":"Electro DMG +10%"},"effect_5pc":{"en":"Upon using Heavy Attack or Resonance Skill, increases Electro DMG by 15% (stacks up to 2 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"tempest_mephis","name":{"en":"tempest_mephis"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Electro DMG% / Energy Regen%","ko":"전도 피해% / 공명 효율%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Resonance Skill DMG% > Energy Regen% > ATK%"},"note":{"en":"Note: Target around 125% - 135% Energy Regen to ensure consistent ultimate uptime."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}}],"recommStats":{"en":[{"label":"Crit. Rate","target":"70%"},{"label":"Crit. DMG","target":"240%"},{"label":"ATK","target":"2000"},{"label":"Energy Regen","target":"125%"}]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Electro Dominance"},"isPremium":true,"members":{"en":["Calcharo or Xiangli Yao <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Coordinated Sub-DPS)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"Universal Amp Team"},"isPremium":false,"members":{"en":["Jinhsi <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin <span class=\"text-gray-500 text-[10px]\">(Sub-DPS/Coordinated)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Healer/Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Morality's Crossroads"},"description":{"en":"Magnetic Roar and Lightning Execution deal 70% extra damage."},"isRecommended":true},{"name":{"en":"S2: Ensnarled by Rapport"},"description":{"en":"Electromagnetic Blast recovers an additional 5 Judgement Points and 5 Resonance Energy on hit."},"isRecommended":false},{"name":{"en":"S3: Unyielding Verdict"},"description":{"en":"Judgment Strike damage multiplier increased by 55%."},"isRecommended":false},{"name":{"en":"S4: Steadfast Conviction"},"description":{"en":"When Judgment Strike hits, team ATK is increased by 20% for 12 seconds."},"isRecommended":false},{"name":{"en":"S5: Resounding Will"},"description":{"en":"Resonance Liberation deals 100% extra damage to targets affected by marks."},"isRecommended":false},{"name":{"en":"S6: Pursuit of Justice"},"description":{"en":"For 30s after casting Resonance Liberation, basic attacks trigger Furious Thunder dealing massive Electro damage."},"isRecommended":true}],"guideDetails":{"en":"Yinlin is an exceptional off-field Sub-DPS who provides massive Electro DMG amplification and coordinated attacks. Trigger her Forte Gauge completely to apply Sinner's Mark, and swap-cancel her heavy attacks to maximize team rotation speed."}}</script>
 
   <!-- Script for Mobile Menu Toggle and Dynamic Hydration -->
   <script>
@@ -1210,7 +1234,9 @@
           tabsContainer.classList.remove("hidden");
           tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
             const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
-            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border" data-index="${idx}">${setName}</button>`;
+            const sonataId = set.sonata || '';
+            const imgHtml = sonataId ? `<img src="../../assets/images/sonatas/${sonataId}.png" alt="${setName}" class="w-4 h-4 object-contain shrink-0" onerror="this.style.display='none';">` : '';
+            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border inline-flex items-center gap-1.5" data-index="${idx}">${imgHtml}<span>${setName}</span></button>`;
           }).join('\n');
 
           // Register click listeners for tabs
@@ -1249,7 +1275,7 @@
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
         if (sonataIllustContainer && sonataObj.id) {
           sonataIllustContainer.innerHTML = `
-            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="h-6 w-auto object-contain p-0.5">`;
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1">`;
         }
 
         // Update sonata effects
@@ -1341,12 +1367,25 @@
       if (statsContainer) {
         const priorities = data.recommStats[lang] || data.recommStats.en;
         statsContainer.innerHTML = priorities.map((stat, index) => {
-          const isFirst = index === 0;
-          const numBg = isFirst ? `bg-[#A431AE]/20 text-fuchsia-400` : `bg-[#A431AE]/10 text-gray-400`;
+          const numBg = `bg-[#A431AE]/10 text-gray-400`;
+          const label = stat.label || stat;
+          const target = stat.target || '';
+          const targetHtml = target ? `<span class="text-xs text-gray-400">≥ ${target}</span>` : '';
+          
+          // Get English label for mapping to icon filename
+          const englishLabel = (data.recommStats.en && data.recommStats.en[index]) ? (data.recommStats.en[index].label || data.recommStats.en[index]) : label;
+          const iconFilename = englishLabel.toLowerCase().replace(/\./g, '').replace(/[\s-]+/g, '_') + '.png';
+          
           return `
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/${iconFilename}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">${index + 1}</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${label}</span>
+              </div>
+              ${targetHtml}
             </div>`;
         }).join('\n');
       }
@@ -1354,21 +1393,58 @@
       // Skill priorities
       const skillsContainer = document.getElementById("skill-priorities-list");
       if (skillsContainer) {
-        skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
-          let prioClass = 'text-gray-500';
-          if (index === 0) prioClass = `text-fuchsia-400 font-bold`;
-          else if (index === 1) prioClass = `text-fuchsia-300 font-semibold`;
-          else if (index === 2) prioClass = 'text-gray-300 font-medium';
+        if (data.id === 'shorekeeper') {
+          // Shorekeeper Forte Skill Tree label translation and default level population
+          const skillNamesKo = {
+            "normal": "일반",
+            "skill": "스킬",
+            "forte": "회로",
+            "liberation": "해방",
+            "intro": "변주",
+            "outro": "반주"
+          };
+          const skillNamesEn = {
+            "normal": "Normal",
+            "skill": "Skill",
+            "forte": "Forte",
+            "liberation": "Liberation",
+            "intro": "Intro",
+            "outro": "Outro"
+          };
+          const dict = lang === 'ko' ? skillNamesKo : skillNamesEn;
+          for (const [key, text] of Object.entries(dict)) {
+            const el = document.getElementById(`tree-label-${key}`);
+            if (el) el.textContent = text;
+            const flowEl = document.getElementById(`flowchart-label-${key}`);
+            if (flowEl) flowEl.textContent = text;
+          }
+          
+          // Guide default skill levels for Shorekeeper: Normal=6, Skill=10, Forte=6, Lib=10, Intro=10
+          // Only show guide defaults if the state was not customized yet
+          if (!window.buildState || !window.buildState.skills || window.buildState.skills.normal === 10) {
+            const defaultLevels = { normal: 6, skill: 10, forte: 6, liberation: 10, intro: 10 };
+            for (const [key, lvl] of Object.entries(defaultLevels)) {
+              const el = document.getElementById(`tree-lvl-${key}`);
+              if (el) el.textContent = lvl;
+            }
+          }
+        } else {
+          skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
+            let prioClass = 'text-gray-500';
+            if (index === 0) prioClass = `text-fuchsia-400 font-bold`;
+            else if (index === 1) prioClass = `text-fuchsia-300 font-semibold`;
+            else if (index === 2) prioClass = 'text-gray-300 font-medium';
 
-          const skillName = item.skill[lang] || item.skill.en;
-          const priorityVal = item.priority[lang] || item.priority.en;
+            const skillName = item.skill[lang] || item.skill.en;
+            const priorityVal = item.priority[lang] || item.priority.en;
 
-          return `
-            <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-              <span class="text-gray-400">${skillName}</span>
-              <span class="${prioClass}">${priorityVal}</span>
-            </div>`;
-        }).join('\n');
+            return `
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">${skillName}</span>
+                <span class="${prioClass}">${priorityVal}</span>
+              </div>`;
+          }).join('\n');
+        }
       }
 
       // Recommended Teams
@@ -1971,6 +2047,20 @@
       if (skillsEl) {
         const s = window.buildState.skills;
         skillsEl.textContent = `LV. ${s.normal} / ${s.skill} / ${s.forte} / ${s.liberation} / ${s.intro}`;
+        
+        // Dynamically update levels in Shorekeeper custom skill tree
+        if (window.characterData && window.characterData.id === 'shorekeeper') {
+          const normLvl = document.getElementById('tree-lvl-normal');
+          if (normLvl) normLvl.textContent = s.normal;
+          const skillLvl = document.getElementById('tree-lvl-skill');
+          if (skillLvl) skillLvl.textContent = s.skill;
+          const forteLvl = document.getElementById('tree-lvl-forte');
+          if (forteLvl) forteLvl.textContent = s.forte;
+          const libLvl = document.getElementById('tree-lvl-liberation');
+          if (libLvl) libLvl.textContent = s.liberation;
+          const introLvl = document.getElementById('tree-lvl-intro');
+          if (introLvl) introLvl.textContent = s.intro;
+        }
       }
 
       const subEl = document.getElementById('summary-substats');

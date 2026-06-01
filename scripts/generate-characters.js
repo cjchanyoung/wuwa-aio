@@ -397,26 +397,234 @@ characters.forEach(char => {
 
   // Generate stat priorities HTML
   const statPrioritiesHtml = char.recommStats.en.map((stat, index) => {
-    const isFirst = index === 0;
-    const numBg = isFirst ? styles.stat_idx1_bg_border_text : styles.stat_idx2_bg_border_text;
-    return `            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
+    const numBg = styles.stat_idx2_bg_border_text;
+    const label = stat.label || stat;
+    const target = stat.target || '';
+    const targetHtml = target ? `<span class="text-xs text-gray-400">≥ ${target}</span>` : '';
+    
+    // Map stat label to its icon image name (lowercase, no dots, spaces to underscores)
+    const iconFilename = label.toLowerCase().replace(/\./g, '').replace(/[\s-]+/g, '_') + '.png';
+    
+    return `            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/${iconFilename}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">${index + 1}</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${label}</span>
+              </div>
+              ${targetHtml}
             </div>`;
   }).join('\n');
 
   // Generate skill priorities HTML
-  const skillPrioritiesHtml = char.recommSkill.map((item, index) => {
-    let prioClass = 'text-gray-500';
-    if (index === 0) prioClass = styles.priority_highlight_text;
-    else if (index === 1) prioClass = styles.priority_high_text;
-    else if (index === 2) prioClass = 'text-gray-300 font-medium';
+  let skillPrioritiesHtml = '';
+  if (char.id === 'shorekeeper') {
+    skillPrioritiesHtml = `
+            <!-- Recommended Skill Priority Flowchart (Horizontal) -->
+            <div class="flex items-center justify-center gap-1 sm:gap-2 mb-4 py-1">
+              <!-- Skill -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-skill" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Skill</span>
+              </div>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&gt;</span>
+              
+              <!-- Liberation -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <!-- Orbital Planetary Ring -->
+                  <div class="absolute -inset-[3px] rounded-full border-2 border-t-[#8e7a63]/80 border-b-[#8e7a63]/80 border-l-transparent border-r-transparent -rotate-45"></div>
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-liberation" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Liberation</span>
+              </div>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&gt;</span>
+              
+              <!-- Intro -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-intro" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Intro</span>
+              </div>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&ge;</span>
+              
+              <!-- Normal -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-normal" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Normal</span>
+              </div>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&ge;</span>
+              
+              <!-- Forte -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-forte" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Forte</span>
+              </div>
+            </div>
 
-    return `              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+            <!-- Forte Skill Node Tree -->
+            <div class="relative w-full h-[230px] overflow-hidden my-1">
+              <!-- Starry Background Effect -->
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(110,89,190,0.12),transparent_70%)] pointer-events-none"></div>
+              
+              <!-- Connecting SVG Lines -->
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                <line x1="12" y1="10" x2="12" y2="68" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="31" y1="8" x2="31" y2="66" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="50" y1="6" x2="50" y2="84" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="69" y1="8" x2="69" y2="66" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="88" y1="10" x2="88" y2="68" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                
+                <!-- Curved bottom path connecting bottom diamond nodes -->
+                <path d="M 12,68 Q 50,42 88,68" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.4" />
+              </svg>
+
+              <!-- Nodes Wrapper -->
+              <div class="absolute inset-0 w-full h-full">
+                <!-- Col 1 (Normal Attack Branch) -->
+                <div class="absolute" style="left: 12%; top: 10%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 12%; top: 38%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 12%; top: 68%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-normal" class="text-white font-bold">6</span>/10</span>
+                    <span id="tree-label-normal" class="block text-gray-500 font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Normal</span>
+                  </div>
+                </div>
+
+                <!-- Col 2 (Resonance Skill Branch) -->
+                <div class="absolute" style="left: 31%; top: 8%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 31%; top: 36%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 31%; top: 66%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-skill" class="text-white font-bold">10</span>/10</span>
+                    <span id="tree-label-skill" class="block text-white font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Skill</span>
+                  </div>
+                </div>
+
+                <!-- Col 3 (Forte Circuit Branch / Center) -->
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 6%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Inherent Skill 1: Life's Gift">
+                    <img src="../../assets/images/characters/shorekeeper/forte/inherent_skill_1.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 34%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Inherent Skill 2: Star's Compact">
+                    <img src="../../assets/images/characters/shorekeeper/forte/inherent_skill_2.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 62%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-forte" class="text-white font-bold">6</span>/10</span>
+                    <span id="tree-label-forte" class="block text-gray-400 font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Forte</span>
+                  </div>
+                </div>
+
+                <!-- Col 4 (Resonance Liberation Branch) -->
+                <div class="absolute" style="left: 69%; top: 8%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 69%; top: 36%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 69%; top: 66%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-liberation" class="text-white font-bold">10</span>/10</span>
+                    <span id="tree-label-liberation" class="block text-white font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Liberation</span>
+                  </div>
+                </div>
+
+                <!-- Col 5 (Intro Skill Branch) -->
+                <div class="absolute" style="left: 88%; top: 10%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 88%; top: 38%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 88%; top: 68%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-intro" class="text-white font-bold">10</span>/10</span>
+                    <span id="tree-label-intro" class="block text-white font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Intro</span>
+                  </div>
+                </div>
+
+                <!-- Bottom Center Circular Node (Outro) -->
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 84%; transform: translate(-50%, -30%);">
+                  <div class="w-7 h-7 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-purple-400 transition-all shadow-lg">
+                    <img src="../../assets/images/characters/shorekeeper/forte/outro_skill.png" class="w-4 h-4 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <span id="tree-label-outro" class="block text-gray-500 text-[8px] whitespace-nowrap mt-1 leading-none">Outro</span>
+                </div>
+              </div>
+            </div>`;
+  } else {
+    skillPrioritiesHtml = char.recommSkill.map((item, index) => {
+      let prioClass = 'text-gray-500';
+      if (index === 0) prioClass = styles.priority_highlight_text;
+      else if (index === 1) prioClass = styles.priority_high_text;
+      else if (index === 2) prioClass = 'text-gray-300 font-medium';
+
+      return `              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
                 <span class="text-gray-400">${item.skill.en}</span>
                 <span class="${prioClass}">${item.priority.en}</span>
               </div>`;
-  }).join('\n');
+    }).join('\n');
+  }
 
   // Generate recommended teams HTML
   const recommendedTeamsHtml = char.recommTeammates.map(team => {

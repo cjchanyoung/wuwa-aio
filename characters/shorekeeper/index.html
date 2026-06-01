@@ -220,7 +220,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
 
       <!-- Left Column: Weapons & Echos -->
-      <div class="lg:col-span-8 space-y-8">
+      <div class="lg:col-span-7 space-y-8">
 
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
@@ -334,8 +334,8 @@
               <!-- Best Set Summary (Sonata) -->
               <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <div id="sonata-set-illustration"
-                  class="w-6 h-6 bg-[#B9A81C]/10 rounded-md flex items-center justify-center text-[#B9A81C] shrink-0 border border-white/5 overflow-hidden">
-                  <i class="fa-solid fa-circle-nodes"></i>
+                  class="w-10 h-10 bg-[#B9A81C]/10 rounded-xl flex items-center justify-center text-[#B9A81C] shrink-0 border border-[#B9A81C]/20 overflow-hidden">
+                  <i class="fa-solid fa-circle-nodes text-lg"></i>
                 </div>
                 <div class="flex-grow">
                   <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
@@ -534,7 +534,7 @@
       </div>
 
       <!-- Right Column: Stats, Skills, Teams -->
-      <div class="lg:col-span-4 space-y-8">
+      <div class="lg:col-span-5 space-y-8">
 
         <!-- Build Mode Toggle Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-4 text-center relative overflow-hidden">
@@ -554,21 +554,45 @@
             <span data-i18n="detail_stat_priority"></span>
           </h3>
           <div id="stat-priorities-list" class="space-y-3 text-xs">
-                        <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/20 text-yellow-400 font-bold font-mono flex items-center justify-center">1</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen (250%+)</span>
+                        <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/energy_regen.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">1</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 250%</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">HP% / Flat HP</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/hp.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">2</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">HP</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 30000</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate (Target 20%+)</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/crit_rate.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">3</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit. Rate</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 20%</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Healing Bonus%</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#B9A81C]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/healing_bonus.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">4</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Healing Bonus</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 35%</span>
             </div>
           </div>
         </div>
@@ -584,26 +608,198 @@
           <div id="skill-guide-mode" class="space-y-4">
             <!-- Priority List -->
             <div id="skill-priorities-list" class="flex flex-col gap-2">
-                            <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-                <span class="text-gray-400">1. Resonance Liberation</span>
-                <span class="text-yellow-400 font-bold">Highest Priority</span>
+              
+            <!-- Recommended Skill Priority Flowchart (Horizontal) -->
+            <div class="flex items-center justify-center gap-1 sm:gap-2 mb-4 py-1">
+              <!-- Skill -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-skill" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Skill</span>
               </div>
-              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-                <span class="text-gray-400">2. Resonance Skill</span>
-                <span class="text-yellow-300 font-semibold">High Priority</span>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&gt;</span>
+              
+              <!-- Liberation -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <!-- Orbital Planetary Ring -->
+                  <div class="absolute -inset-[3px] rounded-full border-2 border-t-[#8e7a63]/80 border-b-[#8e7a63]/80 border-l-transparent border-r-transparent -rotate-45"></div>
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-liberation" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Liberation</span>
               </div>
-              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-                <span class="text-gray-400">3. Forte Circuit</span>
-                <span class="text-gray-300 font-medium">Medium</span>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&gt;</span>
+              
+              <!-- Intro -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-intro" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Intro</span>
               </div>
-              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-                <span class="text-gray-400">4. Intro Skill</span>
-                <span class="text-gray-500">Low</span>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&ge;</span>
+              
+              <!-- Normal -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-normal" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Normal</span>
               </div>
-              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-                <span class="text-gray-400">5. Basic Attack</span>
-                <span class="text-gray-500">Low</span>
+              
+              <span class="text-base font-bold text-[#c3a469] mx-0.5 sm:mx-1 select-none">&ge;</span>
+              
+              <!-- Forte -->
+              <div class="flex flex-col items-center">
+                <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
+                  <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
+                  <img src="../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                </div>
+                <span id="flowchart-label-forte" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Forte</span>
               </div>
+            </div>
+
+            <!-- Forte Skill Node Tree -->
+            <div class="relative w-full h-[230px] overflow-hidden my-1">
+              <!-- Starry Background Effect -->
+              <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(110,89,190,0.12),transparent_70%)] pointer-events-none"></div>
+              
+              <!-- Connecting SVG Lines -->
+              <svg viewBox="0 0 100 100" preserveAspectRatio="none" class="absolute inset-0 w-full h-full pointer-events-none opacity-30">
+                <line x1="12" y1="10" x2="12" y2="68" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="31" y1="8" x2="31" y2="66" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="50" y1="6" x2="50" y2="84" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="69" y1="8" x2="69" y2="66" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                <line x1="88" y1="10" x2="88" y2="68" stroke="rgba(255,255,255,0.4)" stroke-width="0.3" stroke-dasharray="1 1" />
+                
+                <!-- Curved bottom path connecting bottom diamond nodes -->
+                <path d="M 12,68 Q 50,42 88,68" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="0.4" />
+              </svg>
+
+              <!-- Nodes Wrapper -->
+              <div class="absolute inset-0 w-full h-full">
+                <!-- Col 1 (Normal Attack Branch) -->
+                <div class="absolute" style="left: 12%; top: 10%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 12%; top: 38%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 12%; top: 68%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-normal" class="text-white font-bold">6</span>/10</span>
+                    <span id="tree-label-normal" class="block text-gray-500 font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Normal</span>
+                  </div>
+                </div>
+
+                <!-- Col 2 (Resonance Skill Branch) -->
+                <div class="absolute" style="left: 31%; top: 8%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 31%; top: 36%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 31%; top: 66%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-skill" class="text-white font-bold">10</span>/10</span>
+                    <span id="tree-label-skill" class="block text-white font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Skill</span>
+                  </div>
+                </div>
+
+                <!-- Col 3 (Forte Circuit Branch / Center) -->
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 6%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Inherent Skill 1: Life's Gift">
+                    <img src="../../assets/images/characters/shorekeeper/forte/inherent_skill_1.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 34%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Inherent Skill 2: Star's Compact">
+                    <img src="../../assets/images/characters/shorekeeper/forte/inherent_skill_2.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 62%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-forte" class="text-white font-bold">6</span>/10</span>
+                    <span id="tree-label-forte" class="block text-gray-400 font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Forte</span>
+                  </div>
+                </div>
+
+                <!-- Col 4 (Resonance Liberation Branch) -->
+                <div class="absolute" style="left: 69%; top: 8%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 69%; top: 36%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 69%; top: 66%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-liberation" class="text-white font-bold">10</span>/10</span>
+                    <span id="tree-label-liberation" class="block text-white font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Liberation</span>
+                  </div>
+                </div>
+
+                <!-- Col 5 (Intro Skill Branch) -->
+                <div class="absolute" style="left: 88%; top: 10%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+1.8%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute" style="left: 88%; top: 38%; transform: translate(-50%, -50%);">
+                  <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+4.0%)">
+                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                  </div>
+                </div>
+                <div class="absolute flex flex-col items-center" style="left: 88%; top: 68%; transform: translate(-50%, -35%);">
+                  <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
+                    <img src="../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <div class="text-center mt-3.5">
+                    <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-intro" class="text-white font-bold">10</span>/10</span>
+                    <span id="tree-label-intro" class="block text-white font-semibold text-[9px] scale-[0.95] whitespace-nowrap mt-0.5 leading-none">Intro</span>
+                  </div>
+                </div>
+
+                <!-- Bottom Center Circular Node (Outro) -->
+                <div class="absolute flex flex-col items-center" style="left: 50%; top: 84%; transform: translate(-50%, -30%);">
+                  <div class="w-7 h-7 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-purple-400 transition-all shadow-lg">
+                    <img src="../../assets/images/characters/shorekeeper/forte/outro_skill.png" class="w-4 h-4 object-contain" style="filter: brightness(0) invert(1);" />
+                  </div>
+                  <span id="tree-label-outro" class="block text-gray-500 text-[8px] whitespace-nowrap mt-1 leading-none">Outro</span>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
 
@@ -1044,7 +1240,7 @@
   </footer>
 
   <!-- Character JSON data container for linter-friendly parsing -->
-  <script id="character-data-json" type="application/json">{"id":"shorekeeper","name":{"en":"The Shorekeeper"},"attribute":{"en":"Spectro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"support_and_healer","name":{"en":"Support And Healer"}},{"id":"traction","name":{"en":"Traction"}},{"id":"dmg_amplification","name":{"en":"DMG Amplification"}}],"rarity":5,"description":{"en":"The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."},"mainSlotEcho":"fallacy_of_no_return","recommWeapons":[{"id":"stellar_symphony","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stellar Symphony"},"rarity":5,"specs":{"en":"Base ATK: 412 • 77.0% HP% (Lvl 90)"},"desc":{"en":"Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."}},{"id":"variation","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Variation"},"rarity":4,"specs":{"en":"Base ATK: 337 • 51.8% Energy Regen (Lvl 90)"},"desc":{"en":"Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."}}],"recommEcho":[{"setName":{"en":"Rejuvenating Glow (5pc)","ko":"치유 5세트 (Rejuvenating Glow)"},"sonata":"rejuvenating_glow","mainSlotEcho":"fallacy_of_no_return","cost4":{"en":"Healing Bonus% or HP%"},"cost3":{"en":"Energy Regen% / Energy Regen%"},"cost1":{"en":"HP% / HP%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"sonataObject":{"id":"rejuvenating_glow","name":{"en":"Rejuvenating Glow"},"textColor":"#86BE27","bgColor":"#86BE271a","effect_2pc":{"en":"Healing Bonus +10%"},"effect_5pc":{"en":"Upon healing allies, increases ATK of all team members by 15% for 30s."}},"mainSlotEchoObject":{"id":"fallacy_of_no_return","name":{"en":"Fallacy of No Return"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"bell_borne_geochelone","cost4":{"en":"HP%","ko":"체력%"},"cost3":{"en":"HP% / Energy Regen%","ko":"체력% / 공명 효율%"},"cost1":{"en":"HP% / HP%","ko":"체력% / 체력%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"bell_borne_geochelone","name":{"en":"bell_borne_geochelone"},"costType":"4"}}],"recommStats":{"en":["Energy Regen (250%+)","HP% / Flat HP","Crit Rate (Target 20%+)","Healing Bonus%"]},"recommSkill":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Forte Circuit"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Universal Top Tier Carry Comp"},"isPremium":true,"members":{"en":["Jinhsi or Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin or Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Buffer)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Solo Support)</span>"]}},{"name":{"en":"Havoc Burst Comp"},"isPremium":false,"members":{"en":["Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Danjin <span class=\"text-gray-500 text-[10px]\">(Havoc Amp Sub-DPS)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Support Healer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Unspoken Conjecture"},"description":{"en":"The Stellarealms generated by Resonance Liberation End Loop gain the following enhancements: - The effective range of the healing and buffs is extended by 150% - The duration is extended by 10s. - Casting Intro Skill Discernment no longer ends the existing Stellarealm."},"isRecommended":true},{"name":{"en":"S2: Night's Gift and Refusal"},"description":{"en":"The Outer Stellarealm now increases the ATK of all nearby party members by 40%."},"isRecommended":true},{"name":{"en":"S3: Infinity Awaits Me"},"description":{"en":"Casting Resonance Liberation End Loop grants Shorekeeper 20 Concerto Energy. This effect can be triggered once every 25s."},"isRecommended":false},{"name":{"en":"S4: Overflowing Quietude"},"description":{"en":"Gain 70% additional Healing Bonus when casting Resonance Skill Chaos Theory."},"isRecommended":false},{"name":{"en":"S5: Echoes in Silence"},"description":{"en":"Extend the ranges of the pulling effect of Basic Attack Stage 3 by 50% and Illation by 30%."},"isRecommended":false},{"name":{"en":"S6: To The New World"},"description":{"en":"Increase the DMG Multiplier of Intro Skill Discernment by 42%. Casting Intro Skill Discernment increases Shorekeeper's Crit. DMG by 500%."},"isRecommended":false}],"guideDetails":{"en":"Shorekeeper is a premier support unit providing team-wide healing and massive Crit Rate/Crit DMG scaling buffs. Always cast her Resonance Liberation to establish the Stellarealm domain and keep her Energy Regen above 250%."}}</script>
+  <script id="character-data-json" type="application/json">{"id":"shorekeeper","name":{"en":"The Shorekeeper"},"attribute":{"en":"Spectro"},"weaponType":{"en":"Rectifier"},"roles":[{"id":"support_and_healer","name":{"en":"Support And Healer"}},{"id":"traction","name":{"en":"Traction"}},{"id":"dmg_amplification","name":{"en":"DMG Amplification"}}],"rarity":5,"description":{"en":"The mysterious and divine guardian of the Black Shores, tethered directly to the vital systems of the island. Shorekeeper represents a top-tier support unit, providing team-wide healing, Crit Rate/Crit DMG scaling buffers, and crucial utility through her starlight and butterfly manifestations."},"mainSlotEcho":"fallacy_of_no_return","recommWeapons":[{"id":"stellar_symphony","rarityLabel":{"en":"5★ Signature"},"isSignature":true,"name":{"en":"Stellar Symphony"},"rarity":5,"specs":{"en":"Base ATK: 412 • 77.0% HP% (Lvl 90)"},"desc":{"en":"Shorekeeper's signature weapon. Provides massive HP% scaling and substantial Energy Regen. When casting Resonance Liberation, triggers team-wide ATK% and Crit Rate enhancements."}},{"id":"variation","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Variation"},"rarity":4,"specs":{"en":"Base ATK: 337 • 51.8% Energy Regen (Lvl 90)"},"desc":{"en":"Grants exceptionally high Energy Regen. Restores 8 Concerto Energy upon casting Resonance Skill, vastly speeding up team rotation speeds. Excellent F2P utility."}}],"recommEcho":[{"setName":{"en":"Rejuvenating Glow (5pc)","ko":"치유 5세트 (Rejuvenating Glow)"},"sonata":"rejuvenating_glow","mainSlotEcho":"fallacy_of_no_return","cost4":{"en":"Healing Bonus% or HP%"},"cost3":{"en":"Energy Regen% / Energy Regen%"},"cost1":{"en":"HP% / HP%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"sonataObject":{"id":"rejuvenating_glow","name":{"en":"Rejuvenating Glow"},"textColor":"#86BE27","bgColor":"#86BE271a","effect_2pc":{"en":"Healing Bonus +10%"},"effect_5pc":{"en":"Upon healing allies, increases ATK of all team members by 15% for 30s."}},"mainSlotEchoObject":{"id":"fallacy_of_no_return","name":{"en":"Fallacy of No Return"},"costType":"4"}},{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"bell_borne_geochelone","cost4":{"en":"HP%","ko":"체력%"},"cost3":{"en":"HP% / Energy Regen%","ko":"체력% / 공명 효율%"},"cost1":{"en":"HP% / HP%","ko":"체력% / 체력%"},"substatsPriority":{"en":"Energy Regen% > HP% > Crit Rate% (until 20%) > Flat HP"},"note":{"en":"Note: Target 250%+ Energy Regen and at least 20% Crit Rate to fully optimize her passive kit buffers."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"bell_borne_geochelone","name":{"en":"bell_borne_geochelone"},"costType":"4"}}],"recommStats":{"en":[{"label":"Energy Regen","target":"250%"},{"label":"HP","target":"30000"},{"label":"Crit. Rate","target":"20%"},{"label":"Healing Bonus","target":"35%"}]},"recommSkill":[{"skill":{"en":"1. Resonance Liberation"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Forte Circuit"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Intro Skill"},"priority":{"en":"Low"}},{"skill":{"en":"5. Basic Attack"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Universal Top Tier Carry Comp"},"isPremium":true,"members":{"en":["Jinhsi or Jiyan <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Yinlin or Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Buffer)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Solo Support)</span>"]}},{"name":{"en":"Havoc Burst Comp"},"isPremium":false,"members":{"en":["Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Danjin <span class=\"text-gray-500 text-[10px]\">(Havoc Amp Sub-DPS)</span>","Shorekeeper <span class=\"text-gray-500 text-[10px]\">(Support Healer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Unspoken Conjecture"},"description":{"en":"The Stellarealms generated by Resonance Liberation End Loop gain the following enhancements: - The effective range of the healing and buffs is extended by 150% - The duration is extended by 10s. - Casting Intro Skill Discernment no longer ends the existing Stellarealm."},"isRecommended":true},{"name":{"en":"S2: Night's Gift and Refusal"},"description":{"en":"The Outer Stellarealm now increases the ATK of all nearby party members by 40%."},"isRecommended":true},{"name":{"en":"S3: Infinity Awaits Me"},"description":{"en":"Casting Resonance Liberation End Loop grants Shorekeeper 20 Concerto Energy. This effect can be triggered once every 25s."},"isRecommended":false},{"name":{"en":"S4: Overflowing Quietude"},"description":{"en":"Gain 70% additional Healing Bonus when casting Resonance Skill Chaos Theory."},"isRecommended":false},{"name":{"en":"S5: Echoes in Silence"},"description":{"en":"Extend the ranges of the pulling effect of Basic Attack Stage 3 by 50% and Illation by 30%."},"isRecommended":false},{"name":{"en":"S6: To The New World"},"description":{"en":"Increase the DMG Multiplier of Intro Skill Discernment by 42%. Casting Intro Skill Discernment increases Shorekeeper's Crit. DMG by 500%."},"isRecommended":false}],"guideDetails":{"en":"Shorekeeper is a premier support unit providing team-wide healing and massive Crit Rate/Crit DMG scaling buffs. Always cast her Resonance Liberation to establish the Stellarealm domain and keep her Energy Regen above 250%."}}</script>
 
   <!-- Script for Mobile Menu Toggle and Dynamic Hydration -->
   <script>
@@ -1202,7 +1398,9 @@
           tabsContainer.classList.remove("hidden");
           tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
             const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
-            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border" data-index="${idx}">${setName}</button>`;
+            const sonataId = set.sonata || '';
+            const imgHtml = sonataId ? `<img src="../../assets/images/sonatas/${sonataId}.png" alt="${setName}" class="w-4 h-4 object-contain shrink-0" onerror="this.style.display='none';">` : '';
+            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border inline-flex items-center gap-1.5" data-index="${idx}">${imgHtml}<span>${setName}</span></button>`;
           }).join('\n');
 
           // Register click listeners for tabs
@@ -1241,7 +1439,7 @@
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
         if (sonataIllustContainer && sonataObj.id) {
           sonataIllustContainer.innerHTML = `
-            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="h-6 w-auto object-contain p-0.5">`;
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1">`;
         }
 
         // Update sonata effects
@@ -1333,12 +1531,25 @@
       if (statsContainer) {
         const priorities = data.recommStats[lang] || data.recommStats.en;
         statsContainer.innerHTML = priorities.map((stat, index) => {
-          const isFirst = index === 0;
-          const numBg = isFirst ? `bg-[#B9A81C]/20 text-yellow-400` : `bg-[#B9A81C]/10 text-gray-400`;
+          const numBg = `bg-[#B9A81C]/10 text-gray-400`;
+          const label = stat.label || stat;
+          const target = stat.target || '';
+          const targetHtml = target ? `<span class="text-xs text-gray-400">≥ ${target}</span>` : '';
+          
+          // Get English label for mapping to icon filename
+          const englishLabel = (data.recommStats.en && data.recommStats.en[index]) ? (data.recommStats.en[index].label || data.recommStats.en[index]) : label;
+          const iconFilename = englishLabel.toLowerCase().replace(/\./g, '').replace(/[\s-]+/g, '_') + '.png';
+          
           return `
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/${iconFilename}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">${index + 1}</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${label}</span>
+              </div>
+              ${targetHtml}
             </div>`;
         }).join('\n');
       }
@@ -1346,21 +1557,58 @@
       // Skill priorities
       const skillsContainer = document.getElementById("skill-priorities-list");
       if (skillsContainer) {
-        skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
-          let prioClass = 'text-gray-500';
-          if (index === 0) prioClass = `text-yellow-400 font-bold`;
-          else if (index === 1) prioClass = `text-yellow-300 font-semibold`;
-          else if (index === 2) prioClass = 'text-gray-300 font-medium';
+        if (data.id === 'shorekeeper') {
+          // Shorekeeper Forte Skill Tree label translation and default level population
+          const skillNamesKo = {
+            "normal": "일반",
+            "skill": "스킬",
+            "forte": "회로",
+            "liberation": "해방",
+            "intro": "변주",
+            "outro": "반주"
+          };
+          const skillNamesEn = {
+            "normal": "Normal",
+            "skill": "Skill",
+            "forte": "Forte",
+            "liberation": "Liberation",
+            "intro": "Intro",
+            "outro": "Outro"
+          };
+          const dict = lang === 'ko' ? skillNamesKo : skillNamesEn;
+          for (const [key, text] of Object.entries(dict)) {
+            const el = document.getElementById(`tree-label-${key}`);
+            if (el) el.textContent = text;
+            const flowEl = document.getElementById(`flowchart-label-${key}`);
+            if (flowEl) flowEl.textContent = text;
+          }
+          
+          // Guide default skill levels for Shorekeeper: Normal=6, Skill=10, Forte=6, Lib=10, Intro=10
+          // Only show guide defaults if the state was not customized yet
+          if (!window.buildState || !window.buildState.skills || window.buildState.skills.normal === 10) {
+            const defaultLevels = { normal: 6, skill: 10, forte: 6, liberation: 10, intro: 10 };
+            for (const [key, lvl] of Object.entries(defaultLevels)) {
+              const el = document.getElementById(`tree-lvl-${key}`);
+              if (el) el.textContent = lvl;
+            }
+          }
+        } else {
+          skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
+            let prioClass = 'text-gray-500';
+            if (index === 0) prioClass = `text-yellow-400 font-bold`;
+            else if (index === 1) prioClass = `text-yellow-300 font-semibold`;
+            else if (index === 2) prioClass = 'text-gray-300 font-medium';
 
-          const skillName = item.skill[lang] || item.skill.en;
-          const priorityVal = item.priority[lang] || item.priority.en;
+            const skillName = item.skill[lang] || item.skill.en;
+            const priorityVal = item.priority[lang] || item.priority.en;
 
-          return `
-            <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-              <span class="text-gray-400">${skillName}</span>
-              <span class="${prioClass}">${priorityVal}</span>
-            </div>`;
-        }).join('\n');
+            return `
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">${skillName}</span>
+                <span class="${prioClass}">${priorityVal}</span>
+              </div>`;
+          }).join('\n');
+        }
       }
 
       // Recommended Teams
@@ -1963,6 +2211,20 @@
       if (skillsEl) {
         const s = window.buildState.skills;
         skillsEl.textContent = `LV. ${s.normal} / ${s.skill} / ${s.forte} / ${s.liberation} / ${s.intro}`;
+        
+        // Dynamically update levels in Shorekeeper custom skill tree
+        if (window.characterData && window.characterData.id === 'shorekeeper') {
+          const normLvl = document.getElementById('tree-lvl-normal');
+          if (normLvl) normLvl.textContent = s.normal;
+          const skillLvl = document.getElementById('tree-lvl-skill');
+          if (skillLvl) skillLvl.textContent = s.skill;
+          const forteLvl = document.getElementById('tree-lvl-forte');
+          if (forteLvl) forteLvl.textContent = s.forte;
+          const libLvl = document.getElementById('tree-lvl-liberation');
+          if (libLvl) libLvl.textContent = s.liberation;
+          const introLvl = document.getElementById('tree-lvl-intro');
+          if (introLvl) introLvl.textContent = s.intro;
+        }
       }
 
       const subEl = document.getElementById('summary-substats');

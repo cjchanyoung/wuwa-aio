@@ -215,7 +215,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
 
       <!-- Left Column: Weapons & Echos -->
-      <div class="lg:col-span-8 space-y-8">
+      <div class="lg:col-span-7 space-y-8">
 
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
@@ -329,8 +329,8 @@
               <!-- Best Set Summary (Sonata) -->
               <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <div id="sonata-set-illustration"
-                  class="w-6 h-6 bg-[#36AED0]/10 rounded-md flex items-center justify-center text-[#36AED0] shrink-0 border border-white/5 overflow-hidden">
-                  <i class="fa-solid fa-circle-nodes"></i>
+                  class="w-10 h-10 bg-[#36AED0]/10 rounded-xl flex items-center justify-center text-[#36AED0] shrink-0 border border-[#36AED0]/20 overflow-hidden">
+                  <i class="fa-solid fa-circle-nodes text-lg"></i>
                 </div>
                 <div class="flex-grow">
                   <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
@@ -529,7 +529,7 @@
       </div>
 
       <!-- Right Column: Stats, Skills, Teams -->
-      <div class="lg:col-span-4 space-y-8">
+      <div class="lg:col-span-5 space-y-8">
 
         <!-- Build Mode Toggle Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-4 text-center relative overflow-hidden">
@@ -549,21 +549,45 @@
             <span data-i18n="detail_stat_priority"></span>
           </h3>
           <div id="stat-priorities-list" class="space-y-3 text-xs">
-                        <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#36AED0]/20 text-cyan-400 font-bold font-mono flex items-center justify-center">1</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit Rate / Crit DMG</span>
+                        <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#36AED0]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/crit_rate.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">1</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit. Rate</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 70%</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#36AED0]/10 text-gray-400 font-bold font-mono flex items-center justify-center">2</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen (130%+)</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#36AED0]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/crit_dmg.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">2</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Crit. DMG</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 240%</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#36AED0]/10 text-gray-400 font-bold font-mono flex items-center justify-center">3</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Glacio DMG%</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#36AED0]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/atk.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">3</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 2000</span>
             </div>
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md bg-[#36AED0]/10 text-gray-400 font-bold font-mono flex items-center justify-center">4</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">ATK% / Flat ATK</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md bg-[#36AED0]/10 text-gray-400 font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/energy_regen.png" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">4</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">Energy Regen</span>
+              </div>
+              <span class="text-xs text-gray-400">≥ 130%</span>
             </div>
           </div>
         </div>
@@ -1039,7 +1063,7 @@
   </footer>
 
   <!-- Character JSON data container for linter-friendly parsing -->
-  <script id="character-data-json" type="application/json">{"id":"sanhua","name":{"en":"Sanhua"},"attribute":{"en":"Glacio"},"weaponType":{"en":"Sword"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"basic_attack_dmg_amplification","name":{"en":"Basic Attack DMG Amplification"}}],"rarity":4,"description":{"en":"A bodyguard to the Magistrate of Jinzhou, quiet and reserved, keeping her emotions hidden. Sanhua serves as a fast-paced Glacio Sub-DPS, providing outstanding basic attack damage amplification and exceptionally rapid Concerto accumulation."},"mainSlotEcho":"impermanence_heron","recommWeapons":[{"id":"emerald_of_genesis","rarityLabel":{"en":"5★ Standard"},"isSignature":true,"name":{"en":"Emerald of Genesis"},"rarity":5,"specs":{"en":"Base ATK: 587 • 24.3% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Energy Regen by 12.8%. When Resonance Skill is cast, ATK is increased by 6%, stacking up to 2 times."}},{"id":"commando_of_conviction","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Commando of Conviction"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Intro Skill is triggered, increases ATK by 15% for 15s. Excellent F2P weapon with a straightforward trigger condition for quickswap builds."}}],"recommEcho":[{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Glacio DMG% / Energy Regen%"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Energy Regen% > ATK% > Resonance Skill DMG%"},"note":{"en":"Note: Focus on high Energy Regen to spam her Ultimate and maintain the Moonlit Clouds buff rotation."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}},{"setName":{"en":"Freezing Frost (5pc)","ko":"응결 5세트 (Freezing Frost)"},"sonata":"freezing_frost","mainSlotEcho":"lampylumen_myriad","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Glacio DMG% / Glacio DMG%","ko":"응결 피해% / 응결 피해%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Energy Regen% > ATK% > Resonance Skill DMG%"},"note":{"en":"Note: Focus on high Energy Regen to spam her Ultimate and maintain the Moonlit Clouds buff rotation."},"sonataObject":{"id":"freezing_frost","name":{"en":"Freezing Frost"},"textColor":"#74AAF4","bgColor":"#74AAF41a","effect_2pc":{"en":"Glacio DMG +10%"},"effect_5pc":{"en":"Upon using Basic Attack or Heavy Attack, increases Glacio DMG by 10% (stacks up to 3 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"lampylumen_myriad","name":{"en":"lampylumen_myriad"},"costType":"4"}}],"recommStats":{"en":["Crit Rate / Crit DMG","Energy Regen (130%+)","Glacio DMG%","ATK% / Flat ATK"]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Basic Attack"},"priority":{"en":"Low"}},{"skill":{"en":"5. Intro Skill"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Basic Attack Carry Duo"},"isPremium":true,"members":{"en":["Encore or Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Basic ATK Amp)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"F2P Speed Team"},"isPremium":false,"members":{"en":["Rover (Spectro) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Sanhua <span class=\"text-gray-500 text-[10px]\">(Concerto Battery)</span>","Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Solitude's Solace"},"description":{"en":"Basic Attack 5 increases Sanhua's Crit Rate by 15% for 15 seconds."},"isRecommended":false},{"name":{"en":"S2: Snow's Spark"},"description":{"en":"Resonance Skill cooldown is reduced by 20% and Stamina consumption is reduced by 15%."},"isRecommended":false},{"name":{"en":"S3: Cold's Clarity"},"description":{"en":"Sanhua's damage against targets with HP below 50% is increased by 35%."},"isRecommended":false},{"name":{"en":"S4: Frost's Focus"},"description":{"en":"Casting Resonance Liberation recovers 10 Resonance Energy and increases Heavy Attack DMG by 120% for 5 seconds."},"isRecommended":true},{"name":{"en":"S5: Blizzard's Bite"},"description":{"en":"Forte Circuit Ice Burst critical damage is increased by 100%."},"isRecommended":false},{"name":{"en":"S6: Glaclal Grace"},"description":{"en":"Upon detonating Ice Thorns or Glaciers, increases all team members' ATK by 20% for 20 seconds."},"isRecommended":true}],"guideDetails":{"en":"Sanhua is an incredibly fast Sub-DPS focused on basic attack amplification and speedy rotation. Master her Forte gauge timing (detonating ice glaciers with heavy attacks) to maximize her off-field damage contribution."}}</script>
+  <script id="character-data-json" type="application/json">{"id":"sanhua","name":{"en":"Sanhua"},"attribute":{"en":"Glacio"},"weaponType":{"en":"Sword"},"roles":[{"id":"concerto_efficiency","name":{"en":"Concerto Efficiency"}},{"id":"basic_attack_dmg_amplification","name":{"en":"Basic Attack DMG Amplification"}}],"rarity":4,"description":{"en":"A bodyguard to the Magistrate of Jinzhou, quiet and reserved, keeping her emotions hidden. Sanhua serves as a fast-paced Glacio Sub-DPS, providing outstanding basic attack damage amplification and exceptionally rapid Concerto accumulation."},"mainSlotEcho":"impermanence_heron","recommWeapons":[{"id":"emerald_of_genesis","rarityLabel":{"en":"5★ Standard"},"isSignature":true,"name":{"en":"Emerald of Genesis"},"rarity":5,"specs":{"en":"Base ATK: 587 • 24.3% Crit Rate (Lvl 90)"},"desc":{"en":"Increases Energy Regen by 12.8%. When Resonance Skill is cast, ATK is increased by 6%, stacking up to 2 times."}},{"id":"commando_of_conviction","rarityLabel":{"en":"4★ Best Alternative"},"isSignature":false,"name":{"en":"Commando of Conviction"},"rarity":4,"specs":{"en":"Base ATK: 412 • 30.3% ATK% (Lvl 90)"},"desc":{"en":"When Intro Skill is triggered, increases ATK by 15% for 15s. Excellent F2P weapon with a straightforward trigger condition for quickswap builds."}}],"recommEcho":[{"setName":{"en":"Moonlit Clouds (5pc)","ko":"구름 5세트 (Moonlit Clouds)"},"sonata":"moonlit_clouds","mainSlotEcho":"impermanence_heron","cost4":{"en":"Crit Rate / Crit DMG"},"cost3":{"en":"Glacio DMG% / Energy Regen%"},"cost1":{"en":"ATK% / ATK%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Energy Regen% > ATK% > Resonance Skill DMG%"},"note":{"en":"Note: Focus on high Energy Regen to spam her Ultimate and maintain the Moonlit Clouds buff rotation."},"sonataObject":{"id":"moonlit_clouds","name":{"en":"Moonlit Clouds"},"textColor":"#FFFFFF","bgColor":"#FFFFFF1a","effect_2pc":{"en":"Energy Regen +10%"},"effect_5pc":{"en":"Upon using Outro Skill, increases ATK of the next Resonator by 22.5% for 15s."}},"mainSlotEchoObject":{"id":"impermanence_heron","name":{"en":"Impermanence Heron"},"costType":"4"}},{"setName":{"en":"Freezing Frost (5pc)","ko":"응결 5세트 (Freezing Frost)"},"sonata":"freezing_frost","mainSlotEcho":"lampylumen_myriad","cost4":{"en":"Crit Rate / Crit DMG","ko":"크리티컬 / 크리티컬 피해"},"cost3":{"en":"Glacio DMG% / Glacio DMG%","ko":"응결 피해% / 응결 피해%"},"cost1":{"en":"ATK% / ATK%","ko":"공격력% / 공격력%"},"substatsPriority":{"en":"Crit Rate% / Crit DMG% > Energy Regen% > ATK% > Resonance Skill DMG%"},"note":{"en":"Note: Focus on high Energy Regen to spam her Ultimate and maintain the Moonlit Clouds buff rotation."},"sonataObject":{"id":"freezing_frost","name":{"en":"Freezing Frost"},"textColor":"#74AAF4","bgColor":"#74AAF41a","effect_2pc":{"en":"Glacio DMG +10%"},"effect_5pc":{"en":"Upon using Basic Attack or Heavy Attack, increases Glacio DMG by 10% (stacks up to 3 times, each stack lasts 15s)."}},"mainSlotEchoObject":{"id":"lampylumen_myriad","name":{"en":"lampylumen_myriad"},"costType":"4"}}],"recommStats":{"en":[{"label":"Crit. Rate","target":"70%"},{"label":"Crit. DMG","target":"240%"},{"label":"ATK","target":"2000"},{"label":"Energy Regen","target":"130%"}]},"recommSkill":[{"skill":{"en":"1. Forte Circuit"},"priority":{"en":"Highest Priority"}},{"skill":{"en":"2. Resonance Skill"},"priority":{"en":"High Priority"}},{"skill":{"en":"3. Resonance Liberation"},"priority":{"en":"Medium"}},{"skill":{"en":"4. Basic Attack"},"priority":{"en":"Low"}},{"skill":{"en":"5. Intro Skill"},"priority":{"en":"Low"}}],"recommTeammates":[{"name":{"en":"Basic Attack Carry Duo"},"isPremium":true,"members":{"en":["Encore or Rover (Havoc) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Sanhua <span class=\"text-gray-500 text-[10px]\">(Sub-DPS / Basic ATK Amp)</span>","Verina <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}},{"name":{"en":"F2P Speed Team"},"isPremium":false,"members":{"en":["Rover (Spectro) <span class=\"text-gray-500 text-[10px]\">(Main Carry)</span>","Sanhua <span class=\"text-gray-500 text-[10px]\">(Concerto Battery)</span>","Baizhi <span class=\"text-gray-500 text-[10px]\">(Healer/ATK Buffer)</span>"]}}],"recommSequence":[{"name":{"en":"S1: Solitude's Solace"},"description":{"en":"Basic Attack 5 increases Sanhua's Crit Rate by 15% for 15 seconds."},"isRecommended":false},{"name":{"en":"S2: Snow's Spark"},"description":{"en":"Resonance Skill cooldown is reduced by 20% and Stamina consumption is reduced by 15%."},"isRecommended":false},{"name":{"en":"S3: Cold's Clarity"},"description":{"en":"Sanhua's damage against targets with HP below 50% is increased by 35%."},"isRecommended":false},{"name":{"en":"S4: Frost's Focus"},"description":{"en":"Casting Resonance Liberation recovers 10 Resonance Energy and increases Heavy Attack DMG by 120% for 5 seconds."},"isRecommended":true},{"name":{"en":"S5: Blizzard's Bite"},"description":{"en":"Forte Circuit Ice Burst critical damage is increased by 100%."},"isRecommended":false},{"name":{"en":"S6: Glaclal Grace"},"description":{"en":"Upon detonating Ice Thorns or Glaciers, increases all team members' ATK by 20% for 20 seconds."},"isRecommended":true}],"guideDetails":{"en":"Sanhua is an incredibly fast Sub-DPS focused on basic attack amplification and speedy rotation. Master her Forte gauge timing (detonating ice glaciers with heavy attacks) to maximize her off-field damage contribution."}}</script>
 
   <!-- Script for Mobile Menu Toggle and Dynamic Hydration -->
   <script>
@@ -1197,7 +1221,9 @@
           tabsContainer.classList.remove("hidden");
           tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
             const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
-            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border" data-index="${idx}">${setName}</button>`;
+            const sonataId = set.sonata || '';
+            const imgHtml = sonataId ? `<img src="../../assets/images/sonatas/${sonataId}.png" alt="${setName}" class="w-4 h-4 object-contain shrink-0" onerror="this.style.display='none';">` : '';
+            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border inline-flex items-center gap-1.5" data-index="${idx}">${imgHtml}<span>${setName}</span></button>`;
           }).join('\n');
 
           // Register click listeners for tabs
@@ -1236,7 +1262,7 @@
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
         if (sonataIllustContainer && sonataObj.id) {
           sonataIllustContainer.innerHTML = `
-            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="h-6 w-auto object-contain p-0.5">`;
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1">`;
         }
 
         // Update sonata effects
@@ -1328,12 +1354,25 @@
       if (statsContainer) {
         const priorities = data.recommStats[lang] || data.recommStats.en;
         statsContainer.innerHTML = priorities.map((stat, index) => {
-          const isFirst = index === 0;
-          const numBg = isFirst ? `bg-[#36AED0]/20 text-cyan-400` : `bg-[#36AED0]/10 text-gray-400`;
+          const numBg = `bg-[#36AED0]/10 text-gray-400`;
+          const label = stat.label || stat;
+          const target = stat.target || '';
+          const targetHtml = target ? `<span class="text-xs text-gray-400">≥ ${target}</span>` : '';
+          
+          // Get English label for mapping to icon filename
+          const englishLabel = (data.recommStats.en && data.recommStats.en[index]) ? (data.recommStats.en[index].label || data.recommStats.en[index]) : label;
+          const iconFilename = englishLabel.toLowerCase().replace(/\./g, '').replace(/[\s-]+/g, '_') + '.png';
+          
           return `
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/${iconFilename}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">${index + 1}</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${label}</span>
+              </div>
+              ${targetHtml}
             </div>`;
         }).join('\n');
       }
@@ -1341,21 +1380,58 @@
       // Skill priorities
       const skillsContainer = document.getElementById("skill-priorities-list");
       if (skillsContainer) {
-        skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
-          let prioClass = 'text-gray-500';
-          if (index === 0) prioClass = `text-cyan-400 font-bold`;
-          else if (index === 1) prioClass = `text-cyan-300 font-semibold`;
-          else if (index === 2) prioClass = 'text-gray-300 font-medium';
+        if (data.id === 'shorekeeper') {
+          // Shorekeeper Forte Skill Tree label translation and default level population
+          const skillNamesKo = {
+            "normal": "일반",
+            "skill": "스킬",
+            "forte": "회로",
+            "liberation": "해방",
+            "intro": "변주",
+            "outro": "반주"
+          };
+          const skillNamesEn = {
+            "normal": "Normal",
+            "skill": "Skill",
+            "forte": "Forte",
+            "liberation": "Liberation",
+            "intro": "Intro",
+            "outro": "Outro"
+          };
+          const dict = lang === 'ko' ? skillNamesKo : skillNamesEn;
+          for (const [key, text] of Object.entries(dict)) {
+            const el = document.getElementById(`tree-label-${key}`);
+            if (el) el.textContent = text;
+            const flowEl = document.getElementById(`flowchart-label-${key}`);
+            if (flowEl) flowEl.textContent = text;
+          }
+          
+          // Guide default skill levels for Shorekeeper: Normal=6, Skill=10, Forte=6, Lib=10, Intro=10
+          // Only show guide defaults if the state was not customized yet
+          if (!window.buildState || !window.buildState.skills || window.buildState.skills.normal === 10) {
+            const defaultLevels = { normal: 6, skill: 10, forte: 6, liberation: 10, intro: 10 };
+            for (const [key, lvl] of Object.entries(defaultLevels)) {
+              const el = document.getElementById(`tree-lvl-${key}`);
+              if (el) el.textContent = lvl;
+            }
+          }
+        } else {
+          skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
+            let prioClass = 'text-gray-500';
+            if (index === 0) prioClass = `text-cyan-400 font-bold`;
+            else if (index === 1) prioClass = `text-cyan-300 font-semibold`;
+            else if (index === 2) prioClass = 'text-gray-300 font-medium';
 
-          const skillName = item.skill[lang] || item.skill.en;
-          const priorityVal = item.priority[lang] || item.priority.en;
+            const skillName = item.skill[lang] || item.skill.en;
+            const priorityVal = item.priority[lang] || item.priority.en;
 
-          return `
-            <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-              <span class="text-gray-400">${skillName}</span>
-              <span class="${prioClass}">${priorityVal}</span>
-            </div>`;
-        }).join('\n');
+            return `
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">${skillName}</span>
+                <span class="${prioClass}">${priorityVal}</span>
+              </div>`;
+          }).join('\n');
+        }
       }
 
       // Recommended Teams
@@ -1958,6 +2034,20 @@
       if (skillsEl) {
         const s = window.buildState.skills;
         skillsEl.textContent = `LV. ${s.normal} / ${s.skill} / ${s.forte} / ${s.liberation} / ${s.intro}`;
+        
+        // Dynamically update levels in Shorekeeper custom skill tree
+        if (window.characterData && window.characterData.id === 'shorekeeper') {
+          const normLvl = document.getElementById('tree-lvl-normal');
+          if (normLvl) normLvl.textContent = s.normal;
+          const skillLvl = document.getElementById('tree-lvl-skill');
+          if (skillLvl) skillLvl.textContent = s.skill;
+          const forteLvl = document.getElementById('tree-lvl-forte');
+          if (forteLvl) forteLvl.textContent = s.forte;
+          const libLvl = document.getElementById('tree-lvl-liberation');
+          if (libLvl) libLvl.textContent = s.liberation;
+          const introLvl = document.getElementById('tree-lvl-intro');
+          if (introLvl) introLvl.textContent = s.intro;
+        }
       }
 
       const subEl = document.getElementById('summary-substats');

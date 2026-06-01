@@ -205,7 +205,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
 
       <!-- Left Column: Weapons & Echos -->
-      <div class="lg:col-span-8 space-y-8">
+      <div class="lg:col-span-7 space-y-8">
 
         <!-- Weapons Recommendation Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-6 sm:p-8">
@@ -284,8 +284,8 @@
               <!-- Best Set Summary (Sonata) -->
               <div class="flex items-start gap-4 bg-[#0a080f] p-4 rounded-xl border border-white/5">
                 <div id="sonata-set-illustration"
-                  class="w-6 h-6 {{echo_icon_bg}} rounded-md flex items-center justify-center {{accent_text}} shrink-0 border border-white/5 overflow-hidden">
-                  <i class="fa-solid fa-circle-nodes"></i>
+                  class="w-10 h-10 {{echo_icon_bg}} rounded-xl flex items-center justify-center {{accent_text}} shrink-0 border {{hero_border_class}} overflow-hidden">
+                  <i class="fa-solid fa-circle-nodes text-lg"></i>
                 </div>
                 <div class="flex-grow">
                   <span class="block text-xs text-gray-500 uppercase font-bold" data-i18n="detail_best_set"></span>
@@ -484,7 +484,7 @@
       </div>
 
       <!-- Right Column: Stats, Skills, Teams -->
-      <div class="lg:col-span-4 space-y-8">
+      <div class="lg:col-span-5 space-y-8">
 
         <!-- Build Mode Toggle Card -->
         <div class="bg-[#1a181f] border border-white/5 rounded-2xl p-4 text-center relative overflow-hidden">
@@ -1018,7 +1018,9 @@
           tabsContainer.classList.remove("hidden");
           tabsContainer.innerHTML = recommEchoes.map((set, idx) => {
             const setName = set.setName ? (set.setName[lang] || set.setName.en) : `Set ${idx + 1}`;
-            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border" data-index="${idx}">${setName}</button>`;
+            const sonataId = set.sonata || '';
+            const imgHtml = sonataId ? `<img src="../../assets/images/sonatas/${sonataId}.png" alt="${setName}" class="w-4 h-4 object-contain shrink-0" onerror="this.style.display='none';">` : '';
+            return `<button class="echo-tab-btn px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition-all border inline-flex items-center gap-1.5" data-index="${idx}">${imgHtml}<span>${setName}</span></button>`;
           }).join('\n');
 
           // Register click listeners for tabs
@@ -1057,7 +1059,7 @@
         const sonataIllustContainer = document.getElementById("sonata-set-illustration");
         if (sonataIllustContainer && sonataObj.id) {
           sonataIllustContainer.innerHTML = `
-            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="h-6 w-auto object-contain p-0.5">`;
+            <img src="../../assets/images/sonatas/${sonataObj.id}.png" alt="${sonataObj.name.en}" class="w-full h-full object-contain p-1">`;
         }
 
         // Update sonata effects
@@ -1149,12 +1151,25 @@
       if (statsContainer) {
         const priorities = data.recommStats[lang] || data.recommStats.en;
         statsContainer.innerHTML = priorities.map((stat, index) => {
-          const isFirst = index === 0;
-          const numBg = isFirst ? `{{stat_idx1_bg_border_text}}` : `{{stat_idx2_bg_border_text}}`;
+          const numBg = `{{stat_idx2_bg_border_text}}`;
+          const label = stat.label || stat;
+          const target = stat.target || '';
+          const targetHtml = target ? `<span class="text-xs text-gray-400">≥ ${target}</span>` : '';
+          
+          // Get English label for mapping to icon filename
+          const englishLabel = (data.recommStats.en && data.recommStats.en[index]) ? (data.recommStats.en[index].label || data.recommStats.en[index]) : label;
+          const iconFilename = englishLabel.toLowerCase().replace(/\./g, '').replace(/[\s-]+/g, '_') + '.png';
+          
           return `
-            <div class="flex items-center gap-2 bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5">
-              <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center">${index + 1}</span>
-              <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${stat}</span>
+            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
+                  <img src="../../assets/images/stats/${iconFilename}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <span style="display: none;">${index + 1}</span>
+                </span>
+                <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${label}</span>
+              </div>
+              ${targetHtml}
             </div>`;
         }).join('\n');
       }
@@ -1162,21 +1177,58 @@
       // Skill priorities
       const skillsContainer = document.getElementById("skill-priorities-list");
       if (skillsContainer) {
-        skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
-          let prioClass = 'text-gray-500';
-          if (index === 0) prioClass = `{{priority_highlight_text}}`;
-          else if (index === 1) prioClass = `{{priority_high_text}}`;
-          else if (index === 2) prioClass = 'text-gray-300 font-medium';
+        if (data.id === 'shorekeeper') {
+          // Shorekeeper Forte Skill Tree label translation and default level population
+          const skillNamesKo = {
+            "normal": "일반",
+            "skill": "스킬",
+            "forte": "회로",
+            "liberation": "해방",
+            "intro": "변주",
+            "outro": "반주"
+          };
+          const skillNamesEn = {
+            "normal": "Normal",
+            "skill": "Skill",
+            "forte": "Forte",
+            "liberation": "Liberation",
+            "intro": "Intro",
+            "outro": "Outro"
+          };
+          const dict = lang === 'ko' ? skillNamesKo : skillNamesEn;
+          for (const [key, text] of Object.entries(dict)) {
+            const el = document.getElementById(`tree-label-${key}`);
+            if (el) el.textContent = text;
+            const flowEl = document.getElementById(`flowchart-label-${key}`);
+            if (flowEl) flowEl.textContent = text;
+          }
+          
+          // Guide default skill levels for Shorekeeper: Normal=6, Skill=10, Forte=6, Lib=10, Intro=10
+          // Only show guide defaults if the state was not customized yet
+          if (!window.buildState || !window.buildState.skills || window.buildState.skills.normal === 10) {
+            const defaultLevels = { normal: 6, skill: 10, forte: 6, liberation: 10, intro: 10 };
+            for (const [key, lvl] of Object.entries(defaultLevels)) {
+              const el = document.getElementById(`tree-lvl-${key}`);
+              if (el) el.textContent = lvl;
+            }
+          }
+        } else {
+          skillsContainer.innerHTML = data.recommSkill.map((item, index) => {
+            let prioClass = 'text-gray-500';
+            if (index === 0) prioClass = `{{priority_highlight_text}}`;
+            else if (index === 1) prioClass = `{{priority_high_text}}`;
+            else if (index === 2) prioClass = 'text-gray-300 font-medium';
 
-          const skillName = item.skill[lang] || item.skill.en;
-          const priorityVal = item.priority[lang] || item.priority.en;
+            const skillName = item.skill[lang] || item.skill.en;
+            const priorityVal = item.priority[lang] || item.priority.en;
 
-          return `
-            <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
-              <span class="text-gray-400">${skillName}</span>
-              <span class="${prioClass}">${priorityVal}</span>
-            </div>`;
-        }).join('\n');
+            return `
+              <div class="flex items-center justify-between text-xs bg-[#0a080f] p-2 rounded-lg border border-white/5">
+                <span class="text-gray-400">${skillName}</span>
+                <span class="${prioClass}">${priorityVal}</span>
+              </div>`;
+          }).join('\n');
+        }
       }
 
       // Recommended Teams
@@ -1779,6 +1831,20 @@
       if (skillsEl) {
         const s = window.buildState.skills;
         skillsEl.textContent = `LV. ${s.normal} / ${s.skill} / ${s.forte} / ${s.liberation} / ${s.intro}`;
+        
+        // Dynamically update levels in Shorekeeper custom skill tree
+        if (window.characterData && window.characterData.id === 'shorekeeper') {
+          const normLvl = document.getElementById('tree-lvl-normal');
+          if (normLvl) normLvl.textContent = s.normal;
+          const skillLvl = document.getElementById('tree-lvl-skill');
+          if (skillLvl) skillLvl.textContent = s.skill;
+          const forteLvl = document.getElementById('tree-lvl-forte');
+          if (forteLvl) forteLvl.textContent = s.forte;
+          const libLvl = document.getElementById('tree-lvl-liberation');
+          if (libLvl) libLvl.textContent = s.liberation;
+          const introLvl = document.getElementById('tree-lvl-intro');
+          if (introLvl) introLvl.textContent = s.intro;
+        }
       }
 
       const subEl = document.getElementById('summary-substats');

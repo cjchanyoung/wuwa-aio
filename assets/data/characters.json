@@ -88,10 +88,22 @@
     ],
     "recommStats": {
       "en": [
-        "Crit Rate / Crit DMG",
-        "ATK% / Flat ATK",
-        "Resonance Skill DMG%",
-        "Energy Regen (115%+)"
+        {
+          "label": "Crit. Rate",
+          "target": "70%"
+        },
+        {
+          "label": "Crit. DMG",
+          "target": "270%"
+        },
+        {
+          "label": "ATK",
+          "target": "2200"
+        },
+        {
+          "label": "Energy Regen",
+          "target": "115%"
+        }
       ]
     },
     "recommSkill": [
@@ -342,10 +354,22 @@
     ],
     "recommStats": {
       "en": [
-        "Crit Rate / Crit DMG",
-        "Electro DMG%",
-        "Energy Regen (125%+)",
-        "ATK% / Flat ATK"
+        {
+          "label": "Crit. Rate",
+          "target": "70%"
+        },
+        {
+          "label": "Crit. DMG",
+          "target": "240%"
+        },
+        {
+          "label": "ATK",
+          "target": "2000"
+        },
+        {
+          "label": "Energy Regen",
+          "target": "125%"
+        }
       ]
     },
     "recommSkill": [
@@ -566,10 +590,22 @@
     ],
     "recommStats": {
       "en": [
-        "Crit Rate / Crit DMG",
-        "Fusion DMG%",
-        "ATK% / Flat ATK",
-        "Resonance Skill DMG%"
+        {
+          "label": "Crit. Rate",
+          "target": "70%"
+        },
+        {
+          "label": "Crit. DMG",
+          "target": "240%"
+        },
+        {
+          "label": "ATK",
+          "target": "2000"
+        },
+        {
+          "label": "Energy Regen",
+          "target": "120%"
+        }
       ]
     },
     "recommSkill": [
@@ -793,10 +829,22 @@
     ],
     "recommStats": {
       "en": [
-        "Crit Rate / Crit DMG",
-        "Fusion DMG%",
-        "ATK% / Flat ATK",
-        "Energy Regen (120%+)"
+        {
+          "label": "Crit. Rate",
+          "target": "70%"
+        },
+        {
+          "label": "Crit. DMG",
+          "target": "240%"
+        },
+        {
+          "label": "ATK",
+          "target": "2100"
+        },
+        {
+          "label": "Energy Regen",
+          "target": "120%"
+        }
       ]
     },
     "recommSkill": [
@@ -1019,10 +1067,22 @@
     ],
     "recommStats": {
       "en": [
-        "Energy Regen (250%+)",
-        "HP% / Flat HP",
-        "Crit Rate (Target 20%+)",
-        "Healing Bonus%"
+        {
+          "label": "Energy Regen",
+          "target": "250%"
+        },
+        {
+          "label": "HP",
+          "target": "30000"
+        },
+        {
+          "label": "Crit. Rate",
+          "target": "20%"
+        },
+        {
+          "label": "Healing Bonus",
+          "target": "35%"
+        }
       ]
     },
     "recommSkill": [
@@ -1245,10 +1305,22 @@
     ],
     "recommStats": {
       "en": [
-        "Crit Rate / Crit DMG",
-        "Aero DMG%",
-        "Energy Regen (120%+)",
-        "Heavy Attack DMG%"
+        {
+          "label": "Crit. Rate",
+          "target": "70%"
+        },
+        {
+          "label": "Crit. DMG",
+          "target": "240%"
+        },
+        {
+          "label": "ATK",
+          "target": "2100"
+        },
+        {
+          "label": "Energy Regen",
+          "target": "120%"
+        }
       ]
     },
     "recommSkill": [
@@ -1470,10 +1542,22 @@
     ],
     "recommStats": {
       "en": [
-        "Crit Rate / Crit DMG",
-        "Energy Regen (130%+)",
-        "Glacio DMG%",
-        "ATK% / Flat ATK"
+        {
+          "label": "Crit. Rate",
+          "target": "70%"
+        },
+        {
+          "label": "Crit. DMG",
+          "target": "240%"
+        },
+        {
+          "label": "ATK",
+          "target": "2000"
+        },
+        {
+          "label": "Energy Regen",
+          "target": "130%"
+        }
       ]
     },
     "recommSkill": [
@@ -1694,10 +1778,22 @@
     ],
     "recommStats": {
       "en": [
-        "Crit Rate / Crit DMG",
-        "Havoc DMG%",
-        "Resonance Liberation DMG%",
-        "ATK%"
+        {
+          "label": "Crit. Rate",
+          "target": "70%"
+        },
+        {
+          "label": "Crit. DMG",
+          "target": "240%"
+        },
+        {
+          "label": "ATK",
+          "target": "2000"
+        },
+        {
+          "label": "Energy Regen",
+          "target": "120%"
+        }
       ]
     },
     "recommSkill": [
