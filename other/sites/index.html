@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>External Resources & Sites - WuWa AIO</title>
+  <meta name="description" content="Useful Wuthering Waves community links, databases, trackers, and official wikis.">
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../../output.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- i18n Translation Engine -->
+  <script src="../../js/i18n.js"></script>
+
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-purple-500/30 selection:text-purple-200">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-8">
+        <!-- Logo (Home Button) -->
+      <a href="../../index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent"><span data-i18n="landing_title_prefix"></span><span class="text-purple-500" data-i18n="landing_title_suffix"></span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo"></span>
+        </div>
+      </a>
+        <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-2">
+        <!-- Database Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="database">
+            <span data-i18n="nav_database">Database</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../database/characters/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_characters"></a>
+            <a href="../../database/weapons/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_weapons"></a>
+            <a href="../../database/echoes/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_echoes"></a>
+                      </div>
+          </div>
+        </div>
+
+        <!-- Build Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="build">
+            <span data-i18n="nav_build">Build</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../build/resonator/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_build_char_echo"></a>
+            <a href="../../build/rotation/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_build_rotation"></a>
+            <a href="../../build/calculation/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_build_calculation"></a>
+                      </div>
+          </div>
+        </div>
+
+        <!-- Guide Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="guide">
+            <span data-i18n="nav_guide">Guide</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../guide/rotation/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_rotation"></a>
+            <a href="../../guide/toa/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_toa"></a>
+            <a href="../../guide/whiwa/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_whiwa"></a>
+            <a href="../../guide/metrix/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_metrix"></a>
+                      </div>
+          </div>
+        </div>
+
+        <!-- Other Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="other">
+            <span data-i18n="nav_other">Other</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../other/sites/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_other_sites"></a>
+            <a href="../../other/about/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_other_about"></a>
+                      </div>
+          </div>
+        </div>
+      </nav>
+      </div>
+
+      <!-- Action Button / Mobile Menu Trigger -->
+      <div class="flex items-center space-x-4">
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+      </header>
+
+  <!-- Sub-category Bar -->
+  <div class="hidden md:flex justify-center items-center gap-6 mt-2 mb-2 text-sm text-gray-400 font-medium">
+    <a href="../../other/sites/index.html" class="text-purple-400 font-semibold flex items-center gap-1.5 transition-colors" data-i18n="menu_other_sites">
+      <i class="fa-solid fa-globe text-sm"></i>
+      <span>WuWa Sites</span>
+    </a>
+    <span class="text-white/10 font-light">|</span>
+    <a href="../../other/about/index.html" class="hover:text-white flex items-center gap-1.5 transition-colors" data-i18n="menu_other_about">
+      <i class="fa-solid fa-info-circle text-sm"></i>
+      <span>About</span>
+    </a>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6 overflow-y-auto pb-12">
+    <div class="flex flex-col space-y-6">
+      <!-- Database Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_database">Database</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../database/characters/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_characters"></a>
+          <a href="../../database/weapons/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_weapons"></a>
+          <a href="../../database/echoes/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_echoes"></a>
+        </div>
+      </div>
+
+      <!-- Build Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_build">Build</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../build/resonator/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_build_char_echo"></a>
+          <a href="../../build/rotation/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_build_rotation"></a>
+          <a href="../../build/calculation/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_build_calculation"></a>
+        </div>
+      </div>
+
+      <!-- Guide Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_guide">Guide</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../guide/rotation/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_rotation"></a>
+          <a href="../../guide/toa/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_toa"></a>
+          <a href="../../guide/whiwa/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_whiwa"></a>
+          <a href="../../guide/metrix/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_metrix"></a>
+        </div>
+      </div>
+
+      <!-- Other Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_other">Other</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../other/sites/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_other_sites"></a>
+          <a href="../../other/about/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_other_about"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Header Section -->
+    <section class="py-12 bg-[#1a181f]/20 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+          <span class="w-2.5 h-8 bg-purple-600 rounded-full inline-block"></span>
+          <span data-i18n="menu_other_sites">External Fansites & Resources</span>
+        </h1>
+        <p class="text-gray-400 text-sm mt-2">Recommended external community databases, interactive map portals, and utility tools for Wuthering Waves.</p>
+      </div>
+    </section>
+
+    <!-- Links List -->
+    <section class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Prydwen -->
+        <a href="https://www.prydwen.gg/wuthering-waves/" target="_blank" class="group bg-[#121016] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-all flex justify-between items-center">
+          <div>
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-purple-400 transition-colors">Prydwen Institute</h3>
+            <p class="text-xs text-gray-400 mt-2">Character reviews, calculators, details databases, and active tier lists.</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </a>
+
+        <!-- WuWa Tracker -->
+        <a href="https://wuwatracker.com/" target="_blank" class="group bg-[#121016] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-all flex justify-between items-center">
+          <div>
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-purple-400 transition-colors">WuWa Tracker</h3>
+            <p class="text-xs text-gray-400 mt-2">Convene pull statistics trackers, echo farming tools, and inventory planners.</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </a>
+
+        <!-- Official Interactive Map -->
+        <a href="https://wutheringwaves.kurogames.com/" target="_blank" class="group bg-[#121016] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-all flex justify-between items-center">
+          <div>
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-purple-400 transition-colors">Official Interactive Map</h3>
+            <p class="text-xs text-gray-400 mt-2">Interactive world map containing locations of chests, Sonance Caskets, and bosses.</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </a>
+
+        <!-- WuWa Wiki Fandom -->
+        <a href="https://wutheringwaves.fandom.com/wiki/Wuthering_Waves_Wiki" target="_blank" class="group bg-[#121016] border border-white/5 rounded-2xl p-6 hover:border-purple-500/30 transition-all flex justify-between items-center">
+          <div>
+            <h3 class="font-display font-bold text-lg text-white group-hover:text-purple-400 transition-colors">Fandom Wiki</h3>
+            <p class="text-xs text-gray-400 mt-2">Complete Wuthering Waves item databases, story logs, and sound files repository.</p>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </div>
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#0a080f] border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          </div>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span class="text-purple-500">.AIO</span></span>
+        </div>
+        <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

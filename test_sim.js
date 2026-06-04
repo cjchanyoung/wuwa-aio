@@ -119,7 +119,7 @@ const sandbox = {
   URL,
   URLSearchParams,
   location: {
-    href: 'file:///C:/Users/cjcha/.gemini/antigravity/scratch/wuwa-aio/characters/index.html',
+    href: 'file:///C:/Users/cjcha/.gemini/antigravity/scratch/wuwa-aio/database/characters/index.html',
     search: '',
     origin: 'file://'
   },
@@ -134,11 +134,11 @@ const sandbox = {
     return Promise.resolve({
       ok: true,
       json() {
-        const jsonPath = path.join(baseDir, 'characters', url);
+        const jsonPath = path.join(baseDir, 'database/characters', url);
         return Promise.resolve(JSON.parse(fs.readFileSync(jsonPath, 'utf8')));
       },
       text() {
-        const csvPath = path.join(baseDir, 'characters', url);
+        const csvPath = path.join(baseDir, 'database/characters', url);
         return Promise.resolve(fs.readFileSync(csvPath, 'utf8'));
       }
     });
@@ -163,7 +163,7 @@ const i18nContent = fs.readFileSync(i18nPath, 'utf8');
 vm.runInContext(i18nContent, sandbox, { filename: 'i18n.js' });
 
 // 3. Parse index.html to extract the inline script at the bottom
-const indexPath = path.join(baseDir, 'characters/index.html');
+const indexPath = path.join(baseDir, 'database/characters/index.html');
 const indexContent = fs.readFileSync(indexPath, 'utf8');
 const scriptRegex = /<!-- Web App Client Logic \(Vanilla JS\) -->\s*<script>([\s\S]*?)<\/script>\s*<\/body>/gi;
 const match = scriptRegex.exec(indexContent);

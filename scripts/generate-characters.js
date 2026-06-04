@@ -210,13 +210,14 @@ const attributeStyles = {
 };
 
 const charactersFilePath = path.join(__dirname, '../assets/data/characters.json');
-const templateFilePath = path.join(__dirname, '../characters/template.html');
+const templateFilePath = path.join(__dirname, '../database/characters/template.html');
+const builderTemplateFilePath = path.join(__dirname, '../build/resonator/template.html');
 const weaponsFilePath = path.join(__dirname, '../assets/data/weapons.json');
 const echoesFilePath = path.join(__dirname, '../assets/data/echoes.json');
 const rolesFilePath = path.join(__dirname, '../assets/data/roles.json');
 const sonatasFilePath = path.join(__dirname, '../assets/data/sonatas.json');
 
-console.log('Loading character configurations and layout template...');
+console.log('Loading character configurations and layout templates...');
 
 if (!fs.existsSync(charactersFilePath)) {
   console.error(`Error: File not found at ${charactersFilePath}`);
@@ -224,6 +225,10 @@ if (!fs.existsSync(charactersFilePath)) {
 }
 if (!fs.existsSync(templateFilePath)) {
   console.error(`Error: File not found at ${templateFilePath}`);
+  process.exit(1);
+}
+if (!fs.existsSync(builderTemplateFilePath)) {
+  console.error(`Error: File not found at ${builderTemplateFilePath}`);
   process.exit(1);
 }
 if (!fs.existsSync(weaponsFilePath)) {
@@ -245,6 +250,7 @@ if (!fs.existsSync(sonatasFilePath)) {
 
 const rawCharacters = JSON.parse(fs.readFileSync(charactersFilePath, 'utf8'));
 const template = fs.readFileSync(templateFilePath, 'utf8');
+const builderTemplate = fs.readFileSync(builderTemplateFilePath, 'utf8');
 const weaponsMaster = JSON.parse(fs.readFileSync(weaponsFilePath, 'utf8'));
 const echoesMaster = JSON.parse(fs.readFileSync(echoesFilePath, 'utf8'));
 const rolesMaster = JSON.parse(fs.readFileSync(rolesFilePath, 'utf8'));
@@ -342,14 +348,14 @@ characters.forEach(char => {
 
   // Generate character portrait HTML
   let charImagesDir = path.join(__dirname, '../assets/images/characters', char.id);
-  let portraitSrc = `../../assets/images/characters/${char.id}/portrait.png`;
-  let potraitSrc = `../../assets/images/characters/${char.id}/potrait.png`;
+  let portraitSrc = `../../../assets/images/characters/${char.id}/portrait.png`;
+  let potraitSrc = `../../../assets/images/characters/${char.id}/potrait.png`;
   
   if (char.id === 'rover_havoc' || char.id.startsWith('rover')) {
     const attrId = char.attribute.en.toLowerCase();
     charImagesDir = path.join(__dirname, '../assets/images/characters/rover', attrId);
-    portraitSrc = `../../assets/images/characters/rover/${attrId}/portrait.png`;
-    potraitSrc = `../../assets/images/characters/rover/${attrId}/potrait.png`;
+    portraitSrc = `../../../assets/images/characters/rover/${attrId}/portrait.png`;
+    potraitSrc = `../../../assets/images/characters/rover/${attrId}/potrait.png`;
   }
 
   let portraitHtml = `<div class="w-32 h-32 rounded-full bg-gradient-to-tr ${styles.accent_gradient} p-0.5 shadow-2xl ${styles.logo_shadow_theme} flex items-center justify-center overflow-hidden"><div class="w-full h-full rounded-full bg-[#1a181f] flex items-center justify-center"><i class="${char.icon_class} ${styles.accent_text} text-6xl"></i></div></div>`;
@@ -373,7 +379,7 @@ characters.forEach(char => {
 
     // Check if weapon image exists
     const weaponImgPath = path.join(__dirname, '../assets/images/weapons', `${weapon.id}.png`);
-    const weaponIconHtml = `<img src="../../assets/images/weapons/${weapon.id}.png" alt="${weapon.name.en}" class="w-full h-full object-contain p-1">`;
+    const weaponIconHtml = `<img src="../../../assets/images/weapons/${weapon.id}.png" alt="${weapon.name.en}" class="w-full h-full object-contain p-1">`;
 
     return `            <!-- ${isSig ? 'Signature Weapon' : 'Alternative Weapon'} -->
             <div class="bg-[#0a080f] p-5 rounded-xl border ${borderClass} transition-all flex flex-col sm:flex-row justify-between items-start gap-4">
@@ -408,7 +414,7 @@ characters.forEach(char => {
     return `            <div class="flex items-center justify-between bg-[#0a080f]/50 p-2.5 rounded-lg border border-white/5 text-xs">
               <div class="flex items-center gap-2">
                 <span class="w-5 h-5 rounded-md ${numBg} font-bold font-mono flex items-center justify-center overflow-hidden shrink-0">
-                  <img src="../../assets/images/stats/${iconFilename}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                  <img src="../../../assets/images/stats/${iconFilename}" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
                   <span style="display: none;">${index + 1}</span>
                 </span>
                 <span class="s-name flex-align-center font-semibold text-white" style="font-size: calc(32 * var(--gpx));">${label}</span>
@@ -427,7 +433,7 @@ characters.forEach(char => {
               <div class="flex flex-col items-center">
                 <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
                   <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
-                  <img src="../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                  <img src="../../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
                 </div>
                 <span id="flowchart-label-skill" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Skill</span>
               </div>
@@ -440,7 +446,7 @@ characters.forEach(char => {
                   <!-- Orbital Planetary Ring -->
                   <div class="absolute -inset-[3px] rounded-full border-2 border-t-[#8e7a63]/80 border-b-[#8e7a63]/80 border-l-transparent border-r-transparent -rotate-45"></div>
                   <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
-                  <img src="../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                  <img src="../../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
                 </div>
                 <span id="flowchart-label-liberation" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Liberation</span>
               </div>
@@ -451,7 +457,7 @@ characters.forEach(char => {
               <div class="flex flex-col items-center">
                 <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
                   <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
-                  <img src="../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                  <img src="../../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
                 </div>
                 <span id="flowchart-label-intro" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Intro</span>
               </div>
@@ -462,7 +468,7 @@ characters.forEach(char => {
               <div class="flex flex-col items-center">
                 <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
                   <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
-                  <img src="../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                  <img src="../../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
                 </div>
                 <span id="flowchart-label-normal" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Normal</span>
               </div>
@@ -473,7 +479,7 @@ characters.forEach(char => {
               <div class="flex flex-col items-center">
                 <div class="relative w-10 h-10 rounded-full border border-[#8e7a63] flex items-center justify-center shadow-md">
                   <div class="absolute inset-[2px] rounded-full border border-[#8e7a63]/25"></div>
-                  <img src="../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
+                  <img src="../../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="w-6 h-6 object-contain relative z-10" style="filter: brightness(0) invert(1);" />
                 </div>
                 <span id="flowchart-label-forte" class="text-[9px] text-[#e5dbca] mt-1.5 font-bold tracking-wide">Forte</span>
               </div>
@@ -501,17 +507,17 @@ characters.forEach(char => {
                 <!-- Col 1 (Normal Attack Branch) -->
                 <div class="absolute" style="left: 12%; top: 10%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+1.8%)">
-                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute" style="left: 12%; top: 38%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+4.0%)">
-                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute flex flex-col items-center" style="left: 12%; top: 68%; transform: translate(-50%, -35%);">
                   <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
-                    <img src="../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/normal_attack.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                   <div class="text-center mt-3.5">
                     <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-normal" class="text-white font-bold">6</span>/10</span>
@@ -522,17 +528,17 @@ characters.forEach(char => {
                 <!-- Col 2 (Resonance Skill Branch) -->
                 <div class="absolute" style="left: 31%; top: 8%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+1.8%)">
-                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute" style="left: 31%; top: 36%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+4.0%)">
-                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute flex flex-col items-center" style="left: 31%; top: 66%; transform: translate(-50%, -35%);">
                   <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
-                    <img src="../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/resonance_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                   <div class="text-center mt-3.5">
                     <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-skill" class="text-white font-bold">10</span>/10</span>
@@ -543,17 +549,17 @@ characters.forEach(char => {
                 <!-- Col 3 (Forte Circuit Branch / Center) -->
                 <div class="absolute flex flex-col items-center" style="left: 50%; top: 6%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Inherent Skill 1: Life's Gift">
-                    <img src="../../assets/images/characters/shorekeeper/forte/inherent_skill_1.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/inherent_skill_1.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                 </div>
                 <div class="absolute flex flex-col items-center" style="left: 50%; top: 34%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Inherent Skill 2: Star's Compact">
-                    <img src="../../assets/images/characters/shorekeeper/forte/inherent_skill_2.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/inherent_skill_2.png" class="w-5 h-5 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                 </div>
                 <div class="absolute flex flex-col items-center" style="left: 50%; top: 62%; transform: translate(-50%, -35%);">
                   <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
-                    <img src="../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/forte_circuit.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                   <div class="text-center mt-3.5">
                     <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-forte" class="text-white font-bold">6</span>/10</span>
@@ -564,17 +570,17 @@ characters.forEach(char => {
                 <!-- Col 4 (Resonance Liberation Branch) -->
                 <div class="absolute" style="left: 69%; top: 8%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+1.8%)">
-                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute" style="left: 69%; top: 36%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="HP% Bonus (+4.0%)">
-                    <img src="../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/hp.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute flex flex-col items-center" style="left: 69%; top: 66%; transform: translate(-50%, -35%);">
                   <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
-                    <img src="../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/resonance_liberation.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                   <div class="text-center mt-3.5">
                     <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-liberation" class="text-white font-bold">10</span>/10</span>
@@ -585,17 +591,17 @@ characters.forEach(char => {
                 <!-- Col 5 (Intro Skill Branch) -->
                 <div class="absolute" style="left: 88%; top: 10%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+1.8%)">
-                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute" style="left: 88%; top: 38%; transform: translate(-50%, -50%);">
                   <div class="w-8 h-8 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-yellow-400 transition-all cursor-help shadow-lg" title="Spectro DMG Bonus (+4.0%)">
-                    <img src="../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
+                    <img src="../../../assets/images/stats/spectro_dmg_bonus.png" class="w-5 h-5 object-contain" />
                   </div>
                 </div>
                 <div class="absolute flex flex-col items-center" style="left: 88%; top: 68%; transform: translate(-50%, -35%);">
                   <div class="w-9 h-9 border border-white/20 bg-[#110e16] rotate-45 flex items-center justify-center overflow-hidden shadow-xl hover:border-purple-400 transition-all">
-                    <img src="../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/intro_skill.png" class="-rotate-45 w-6 h-6 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                   <div class="text-center mt-3.5">
                     <span class="block text-gray-400 font-mono text-[9px]">Lv.<span id="tree-lvl-intro" class="text-white font-bold">10</span>/10</span>
@@ -606,7 +612,7 @@ characters.forEach(char => {
                 <!-- Bottom Center Circular Node (Outro) -->
                 <div class="absolute flex flex-col items-center" style="left: 50%; top: 84%; transform: translate(-50%, -30%);">
                   <div class="w-7 h-7 rounded-full border border-white/20 bg-[#15121b] flex items-center justify-center overflow-hidden hover:border-purple-400 transition-all shadow-lg">
-                    <img src="../../assets/images/characters/shorekeeper/forte/outro_skill.png" class="w-4 h-4 object-contain" style="filter: brightness(0) invert(1);" />
+                    <img src="../../../assets/images/characters/shorekeeper/forte/outro_skill.png" class="w-4 h-4 object-contain" style="filter: brightness(0) invert(1);" />
                   </div>
                   <span id="tree-label-outro" class="block text-gray-500 text-[8px] whitespace-nowrap mt-1 leading-none">Outro</span>
                 </div>
@@ -643,7 +649,7 @@ ${membersList}
   // Generate roles HTML
   const rolesHtml = char.roles.map(r => {
     return `<span class="inline-flex items-center gap-1.5 bg-[#0a080f]/60 border border-white/10 px-2.5 py-1 rounded-full text-xs font-medium text-gray-200">
-              <img src="../../assets/images/roles/${r.id}.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
+              <img src="../../../assets/images/roles/${r.id}.png" class="w-4 h-4 object-contain" onerror="this.style.display='none';">
               <span>${r.name.en}</span>
             </span>`;
   }).join('\n');
@@ -653,7 +659,7 @@ ${membersList}
   const echoObj = primaryEcho ? primaryEcho.mainSlotEchoObject : null;
   let mainEchoHtml = '';
   if (echoObj) {
-    mainEchoHtml = `<img src="../../assets/images/echoes/${echoObj.id}.png" alt="${echoObj.name.en}" class="w-full h-full object-contain p-1">`;
+    mainEchoHtml = `<img src="../../../assets/images/echoes/${echoObj.id}.png" alt="${echoObj.name.en}" class="w-full h-full object-contain p-1">`;
   }
 
   // Generate sequence list HTML
@@ -667,10 +673,10 @@ ${membersList}
       const seqName = seq.name.en;
       const seqDesc = seq.description.en;
       
-      let seqImgSrc = `../../assets/images/characters/${char.id}/sequence/${stepIdx}.png`;
+      let seqImgSrc = `../../../assets/images/characters/${char.id}/sequence/${stepIdx}.png`;
       if (char.id === 'rover_havoc' || char.id.startsWith('rover')) {
         const attrId = char.attribute.en.toLowerCase();
-        seqImgSrc = `../../assets/images/characters/rover/${attrId}/sequence/${stepIdx}.png`;
+        seqImgSrc = `../../../assets/images/characters/rover/${attrId}/sequence/${stepIdx}.png`;
       }
 
       return `            <div class="bg-[#0a080f]/50 p-4 rounded-xl border ${borderClass} flex gap-4 items-start transition-all">
@@ -698,6 +704,7 @@ ${membersList}
 
   // Apply substitutions to layout template
   let pageContent = template
+    .replace(/{{id}}/g, char.id)
     .replace(/{{name}}/g, char.name.en)
     .replace(/{{description}}/g, char.description.en)
     .replace(/{{attribute}}/g, char.attribute.en)
@@ -763,15 +770,35 @@ ${membersList}
     .replace(/{{guide_details_html}}/g, guideDetailsHtml)
     .replace(/{{character_json_data}}/g, JSON.stringify(char));
 
-  // Write out file
-  const outputDir = path.join(__dirname, '../characters', char.id);
+  // Write out character guide file
+  const outputDir = path.join(__dirname, '../database/characters', char.id);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
   }
-
   const outputPath = path.join(outputDir, 'index.html');
   fs.writeFileSync(outputPath, pageContent, 'utf8');
   console.log(`Saved character index file: ${outputPath}`);
+
+  // Compile and write out builder file
+  let builderPageContent = builderTemplate
+    .replace(/{{id}}/g, char.id)
+    .replace(/{{name}}/g, char.name.en)
+    .replace(/{{description}}/g, char.description.en)
+    .replace(/{{attribute}}/g, char.attribute.en)
+    .replace(/{{glow_color_top}}/g, styles.glow_color_top)
+    .replace(/{{glow_color_bottom}}/g, styles.glow_color_bottom)
+    .replace(/{{gradient_accent}}/g, styles.gradient_accent)
+    .replace(/{{logo_shadow_theme}}/g, styles.logo_shadow_theme)
+    .replace(/{{gradient_text_end}}/g, styles.gradient_text_end)
+    .replace(/{{logo_bg_class}}/g, styles.logo_bg_class);
+
+  const builderOutputDir = path.join(__dirname, '../build/resonator', char.id);
+  if (!fs.existsSync(builderOutputDir)) {
+    fs.mkdirSync(builderOutputDir, { recursive: true });
+  }
+  const builderOutputPath = path.join(builderOutputDir, 'index.html');
+  fs.writeFileSync(builderOutputPath, builderPageContent, 'utf8');
+  console.log(`Saved character builder file: ${builderOutputPath}`);
 });
 
 console.log('Static character compilation complete!');

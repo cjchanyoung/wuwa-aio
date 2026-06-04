@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sanhua Builder - WuWa AIO</title>
+  <meta name="description"
+    content="Design, simulate, and optimize custom resonator builds and echo sets in Wuthering Waves.">
+
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../../../output.css">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- i18n Translation Engine -->
+  <script src="../../../js/i18n.js"></script>
+
+  <style>
+    :root {
+      --gpx: 0.4px;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .flex-align-center {
+      display: flex;
+      align-items: center;
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a080f;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #312e3f;
+      border-radius: 3px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #504a6b;
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.6;
+      }
+    }
+
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+
+    .seq-node-active {
+      box-shadow: 0 0 15px rgba(147, 51, 234, 0.5);
+    }
+  </style>
+</head>
+
+<body
+  class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-purple-500/30 selection:text-purple-200">
+
+  <!-- Ambient Glow Effects -->
+  <div
+    class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-[#36AED0]/10 blur-[120px] pointer-events-none glow-effect">
+  </div>
+  <div
+    class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-950/5 blur-[120px] pointer-events-none glow-effect"
+    style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-8">
+        <!-- Logo (Home Button) -->
+        <a href="../../../index.html" class="flex items-center space-x-3 group">
+          <div
+            class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#36AED0] to-cyan-600 flex items-center justify-center shadow-lg shadow-[#36AED0]/20 group-hover:scale-105 transition-transform duration-300">
+            <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+          </div>
+          <div>
+            <span
+              class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-cyan-400 bg-clip-text text-transparent"><span
+                data-i18n="landing_title_prefix"></span><span class="text-purple-500"
+                data-i18n="landing_title_suffix"></span></span>
+            <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold"
+              data-i18n="sub_logo"></span>
+          </div>
+        </a>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center space-x-2">
+          <!-- Database Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer"
+              data-nav-category="database">
+              <span data-i18n="nav_database">Database</span>
+              <i
+                class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+            </button>
+            <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+              <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+                <a href="../../../database/characters/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_characters"></a>
+                <a href="../../../database/weapons/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_weapons"></a>
+                <a href="../../../database/echoes/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_echoes"></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Build Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer"
+              data-nav-category="build">
+              <span data-i18n="nav_build">Build</span>
+              <i
+                class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+            </button>
+            <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+              <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+                <a href="../../../build/resonator/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_build_char_echo"></a>
+                <a href="../../../build/rotation/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_build_rotation"></a>
+                <a href="../../../build/calculation/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_build_calculation"></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Guide Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer"
+              data-nav-category="guide">
+              <span data-i18n="nav_guide">Guide</span>
+              <i
+                class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+            </button>
+            <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+              <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+                <a href="../../../guide/rotation/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_guide_rotation"></a>
+                <a href="../../../guide/toa/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_guide_toa"></a>
+                <a href="../../../guide/whiwa/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_guide_whiwa"></a>
+                <a href="../../../guide/metrix/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_guide_metrix"></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Other Dropdown -->
+          <div class="relative group">
+            <button
+              class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer"
+              data-nav-category="other">
+              <span data-i18n="nav_other">Other</span>
+              <i
+                class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+            </button>
+            <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+              <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+                <a href="../../../other/sites/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_other_sites"></a>
+                <a href="../../../other/about/index.html"
+                  class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all"
+                  data-i18n="menu_other_about"></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Action Button / Mobile Menu Trigger -->
+      <div class="flex items-center space-x-4">
+        <button id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sub-category Bar -->
+  <div
+    class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 mb-2 min-h-[40px] flex items-center justify-center sub-category-bar">
+    <!-- Back Button -->
+    <div class="absolute left-4 sm:left-6 lg:left-8 top-1/2 -translate-y-1/2">
+      <a href="../index.html"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 transition-all text-xs font-bold text-gray-300 hover:text-white">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span data-i18n="build_back_list">Back to Resonators List</span>
+      </a>
+    </div>
+
+    <!-- Centered Links -->
+    <div class="hidden md:flex justify-center items-center gap-6 text-sm text-gray-400 font-medium">
+      <a href="../index.html" class="text-purple-400 font-semibold flex items-center gap-1.5 transition-colors"
+        data-i18n="menu_build_char_echo">
+        <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
+        <span>Resonator</span>
+      </a>
+      <span class="text-white/10 font-light">|</span>
+      <a href="../../../build/rotation/index.html" class="hover:text-white flex items-center gap-1.5 transition-colors"
+        data-i18n="menu_build_rotation">
+        <i class="fa-solid fa-repeat text-sm"></i>
+        <span>Rotation</span>
+      </a>
+      <span class="text-white/10 font-light">|</span>
+      <a href="../../../build/calculation/index.html"
+        class="hover:text-white flex items-center gap-1.5 transition-colors" data-i18n="menu_build_calculation">
+        <i class="fa-solid fa-calculator text-sm"></i>
+        <span>Calculation</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu"
+    class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6 overflow-y-auto pb-12">
+    <div class="flex flex-col space-y-6">
+      <!-- Database Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3"
+          data-i18n="nav_database">Database</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../../database/characters/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_characters"></a>
+          <a href="../../../database/weapons/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_weapons"></a>
+          <a href="../../../database/echoes/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_echoes"></a>
+        </div>
+      </div>
+
+      <!-- Build Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3"
+          data-i18n="nav_build">Build</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../../build/resonator/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_build_char_echo"></a>
+          <a href="../../../build/rotation/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_build_rotation"></a>
+          <a href="../../../build/calculation/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_build_calculation"></a>
+        </div>
+      </div>
+
+      <!-- Guide Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3"
+          data-i18n="nav_guide">Guide</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../../guide/rotation/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_guide_rotation"></a>
+          <a href="../../../guide/toa/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_guide_toa"></a>
+          <a href="../../../guide/whiwa/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_guide_whiwa"></a>
+          <a href="../../../guide/metrix/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_guide_metrix"></a>
+        </div>
+      </div>
+
+      <!-- Other Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3"
+          data-i18n="nav_other">Other</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../../other/sites/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_other_sites"></a>
+          <a href="../../../other/about/index.html"
+            class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all"
+            onclick="toggleMobileMenu()" data-i18n="menu_other_about"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Header Section -->
+    <section class="py-12 bg-[#1a181f]/20 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+          <span class="w-2.5 h-8 bg-[#36AED0] rounded-full inline-block"></span>
+          <span>Sanhua Builder</span>
+        </h1>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="build_header_subtitle">Build custom resonator configurations,
+          adjust substats, and test simulated damage outputs in real-time.</p>
+      </div>
+    </section>
+
+    <!-- Content Workspace -->
+    <section class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+
+
+      <!-- Builder Details Workspace (Active character layout) -->
+      <div id="builder-workspace">
+
+        <!-- Active Character Brief Header -->
+        <div id="active-char-header"
+          class="bg-gradient-to-r from-purple-950/20 to-indigo-950/20 border border-purple-500/20 rounded-2xl p-5 mb-8 flex flex-col md:flex-row items-center gap-6">
+          <!-- Dynamic details -->
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- LEFT COLUMN: Builder Form (Tabbed panel) -->
+          <div class="lg:col-span-7 space-y-6">
+
+            <!-- Tabs Controls -->
+            <div class="flex bg-[#121016] border border-white/5 p-1.5 rounded-xl space-x-1">
+              <button onclick="switchTab('equip')" id="tab-btn-equip"
+                class="tab-btn flex-1 py-2.5 rounded-lg text-xs font-bold text-center transition-all bg-purple-600 text-white shadow">
+                <i class="fa-solid fa-shield-halved mr-1"></i> <span data-i18n="build_tab_equip">Equipment</span>
+              </button>
+              <button onclick="switchTab('substats')" id="tab-btn-substats"
+                class="tab-btn flex-1 py-2.5 rounded-lg text-xs font-bold text-center transition-all text-gray-400 hover:text-white hover:bg-white/5">
+                <i class="fa-solid fa-sliders mr-1"></i> <span data-i18n="build_tab_substats">Substats & Skills</span>
+              </button>
+              <button onclick="switchTab('nodes')" id="tab-btn-nodes"
+                class="tab-btn flex-1 py-2.5 rounded-lg text-xs font-bold text-center transition-all text-gray-400 hover:text-white hover:bg-white/5">
+                <i class="fa-solid fa-chart-nodes mr-1"></i> <span data-i18n="build_tab_nodes">Resonance Chain</span>
+              </button>
+            </div>
+
+            <!-- Tab 1: Equipment Panel -->
+            <div id="tab-panel-equip"
+              class="tab-panel bg-[#121016] border border-white/5 rounded-2xl p-6 sm:p-8 space-y-6">
+              <!-- Weapon Configuration -->
+              <div>
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-purple-500 pl-2">
+                  Weapon Specs</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label class="block text-xs text-gray-500 uppercase font-semibold mb-1.5"
+                      data-i18n="weapon_label">Weapon:</label>
+                    <select id="build-weapon-select" onchange="updateBuildWeapon()"
+                      class="w-full px-4 py-2.5 bg-[#0a080f] border border-white/10 rounded-xl text-sm text-gray-300 focus:outline-none focus:border-purple-500"></select>
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-500 uppercase font-semibold mb-1.5">Refinement rank:</label>
+                    <select id="build-weapon-rank" onchange="updateBuildWeapon()"
+                      class="w-full px-4 py-2.5 bg-[#0a080f] border border-white/10 rounded-xl text-sm text-gray-300 focus:outline-none focus:border-purple-500">
+                      <option value="1">Rank 1</option>
+                      <option value="2">Rank 2</option>
+                      <option value="3">Rank 3</option>
+                      <option value="4">Rank 4</option>
+                      <option value="5">Rank 5</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Weapon detail card preview -->
+                <div id="build-weapon-preview"
+                  class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 min-h-[80px]"></div>
+              </div>
+
+              <!-- Echo & Sonata Config -->
+              <div class="border-t border-white/5 pt-6">
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-purple-500 pl-2">
+                  Echo & Sonata Specs</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label class="block text-xs text-gray-500 uppercase font-semibold mb-1.5"
+                      data-i18n="echo_label">Sonata Set:</label>
+                    <select id="build-echo-sonata" onchange="updateBuildEcho()"
+                      class="w-full px-4 py-2.5 bg-[#0a080f] border border-white/10 rounded-xl text-sm text-gray-300 focus:outline-none focus:border-purple-500"></select>
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-500 uppercase font-semibold mb-1.5">Main Echo (4-Cost
+                      Slot):</label>
+                    <select id="build-echo-main" onchange="updateBuildEcho()"
+                      class="w-full px-4 py-2.5 bg-[#0a080f] border border-white/10 rounded-xl text-sm text-gray-300 focus:outline-none focus:border-purple-500"></select>
+                  </div>
+                </div>
+
+                <!-- Main Stats Layout -->
+                <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 bg-[#0a080f]/40 p-4 rounded-xl border border-white/5">
+                  <div class="col-span-full mb-1 flex justify-between">
+                    <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">Echo Main Stats
+                      Configuration</span>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1">Cost 4</label>
+                    <select id="build-mainstat-4"
+                      class="w-full px-2 py-1.5 bg-[#0a080f] border border-white/10 rounded-lg text-xs text-gray-300 focus:outline-none">
+                      <option value="Crit Rate%">Crit Rate%</option>
+                      <option value="Crit DMG%">Crit DMG%</option>
+                      <option value="ATK%">ATK%</option>
+                      <option value="HP%">HP%</option>
+                      <option value="DEF%">DEF%</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1">Cost 3 (1)</label>
+                    <select id="build-mainstat-3-1"
+                      class="w-full px-2 py-1.5 bg-[#0a080f] border border-white/10 rounded-lg text-xs text-gray-300 focus:outline-none"></select>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1">Cost 3 (2)</label>
+                    <select id="build-mainstat-3-2"
+                      class="w-full px-2 py-1.5 bg-[#0a080f] border border-white/10 rounded-lg text-xs text-gray-300 focus:outline-none"></select>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1">Cost 1 (1)</label>
+                    <select id="build-mainstat-1-1"
+                      class="w-full px-2 py-1.5 bg-[#0a080f] border border-white/10 rounded-lg text-xs text-gray-300 focus:outline-none">
+                      <option value="ATK%">ATK%</option>
+                      <option value="HP%">HP%</option>
+                      <option value="DEF%">DEF%</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1">Cost 1 (2)</label>
+                    <select id="build-mainstat-1-2"
+                      class="w-full px-2 py-1.5 bg-[#0a080f] border border-white/10 rounded-lg text-xs text-gray-300 focus:outline-none">
+                      <option value="ATK%">ATK%</option>
+                      <option value="HP%">HP%</option>
+                      <option value="DEF%">DEF%</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 2: Substats & Skills Panel -->
+            <div id="tab-panel-substats"
+              class="tab-panel hidden bg-[#121016] border border-white/5 rounded-2xl p-6 sm:p-8 space-y-6">
+              <!-- Skill levels sliders -->
+              <div>
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-purple-500 pl-2">
+                  Skill Upgrades Configuration</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1.5 flex justify-between">
+                      <span>Normal Attack</span>
+                      <span id="skill-val-normal" class="text-purple-400 font-bold">10</span>
+                    </label>
+                    <input type="range" id="build-skill-normal" min="1" max="10" value="10"
+                      oninput="document.getElementById('skill-val-normal').innerText = this.value; updateBuildSummary();"
+                      class="w-full accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1.5 flex justify-between">
+                      <span>Resonance Skill</span>
+                      <span id="skill-val-skill" class="text-purple-400 font-bold">10</span>
+                    </label>
+                    <input type="range" id="build-skill-skill" min="1" max="10" value="10"
+                      oninput="document.getElementById('skill-val-skill').innerText = this.value; updateBuildSummary();"
+                      class="w-full accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1.5 flex justify-between">
+                      <span>Forte Circuit</span>
+                      <span id="skill-val-forte" class="text-purple-400 font-bold">10</span>
+                    </label>
+                    <input type="range" id="build-skill-forte" min="1" max="10" value="10"
+                      oninput="document.getElementById('skill-val-forte').innerText = this.value; updateBuildSummary();"
+                      class="w-full accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1.5 flex justify-between">
+                      <span>Resonance Liberation</span>
+                      <span id="skill-val-liberation" class="text-purple-400 font-bold">10</span>
+                    </label>
+                    <input type="range" id="build-skill-liberation" min="1" max="10" value="10"
+                      oninput="document.getElementById('skill-val-liberation').innerText = this.value; updateBuildSummary();"
+                      class="w-full accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                  </div>
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1.5 flex justify-between">
+                      <span>Intro Skill</span>
+                      <span id="skill-val-intro" class="text-purple-400 font-bold">10</span>
+                    </label>
+                    <input type="range" id="build-skill-intro" min="1" max="10" value="10"
+                      oninput="document.getElementById('skill-val-intro').innerText = this.value; updateBuildSummary();"
+                      class="w-full accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Echo Substat Tuning Panel -->
+              <div class="border-t border-white/5 pt-6">
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-purple-500 pl-2">
+                  Echo Substats Tuning</h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <!-- Crit Rate -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Crit Rate% (Tuned Sum)</span>
+                      <span id="sub-val-crit-rate" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-crit-rate" min="0" max="60" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-crit-rate').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-crit-rate-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-crit-rate', 'sub-val-crit-rate', '%')">
+                    </div>
+                  </div>
+                  <!-- Crit DMG -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Crit DMG% (Tuned Sum)</span>
+                      <span id="sub-val-crit-dmg" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-crit-dmg" min="0" max="120" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-crit-dmg').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-crit-dmg-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-crit-dmg', 'sub-val-crit-dmg', '%')">
+                    </div>
+                  </div>
+                  <!-- ATK% -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>ATK% (Tuned Sum)</span>
+                      <span id="sub-val-atk-pct" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-atk-pct" min="0" max="80" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-atk-pct').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-atk-pct-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-atk-pct', 'sub-val-atk-pct', '%')">
+                    </div>
+                  </div>
+                  <!-- Flat ATK -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Flat ATK (Tuned Sum)</span>
+                      <span id="sub-val-atk-flat" class="text-purple-400 font-bold">0</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-atk-flat" min="0" max="300" step="1" value="0"
+                        oninput="document.getElementById('sub-val-atk-flat').innerText = this.value; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-atk-flat-num" step="1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-atk-flat', 'sub-val-atk-flat', '')">
+                    </div>
+                  </div>
+                  <!-- Energy Regen -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Energy Regen% (Tuned Sum)</span>
+                      <span id="sub-val-er" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-er" min="0" max="80" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-er').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-er-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-er', 'sub-val-er', '%')">
+                    </div>
+                  </div>
+                  <!-- Skill DMG -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Resonance Skill DMG% (Tuned Sum)</span>
+                      <span id="sub-val-skill-dmg" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-skill-dmg" min="0" max="80" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-skill-dmg').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-skill-dmg-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-skill-dmg', 'sub-val-skill-dmg', '%')">
+                    </div>
+                  </div>
+                  <!-- Ult DMG -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Resonance Liberation DMG% (Tuned Sum)</span>
+                      <span id="sub-val-lib-dmg" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-lib-dmg" min="0" max="80" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-lib-dmg').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-lib-dmg-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-lib-dmg', 'sub-val-lib-dmg', '%')">
+                    </div>
+                  </div>
+                  <!-- Basic DMG -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Basic Attack DMG% (Tuned Sum)</span>
+                      <span id="sub-val-basic-dmg" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-basic-dmg" min="0" max="80" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-basic-dmg').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-basic-dmg-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-basic-dmg', 'sub-val-basic-dmg', '%')">
+                    </div>
+                  </div>
+                  <!-- Heavy DMG -->
+                  <div>
+                    <label class="block text-xs text-gray-400 mb-1 flex justify-between">
+                      <span>Heavy Attack DMG% (Tuned Sum)</span>
+                      <span id="sub-val-heavy-dmg" class="text-purple-400 font-bold">0%</span>
+                    </label>
+                    <div class="flex items-center gap-2">
+                      <input type="range" id="sub-heavy-dmg" min="0" max="80" step="0.1" value="0"
+                        oninput="document.getElementById('sub-val-heavy-dmg').innerText = this.value + '%'; updateBuildSummary();"
+                        class="flex-grow accent-purple-600 bg-white/5 rounded-lg appearance-none h-1.5">
+                      <input type="number" id="sub-heavy-dmg-num" step="0.1"
+                        class="w-16 px-2 py-1 bg-[#0a080f] border border-white/10 rounded text-center text-xs"
+                        oninput="syncRange(this, 'sub-heavy-dmg', 'sub-val-heavy-dmg', '%')">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tab 3: Resonance Chain Nodes Panel -->
+            <div id="tab-panel-nodes"
+              class="tab-panel hidden bg-[#121016] border border-white/5 rounded-2xl p-6 sm:p-8 space-y-6">
+              <div>
+                <h4
+                  class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-purple-500 pl-2">
+                  Resonance Chain (Sequence Upgrade Nodes)</h4>
+
+                <!-- Circular sequence nodes grid S0 to S6 -->
+                <div
+                  class="flex flex-wrap justify-center items-center gap-4 py-4 bg-[#0a080f]/50 rounded-xl border border-white/5 mb-6">
+                  <div class="text-center font-bold text-xs text-gray-500 w-full mb-2">Toggle sequence upgrade level
+                  </div>
+                  <button id="btn-seq-0" onclick="setSequence(0)"
+                    class="w-12 h-12 rounded-full bg-purple-600 border-2 border-purple-400 text-white font-bold flex items-center justify-center transition-all scale-105 shadow-lg shadow-purple-500/20 cursor-pointer">S0</button>
+                  <button id="btn-seq-1" onclick="setSequence(1)"
+                    class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S1</button>
+                  <button id="btn-seq-2" onclick="setSequence(2)"
+                    class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S2</button>
+                  <button id="btn-seq-3" onclick="setSequence(3)"
+                    class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S3</button>
+                  <button id="btn-seq-4" onclick="setSequence(4)"
+                    class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S4</button>
+                  <button id="btn-seq-5" onclick="setSequence(5)"
+                    class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S5</button>
+                  <button id="btn-seq-6" onclick="setSequence(6)"
+                    class="w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer">S6</button>
+                </div>
+
+                <!-- Active sequence card description -->
+                <div id="selected-seq-card"
+                  class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex gap-4 items-start transition-all min-h-[90px]">
+                  <div class="text-gray-500 text-xs py-4 text-center w-full">Select a sequence node to view description.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Real-Time Stats & Simulator Panel -->
+          <div class="lg:col-span-5 space-y-6">
+
+            <!-- Build Save/Load Profile Manager -->
+            <div class="bg-[#121016] border border-white/5 rounded-2xl p-6">
+              <h3
+                class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-folder-open text-purple-500"></i>
+                <span data-i18n="build_save_title">Profile Manager</span>
+              </h3>
+
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1">Load Custom Build</label>
+                  <select id="build-load-select" onchange="loadSelectedBuild()"
+                    class="w-full px-4 py-2.5 bg-[#0a080f] border border-white/10 rounded-xl text-xs text-gray-300 focus:outline-none focus:border-purple-500">
+                    <option value="" data-i18n="build_load_placeholder">Select Saved Build...</option>
+                  </select>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div class="sm:col-span-2">
+                    <input type="text" id="build-name-input"
+                      class="w-full px-4 py-2.5 bg-[#0a080f] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500"
+                      placeholder="Enter Build Name..." data-i18n-placeholder="build_name_placeholder">
+                  </div>
+                  <div>
+                    <button onclick="saveBuildLocal()"
+                      class="w-full py-2.5 bg-purple-600 hover:bg-purple-500 text-white rounded-xl text-xs font-bold transition-all shadow-md cursor-pointer flex items-center justify-center gap-1">
+                      <i class="fa-solid fa-floppy-disk"></i> <span data-i18n="build_save_btn">Save Build</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3 border-t border-white/5 pt-4">
+                  <button onclick="exportBuildJson()"
+                    class="py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white rounded-xl text-xs font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5">
+                    <i class="fa-solid fa-download text-purple-400"></i> <span data-i18n="build_download_btn">Download
+                      JSON</span>
+                  </button>
+                  <div class="relative">
+                    <input type="file" id="build-file-input" onchange="importBuildJson(event)"
+                      class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
+                    <div
+                      class="w-full py-2.5 bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 hover:text-white rounded-xl text-xs font-semibold transition-all flex items-center justify-center gap-1.5 pointer-events-none">
+                      <i class="fa-solid fa-file-import text-purple-400"></i> <span data-i18n="build_import_btn">Import
+                        JSON</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Sheet Panel -->
+            <div class="bg-[#121016] border border-white/5 rounded-2xl p-6">
+              <h3
+                class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-file-invoice text-purple-500"></i>
+                <span>Calculated Stats Sheet</span>
+              </h3>
+
+              <div class="space-y-3 text-xs bg-[#0a080f]/50 p-4 rounded-xl border border-white/5">
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                  <span class="text-gray-500">Base ATK (Resonator + Weapon)</span>
+                  <span id="stat-base-atk" class="text-white font-mono font-bold">--</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                  <span class="text-gray-500 font-semibold">Total ATK</span>
+                  <span id="stat-total-atk" class="text-white font-mono font-bold text-sm">--</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                  <span class="text-gray-500">Crit Rate%</span>
+                  <span id="stat-crit-rate" class="text-white font-mono font-bold">--</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                  <span class="text-gray-500">Crit DMG%</span>
+                  <span id="stat-crit-dmg" class="text-white font-mono font-bold">--</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-white/5 pb-2">
+                  <span class="text-gray-500">Energy Regen%</span>
+                  <span id="stat-er" class="text-white font-mono font-bold">--</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-500">Attribute DMG Bonus%</span>
+                  <span id="stat-element-dmg" class="text-white font-mono font-bold">--</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Combat expected damage calculator -->
+            <div class="bg-[#121016] border border-white/5 rounded-2xl p-6">
+              <h3
+                class="font-display font-bold text-sm text-white uppercase tracking-wider mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-calculator text-purple-500"></i>
+                <span>Combat Expected Damage</span>
+              </h3>
+
+              <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1.5">Skill Multiplier %</label>
+                    <input type="number" id="sim-skill-mult" value="300" oninput="updateBuildSummary()"
+                      class="w-full px-3 py-2 bg-[#0a080f] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500">
+                  </div>
+                  <div>
+                    <label class="block text-[10px] text-gray-500 uppercase font-bold mb-1.5">Enemy Defense Shred
+                      %</label>
+                    <input type="number" id="sim-def-shred" value="0" min="0" max="100" oninput="updateBuildSummary()"
+                      class="w-full px-3 py-2 bg-[#0a080f] border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-purple-500">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 gap-3.5 border-t border-white/5 pt-4">
+                  <!-- Non-Crit Hit -->
+                  <div class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex justify-between items-center">
+                    <div>
+                      <span class="block text-[10px] text-gray-500 uppercase font-bold tracking-wider"
+                        data-i18n="calc_label_non_crit">Non-Crit Hit</span>
+                      <span id="output-non-crit" class="s-name flex-align-center text-lg font-bold text-white font-mono"
+                        style="font-size: calc(32 * var(--gpx));">--</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-400">
+                      <i class="fa-solid fa-burst"></i>
+                    </div>
+                  </div>
+
+                  <!-- Critical Hit -->
+                  <div
+                    class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex justify-between items-center border-purple-500/20">
+                    <div>
+                      <span class="block text-[10px] text-purple-400 uppercase font-bold tracking-wider"
+                        data-i18n="calc_label_crit">Critical Hit</span>
+                      <span id="output-crit"
+                        class="s-name flex-align-center text-xl font-bold text-purple-400 font-mono"
+                        style="font-size: calc(32 * var(--gpx));">--</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-400">
+                      <i class="fa-solid fa-bolt"></i>
+                    </div>
+                  </div>
+
+                  <!-- Expected Average -->
+                  <div
+                    class="bg-[#0a080f]/50 p-4 rounded-xl border border-white/5 flex justify-between items-center border-yellow-500/20">
+                    <div>
+                      <span class="block text-[10px] text-yellow-400 uppercase font-bold tracking-wider"
+                        data-i18n="calc_label_average">Average Expected Damage</span>
+                      <span id="output-average"
+                        class="s-name flex-align-center text-xl font-bold text-yellow-400 font-mono"
+                        style="font-size: calc(32 * var(--gpx));">--</span>
+                    </div>
+                    <div class="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400">
+                      <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guide stats target reminder -->
+            <div class="bg-[#121016] border border-white/5 rounded-2xl p-6">
+              <h3
+                class="font-display font-bold text-sm text-white uppercase tracking-wider mb-3 flex items-center gap-2">
+                <i class="fa-solid fa-circle-info text-purple-400"></i>
+                <span>Builder Guidelines</span>
+              </h3>
+              <p class="text-xs text-gray-400 leading-relaxed">
+                To maximize damage scaling, fine-tune your resonators around a target 1:2 ratio for Critical Rate% to
+                Critical Damage%. Standard level 90 enemies have 10% base resistance and 50% defense damage mitigation.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#0a080f] border-t border-white/5 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <div class="flex items-center space-x-3">
+          <div class="w-8 h-8 rounded-lg bg-purple-600 flex items-center justify-center text-white">
+            <i class="fa-solid fa-wand-magic-sparkles text-xs"></i>
+          </div>
+          <span class="font-display font-bold text-lg tracking-wide text-white">WUWA<span
+              class="text-purple-500">.AIO</span></span>
+        </div>
+        <p class="text-xs text-gray-500 text-center md:text-right" data-i18n="footer_disclaimer"></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navigation and layout listeners
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function toggleMobileMenu() {
+      mobileMenu.classList.toggle('hidden');
+      const icon = mobileMenuBtn.querySelector('i');
+      if (mobileMenu.classList.contains('hidden')) {
+        icon.className = 'fa-solid fa-bars text-xl';
+      } else {
+        icon.className = 'fa-solid fa-xmark text-xl';
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.className = 'tab-btn flex-1 py-2.5 rounded-lg text-xs font-bold text-center transition-all text-gray-400 hover:text-white hover:bg-white/5';
+      });
+
+      document.getElementById(`tab-panel-${tabId}`).classList.remove('hidden');
+      document.getElementById(`tab-btn-${tabId}`).className = 'tab-btn flex-1 py-2.5 rounded-lg text-xs font-bold text-center transition-all bg-purple-600 text-white shadow';
+    }
+
+    function syncRange(numEl, rangeId, displayId, suffix) {
+      const rangeEl = document.getElementById(rangeId);
+      const displayEl = document.getElementById(displayId);
+      if (rangeEl && displayEl) {
+        let val = parseFloat(numEl.value) || 0;
+        val = Math.min(parseFloat(rangeEl.max), Math.max(parseFloat(rangeEl.min), val));
+        rangeEl.value = val;
+        displayEl.innerText = val + suffix;
+        updateBuildSummary();
+      }
+    }
+
+    // Dynamic Database State
+    let masterCharacters = [];
+    let masterWeapons = {};
+    let masterEchoes = {};
+    let masterSonatas = {};
+    let activeCharacter = null;
+
+    // Active Build State
+    window.buildState = {
+      weaponId: '',
+      refinement: 1,
+      sonataId: '',
+      mainEchoId: '',
+      mainStats: {
+        cost4: 'Crit Rate%',
+        cost3_1: 'ATK%',
+        cost3_2: 'ATK%',
+        cost1_1: 'ATK%',
+        cost1_2: 'ATK%'
+      },
+      substats: {
+        crit_rate: 0.0,
+        crit_dmg: 0.0,
+        atk_pct: 0.0,
+        atk_flat: 0,
+        er: 0.0,
+        skill_dmg: 0.0,
+        lib_dmg: 0.0,
+        basic_dmg: 0.0,
+        heavy_dmg: 0.0
+      },
+      skills: {
+        normal: 10,
+        skill: 10,
+        forte: 10,
+        liberation: 10,
+        intro: 10
+      },
+      sequence: 0,
+      team: {
+        slot2: { charId: '', weaponId: '', echoId: '', sonataId: '' },
+        slot3: { charId: '', weaponId: '', echoId: '', sonataId: '' }
+      }
+    };
+
+    // Load master database arrays
+    async function loadMasterData() {
+      try {
+        const [weaponsRes, echoesRes, sonatasRes, charactersRes] = await Promise.all([
+          fetch('../../../assets/data/weapons.json').then(r => r.json()),
+          fetch('../../../assets/data/echoes.json').then(r => r.json()),
+          fetch('../../../assets/data/sonatas.json').then(r => r.json()),
+          fetch('../../../assets/data/characters.json').then(r => r.json())
+        ]);
+        masterWeapons = weaponsRes;
+        masterEchoes = echoesRes;
+        masterSonatas = sonatasRes;
+        masterCharacters = charactersRes;
+
+        // Hide absolute loading block and reveal builder i18n
+        if (window.wuwaI18n) {
+          window.wuwaI18n.showPage();
+        }
+      } catch (e) {
+        console.error("Failed to fetch builder configuration datasets:", e);
+      }
+    }
+
+    // Select character as active resonator
+    function selectResonator(id) {
+      const character = masterCharacters.find(c => c.id === id);
+      if (!character) return;
+
+      activeCharacter = character;
+
+      renderActiveCharHeader();
+      initializeBuilderFields();
+
+      // Load saved custom profiles dropdown
+      refreshSavedBuildsDropdown();
+
+      // Load presets or guide defaults immediately if no custom state loaded
+      const saved = JSON.parse(localStorage.getItem(`wuwa_builds_${activeCharacter.id}`)) || {};
+      const savedNames = Object.keys(saved);
+      if (savedNames.length > 0) {
+        document.getElementById('build-load-select').value = savedNames[0];
+        loadSelectedBuild();
+      } else {
+        applyGuideDefaults();
+      }
+    }
+
+    // Render active character banner
+    function renderActiveCharHeader() {
+      const header = document.getElementById('active-char-header');
+      if (!header) return;
+
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+      const c = activeCharacter;
+
+      const attrText = c.attribute.en;
+      const attrColors = {
+        Spectro: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+        Fusion: 'bg-red-500/20 text-red-300 border-red-500/30',
+        Electro: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+        Aero: 'bg-teal-500/20 text-teal-300 border-teal-500/30',
+        Havoc: 'bg-pink-500/20 text-pink-300 border-pink-500/30',
+        Glacio: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30'
+      };
+      const bClass = attrColors[attrText] || 'bg-gray-500/20 text-gray-300';
+      const weaponText = c.weaponType.en;
+
+      let iconSrc = `../../../assets/images/characters/${c.id}/icon.png`;
+      if (c.id === 'rover_havoc' || c.id.startsWith('rover')) {
+        const isFrover = localStorage.getItem('frover_mode') === 'true';
+        const roverFolder = isFrover ? 'frover' : 'rover';
+        const attrId = c.attribute.en.toLowerCase();
+        iconSrc = `../../../assets/images/characters/${roverFolder}/${attrId}/icon.png`;
+      }
+
+      header.innerHTML = `
+        <div class="w-20 h-20 bg-white/5 rounded-2xl border border-white/10 flex items-center justify-center overflow-hidden shrink-0 relative p-1.5">
+          <img src="${iconSrc}" class="w-full h-full object-contain relative z-10" onerror="this.src='../../../assets/images/characters/default.png'">
+        </div>
+        <div class="flex-grow text-center md:text-left space-y-2">
+          <div class="flex flex-col md:flex-row md:items-center gap-2.5">
+            <h2 class="font-display font-extrabold text-2xl text-white tracking-wide">${c.name[lang] || c.name.en}</h2>
+            <div class="flex justify-center gap-1.5">
+              <span class="text-[10px] border px-2 py-0.5 rounded font-bold uppercase tracking-wider ${bClass}">${c.attribute[lang] || c.attribute.en}</span>
+              <span class="text-[10px] bg-white/5 border border-white/10 px-2 py-0.5 rounded font-bold uppercase tracking-wider text-gray-300">${weaponText}</span>
+            </div>
+          </div>
+          <p class="text-xs text-gray-400 leading-relaxed font-light">${c.description[lang] || c.description.en}</p>
+        </div>
+      `;
+    }
+
+    // Populate drop-downs and input ranges
+    function initializeBuilderFields() {
+      const c = activeCharacter;
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+
+      // 1. Weapon Selector (Filtered by character compatibility)
+      const wType = c.weaponType.en.toLowerCase().replace(/s$/, '');
+      const filteredWeapons = Object.values(masterWeapons).filter(w => w.type.toLowerCase().replace(/s$/, '') === wType);
+
+      const wSelect = document.getElementById('build-weapon-select');
+      populateDropdown(wSelect, filteredWeapons.map(w => ({ value: w.id, label: w.name[lang] || w.name.en })), filteredWeapons[0] ? filteredWeapons[0].id : '');
+
+      // 2. Sonata Set dropdown
+      const sonataSelect = document.getElementById('build-echo-sonata');
+      populateDropdown(sonataSelect, Object.values(masterSonatas).map(s => ({ value: s.id, label: s.name[lang] || s.name.en })), Object.keys(masterSonatas)[0]);
+
+      // 3. Main Echo dropdown
+      const mainEchoSelect = document.getElementById('build-echo-main');
+      populateDropdown(mainEchoSelect, Object.values(masterEchoes).map(e => ({ value: e.id, label: e.name[lang] || e.name.en })), Object.keys(masterEchoes)[0]);
+
+      // 4. Element specific cost-3 dropdown items (matching resonator element)
+      const elementList = [
+        { value: 'ATK%', label: 'ATK%' },
+        { value: 'Energy Regen%', label: 'Energy Regen%' },
+        { value: 'HP%', label: 'HP%' },
+        { value: 'DEF%', label: 'DEF%' },
+        { value: 'Spectro DMG%', label: 'Spectro DMG%' },
+        { value: 'Fusion DMG%', label: 'Fusion DMG%' },
+        { value: 'Electro DMG%', label: 'Electro DMG%' },
+        { value: 'Aero DMG%', label: 'Aero DMG%' },
+        { value: 'Havoc DMG%', label: 'Havoc DMG%' },
+        { value: 'Glacio DMG%', label: 'Glacio DMG%' }
+      ];
+
+      const cost3_1 = document.getElementById('build-mainstat-3-1');
+      const cost3_2 = document.getElementById('build-mainstat-3-2');
+      const activeElementDmg = `${c.attribute.en} DMG%`;
+
+      populateDropdown(cost3_1, elementList, activeElementDmg);
+      populateDropdown(cost3_2, elementList, activeElementDmg);
+
+      // On-change listeners
+      cost3_1.onchange = updateBuildSummary;
+      cost3_2.onchange = updateBuildSummary;
+      document.getElementById('build-mainstat-4').onchange = updateBuildSummary;
+      document.getElementById('build-mainstat-1-1').onchange = updateBuildSummary;
+      document.getElementById('build-mainstat-1-2').onchange = updateBuildSummary;
+
+      // 5. Teammates selectors (excluding active character)
+      const otherChars = masterCharacters.filter(item => item.id !== c.id);
+      const teamOptions = [
+        { value: '', label: '-- Select --' },
+        ...otherChars.map(item => ({ value: item.id, label: item.name[lang] || item.name.en }))
+      ];
+
+      populateDropdown(document.getElementById('build-team-slot2-char'), teamOptions, '');
+      populateDropdown(document.getElementById('build-team-slot3-char'), teamOptions, '');
+    }
+
+    function populateDropdown(selectEl, options, selectedVal) {
+      if (!selectEl) return;
+      selectEl.innerHTML = '';
+      options.forEach(opt => {
+        const option = document.createElement('option');
+        option.value = opt.value;
+        option.textContent = opt.label;
+        if (opt.value === selectedVal) {
+          option.selected = true;
+        }
+        selectEl.appendChild(option);
+      });
+    }
+
+    function applyGuideDefaults() {
+      const c = activeCharacter;
+      if (!c) return;
+
+      // Reset values
+      document.getElementById('build-weapon-rank').value = "1";
+      window.buildState.refinement = 1;
+
+      // First recommended weapon
+      const firstRecWeapon = c.recommWeapons && c.recommWeapons[0] ? c.recommWeapons[0].id : '';
+      if (firstRecWeapon && document.getElementById('build-weapon-select')) {
+        document.getElementById('build-weapon-select').value = firstRecWeapon;
+        window.buildState.weaponId = firstRecWeapon;
+      }
+
+      // Recommended Sonata & Main Echo
+      const firstRecEcho = c.recommEcho && Array.isArray(c.recommEcho) ? c.recommEcho[0] : c.recommEcho;
+      if (firstRecEcho) {
+        if (document.getElementById('build-echo-sonata')) {
+          document.getElementById('build-echo-sonata').value = firstRecEcho.sonata;
+          window.buildState.sonataId = firstRecEcho.sonata;
+        }
+        if (document.getElementById('build-echo-main')) {
+          document.getElementById('build-echo-main').value = firstRecEcho.mainSlotEcho;
+          window.buildState.mainEchoId = firstRecEcho.mainSlotEcho;
+        }
+
+        // Apply main stats values
+        if (firstRecEcho.cost4 && firstRecEcho.cost4.en) {
+          const val4 = firstRecEcho.cost4.en.includes('Crit Rate') ? 'Crit Rate%' : 'Crit DMG%';
+          document.getElementById('build-mainstat-4').value = val4;
+        }
+        if (firstRecEcho.cost3 && firstRecEcho.cost3.en) {
+          const parts = firstRecEcho.cost3.en.split('/');
+          const val3_1 = parts[0] ? parts[0].trim() : `${c.attribute.en} DMG%`;
+          const val3_2 = parts[1] ? parts[1].trim() : `${c.attribute.en} DMG%`;
+          document.getElementById('build-mainstat-3-1').value = val3_1;
+          document.getElementById('build-mainstat-3-2').value = val3_2;
+        }
+        if (firstRecEcho.cost1 && firstRecEcho.cost1.en) {
+          const parts = firstRecEcho.cost1.en.split('/');
+          const val1_1 = parts[0] ? parts[0].trim() : 'ATK%';
+          const val1_2 = parts[1] ? parts[1].trim() : 'ATK%';
+          document.getElementById('build-mainstat-1-1').value = val1_1;
+          document.getElementById('build-mainstat-1-2').value = val1_2;
+        }
+      }
+
+      // Reset sliders
+      const sliders = [
+        'sub-crit-rate', 'sub-crit-dmg', 'sub-atk-pct', 'sub-atk-flat',
+        'sub-er', 'sub-skill-dmg', 'sub-lib-dmg', 'sub-basic-dmg', 'sub-heavy-dmg'
+      ];
+      sliders.forEach(id => {
+        const rangeEl = document.getElementById(id);
+        const numEl = document.getElementById(id + '-num');
+        const displayEl = document.getElementById(id.replace('sub', 'sub-val'));
+        if (rangeEl) rangeEl.value = 0;
+        if (numEl) numEl.value = 0;
+        if (displayEl) displayEl.innerText = id.includes('flat') ? '0' : '0%';
+      });
+
+      // Reset skills
+      const skillKeys = ['normal', 'skill', 'forte', 'liberation', 'intro'];
+      skillKeys.forEach(k => {
+        const el = document.getElementById(`build-skill-${k}`);
+        const displayEl = document.getElementById(`skill-val-${k}`);
+        if (el) el.value = 10;
+        if (displayEl) displayEl.innerText = "10";
+      });
+
+      // Reset sequence & team
+      setSequence(0);
+      const team2Char = document.getElementById('build-team-slot2-char');
+      const team3Char = document.getElementById('build-team-slot3-char');
+      if (team2Char) team2Char.value = '';
+      if (team3Char) team3Char.value = '';
+      updateTeamSlot(2);
+      updateTeamSlot(3);
+
+      updateBuildWeapon();
+      updateBuildEcho();
+      updateBuildSummary();
+    }
+
+    window.updateBuildWeapon = function () {
+      if (!masterWeapons) return;
+      const select = document.getElementById('build-weapon-select');
+      const rankSelect = document.getElementById('build-weapon-rank');
+      if (!select || !rankSelect) return;
+
+      const weaponId = select.value;
+      const rank = parseInt(rankSelect.value, 10);
+      const weapon = masterWeapons[weaponId];
+      if (!weapon) return;
+
+      window.buildState.weaponId = weaponId;
+      window.buildState.refinement = rank;
+
+      const preview = document.getElementById('build-weapon-preview');
+      if (preview) {
+        const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+        const nameText = weapon.name[lang] || weapon.name.en;
+        const descText = weapon.desc[lang] || weapon.desc.en;
+        const secStatText = weapon.secondaryStat[lang] || weapon.secondaryStat.en;
+
+        preview.innerHTML = `
+          <div class="flex items-start gap-4 w-full text-xs">
+            <div class="w-12 h-12 bg-white/5 rounded-lg flex items-center justify-center shrink-0 border border-white/10 overflow-hidden">
+              <img src="../../../assets/images/weapons/${weapon.id}.png" class="w-full h-full object-contain p-1" onerror="this.src='../../../assets/images/weapons/default.png'">
+            </div>
+            <div class="flex-grow">
+              <h4 class="text-sm font-bold text-white flex items-center gap-2">
+                ${nameText}
+                <span class="text-[10px] bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 px-1.5 py-0.5 rounded font-bold">Rank ${rank}</span>
+              </h4>
+              <div class="grid grid-cols-2 gap-4 mt-2 text-xs text-gray-400">
+                <div class="s-name flex-align-center"><span class="text-gray-500 mr-1">Base ATK:</span> <span class="text-white font-semibold">${weapon.baseAtk}</span></div>
+                <div class="s-name flex-align-center"><span class="text-gray-500 mr-1">Secondary:</span> <span class="text-white font-semibold">${secStatText}</span></div>
+              </div>
+              <p class="text-xs text-gray-300 mt-2 italic leading-relaxed border-t border-white/5 pt-2">${descText}</p>
+            </div>
+          </div>
+        `;
+      }
+
+      window.updateBuildSummary();
+    };
+
+    window.updateBuildEcho = function () {
+      if (!masterSonatas || !masterEchoes) return;
+      const sonataSelect = document.getElementById('build-echo-sonata');
+      const mainSelect = document.getElementById('build-echo-main');
+      if (!sonataSelect || !mainSelect) return;
+
+      window.buildState.sonataId = sonataSelect.value;
+      window.buildState.mainEchoId = mainSelect.value;
+
+      window.updateBuildSummary();
+    };
+
+    window.updateTeamSlot = function (slotNum) {
+      if (!masterCharacters || !masterWeapons || !masterEchoes || !masterSonatas) return;
+      const charSelect = document.getElementById(`build-team-slot${slotNum}-char`);
+      const detailsDiv = document.getElementById(`build-team-slot${slotNum}-details`);
+      if (!charSelect || !detailsDiv) return;
+
+      const charId = charSelect.value;
+
+      if (!charId) {
+        detailsDiv.classList.add('hidden');
+        window.buildState.team[`slot${slotNum}`] = { charId: '', weaponId: '', echoId: '', sonataId: '' };
+        window.updateBuildSummary();
+        return;
+      }
+
+      detailsDiv.classList.remove('hidden');
+
+      const char = masterCharacters.find(c => c.id === charId);
+      if (!char) return;
+
+      const wSelect = document.getElementById(`build-team-slot${slotNum}-weapon`);
+      const eSelect = document.getElementById(`build-team-slot${slotNum}-echo`);
+      const sSelect = document.getElementById(`build-team-slot${slotNum}-sonata`);
+
+      const wType = char.weaponType.en;
+      const charWeapons = Object.values(masterWeapons).filter(w => w.type.toLowerCase().replace(/s$/, '') === wType.toLowerCase().replace(/s$/, ''));
+
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+
+      populateDropdown(wSelect, charWeapons.map(w => ({ value: w.id, label: w.name[lang] || w.name.en })),
+        window.buildState.team[`slot${slotNum}`].weaponId || (char.recommWeapons[0] ? char.recommWeapons[0].id : charWeapons[0].id)
+      );
+
+      populateDropdown(eSelect, Object.values(masterEchoes).map(e => ({ value: e.id, label: e.name[lang] || e.name.en })),
+        window.buildState.team[`slot${slotNum}`].echoId || (char.mainSlotEcho || Object.keys(masterEchoes)[0])
+      );
+
+      populateDropdown(sSelect, Object.values(masterSonatas).map(s => ({ value: s.id, label: s.name[lang] || s.name.en })),
+        window.buildState.team[`slot${slotNum}`].sonataId || (char.recommEcho && char.recommEcho[0] ? char.recommEcho[0].sonata : Object.keys(masterSonatas)[0])
+      );
+
+      window.buildState.team[`slot${slotNum}`] = {
+        charId: charId,
+        weaponId: wSelect.value,
+        echoId: eSelect.value,
+        sonataId: sSelect.value
+      };
+
+      wSelect.onchange = () => {
+        window.buildState.team[`slot${slotNum}`].weaponId = wSelect.value;
+        window.updateBuildSummary();
+      };
+      eSelect.onchange = () => {
+        window.buildState.team[`slot${slotNum}`].echoId = eSelect.value;
+        window.updateBuildSummary();
+      };
+      sSelect.onchange = () => {
+        window.buildState.team[`slot${slotNum}`].sonataId = sSelect.value;
+        window.updateBuildSummary();
+      };
+
+      window.updateBuildSummary();
+    };
+
+    window.setSequence = function (val) {
+      window.buildState.sequence = val;
+      for (let i = 0; i <= 6; i++) {
+        const btn = document.getElementById(`btn-seq-${i}`);
+        if (!btn) continue;
+        if (i === val) {
+          btn.className = 'w-12 h-12 rounded-full bg-purple-600 border-2 border-purple-400 text-white font-bold flex items-center justify-center transition-all scale-105 shadow-lg shadow-purple-500/20 cursor-pointer seq-node-active';
+        } else {
+          btn.className = 'w-12 h-12 rounded-full border border-white/10 text-white font-bold flex items-center justify-center transition-all hover:bg-white/5 cursor-pointer';
+        }
+      }
+
+      const card = document.getElementById('selected-seq-card');
+      if (card && activeCharacter) {
+        const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+        if (val === 0) {
+          const s0Title = lang === 'ko' ? 'S0: 기본 공명자' : 'S0: Base Resonator';
+          const s0Desc = lang === 'ko' ? '활성화된 공명 사슬 노드가 없습니다.' : 'No Resonance Chain nodes activated.';
+          card.innerHTML = `
+            <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5 text-gray-500">
+              <i class="fa-solid fa-lock text-lg"></i>
+            </div>
+            <div class="flex-grow">
+              <h4 class="text-sm font-bold text-gray-400">${s0Title}</h4>
+              <p class="text-xs text-gray-500 mt-1 leading-relaxed">${s0Desc}</p>
+            </div>
+          `;
+        } else if (activeCharacter.recommSequence && activeCharacter.recommSequence[val - 1]) {
+          const seq = activeCharacter.recommSequence[val - 1];
+          const seqName = seq.name[lang] || seq.name.en;
+          const seqDesc = seq.description[lang] || seq.description.en;
+          const isRec = seq.isRecommended;
+          const badgeHtml = isRec ? `<span class="text-[10px] bg-purple-500/20 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded uppercase font-bold">Recommended</span>` : '';
+
+          let seqImgSrc = `../../../assets/images/characters/${activeCharacter.id}/sequence/${val}.png`;
+          if (activeCharacter.id === 'rover_havoc' || activeCharacter.id.startsWith('rover')) {
+            const isFrover = localStorage.getItem('frover_mode') === 'true';
+            const roverFolder = isFrover ? 'frover' : 'rover';
+            seqImgSrc = `../../../assets/images/characters/${roverFolder}/${activeCharacter.attribute.en.toLowerCase()}/sequence/${val}.png`;
+          }
+
+          card.innerHTML = `
+            <div class="w-12 h-12 rounded-lg bg-[#0a080f] flex items-center justify-center shrink-0 border border-white/10 overflow-hidden relative p-1.5">
+              <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/20 to-indigo-500/20 opacity-20 blur-[1px]"></div>
+              <img src="${seqImgSrc}" class="w-full h-full object-contain relative z-10" onerror="this.src='../../../assets/images/characters/default.png'">
+            </div>
+            <div class="flex-grow">
+              <h4 class="text-sm font-bold text-white flex items-center justify-between gap-2">
+                <span>${seqName}</span>
+                ${badgeHtml}
+              </h4>
+              <p class="text-xs text-gray-400 mt-1 leading-relaxed">${seqDesc}</p>
+            </div>
+          `;
+        }
+      }
+
+      window.updateBuildSummary();
+    };
+
+    window.updateBuildSummary = function () {
+      if (!activeCharacter) return;
+
+      // Pull substat inputs values
+      const substatsMap = {
+        crit_rate: 'sub-crit-rate',
+        crit_dmg: 'sub-crit-dmg',
+        atk_pct: 'sub-atk-pct',
+        atk_flat: 'sub-atk-flat',
+        er: 'sub-er',
+        skill_dmg: 'sub-skill-dmg',
+        lib_dmg: 'sub-lib-dmg',
+        basic_dmg: 'sub-basic-dmg',
+        heavy_dmg: 'sub-heavy-dmg'
+      };
+      for (const [key, id] of Object.entries(substatsMap)) {
+        const el = document.getElementById(id);
+        const numEl = document.getElementById(id + '-num');
+        if (el) {
+          window.buildState.substats[key] = parseFloat(el.value) || 0;
+          if (numEl && document.activeElement !== numEl) {
+            numEl.value = el.value;
+          }
+        }
+      }
+
+      // Pull skills values
+      const skillsMap = {
+        normal: 'build-skill-normal',
+        skill: 'build-skill-skill',
+        forte: 'build-skill-forte',
+        liberation: 'build-skill-liberation',
+        intro: 'build-skill-intro'
+      };
+      for (const [key, id] of Object.entries(skillsMap)) {
+        const el = document.getElementById(id);
+        if (el) {
+          window.buildState.skills[key] = parseInt(el.value, 10) || 1;
+        }
+      }
+
+      // Pull main stats values
+      const mainStatsMap = {
+        cost4: 'build-mainstat-4',
+        cost3_1: 'build-mainstat-3-1',
+        cost3_2: 'build-mainstat-3-2',
+        cost1_1: 'build-mainstat-1-1',
+        cost1_2: 'build-mainstat-1-2'
+      };
+      for (const [key, id] of Object.entries(mainStatsMap)) {
+        const el = document.getElementById(id);
+        if (el) {
+          window.buildState.mainStats[key] = el.value;
+        }
+      }
+
+      // CALCULATE COMBAT STATS SHEET
+      const charBaseAtk = activeCharacter.rarity === 5 ? 412 : 337; // Standard 90 base ATK estimates
+      const weapon = masterWeapons[window.buildState.weaponId];
+      const weaponBaseAtk = weapon ? weapon.baseAtk : 0;
+      const baseAtk = charBaseAtk + weaponBaseAtk;
+
+      // Calculate ATK% Sum
+      let atkPctSum = window.buildState.substats.atk_pct;
+
+      // Add weapon secondary if it is ATK%
+      if (weapon && weapon.secondaryStat.en.includes('ATK%')) {
+        atkPctSum += parseFloat(weapon.secondaryStat.en) || 0;
+      }
+
+      // Add main stats ATK%
+      const ms = window.buildState.mainStats;
+      if (ms.cost4 === 'ATK%') atkPctSum += 33.0;
+      if (ms.cost3_1 === 'ATK%') atkPctSum += 30.0;
+      if (ms.cost3_2 === 'ATK%') atkPctSum += 30.0;
+      if (ms.cost1_1 === 'ATK%') atkPctSum += 18.0;
+      if (ms.cost1_2 === 'ATK%') atkPctSum += 18.0;
+
+      // Add sonata 2pc/5pc ATK buffs (e.g. Lingering Tunes +10% 2pc, Rejuvenating +15% 5pc)
+      const activeSonata = masterSonatas[window.buildState.sonataId];
+      if (activeSonata) {
+        if (activeSonata.id === 'rejuvenating_glow') {
+          // If teammates are selected we assume rejuvenation buffs active
+          atkPctSum += 15.0;
+        }
+      }
+
+      // Flat ATK sum
+      let flatAtkSum = window.buildState.substats.atk_flat;
+      // Echoes base stats grant some default flat attack (approx 150 at level 90)
+      flatAtkSum += 150;
+
+      // Final Total ATK
+      const totalAtk = Math.round(baseAtk * (1 + atkPctSum / 100) + flatAtkSum);
+
+      // Crit Rate
+      let critRate = 5.0 + window.buildState.substats.crit_rate;
+      if (ms.cost4 === 'Crit Rate%') critRate += 22.0;
+      if (weapon && weapon.secondaryStat.en.includes('Crit Rate')) {
+        critRate += parseFloat(weapon.secondaryStat.en) || 0;
+      }
+
+      // Crit DMG
+      let critDmg = 150.0 + window.buildState.substats.crit_dmg;
+      if (ms.cost4 === 'Crit DMG%') critDmg += 44.0;
+      if (weapon && weapon.secondaryStat.en.includes('Crit DMG')) {
+        critDmg += parseFloat(weapon.secondaryStat.en) || 0;
+      }
+
+      // Energy Regen
+      let er = 100.0 + window.buildState.substats.er;
+      if (ms.cost3_1 === 'Energy Regen%') er += 32.0;
+      if (ms.cost3_2 === 'Energy Regen%') er += 32.0;
+      if (weapon && weapon.secondaryStat.en.includes('Energy Regen')) {
+        er += parseFloat(weapon.secondaryStat.en) || 0;
+      }
+      if (activeSonata && activeSonata.id === 'moonlit_clouds') {
+        er += 10.0; // 2pc set bonus
+      }
+
+      // Element DMG Bonus
+      let elementDmg = 0;
+      const attrMatch = `${activeCharacter.attribute.en} DMG%`;
+      if (ms.cost3_1 === attrMatch) elementDmg += 30.0;
+      if (ms.cost3_2 === attrMatch) elementDmg += 30.0;
+      if (ms.cost1_1 === attrMatch) elementDmg += 18.0;
+      if (ms.cost1_2 === attrMatch) elementDmg += 18.0;
+
+      if (activeSonata && activeSonata.effect_2pc.en.includes(activeCharacter.attribute.en)) {
+        elementDmg += 10.0;
+        if (activeSonata.effect_5pc.en.includes(activeCharacter.attribute.en)) {
+          // Assume average activation of 30% element DMG
+          elementDmg += 30.0;
+        }
+      }
+
+      // Update stat sheet elements
+      document.getElementById('stat-base-atk').textContent = baseAtk.toLocaleString();
+      document.getElementById('stat-total-atk').textContent = totalAtk.toLocaleString();
+      document.getElementById('stat-crit-rate').textContent = critRate.toFixed(1) + '%';
+      document.getElementById('stat-crit-dmg').textContent = critDmg.toFixed(1) + '%';
+      document.getElementById('stat-er').textContent = er.toFixed(1) + '%';
+      document.getElementById('stat-element-dmg').textContent = elementDmg.toFixed(1) + '%';
+
+      // COMBAT expected damage calculator simulation
+      const multInput = document.getElementById('sim-skill-mult');
+      const shredInput = document.getElementById('sim-def-shred');
+
+      const multiplier = (parseFloat(multInput.value) || 0) / 100;
+      const defShred = Math.min(100, Math.max(0, parseFloat(shredInput.value) || 0)) / 100;
+
+      // Base Damage
+      const baseDmg = totalAtk * multiplier;
+
+      // DMG Multipliers: Element bonus + Specific skill bonuses (assume averaging 20% bonus from skills / sequence / weapon passives)
+      const skillLevelBonus = (window.buildState.skills.skill - 1) * 0.05; // 5% skill scaling per level
+      const totalDmgBonusMult = 1 + (elementDmg / 100) + (window.buildState.substats.skill_dmg / 100) + skillLevelBonus;
+
+      // Target level 90 DEF and RES multipliers
+      const baseDefenderDef = 792 + 8 * 90;
+      const defAfterShred = baseDefenderDef * (1 - defShred);
+      const defMultiplier = 1520 / (1520 + defAfterShred);
+      const resMultiplier = 0.9; // 10% standard elemental resistance
+
+      // Final Non-crit hit
+      const nonCritDamage = Math.round(baseDmg * totalDmgBonusMult * defMultiplier * resMultiplier);
+
+      // Final Critical hit
+      const critDamage = Math.round(nonCritDamage * (critDmg / 100));
+
+      // Average expected damage
+      const rateClamped = Math.min(100, Math.max(0, critRate)) / 100;
+      const averageDamage = Math.round(nonCritDamage * (1 - rateClamped) + critDamage * rateClamped);
+
+      document.getElementById('output-non-crit').textContent = nonCritDamage.toLocaleString();
+      document.getElementById('output-crit').textContent = critDamage.toLocaleString();
+      document.getElementById('output-average').textContent = averageDamage.toLocaleString();
+    };
+
+    // Save/Load Profiles Local Storage
+    window.saveBuildLocal = function () {
+      if (!activeCharacter) return;
+      const nameInput = document.getElementById('build-name-input');
+      const name = nameInput.value.trim();
+      if (!name) {
+        alert(window.wuwaI18n && window.wuwaI18n.getLanguage() === 'ko' ? '빌드 이름을 입력해주세요.' : 'Please enter a build name.');
+        return;
+      }
+
+      let saved = {};
+      try {
+        saved = JSON.parse(localStorage.getItem(`wuwa_builds_${activeCharacter.id}`)) || {};
+      } catch (e) { }
+
+      saved[name] = JSON.parse(JSON.stringify(window.buildState));
+
+      try {
+        localStorage.setItem(`wuwa_builds_${activeCharacter.id}`, JSON.stringify(saved));
+      } catch (e) {
+        alert("Failed to write to localStorage. Storage may be full.");
+        return;
+      }
+
+      refreshSavedBuildsDropdown();
+      const select = document.getElementById('build-load-select');
+      if (select) select.value = name;
+      alert(window.wuwaI18n && window.wuwaI18n.getLanguage() === 'ko' ? '빌드가 로컬에 저장되었습니다!' : 'Build saved locally!');
+    };
+
+    window.loadSelectedBuild = function () {
+      if (!activeCharacter) return;
+      const select = document.getElementById('build-load-select');
+      const name = select.value;
+      if (!name) return;
+
+      let saved = {};
+      try {
+        saved = JSON.parse(localStorage.getItem(`wuwa_builds_${activeCharacter.id}`)) || {};
+      } catch (e) { }
+
+      const build = saved[name];
+      if (!build) return;
+
+      applyBuildState(build);
+      document.getElementById('build-name-input').value = name;
+    };
+
+    function applyBuildState(build) {
+      window.buildState = JSON.parse(JSON.stringify(build));
+
+      if (document.getElementById('build-weapon-select')) {
+        document.getElementById('build-weapon-select').value = build.weaponId;
+      }
+      if (document.getElementById('build-weapon-rank')) {
+        document.getElementById('build-weapon-rank').value = build.refinement;
+      }
+      if (document.getElementById('build-echo-sonata')) {
+        document.getElementById('build-echo-sonata').value = build.sonataId;
+      }
+      if (document.getElementById('build-echo-main')) {
+        document.getElementById('build-echo-main').value = build.mainEchoId;
+      }
+
+      const ms = build.mainStats || {};
+      const mainStatsMap = {
+        cost4: 'build-mainstat-4',
+        cost3_1: 'build-mainstat-3-1',
+        cost3_2: 'build-mainstat-3-2',
+        cost1_1: 'build-mainstat-1-1',
+        cost1_2: 'build-mainstat-1-2'
+      };
+      for (const [key, id] of Object.entries(mainStatsMap)) {
+        const el = document.getElementById(id);
+        if (el && ms[key]) {
+          el.value = ms[key];
+        }
+      }
+
+      const sub = build.substats || {};
+      const substatsMap = {
+        crit_rate: 'sub-crit-rate',
+        crit_dmg: 'sub-crit-dmg',
+        atk_pct: 'sub-atk-pct',
+        atk_flat: 'sub-atk-flat',
+        er: 'sub-er',
+        skill_dmg: 'sub-skill-dmg',
+        lib_dmg: 'sub-lib-dmg',
+        basic_dmg: 'sub-basic-dmg',
+        heavy_dmg: 'sub-heavy-dmg'
+      };
+      for (const [key, id] of Object.entries(substatsMap)) {
+        const el = document.getElementById(id);
+        const displayEl = document.getElementById(id.replace('sub', 'sub-val'));
+        if (el && typeof sub[key] !== 'undefined') {
+          el.value = sub[key];
+          if (displayEl) {
+            displayEl.innerText = sub[key] + (id.includes('flat') ? '' : '%');
+          }
+        }
+      }
+
+      const sk = build.skills || {};
+      const skillsMap = {
+        normal: 'build-skill-normal',
+        skill: 'build-skill-skill',
+        forte: 'build-skill-forte',
+        liberation: 'build-skill-liberation',
+        intro: 'build-skill-intro'
+      };
+      for (const [key, id] of Object.entries(skillsMap)) {
+        const el = document.getElementById(id);
+        const displayEl = document.getElementById(`skill-val-${key}`);
+        if (el && typeof sk[key] !== 'undefined') {
+          el.value = sk[key];
+          if (displayEl) displayEl.innerText = sk[key];
+        }
+      }
+
+      setSequence(build.sequence || 0);
+
+      const team = build.team || { slot2: {}, slot3: {} };
+      if (document.getElementById('build-team-slot2-char')) {
+        document.getElementById('build-team-slot2-char').value = team.slot2.charId || '';
+        updateTeamSlot(2);
+        if (team.slot2.charId) {
+          document.getElementById('build-team-slot2-weapon').value = team.slot2.weaponId || '';
+          document.getElementById('build-team-slot2-echo').value = team.slot2.echoId || '';
+          document.getElementById('build-team-slot2-sonata').value = team.slot2.sonataId || '';
+        }
+      }
+      if (document.getElementById('build-team-slot3-char')) {
+        document.getElementById('build-team-slot3-char').value = team.slot3.charId || '';
+        updateTeamSlot(3);
+        if (team.slot3.charId) {
+          document.getElementById('build-team-slot3-weapon').value = team.slot3.weaponId || '';
+          document.getElementById('build-team-slot3-echo').value = team.slot3.echoId || '';
+          document.getElementById('build-team-slot3-sonata').value = team.slot3.sonataId || '';
+        }
+      }
+
+      updateBuildWeapon();
+      updateBuildEcho();
+      updateBuildSummary();
+    }
+
+    function refreshSavedBuildsDropdown() {
+      const select = document.getElementById('build-load-select');
+      if (!select || !activeCharacter) return;
+
+      let saved = {};
+      try {
+        saved = JSON.parse(localStorage.getItem(`wuwa_builds_${activeCharacter.id}`)) || {};
+      } catch (e) { }
+
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+      const placeholderText = lang === 'ko' ? '저장된 빌드 선택...' : 'Select Saved Build...';
+      select.innerHTML = `<option value="">${placeholderText}</option>`;
+
+      for (const name of Object.keys(saved)) {
+        const option = document.createElement('option');
+        option.value = name;
+        option.textContent = name;
+        select.appendChild(option);
+      }
+    }
+
+    window.exportBuildJson = function () {
+      if (!activeCharacter) return;
+      window.updateBuildSummary();
+      const nameInput = document.getElementById('build-name-input');
+      const name = nameInput ? nameInput.value.trim() || 'MyBuild' : 'MyBuild';
+
+      const exportPayload = {
+        version: "wuwa-aio-build-v1",
+        characterId: activeCharacter.id,
+        name: name,
+        build: window.buildState
+      };
+
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportPayload, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `${activeCharacter.id}_build_${name.replace(/\s+/g, '_')}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    };
+
+    window.importBuildJson = function (event) {
+      if (!activeCharacter) return;
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        try {
+          const payload = JSON.parse(e.target.result);
+          if (payload.version !== "wuwa-aio-build-v1" || !payload.build) {
+            alert(window.wuwaI18n && window.wuwaI18n.getLanguage() === 'ko' ? '올바르지 않은 빌드 파일 형식입니다.' : 'Invalid build file format.');
+            return;
+          }
+          if (payload.characterId !== activeCharacter.id) {
+            const confirmMsg = window.wuwaI18n && window.wuwaI18n.getLanguage() === 'ko'
+              ? `이 빌드는 다른 캐릭터 (${payload.characterId}) 용으로 생성되었습니다. 현재 캐릭터 (${activeCharacter.id}) 에 불러오시겠습니까?`
+              : `This build was created for a different character (${payload.characterId}). Do you want to load it for the current character (${activeCharacter.id}) anyway?`;
+            if (!confirm(confirmMsg)) {
+              return;
+            }
+          }
+
+          applyBuildState(payload.build);
+          if (payload.name) {
+            document.getElementById('build-name-input').value = payload.name;
+          }
+          alert(window.wuwaI18n && window.wuwaI18n.getLanguage() === 'ko' ? '빌드 설정 파일을 성공적으로 불러왔습니다!' : 'Build file successfully loaded!');
+        } catch (err) {
+          alert(window.wuwaI18n && window.wuwaI18n.getLanguage() === 'ko' ? 'JSON 파싱 오류가 발생했습니다.' : 'Failed to parse JSON file.');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    };
+
+    const activeCharacterId = "sanhua";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadMasterData().then(() => {
+        selectResonator(activeCharacterId);
+      });
+
+      // Listen to i18n language change events to update dropdown content translations
+      window.addEventListener("wuwalangchange", (e) => {
+        if (activeCharacter) {
+          selectResonator(activeCharacter.id);
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

@@ -30,6 +30,22 @@
     nav_weapons: "Weapons",
     nav_quickswap: "Quick-Swap",
     nav_calculation: "Calculation",
+    nav_database: "Database",
+    nav_build: "Build",
+    nav_guide: "Guide",
+    nav_other: "Other",
+    menu_characters: "Characters",
+    menu_weapons: "Weapons",
+    menu_echoes: "Echoes",
+    menu_build_char_echo: "Resonator",
+    menu_build_rotation: "Rotation",
+    menu_build_calculation: "Calculation",
+    menu_guide_rotation: "Rotation",
+    menu_guide_toa: "ToA",
+    menu_guide_whiwa: "WhiWa",
+    menu_guide_metrix: "Metrix",
+    menu_other_sites: "WuWa Sites",
+    menu_other_about: "About",
     sub_logo: "All-in-One Database",
 
     // Landing Page
@@ -279,6 +295,7 @@
 
     // Detail Page Elements
     detail_btn_back: "Back to List",
+    detail_btn_configure: "Configure My Build",
     detail_weapon_title: "Weapon Recommendations",
     detail_echo_title: "Echo Setup & Substats",
     detail_best_set: "Best Set Sonata",
@@ -315,7 +332,9 @@
     build_download_btn: "Download JSON",
     build_import_btn: "Import JSON",
     build_load_placeholder: "Select Saved Build...",
-    build_name_placeholder: "Enter Build Name..."
+    build_name_placeholder: "Enter Build Name...",
+    build_header_title: "Resonator Builder",
+    build_header_subtitle: "Build custom resonator configurations, adjust substats, and test simulated damage outputs in real-time."
   };
 
   // Safe localStorage helper
@@ -496,12 +515,29 @@
   // Helper to check if a navigation link is active (works for both http/https and file:// protocols)
   function isLinkActive(link) {
     const href = link.getAttribute('href');
-    if (!href) return false;
+    const category = link.getAttribute('data-nav-category');
     try {
-      const linkUrl = new URL(href, window.location.href);
       const currentUrl = new URL(window.location.href);
-      const linkPath = linkUrl.pathname.replace(/\/$/, '');
       const currentPath = currentUrl.pathname.replace(/\/$/, '');
+
+      if (category) {
+        if (category === 'database') {
+          return currentPath.includes('/characters/') || currentPath.includes('/weapons/') || currentPath.includes('/echoes/');
+        }
+        if (category === 'build') {
+          return currentPath.includes('/build/');
+        }
+        if (category === 'guide') {
+          return currentPath.includes('/guide/');
+        }
+        if (category === 'other') {
+          return currentPath.includes('/other/');
+        }
+      }
+
+      if (!href) return false;
+      const linkUrl = new URL(href, window.location.href);
+      const linkPath = linkUrl.pathname.replace(/\/$/, '');
 
       if (linkPath.includes('/characters/index.html') || linkPath.endsWith('/characters')) {
         return currentPath.includes('/characters/');
@@ -512,11 +548,17 @@
       if (linkPath.includes('/weapons/index.html') || linkPath.endsWith('/weapons')) {
         return currentPath.includes('/weapons/');
       }
-      if (linkPath.includes('/quick-swap/index.html') || linkPath.endsWith('/quick-swap') || linkPath.includes('/quick-swap/detail.html')) {
-        return currentPath.includes('/quick-swap/');
+      if (linkPath.includes('/build/resonator/index.html') || linkPath.endsWith('/build/resonator')) {
+        return currentPath.includes('/build/resonator/');
       }
-      if (linkPath.includes('/calculation/index.html') || linkPath.endsWith('/calculation')) {
-        return currentPath.includes('/calculation/');
+      if (linkPath.includes('/build/rotation/index.html') || linkPath.endsWith('/build/rotation')) {
+        return currentPath.includes('/build/rotation/');
+      }
+      if (linkPath.includes('/build/calculation/index.html') || linkPath.endsWith('/build/calculation')) {
+        return currentPath.includes('/build/calculation/');
+      }
+      if (linkPath.includes('/guide/rotation/index.html') || linkPath.endsWith('/guide/rotation')) {
+        return currentPath.includes('/guide/rotation/');
       }
       return linkPath === currentPath;
     } catch (e) {
@@ -531,58 +573,83 @@
       const key = elem.getAttribute("data-i18n");
       const val = translateKey(key);
       if (val) {
-        if (key.startsWith('nav_')) {
-          const isMobile = elem.closest('#mobile-menu') !== null;
+        const isMenuOrNav = key.startsWith('nav_') || key.startsWith('menu_');
+
+        if (isMenuOrNav) {
           const prefix = getLocalesPathPrefix().replace('locales/', '');
           const isFrover = localStorage.getItem('frover_mode') === 'true';
 
           let iconName = '';
           let scale = 1.0;
 
-          if (key === 'nav_characters') {
+          if (key === 'nav_characters' || key === 'menu_characters') {
             iconName = isFrover ? 'char_icon_frover.png' : 'char_icon_rover.png';
-            scale = 1.0;
-          } else if (key === 'nav_echoes') {
+          } else if (key === 'nav_echoes' || key === 'menu_echoes') {
             iconName = 'sonata.png';
-            scale = 1.0; // Scale up to compensate for transparent margins in sonata.png
-          } else if (key === 'nav_weapons') {
+          } else if (key === 'nav_weapons' || key === 'menu_weapons') {
             iconName = 'weapon.png';
-            scale = 1.0; // Scale up slightly to compensate for weapon.png dimensions
           }
 
-          if (isMobile) {
-            // Mobile full width button layout (similar to second photo)
-            elem.className = "flex items-center justify-between w-full px-5 py-3.5 rounded-xl transition-all duration-200 text-xl font-bold border-b-0";
-            if (isLinkActive(elem)) {
-              elem.classList.add("bg-purple-600", "text-white");
-              elem.classList.remove("text-gray-300", "hover:text-white", "hover:bg-white/5");
-            } else {
-              elem.classList.add("text-gray-300", "hover:text-white", "hover:bg-white/5");
-              elem.classList.remove("bg-purple-600", "text-white");
-            }
+          const isSubCategory = elem.closest('.sub-category-bar') || (elem.parentElement && elem.parentElement.classList.contains('justify-center') && elem.parentElement.classList.contains('items-center'));
 
-            if (iconName) {
-              const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 28px; height: 28px;`;
-              elem.innerHTML = `<span>${val}</span><span class="inline-block shrink-0" style="${maskStyle}"></span>`;
+          if (key.startsWith('menu_')) {
+            if (isSubCategory) {
+              // Sub-category desktop menu styling: keep text-sm and display inline-flex
+              elem.style.display = 'inline-flex';
+              elem.style.alignItems = 'center';
+              elem.style.gap = '6px';
+
+              if (iconName) {
+                const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 16px; height: 16px;`;
+                elem.innerHTML = `<span class="inline-block shrink-0" style="${maskStyle}"></span><span>${val}</span>`;
+              } else {
+                // Preserve hardcoded FontAwesome icon if present
+                const existingIcon = elem.querySelector('i.fa-solid, i.fa-regular, i.fas');
+                if (existingIcon) {
+                  elem.innerHTML = `${existingIcon.outerHTML}<span>${val}</span>`;
+                } else {
+                  elem.innerHTML = `<span>${val}</span>`;
+                }
+              }
             } else {
-              elem.innerHTML = `<span>${val}</span>`;
+              // Standard dropdown or mobile link: set plain text to keep layout intact
+              elem.innerHTML = val;
             }
           } else {
-            // Desktop menu styling: increase text size to text-base and font-semibold
-            elem.classList.remove('text-sm', 'font-medium');
-            elem.classList.add('text-base', 'font-semibold');
+            // Main nav header styling (mobile and desktop)
+            const isMobile = elem.closest('#mobile-menu') !== null;
+            if (isMobile) {
+              elem.className = "flex items-center justify-between w-full px-5 py-3.5 rounded-xl transition-all duration-200 text-xl font-bold border-b-0";
+              if (isLinkActive(elem)) {
+                elem.classList.add("bg-purple-600", "text-white");
+                elem.classList.remove("text-gray-300", "hover:text-white", "hover:bg-white/5");
+              } else {
+                elem.classList.add("text-gray-300", "hover:text-white", "hover:bg-white/5");
+                elem.classList.remove("bg-purple-600", "text-white");
+              }
 
-            // Dynamic centering and vertical alignment layout
-            elem.style.display = 'inline-flex';
-            elem.style.alignItems = 'center';
-            elem.style.justifyContent = 'center';
-            elem.style.gap = '8px';
-
-            if (iconName) {
-              const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 22px; height: 22px;`;
-              elem.innerHTML = `<span class="inline-block shrink-0" style="${maskStyle}"></span><span>${val}</span>`;
+              if (iconName) {
+                const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 28px; height: 28px;`;
+                elem.innerHTML = `<span>${val}</span><span class="inline-block shrink-0" style="${maskStyle}"></span>`;
+              } else {
+                elem.innerHTML = `<span>${val}</span>`;
+              }
             } else {
-              elem.innerHTML = `<span>${val}</span>`;
+              // Desktop menu styling: increase text size to text-base and font-semibold
+              elem.classList.remove('text-sm', 'font-medium');
+              elem.classList.add('text-base', 'font-semibold');
+
+              elem.style.display = 'inline-flex';
+              elem.style.alignItems = 'center';
+              elem.style.justifyContent = 'center';
+              elem.style.gap = '8px';
+
+              if (iconName) {
+                const maskStyle = `background-color: currentColor; -webkit-mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; -webkit-mask-size: contain; mask: url('${prefix}assets/images/guides/${iconName}') no-repeat center; mask-size: contain; transform: scale(${scale}); width: 22px; height: 22px;`;
+                elem.innerHTML = `<span class="inline-block shrink-0" style="${maskStyle}"></span><span>${val}</span>`;
+              } else {
+                elem.innerHTML = `<span>${val}</span>`;
+              }
             }
           }
         } else {
@@ -602,6 +669,16 @@
 
     // Update global document language
     document.documentElement.setAttribute("lang", currentLang);
+
+    // Highlight active link classes across both desktop and mobile
+    document.querySelectorAll("a").forEach(link => {
+      if (isLinkActive(link)) {
+        if (link.closest('#mobile-menu')) {
+          link.classList.add("bg-purple-600/20", "text-purple-400");
+          link.classList.remove("text-gray-300");
+        }
+      }
+    });
 
     // Sync URLs for all links
     updatePageLinks();
@@ -707,7 +784,7 @@
 
   // Track consecutive clicks on characters navigation button for Frover mode
   document.addEventListener('click', (e) => {
-    const charBtn = e.target.closest('[data-i18n="nav_characters"]');
+    const charBtn = e.target.closest('[data-i18n="nav_characters"], [data-i18n="menu_characters"]');
     if (charBtn) {
       // Prevent default navigation if we are already on the characters list page
       // to avoid continuous page reloads while clicking consecutively.

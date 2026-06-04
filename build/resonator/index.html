@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resonator Builder - WuWa AIO</title>
+  <meta name="description" content="Design, simulate, and optimize custom resonator builds and echo sets in Wuthering Waves.">
+  
+  <!-- Font Integrations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled Tailwind CSS -->
+  <link rel="stylesheet" href="../../output.css">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- i18n Translation Engine -->
+  <script src="../../js/i18n.js"></script>
+
+  <style>
+    :root {
+      --gpx: 0.4px;
+    }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: #0a080f;
+    }
+    .font-display {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .flex-align-center {
+      display: flex;
+      align-items: center;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a080f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #312e3f;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #504a6b;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+    }
+    .glow-effect {
+      animation: pulse-glow 4s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-200 overflow-x-hidden min-h-screen flex flex-col selection:bg-purple-500/30 selection:text-purple-200">
+
+  <!-- Ambient Glow Effects -->
+  <div class="fixed top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/10 blur-[120px] pointer-events-none glow-effect"></div>
+  <div class="fixed bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[120px] pointer-events-none glow-effect" style="animation-delay: 2s;"></div>
+
+  <!-- Header Section -->
+  <header class="sticky top-0 z-50 bg-[#0a080f]/80 backdrop-blur-md border-b border-purple-500/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <div class="flex items-center space-x-8">
+        <!-- Logo (Home Button) -->
+      <a href="../../index.html" class="flex items-center space-x-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:scale-105 transition-transform duration-300">
+          <i class="fa-solid fa-wand-magic-sparkles text-white text-lg"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-2xl tracking-wide bg-gradient-to-r from-white via-gray-100 to-purple-400 bg-clip-text text-transparent"><span data-i18n="landing_title_prefix"></span><span class="text-purple-500" data-i18n="landing_title_suffix"></span></span>
+          <span class="block text-[10px] text-gray-500 tracking-widest uppercase font-semibold" data-i18n="sub_logo"></span>
+        </div>
+      </a>
+        <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-2">
+        <!-- Database Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="database">
+            <span data-i18n="nav_database">Database</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../database/characters/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_characters"></a>
+            <a href="../../database/weapons/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_weapons"></a>
+            <a href="../../database/echoes/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_echoes"></a>
+                      </div>
+          </div>
+        </div>
+
+        <!-- Build Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="build">
+            <span data-i18n="nav_build">Build</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../build/resonator/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_build_char_echo"></a>
+            <a href="../../build/rotation/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_build_rotation"></a>
+            <a href="../../build/calculation/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_build_calculation"></a>
+                      </div>
+          </div>
+        </div>
+
+        <!-- Guide Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="guide">
+            <span data-i18n="nav_guide">Guide</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../guide/rotation/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_rotation"></a>
+            <a href="../../guide/toa/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_toa"></a>
+            <a href="../../guide/whiwa/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_whiwa"></a>
+            <a href="../../guide/metrix/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_guide_metrix"></a>
+                      </div>
+          </div>
+        </div>
+
+        <!-- Other Dropdown -->
+        <div class="relative group">
+          <button class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-base font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all cursor-pointer" data-nav-category="other">
+            <span data-i18n="nav_other">Other</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-gray-500 group-hover:text-white transition-colors ml-1 mt-0.5"></i>
+          </button>
+          <div class="absolute left-0 top-full pt-2 hidden group-hover:block w-44 z-50">
+            <div class="rounded-xl bg-[#121016]/95 backdrop-blur-md border border-purple-500/10 shadow-2xl py-2">
+
+            <a href="../../other/sites/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_other_sites"></a>
+            <a href="../../other/about/index.html" class="block px-4 py-2 text-xs font-semibold text-gray-300 hover:text-white hover:bg-purple-600/20 transition-all" data-i18n="menu_other_about"></a>
+                      </div>
+          </div>
+        </div>
+      </nav>
+      </div>
+
+      <!-- Action Button / Mobile Menu Trigger -->
+      <div class="flex items-center space-x-4">
+        <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 focus:outline-none">
+          <i class="fa-solid fa-bars text-xl"></i>
+        </button>
+      </div>
+    </div>
+      </header>
+
+  <!-- Sub-category Bar -->
+  <div class="hidden md:flex justify-center items-center gap-6 mt-2 mb-2 text-sm text-gray-400 font-medium">
+    <a href="../../build/resonator/index.html" class="text-purple-400 font-semibold flex items-center gap-1.5 transition-colors" data-i18n="menu_build_char_echo">
+      <i class="fa-solid fa-screwdriver-wrench text-sm"></i>
+      <span>Resonator</span>
+    </a>
+    <span class="text-white/10 font-light">|</span>
+    <a href="../../build/rotation/index.html" class="hover:text-white flex items-center gap-1.5 transition-colors" data-i18n="menu_build_rotation">
+      <i class="fa-solid fa-repeat text-sm"></i>
+      <span>Rotation</span>
+    </a>
+    <span class="text-white/10 font-light">|</span>
+    <a href="../../build/calculation/index.html" class="hover:text-white flex items-center gap-1.5 transition-colors" data-i18n="menu_build_calculation">
+      <i class="fa-solid fa-calculator text-sm"></i>
+      <span>Calculation</span>
+    </a>
+  </div>
+
+  <!-- Mobile Navigation Menu -->
+  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-40 bg-[#0a080f]/95 backdrop-blur-lg pt-24 px-6 overflow-y-auto pb-12">
+    <div class="flex flex-col space-y-6">
+      <!-- Database Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_database">Database</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../database/characters/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_characters"></a>
+          <a href="../../database/weapons/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_weapons"></a>
+          <a href="../../database/echoes/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_echoes"></a>
+        </div>
+      </div>
+
+      <!-- Build Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_build">Build</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../build/resonator/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_build_char_echo"></a>
+          <a href="../../build/rotation/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_build_rotation"></a>
+          <a href="../../build/calculation/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_build_calculation"></a>
+        </div>
+      </div>
+
+      <!-- Guide Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_guide">Guide</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../guide/rotation/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_rotation"></a>
+          <a href="../../guide/toa/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_toa"></a>
+          <a href="../../guide/whiwa/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_whiwa"></a>
+          <a href="../../guide/metrix/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_guide_metrix"></a>
+        </div>
+      </div>
+
+      <!-- Other Group -->
+      <div class="space-y-2">
+        <span class="block text-[10px] text-gray-500 font-bold uppercase tracking-wider pl-3" data-i18n="nav_other">Other</span>
+        <div class="flex flex-col space-y-1">
+          <a href="../../other/sites/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_other_sites"></a>
+          <a href="../../other/about/index.html" class="flex items-center px-4 py-2.5 rounded-xl text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 transition-all" onclick="toggleMobileMenu()" data-i18n="menu_other_about"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Header Section -->
+    <section class="py-12 bg-[#1a181f]/20 border-b border-white/5">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="font-display font-bold text-4xl text-white tracking-wide flex items-center gap-3">
+          <span class="w-2.5 h-8 bg-purple-600 rounded-full inline-block"></span>
+          <span data-i18n="build_header_title">Resonator Builder</span>
+        </h1>
+        <p class="text-gray-400 text-sm mt-2" data-i18n="build_header_subtitle">Build custom resonator configurations, adjust substats, and test simulated damage outputs in real-time.</p>
+      </div>
+    </section>
+
+    <!-- Content Workspace -->
+    <section class="py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Resonator Selector List -->
+      <div class="bg-[#121016] border border-white/5 rounded-2xl p-6 mb-8">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <h3 class="font-display font-bold text-lg text-white flex items-center gap-2">
+            <i class="fa-solid fa-user-gear text-purple-500"></i>
+            <span data-i18n="build_select_resonator">Select Resonator</span>
+          </h3>
+          <div class="relative max-w-xs w-full">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-500 text-xs"></i>
+            <input type="text" id="resonator-search" class="w-full pl-9 pr-4 py-2 bg-[#0a080f] border border-white/10 rounded-xl text-xs text-gray-300 focus:outline-none focus:border-purple-500" placeholder="Search Resonator..." data-i18n-placeholder="char_search_placeholder">
+          </div>
+        </div>
+        
+        <div id="resonator-select-grid" class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 max-h-[220px] overflow-y-auto pr-1">
+          <div class="text-center py-8 text-gray-500 col-span-full">Loading resonators database...</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    let masterCharacters = [];
+
+    // Load master database arrays
+    async function loadMasterData() {
+      try {
+        const response = await fetch('../../assets/data/characters.json');
+        masterCharacters = await response.json();
+        renderSelectorGrid();
+        
+        // Hide absolute loading block and reveal builder i18n
+        if (window.wuwaI18n) {
+          window.wuwaI18n.showPage();
+        }
+      } catch (e) {
+        console.error("Failed to load resonators database:", e);
+      }
+    }
+
+    // Render selector grid for resonators
+    function renderSelectorGrid() {
+      const grid = document.getElementById('resonator-select-grid');
+      const searchInput = document.getElementById('resonator-search');
+      if (!grid) return;
+
+      const lang = window.wuwaI18n ? window.wuwaI18n.getLanguage() : 'en';
+
+      function updateGrid(filter = '') {
+        const filtered = masterCharacters.filter(c => {
+          const name = (c.name[lang] || c.name.en || '').toLowerCase();
+          const attr = (c.attribute[lang] || c.attribute.en || '').toLowerCase();
+          const query = filter.toLowerCase();
+          return name.includes(query) || attr.includes(query);
+        });
+
+        grid.innerHTML = filtered.map(c => {
+          const attrText = c.attribute.en;
+          const attrColors = {
+            Spectro: 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+            Fusion: 'bg-red-500/20 text-red-300 border-red-500/30',
+            Electro: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+            Aero: 'bg-teal-500/20 text-teal-300 border-teal-500/30',
+            Havoc: 'bg-pink-500/20 text-pink-300 border-pink-500/30',
+            Glacio: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30'
+          };
+          const bClass = attrColors[attrText] || 'bg-gray-500/20 text-gray-300';
+          let portraitSrc = `../../assets/images/characters/${c.id}/icon.png`;
+          if (c.id === 'rover_havoc' || c.id.startsWith('rover')) {
+            const isFrover = localStorage.getItem('frover_mode') === 'true';
+            const roverFolder = isFrover ? 'frover' : 'rover';
+            const attrId = c.attribute.en.toLowerCase();
+            portraitSrc = `../../assets/images/characters/${roverFolder}/${attrId}/icon.png`;
+          }
+
+          return `
+            <button onclick="selectResonator('${c.id}')" class="flex flex-col items-center p-3 border border-white/5 hover:border-purple-500/30 hover:bg-white/5 rounded-2xl cursor-pointer transition-all duration-300">
+              <div class="w-14 h-14 bg-white/5 rounded-xl flex items-center justify-center overflow-hidden border border-white/10 relative mb-2 shrink-0">
+                <img src="${portraitSrc}" class="w-full h-full object-contain" onerror="this.src='../../assets/images/characters/default.png'">
+              </div>
+              <span class="block text-xs font-bold text-white truncate max-w-full">${c.name[lang] || c.name.en}</span>
+              <span class="block text-[9px] border px-1.5 py-0.5 rounded uppercase font-bold mt-1 tracking-wider ${bClass}">${c.attribute[lang] || c.attribute.en}</span>
+            </button>
+          `;
+        }).join('\n');
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `<div class="text-center py-8 text-gray-500 col-span-full">No resonators match criteria.</div>`;
+        }
+      }
+
+      searchInput.addEventListener('input', (e) => updateGrid(e.target.value));
+      updateGrid();
+    }
+
+    function selectResonator(id) {
+      window.location.href = `./${id}/index.html`;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadMasterData();
+
+      // Listen to i18n language change events to update grid translations
+      window.addEventListener("wuwalangchange", () => {
+        renderSelectorGrid();
+      });
+    });
+  </script>
+</body>
+</html>
